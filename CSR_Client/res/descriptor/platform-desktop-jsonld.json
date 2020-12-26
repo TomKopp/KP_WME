@@ -1,0 +1,242 @@
+{
+	"@graph": [
+		{
+			"@id": "desktop:CSR_DesktopClient",
+			"@type": [
+				"soft:RuntimeEnvironment",
+				"soft:CSRClient",
+				"owl:NamedIndividual",
+				"soft:SoftwareThing",
+				"soft:DesktopClient",
+				"owl:Thing"
+			],
+			"com:hasName": "CSR Desktop Browser Client",
+			"com:hasVendor": "Google",
+			"com:hasVersion": "1.16.0",
+			"executedBy": "desktop:DesktopPC_Windows",
+			"hasService": "soft:GeolocationService1",
+			"hasSessionId": "eeb4d5dd-f718-4552-aefc-d4df8531884d",
+			"isIncludedBy": "soft:Chromium",
+			"providedBy": "soft:Chromium",
+			"rdfs:label": "CSRDesktopClient",
+			"differentFrom": [
+				"soft:GingerBread",
+				"desktop:EizoPC_Display",
+				"desktop:QuadCoreCPU",
+				"soft:InAppBrowserService1",
+				"soft:CameraService1",
+				"soft:DialogsService1",
+				"soft:GeolocationService1",
+				"soft:OrientationService1",
+				"desktop:PixelDensity_90ppi",
+				"soft:Mango",
+				"smartphone:AndroidBrowser",
+				"soft:Chromium",
+				"soft:IceCream",
+				"soft:GlobalizationService1",
+				"desktop:Windows7",
+				"soft:Firefox",
+				"smartphone:PixelDensity_LG",
+				"smartphone:Accelerometer_LG",
+				"smartphone:JellyBean_LG",
+				"desktop:DesktopPC_Windows",
+				"soft:iOS5",
+				"soft:NetworkInformationService1",
+				"soft:SplashScreenService1",
+				"soft:MediaService1",
+				"soft:ContactsService1",
+				"soft:DeviceInfoService1",
+				"soft:MediaCaptureService1",
+				"desktop:LogitechMouse",
+				"smartphone:ARM_LG",
+				"soft:FileSystemService1",
+				"soft:Froyo",
+				"smartphone:MobileClient_CSR",
+				"desktop:MemoryScale_GB",
+				"soft:FileTransferService1",
+				"smartphone:MobileFirefox",
+				"smartphone:LG_P970",
+				"soft:BatteryStatusService1",
+				"soft:StatusBarService1",
+				"desktop:LogitechWebcam",
+				"soft:VibrationService1",
+				"soft:MotionService1"
+			],
+			"sameAs": "desktop:CSR_DesktopClient"
+		},
+		{
+			"@id": "desktop:DesktopPC_Windows",
+			"hasDevicePicture": "http://i.ebayimg.com/00/s/NzYzWDEwMjQ=/$(KGrHqNHJFYFG99q-4lfBR2FGEU3FQ~~48_9.JPG",
+			"com:hasName": "OMross",
+			"currentOperatingSystem": "desktop:Windows7",
+			"embeds": [
+				"desktop:LogitechKeyboard",
+				"desktop:HeadSet_Speaker",
+				"desktop:EizoPC_Display_2",
+				"desktop:EizoPC_Display",
+				"desktop:QuadCoreCPU",
+				"desktop:LogitechWebcam",
+				"desktop:LogitechMouse"
+			],
+			"embedsCPU": "desktop:QuadCoreCPU",
+			"execute": [
+				"desktop:CSR_DesktopClient",
+				"desktop:Windows7",
+				"soft:Chromium"
+			],
+			"hasInputDevice": [
+				"desktop:LogitechKeyboard",
+				"desktop:LogitechWebcam",
+				"desktop:LogitechMouse"
+			],
+			"hasMaximalMemory": "desktop:RAM_4GB",
+			"hasMeasurand": "desktop:RAM_4GB",
+			"hasMemory": "desktop:RAM_4GB",
+			"hasOutputDevice": [
+				"desktop:EizoPC_Display",
+				"desktop:HeadSet_Speaker",
+				"desktop:EizoPC_Display_2"
+			],
+			"dev:isMobile": false,
+			"supportsModality": [
+				"mod:OutputModality",
+				"mod:InputModality"
+			]
+		},
+		{
+			"@id": "desktop:Windows7",
+			"com:hasName": "Windows NT",
+			"com:hasVendor": "Microsoft",
+			"com:hasVersion": "6.1",
+			"executedBy": "desktop:DesktopPC_Windows",
+			"includes": [
+				"desktop:CSR_DesktopClient",
+				"soft:Safari",
+				"soft:Firefox",
+				"soft:Silverlight",
+				"soft:Chrome",
+				"soft:WebkitEngine",
+				"soft:Flash",
+				"soft:Chromium",
+				"soft:GeckoEngine"
+			],
+			"provides": [
+				"soft:Firefox",
+				"soft:Safari",
+				"soft:Chrome",
+				"soft:Chromium"
+			]
+		}
+	],
+	"@context": {
+		"differentFrom": {
+			"@id": "http://www.w3.org/2002/07/owl#differentFrom",
+			"@type": "@id"
+		},
+		"hasVendor": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasVendor",
+			"@type": "http://www.w3.org/2001/XMLSchema#string"
+		},
+		"label": {
+			"@id": "http://www.w3.org/2000/01/rdf-schema#label",
+			"@type": "http://www.w3.org/2001/XMLSchema#string"
+		},
+		"hasService": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#hasService",
+			"@type": "@id"
+		},
+		"sameAs": {
+			"@id": "http://www.w3.org/2002/07/owl#sameAs",
+			"@type": "@id"
+		},
+		"executedBy": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#executedBy",
+			"@type": "@id"
+		},
+		"providedBy": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#providedBy",
+			"@type": "@id"
+		},
+		"isIncludedBy": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#isIncludedBy",
+			"@type": "@id"
+		},
+		"hasVersion": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasVersion",
+			"@type": "http://www.w3.org/2001/XMLSchema#string"
+		},
+		"hasSessionId": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#hasSessionId",
+		"hasName": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasName",
+			"@type": "http://www.w3.org/2001/XMLSchema#string"
+		},
+		"hasOutputDevice": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasOutputDevice",
+			"@type": "@id"
+		},
+		"execute": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#execute",
+			"@type": "@id"
+		},
+		"isMobile": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#isMobile",
+			"@type": "http://www.w3.org/2001/XMLSchema#boolean"
+		},
+		"embeds": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#embeds",
+			"@type": "@id"
+		},
+		"hasDevicePicture": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasDevicePicture",
+			"@type": "http://www.w3.org/2001/XMLSchema#anyURI"
+		},
+		"hasInputDevice": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasInputDevice",
+			"@type": "@id"
+		},
+		"supportsModality": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#supportsModality",
+			"@type": "@id"
+		},
+		"hasMeasurand": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasMeasurand",
+			"@type": "@id"
+		},
+		"hasMaximalMemory": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasMaximalMemory",
+			"@type": "@id"
+		},
+		"hasMemory": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasMemory",
+			"@type": "@id"
+		},
+		"currentOperatingSystem": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#currentOperatingSystem",
+			"@type": "@id"
+		},
+		"embedsCPU": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#embedsCPU",
+			"@type": "@id"
+		},
+		"includes": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#includes",
+			"@type": "@id"
+		},
+		"provides": {
+			"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#provides",
+			"@type": "@id"
+		},
+		"com": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#",
+		"mod": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#",
+		"smartphone": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#",
+		"desktop": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#",
+		"dev": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#",
+		"owl": "http://www.w3.org/2002/07/owl#",
+		"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+		"spin": "http://spinrdf.org/spin#",
+		"xsd": "http://www.w3.org/2001/XMLSchema#",
+		"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+		"platform": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform#",
+		"soft": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#"
+	}
+}

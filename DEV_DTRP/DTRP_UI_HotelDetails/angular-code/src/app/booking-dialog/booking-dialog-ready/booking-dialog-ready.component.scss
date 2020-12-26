@@ -1,0 +1,33 @@
+h2 {
+    margin: 0px;
+    font-size: 18px;
+}
+
+.booking-dialog-ready-content {
+    width: 100%;
+    height: 200px;
+}
+.booking-dialog-ready-image-wrapper, .booking-dialog-ready-info-container {
+    width: 50%;
+    height: 100%;
+    float: left;
+    position: relative;
+}
+.booking-dialog-ready-image-wrapper {
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.booking-dialog-ready-info-container {
+    width: calc(50% - 6px);
+    padding-left: 6px;
+}
+.booking-dialog-ready-rating-container {
+    width: 100%;
+    overflow: auto;
+    padding: 4px 0px;
+}
+.booking-dialog-ready-image-info-overlay {
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+}

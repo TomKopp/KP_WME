@@ -1,0 +1,19 @@
+<div class="trip-overview">
+  <mat-expansion-panel [disabled]="false">
+    <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'80px'">
+      <mat-panel-title>
+        <app-trip-section-overview [data]="getSelectedTrip()" (selectedHotel)="emitSelectedTripSectionHotel($event)" (removeHotel)="emitRemovedTripSectionHotel($event)">
+        </app-trip-section-overview>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="trip-list-content">
+      <mat-list role="list">
+
+        <mat-list-item role="listitem" *ngFor="let trip of getInActiveTripSections()">
+          <app-trip-section-overview [data]="trip" (selectedHotel)="emitSelectedTripSectionHotel($event)" (removeHotel)="emitRemovedTripSectionHotel($event)">
+          </app-trip-section-overview>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </mat-expansion-panel>
+</div>

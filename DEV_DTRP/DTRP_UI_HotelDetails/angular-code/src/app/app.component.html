@@ -1,0 +1,15 @@
+<div class="app-header">
+    <app-trip-overview [tripSections]="tripSections" (selectedHotel)="setSelectedTripSectionHotelByOutput($event)" (removeHotel)="removeHotel($event)">
+    </app-trip-overview>
+</div>
+<div class="app-content" *ngIf="selectedTripPart">
+    <app-hotel-list *ngIf="showHotelList" [windowWidth]="width" 
+        [hotelData]="hotelList" (selectedHotel)="onSelectHotel($event)" 
+        [currentlySelectedHotelId]="selectedTripSectionHotel?.hotel?.id"
+        (filterFeature)="executeHotelListFilter($event, null)"
+        [filteredFeatures]="selectedFilterFeatures"
+        [filteredRating]="selectedFilterRatings"
+        (filterRating)="executeHotelListFilter(null, $event)"></app-hotel-list>
+    <app-hotel-detail *ngIf="showHotelDetail" [windowWidth]="width" 
+        [hotelData]="selectedTripSectionHotel?.hotel" (onGoBack)="onGoBack()"></app-hotel-detail>
+</div>

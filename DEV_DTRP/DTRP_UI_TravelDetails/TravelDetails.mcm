@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mcm:MashupComposition  xmi:version="2.0"
+                        author="bob@documa.com"
+                        xmlns:mcm="http://mmt.inf.tu-dresden.de/mcm/1.15"
+                        xmlns:xmi="http://www.omg.org/XMI"
+                        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xmlns:dt="http://mmt.inf.tu-dresden.de/documa/components/datatypes"
+                        name="TravelDetails"
+                        id="td1" version="1.0.0">
+
+    <conceptualModel>
+        <components>
+            <component
+                    xsi:type="mcm:UIComponent"
+                    componentid="https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DTRP/DTRP_UI_TravelDetails/"
+                    instanceid="td1">
+
+                <!-- properties -->
+                <property name="height"
+                          type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasHeight"
+                          value="375"/>
+                <property name="width"
+                          type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasWidth"
+                          value="667"/>
+                <property name="title"
+                          type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasTitle"
+                          value="TravelDetails"/>
+                <property name="trip" required="true" type="xs:Trip" />
+
+                <!-- events -->
+                <event name="onLoad"/>
+
+                <!-- Operations -->
+                <operation name="loadTrip" />
+            </component>
+        </components>
+    </conceptualModel>
+
+    <layoutModel>
+        <layout xsi:type="mcm:AbsoluteLayout" name="defaultLayout">
+            <bounds width="667" height="375" unit="pixel" />
+            <position unit="pixel" locate="td1" x="5" y="5" />
+        </layout>
+    </layoutModel>
+
+    <screenflowModel initialView="StartView">
+        <view name="StartView" layout="defaultLayout" />
+    </screenflowModel>
+
+    <communicationModel />
+</mcm:MashupComposition>

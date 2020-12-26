@@ -1,0 +1,107 @@
+<div id="csr-mui-cmpdist" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content csr-mui-distribution-dialog">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h5 class="modal-title">Component distribution</h5>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="panel panel-primary">
+								<div class="panel-body csr-mui-pbody csr-mui-cmpsearchpanel">
+									<!-- here comes the component search panel -->
+									<div class="input-group">
+										<input type="text" class="form-control" ng-model="searchQuery"
+										       placeholder="Search components ...">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="panel panel-primary">
+								<div class="panel-heading csr-mui-pheader">Components</div>
+								<div class="panel-body csr-mui-pbody">
+									<div class="csr-mui-component-list">
+										<div ng-repeat="component in components"
+										     class="csr-mui-component-item" style="height: 135px;"
+										     csr-drag="onComponentDrag($event, component)">
+											<div class="csr-mui-ci-header">
+												<img draggable="false" ng-src="{{component.getIcon()}}"/>
+												<span>{{component.getName()}}</span>
+											</div>
+											<div class="csr-mui-ci-body">{{component.getDescription()}}</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-9">
+							<!-- distributions panel -->
+							<div class="panel panel-primary">
+								<div class="panel-heading csr-mui-pheader">Distributions</div>
+								<div class="panel-body csr-mui-pbody">
+									<!-- list of distribution items -->
+									<div class="csr-mui-distributions"
+									     csr-drop="onDistributionDropped($event)">
+										<!-- create a distribution representation for each distribution instance -->
+										<div ng-repeat="modification in modifications">
+											<mui-distribution controller="currentDistribution"
+											                  modification="modification"/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="panel panel-primary">
+								<div class="panel-heading csr-mui-pheader">Devices</div>
+								<div class="panel-body csr-mui-pbody">
+									<div class="csr-mui-devices-list">
+										<!-- iterate over each device and create a representing item -->
+										<div ng-repeat="device in devices"
+										     class="csr-mui-udevitem"
+										     style="height: 135px;"
+										     csr-drag="onDeviceDrag($event, device)">
+											<div class="csr-mui-udevitem-header">
+												<img draggable="false" class="csr-mui-udevicon"
+												     ng-src="{{device.getDevicePicture()}}"/>
+												<span class="csr-mui-udev-name">{{device.getDeviceName()}}</span><br/>
+											</div>
+											<div class="csr-mui-udevitem-body">
+												<span class="label label-default">Vendor</span>&nbsp;{{device.getVendorName()}}<br/>
+												<span
+													class="label label-default">OS</span>&nbsp;{{device.getOSName()}}<br/>
+												<span class="label label-default">User</span>&nbsp;{{device.getUserId()}}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- *** eof devices list *** -->
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="csr-mui-buttons pull-right">
+								<button type="button" class="btn btn-default" ng-click="onCancelIntegration($event)">
+									Cancel
+								</button>
+								<button type="button" class="btn btn-default" ng-click="onCommitIntegration($event)">
+									Commit
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

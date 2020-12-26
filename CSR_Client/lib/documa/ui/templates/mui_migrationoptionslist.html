@@ -1,0 +1,158 @@
+<!-- dialog header -->
+<div id="migration-options-header" class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <div>
+        <img src="res/img/low_battery.png"/>
+        <h4 class="modal-title">{{options[0].getCause().getFormattedDescription()}} on {{options[0].getCause().getSourceLabel()}}.
+            </br>Please choose one of the following <strong>{{options.length}}</strong> migration options.</h4>
+    </div>
+</div>
+<!-- dialog body -->
+<div id="migration-options-body" class="modal-body">
+    <!-- Migration option -->
+    <div ng-repeat="option in options track by $index" data-option-id={{option.getId()}} ng-class="{'collapsed': !$first}" class="migration-option well well-sm">
+
+        <!-- Migration option with details-->
+        <div class="migration-main-container col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="migration-container-left col-xs-12 col-sm-9 col-md-9 col-lg-9">
+
+                <!-- Source device -->
+                <div class="source-device-container col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <div class="text-center">
+                        <img ng-src="{{option.getSourceDevice().getDevicePicture()}}" alt="" class="img-responsive"/>
+                        <span>{{option.getSourceDevice().getDeviceName()}}</span>
+                    </div>
+                </div>
+
+                <!-- Migrations -->
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <!-- Component transitions -->
+                        <div ng-repeat="distribution in option.getDistributionOptions() track by $index" class="distribution-unit">
+                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                <div class="replacable-component" ng-repeat="replaceable in distribution.getReplaceables() track by $index">
+                                    <div class="col-custom comp-transition"></div>
+                                    <span class="col-xs-5 col-sm-5 col-sm-5 col-lg-5">
+                                        {{components.get(replaceable.getComponentItem().getComponentId()).getName()}}
+                                    </span>
+
+                                    <div class="col-custom comp-transition"></div>
+                                    <span class="col-xs-5 col-sm-5 col-sm-5 col-lg-5">
+                                        {{components.get(replaceable.getCandidates()[0].getComponentItem().getComponentId()).getName()}}
+                                    </span>
+                                    <div class="col-custom comp-transition"></div>
+                                </div>
+                                <div class="executable-component" ng-repeat="executable in distribution.getExecutables() track by $index">
+                                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 comp-transition"></div>
+                                    <span class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                        {{components.get(executable.getComponentId()).getName()}}
+                                    </span>
+                                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 comp-transition"></div>
+                                </div>
+                            </div>
+                            <!-- Target device -->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 target-device-container">
+                                <div class="text-center">
+                                    <img ng-src="{{distribution.getDevice().getDevicePicture()}}" alt=""
+                                         class="img-responsive"/>
+                                    <span>{{distribution.getDevice().getDeviceName()}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Migration effects -->
+            <div class="migration-container-right col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                <div class="effects-container col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <span>effects on app</span>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-repeat="effect in option.getMigrationEffects() track by $index">
+                        <p><strong>{{effect.getEffectTarget().replace("_"," ")}}: </strong>{{effect.getValue()}}{{effect.getUnit().symbol}}</p>
+                        <div class="progress">
+                            <div ng-if="effect.getEffectTarget() == 'app_lifespan'" class="progress-bar progress-bar-striped" role="progressbar"
+                                 ng-style="{width: (effect.getValue()/10)*100+'%'}">
+                            </div>
+                            <div ng-if="effect.getEffectTarget() == 'avg_latency'" class="progress-bar progress-bar-striped" role="progressbar"
+                                 ng-style="{width: (effect.getValue()/500)*100+'%'}">
+                            </div>
+                            <div ng-if="effect.getEffectTarget() == 'affected_devices'" class="progress-bar progress-bar-striped" role="progressbar"
+                                 ng-style="{width: (effect.getValue()/5)*100+'%'}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Select migration button -->
+            <button type="button" ng-init="selected = false" ng-click="selectMigrationOption(option.getId()); selected = !selected;" ng-class="{'selected': selected}" class="col-xs-12 select-migration-button btn btn-default">
+                Select<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+            </button>
+        </div>
+
+        <!-- Migration option preview -->
+        <div class="migration-preview-container col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+            <div class="migration-preview col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                <!-- Preview source device -->
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 device-container-preview">
+                    <div>
+                        <img ng-src="{{option.getSourceDevice().getDevicePicture()}}" alt="" class="device-img-preview"/>
+                    </div>
+                </div>
+
+                <!-- Preview transitions -->
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 transitions-preview">
+                    <div ng-repeat="distribution in option.getDistributionOptions() track by $index">
+                        <div class="replacable-component-preview" ng-repeat="replaceable in distribution.getReplaceables() track by $index">
+                            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 comp-transition"></div>
+                            <span class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></span>
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 comp-transition"></div>
+                            <span class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></span>
+                            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 comp-transition"></div>
+                        </div>
+                        <div class="executable-component-preview" ng-repeat="executable in distribution.getExecutables() track by $index">
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 comp-transition"></div>
+                            <span class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></span>
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 comp-transition"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preview target devices -->
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 device-container-preview">
+                    <div>
+                        <img ng-repeat="distribution in option.getDistributionOptions() track by $index" ng-src="{{distribution.getDevice().getDevicePicture()}}" alt="" class="device-img-preview"/>
+                    </div>
+                </div>
+
+                <!-- Preview migration effects -->
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 effects-preview">
+                    <div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-repeat="effect in option.getMigrationEffects() track by $index">
+                            <div class="progress">
+                                <div ng-if="effect.getEffectTarget() == 'app_lifespan'" class="progress-bar progress-bar-striped" role="progressbar"
+                                     ng-style="{width: (effect.getValue()/10)*100+'%'}">
+                                </div>
+                                <div ng-if="effect.getEffectTarget() == 'avg_latency'" class="progress-bar progress-bar-striped" role="progressbar"
+                                     ng-style="{width: (effect.getValue()/500)*100+'%'}">
+                                </div>
+                                <div ng-if="effect.getEffectTarget() == 'affected_devices'" class="progress-bar progress-bar-striped" role="progressbar"
+                                     ng-style="{width: (effect.getValue()/5)*100+'%'}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Expand/collapse  buttons -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 expand-button-container" ng-click="expandOrCollapseMigrationOption(option.getId())">
+                <span class="glyphicon glyphicon-chevron-up col-xs-12 col-sm-12 col-md-12 col-lg-12"></span>
+                <span class="glyphicon glyphicon-chevron-down col-xs-12 col-sm-12 col-md-12 col-lg-12"></span>
+            </div>
+        </div>
+    </div>
+</div>

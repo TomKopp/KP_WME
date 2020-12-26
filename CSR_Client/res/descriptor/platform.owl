@@ -1,0 +1,4279 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+        <!ENTITY spin "http://spinrdf.org/spin#" >
+        <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+        <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+        <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+        <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+        <!ENTITY com "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#" >
+        <!ENTITY dev "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#" >
+        <!ENTITY mod "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#" >
+        <!ENTITY soft "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#" >
+        ]>
+
+
+<rdf:RDF xmlns="http://mmt.inf.tu-dresden.de/documa/ontologies/platform#"
+         xml:base="http://mmt.inf.tu-dresden.de/documa/ontologies/platform"
+         xmlns:com="http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#"
+         xmlns:mod="http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#"
+         xmlns:dev="http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:spin="http://spinrdf.org/spin#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:soft="http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#">
+    <owl:Ontology rdf:about="http://mmt.inf.tu-dresden.de/documa/ontologies/platform">
+        <rdfs:comment rdf:datatype="&xsd;string">- 06.10.2014 added device service concept and hasService object
+            property
+        </rdfs:comment>
+        <owl:versionInfo rdf:datatype="&xsd;string">0.8</owl:versionInfo>
+        <rdfs:comment rdf:datatype="&xsd;string">02.09.2015 added &apos;hasInterface&apos; datatype property for
+            describing the relation between a service entity and its interface represented as URI reference
+        </rdfs:comment>
+        <owl:versionInfo rdf:datatype="&xsd;string">DPOM Draft Version 2014</owl:versionInfo>
+        <rdfs:isDefinedBy rdf:datatype="&xsd;string">Oliver Mross</rdfs:isDefinedBy>
+        <rdfs:comment xml:lang="en">The DoCUMA Platform Ontology Model contains concepts to formulate device
+            properties and specify application component requirements.
+        </rdfs:comment>
+    </owl:Ontology>
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#enablesAspect -->
+
+    <owl:ObjectProperty rdf:about="&com;enablesAspect">
+        <rdfs:label rdf:datatype="&xsd;string">enablesAspect</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that something supports or enables a specific
+            aspect, e. g., a bidirectional communication. This concept serves as an extension point for other aspect
+            concepts
+            like interaction task to express, for example, the fact that a device allows a specific interaction form.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&com;Aspect"/>
+        <rdfs:domain rdf:resource="&owl;Thing"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#currentOperatingSystem -->
+
+    <owl:ObjectProperty rdf:about="&dev;currentOperatingSystem">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">executeOperatingSystem</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates the relation that an operating system is executed
+            on a specific device. The OS concept encapsulates a specific API, e. g. Cocoa Framework in Mac OS X or
+            Android and
+            the Android API. This relation helps to identify dependencies between a software and its runtime
+            environment.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;ComputingDevice"/>
+        <rdfs:subPropertyOf rdf:resource="&dev;execute"/>
+        <rdfs:range rdf:resource="&soft;OperatingSystem"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#currentPlatform -->
+
+    <owl:ObjectProperty rdf:about="&dev;currentPlatform">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">executePlatform</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates the a platform is executed on a device instance
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;ComputingDevice"/>
+        <rdfs:subPropertyOf rdf:resource="&dev;execute"/>
+        <rdfs:range rdf:resource="&soft;Platform"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#embeds -->
+
+    <owl:ObjectProperty rdf:about="&dev;embeds">
+        <rdfs:label rdf:datatype="&xsd;string">embeds</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates the integration of a device as an component from
+            another device, i. e., a device could be embeded into another device as an integrated part.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&dev;Device"/>
+        <rdfs:domain rdf:resource="&dev;Device"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#embedsBattery -->
+
+    <owl:ObjectProperty rdf:about="&dev;embedsBattery">
+        <rdfs:label rdf:datatype="&xsd;string">embedsBattery</rdfs:label>
+        <rdfs:comment xml:lang="en">This object propery indicates that a battery is integrated into another device.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&dev;Battery"/>
+        <rdfs:domain rdf:resource="&dev;MobileDevice"/>
+        <rdfs:subPropertyOf rdf:resource="&dev;embeds"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#embedsCPU -->
+
+    <owl:ObjectProperty rdf:about="&dev;embedsCPU">
+        <rdfs:label rdf:datatype="&xsd;string">embedsCPU</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a CPU is integrated in a computing device, e.
+            g., a tablet pc. With the help of this relation it is possible to determine if a single device is an element
+            of the
+            equivalent class ComputingDevice.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&dev;CPU"/>
+        <rdfs:domain rdf:resource="&dev;ComputingDevice"/>
+        <rdfs:subPropertyOf rdf:resource="&dev;embeds"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#embedsSensor -->
+
+    <owl:ObjectProperty rdf:about="&dev;embedsSensor">
+        <rdfs:label rdf:datatype="&xsd;string">embedsSensor</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates the integration of sensor individual as part of a
+            device.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;Device"/>
+        <rdfs:range rdf:resource="&dev;Sensor"/>
+        <rdfs:subPropertyOf rdf:resource="&dev;embeds"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#execute -->
+
+    <owl:ObjectProperty rdf:about="&dev;execute">
+        <rdfs:label rdf:datatype="&xsd;string">execute</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string">This relation describes the fact that software runs in the context of a
+            computing device.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;ComputingDevice"/>
+        <rdfs:range rdf:resource="&soft;SoftwareThing"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasAdressWidth -->
+
+    <owl:ObjectProperty rdf:about="&dev;hasAdressWidth">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&dev;AdressWidth"/>
+        <rdfs:domain rdf:resource="&dev;CPU"/>
+        <rdfs:subPropertyOf rdf:resource="&dev;hasMeasurand"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasAmperage -->
+
+    <owl:ObjectProperty rdf:about="&dev;hasAmperage">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasAmperage</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates the fact that a battery has a specific amperage
+            value.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&com;PhysicalThing"/>
+        <rdfs:range rdf:resource="&dev;Amperage"/>
+        <rdfs:subPropertyOf rdf:resource="&dev;hasMeasurand"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasFramerate -->
+
+    <owl:ObjectProperty rdf:about="&dev;hasFramerate">
+        <rdfs:label rdf:datatype="&xsd;string">hasFramerate</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a camera supports a specific framerate.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&dev;Framerate"/>
+        <rdfs:subPropertyOf rdf:resource="&dev;hasMeasurand"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dev;Camera"/>
+                    <rdf:Description rdf:about="&dev;Display"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasFreeMemory -->
+
+    <owl:ObjectProperty rdf:about="&dev;hasFreeMemory">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasFreeMemory</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a computing device has a specific amount of
+            memory left.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;ComputingDevice"/>
+        <rdfs:range rdf:resource="&dev;Memory"/>
+        <rdfs:subPropertyOf rdf:resource="&dev;hasMemory"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasInputDevice -->
+
+    <owl:ObjectProperty rdf:about="&dev;hasInputDevice">
+        <rdfs:label rdf:datatype="&xsd;string">hasInputDevice</rdfs:label>
+        <rdfs:range rdf:resource="&dev;InputDevice"/>
+        <rdfs:domain rdf:resource="&dev;InteractiveDevice"/>
+        <rdfs:subPropertyOf rdf:resource="&dev;embeds"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasMaximalMemory -->
+
+    <owl:ObjectProperty rdf:about="&dev;hasMaximalMemory">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasMaximalMemory</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates the fact that a computing device has a maximum
+            amount of memory, e. g. a maximum of RAM or cache. This propery allows the determination of current context
+            values,
+            which are required to determine if a migrating application component can be executed in the context of a
+            specific
+            target device.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;ComputingDevice"/>
+        <rdfs:range rdf:resource="&dev;Memory"/>
+        <rdfs:subPropertyOf rdf:resource="&dev;hasMemory"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasMeasurand -->
+
+    <owl:ObjectProperty rdf:about="&dev;hasMeasurand">
+        <rdfs:label rdf:datatype="&xsd;string">hasMeasurand</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates the fact that something have a measurand, for
+            example, a battery has a a specific amperage and voltage value.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&com;PhysicalThing"/>
+        <rdfs:range rdf:resource="&dev;Measurand"/>
+        <owl:inverseOf rdf:resource="&dev;isMeasurandFrom"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasMemory -->
+
+    <owl:ObjectProperty rdf:about="&dev;hasMemory">
+        <rdfs:label rdf:datatype="&xsd;string">hasMemory</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates the fact that a computing device has a specific
+            amount of memory.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;ComputingDevice"/>
+        <rdfs:range rdf:resource="&dev;Memory"/>
+        <rdfs:subPropertyOf rdf:resource="&dev;hasMeasurand"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasOutputDevice -->
+
+    <owl:ObjectProperty rdf:about="&dev;hasOutputDevice">
+        <rdfs:label rdf:datatype="&xsd;string">hasOutputDevice</rdfs:label>
+        <rdfs:domain rdf:resource="&dev;InteractiveDevice"/>
+        <rdfs:range rdf:resource="&dev;OutputDevice"/>
+        <rdfs:subPropertyOf rdf:resource="&dev;embeds"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasPixelDensity -->
+
+    <owl:ObjectProperty rdf:about="&dev;hasPixelDensity">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasPixelDensity</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates the fact that a display or a camera have a specific
+            pixel density. This relation allows to identify the quality of a display a camera that can be required by a
+            software
+            component.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;Display"/>
+        <rdfs:range rdf:resource="&dev;PixelDensity"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasResolution -->
+
+    <owl:ObjectProperty rdf:about="&dev;hasResolution">
+        <rdfs:label rdf:datatype="&xsd;string">hasResolution</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a camera or display supports a specific image
+            resolution.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&dev;Resolution"/>
+        <rdfs:domain rdf:resource="&dev;VisualDevice"/>
+        <rdfs:subPropertyOf rdf:resource="&dev;hasMeasurand"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasScale -->
+
+    <owl:ObjectProperty rdf:about="&dev;hasScale">
+        <rdfs:label rdf:datatype="&xsd;string">hasScale</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a measurand can have one or more scales. For
+            example, a distance can be measured in meter, centermeter or millimeter.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;Measurand"/>
+        <rdfs:range rdf:resource="&dev;Scale"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasSceneMode -->
+
+    <owl:ObjectProperty rdf:about="&dev;hasSceneMode">
+        <rdfs:label rdf:datatype="&xsd;string">hasSceneMode</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a camera can have one or more scene modes, e.
+            g., landscape or portrait mode.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;Camera"/>
+        <rdfs:range rdf:resource="&dev;CameraSceneMode"/>
+        <rdfs:subPropertyOf rdf:resource="&dev;hasMeasurand"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasSideRelation -->
+
+    <owl:ObjectProperty rdf:about="&dev;hasSideRelation">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasSideRelation</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a image resolution has only a single side
+            relation, e. g., the wvga resolution has a side relation of 16 to 9.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;Resolution"/>
+        <rdfs:range rdf:resource="&dev;SideRelation"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasTemperature -->
+
+    <owl:ObjectProperty rdf:about="&dev;hasTemperature">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasTemperature</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that something has a temperature, e. g., a battery
+            or cpu. This relation allows to determine if, for example, a cpu uses much energy resources. This state is a
+            critical, regarding the migration of multiple application components onto a specific device with limited
+            resources.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&com;PhysicalThing"/>
+        <rdfs:range rdf:resource="&dev;Temperature"/>
+        <rdfs:subPropertyOf rdf:resource="&dev;hasMeasurand"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasVoltage -->
+
+    <owl:ObjectProperty rdf:about="&dev;hasVoltage">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasVoltage</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates the fact that a battery has a specific voltage
+            value at a particular time.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;Battery"/>
+        <rdfs:range rdf:resource="&dev;Voltage"/>
+        <rdfs:subPropertyOf rdf:resource="&dev;hasMeasurand"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#isMeasurandFrom -->
+
+    <owl:ObjectProperty rdf:about="&dev;isMeasurandFrom">
+        <rdfs:label rdf:datatype="&xsd;string">isMeasurandFrom</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a individual is a measurand of something. This
+            relation allows to determine which quality is provided by with entity.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&com;PhysicalThing"/>
+        <rdfs:domain rdf:resource="&dev;Measurand"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#hasDirection -->
+
+    <owl:ObjectProperty rdf:about="&mod;hasDirection">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&mod;Modality"/>
+        <rdfs:range rdf:resource="&mod;ModalityDirection"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#hasMedium -->
+
+    <owl:ObjectProperty rdf:about="&mod;hasMedium">
+        <rdfs:label rdf:datatype="&xsd;string">hasMedium</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a modality has a specific medium (channel) on
+            which the information is communicated
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&mod;Medium"/>
+        <rdfs:domain rdf:resource="&mod;Modality"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#hasMode -->
+
+    <owl:ObjectProperty rdf:about="&mod;hasMode">
+        <rdfs:label rdf:datatype="&xsd;string">hasMode</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a modality have a specific mode of
+            communication that may be within a particular medium. For example, the visual medium, modes include video
+            and image,
+            because visual information can be entered or displayed continuously (video) or in a discret fashion (image).
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&mod;Modality"/>
+        <rdfs:range rdf:resource="&mod;Mode"/>
+        <owl:inverseOf rdf:resource="&mod;isModeFrom"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#isMediumFrom -->
+
+    <owl:ObjectProperty rdf:about="&mod;isMediumFrom">
+        <rdfs:label rdf:datatype="&xsd;string">isMediumFrom</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that medium is used by a specific modality. The
+            hasMedium object property is the inverse of this property.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&mod;Medium"/>
+        <rdfs:range rdf:resource="&mod;Modality"/>
+        <owl:inverseOf rdf:resource="&mod;hasMedium"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#isModeFrom -->
+
+    <owl:ObjectProperty rdf:about="&mod;isModeFrom">
+        <rdfs:label rdf:datatype="&xsd;string">isModeFrom</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a mode individual is used by a specific
+            modality.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&mod;Modality"/>
+        <rdfs:domain rdf:resource="&mod;Mode"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#isSupportedByDevice -->
+
+    <owl:ObjectProperty rdf:about="&mod;isSupportedByDevice">
+        <rdfs:label rdf:datatype="&xsd;string">isSupportedByDevice</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a modality is supported by a specific device.
+            It is the inverse of the hasModality-property.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&dev;Device"/>
+        <rdfs:domain rdf:resource="&mod;Modality"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#supportsModality -->
+
+    <owl:ObjectProperty rdf:about="&mod;supportsModality">
+        <rdfs:label rdf:datatype="&xsd;string">supportsModality</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a specified device supports a modality. This
+            relation allows to determine a which modality is supported by which device.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;Device"/>
+        <rdfs:range rdf:resource="&mod;Modality"/>
+        <owl:inverseOf rdf:resource="&mod;isSupportedByDevice"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#apiProvidedBy -->
+
+    <owl:ObjectProperty rdf:about="&soft;apiProvidedBy">
+        <rdfs:domain rdf:resource="&soft;API"/>
+        <rdfs:range rdf:resource="&soft;RuntimeEnvironment"/>
+        <rdfs:subPropertyOf rdf:resource="&soft;providedBy"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#basedOn -->
+
+    <owl:ObjectProperty rdf:about="&soft;basedOn">
+        <rdfs:label xml:lang="en">basedOn</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a platform individual executed based on the
+            software instance, e. g., a specific operating system or a firmware.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&soft;Platform"/>
+        <rdfs:range rdf:resource="&soft;SoftwareThing"/>
+        <rdfs:subPropertyOf rdf:resource="&soft;isIncludedBy"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#compilesAndRun -->
+
+    <owl:ObjectProperty rdf:about="&soft;compilesAndRun">
+        <rdfs:label rdf:datatype="&xsd;string">compilesAndRun</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a runtime environment is capable of compiling
+            and running a specified compiling language, in other words it describes a capability of a runtime
+            environment.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&soft;CompiledLanguage"/>
+        <rdfs:domain rdf:resource="&soft;RuntimeEnvironment"/>
+        <rdfs:subPropertyOf rdf:resource="&soft;run"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#engineProvidedBy -->
+
+    <owl:ObjectProperty rdf:about="&soft;engineProvidedBy">
+        <rdfs:label rdf:datatype="&xsd;string">isEngineOf</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a specific software component is an engine
+            (includes specific rendering capabilities) of another software component.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&soft;Engine"/>
+        <rdfs:range rdf:resource="&soft;RuntimeEnvironment"/>
+        <rdfs:subPropertyOf rdf:resource="&soft;providedBy"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#executedBy -->
+
+    <owl:ObjectProperty rdf:about="&soft;executedBy">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">executedBy</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a software component is executed by a device.
+            This relation allows to describe that a software component is currently executed on a specific device. In
+            scenarios
+            of migrating application components this knowledge is needed to determine the current distribution state of
+            all
+            distributed application components.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&dev;ComputingDevice"/>
+        <owl:inverseOf rdf:resource="&dev;execute"/>
+        <rdfs:domain rdf:resource="&soft;SoftwareThing"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#formatSupportedBy -->
+
+    <owl:ObjectProperty rdf:about="&soft;formatSupportedBy">
+        <rdfs:domain rdf:resource="&soft;Format"/>
+        <rdfs:range rdf:resource="&soft;RuntimeEnvironment"/>
+        <rdfs:subPropertyOf rdf:resource="&soft;providedBy"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#hasService -->
+
+    <owl:ObjectProperty rdf:about="&soft;hasService">
+        <rdfs:domain rdf:resource="&soft;CSRClient"/>
+        <rdfs:range rdf:resource="&soft;Service"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#includes -->
+
+    <owl:ObjectProperty rdf:about="&soft;includes">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:domain rdf:resource="&soft;SoftwareThing"/>
+        <rdfs:range rdf:resource="&soft;SoftwareThing"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#interpretAndRun -->
+
+    <owl:ObjectProperty rdf:about="&soft;interpretAndRun">
+        <rdfs:label rdf:datatype="&xsd;string">interpretAndRun</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a runtime environment is capable of
+            interpreting and running a specified interpretable language, in other words it describes a capability of a
+            runtime
+            environment.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&soft;InterpretedLanguage"/>
+        <rdfs:domain rdf:resource="&soft;RuntimeEnvironment"/>
+        <rdfs:subPropertyOf rdf:resource="&soft;run"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#isBrowserEngineOf -->
+
+    <owl:ObjectProperty rdf:about="&soft;isBrowserEngineOf">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">isBrowserEngineOf</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a engine is part of a browser, in other words
+            the engine is used to render webpages in a browser runtime environment.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&soft;Browser"/>
+        <rdfs:domain rdf:resource="&soft;BrowserEngine"/>
+        <rdfs:subPropertyOf rdf:resource="&soft;engineProvidedBy"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#isBrowserPluginOf -->
+
+    <owl:ObjectProperty rdf:about="&soft;isBrowserPluginOf">
+        <rdfs:label rdf:datatype="&xsd;string">isBrowserPluginOf</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a software component is a plugin of a browser
+            runtime environment. This relation allows to formulate dependencies between an application component and
+            required
+            plugins of the browser-based component runtime environment.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&soft;Browser"/>
+        <rdfs:domain rdf:resource="&soft;Plugin"/>
+        <rdfs:subPropertyOf rdf:resource="&soft;pluginProvidedBy"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#isIncludedBy -->
+
+    <owl:ObjectProperty rdf:about="&soft;isIncludedBy">
+        <rdfs:domain rdf:resource="&soft;SoftwareThing"/>
+        <rdfs:range rdf:resource="&soft;SoftwareThing"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#isPartOfOperatingSystem -->
+
+    <owl:ObjectProperty rdf:about="&soft;isPartOfOperatingSystem">
+        <rdfs:label rdf:datatype="&xsd;string">isPartOf</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a software component is integrated or a part
+            of a operating system.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&soft;OperatingSystem"/>
+        <rdfs:domain rdf:resource="&soft;SoftwareThing"/>
+        <rdfs:subPropertyOf rdf:resource="&soft;isIncludedBy"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#pluginProvidedBy -->
+
+    <owl:ObjectProperty rdf:about="&soft;pluginProvidedBy">
+        <rdfs:label rdf:datatype="&xsd;string">isPluginOf</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a software component is a plugin of another
+            software component, i. e., it can be seen as an extension component.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&soft;Plugin"/>
+        <rdfs:range rdf:resource="&soft;RuntimeEnvironment"/>
+        <rdfs:subPropertyOf rdf:resource="&soft;providedBy"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#providedBy -->
+
+    <owl:ObjectProperty rdf:about="&soft;providedBy">
+        <rdfs:range rdf:resource="&soft;RuntimeEnvironment"/>
+        <rdfs:domain rdf:resource="&soft;SoftwareThing"/>
+        <rdfs:subPropertyOf rdf:resource="&soft;isIncludedBy"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#provides -->
+
+    <owl:ObjectProperty rdf:about="&soft;provides">
+        <rdfs:label xml:lang="en">contains</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property represents the relation that describe that a software
+            component is integrated as part of an operating system, such as the desktop environment.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&soft;RuntimeEnvironment"/>
+        <rdfs:range rdf:resource="&soft;SoftwareThing"/>
+        <rdfs:subPropertyOf rdf:resource="&soft;includes"/>
+        <owl:inverseOf rdf:resource="&soft;providedBy"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#providesAPI -->
+
+    <owl:ObjectProperty rdf:about="&soft;providesAPI">
+        <rdfs:range rdf:resource="&soft;API"/>
+        <rdfs:domain rdf:resource="&soft;RuntimeEnvironment"/>
+        <rdfs:subPropertyOf rdf:resource="&soft;provides"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#providesBrowserEngine -->
+
+    <owl:ObjectProperty rdf:about="&soft;providesBrowserEngine">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&soft;Browser"/>
+        <rdfs:range rdf:resource="&soft;BrowserEngine"/>
+        <rdfs:subPropertyOf rdf:resource="&soft;providesEngine"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#providesBrowserPlugin -->
+
+    <owl:ObjectProperty rdf:about="&soft;providesBrowserPlugin">
+        <rdfs:label rdf:datatype="&xsd;string">executeBrowserPlugin</rdfs:label>
+        <rdfs:comment xml:lang="en">This object propery indicates that a software component, e. g., flash runtime
+            environment, is a plugin of the browser runtime environment.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&soft;Browser"/>
+        <rdfs:range rdf:resource="&soft;BrowserPlugin"/>
+        <rdfs:subPropertyOf rdf:resource="&soft;providesPlugin"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#providesEngine -->
+
+    <owl:ObjectProperty rdf:about="&soft;providesEngine">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasEngine</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a software component can be based on a
+            specific engine. Each engine is linked with a specific set of rendering capabilities, e. g., the capability
+            to render
+            3D or html-based graphics (lower detail granualarity) or the capability to provide specific operations to
+            render a
+            data (higher detail granularity), for example, the support of a specific API (HTML5 operations).
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&soft;Engine"/>
+        <rdfs:domain rdf:resource="&soft;RuntimeEnvironment"/>
+        <rdfs:subPropertyOf rdf:resource="&soft;provides"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#providesPlugin -->
+
+    <owl:ObjectProperty rdf:about="&soft;providesPlugin">
+        <rdfs:label rdf:datatype="&xsd;string">executePlugin</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property represents the relation between a software and another
+            software component (plugin) that is integrated as an extension, i. e., the extendable software is still
+            executable if
+            the extension is not available.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&soft;Plugin"/>
+        <rdfs:domain rdf:resource="&soft;RuntimeEnvironment"/>
+        <rdfs:subPropertyOf rdf:resource="&soft;provides"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#run -->
+
+    <owl:ObjectProperty rdf:about="&soft;run">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">runs</rdfs:label>
+        <rdfs:comment xml:lang="en">This object property indicates that a runtime environment is capable to execute a
+            software component.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&soft;RuntimeEnvironment"/>
+        <rdfs:range rdf:resource="&soft;SoftwareThing"/>
+        <rdfs:subPropertyOf rdf:resource="&soft;includes"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#supportsFormat -->
+
+    <owl:ObjectProperty rdf:about="&soft;supportsFormat">
+        <rdfs:range rdf:resource="&soft;Format"/>
+        <rdfs:domain rdf:resource="&soft;RuntimeEnvironment"/>
+        <rdfs:subPropertyOf rdf:resource="&soft;provides"/>
+    </owl:ObjectProperty>
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform#hasErrorMessage -->
+
+    <owl:DatatypeProperty rdf:about="http://mmt.inf.tu-dresden.de/documa/ontologies/platform#hasErrorMessage">
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform#hasX -->
+
+    <owl:DatatypeProperty rdf:about="http://mmt.inf.tu-dresden.de/documa/ontologies/platform#hasX">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform#hasY -->
+
+    <owl:DatatypeProperty rdf:about="http://mmt.inf.tu-dresden.de/documa/ontologies/platform#hasY">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform#hasZ -->
+
+    <owl:DatatypeProperty rdf:about="http://mmt.inf.tu-dresden.de/documa/ontologies/platform#hasZ">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasCurrentUser -->
+
+    <owl:DatatypeProperty rdf:about="&com;hasCurrentUser">
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dev;Device"/>
+                    <rdf:Description rdf:about="&soft;RuntimeEnvironment"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasDevicePicture -->
+
+    <owl:DatatypeProperty rdf:about="&com;hasDevicePicture">
+        <rdfs:domain rdf:resource="&dev;InteractiveDevice"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasID -->
+
+    <owl:DatatypeProperty rdf:about="&com;hasID">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasID</rdfs:label>
+        <rdfs:comment xml:lang="en">This data property indicates the identifier of something.</rdfs:comment>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dev;Device"/>
+                    <rdf:Description rdf:about="&soft;SoftwareThing"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasManufacturer -->
+
+    <owl:DatatypeProperty rdf:about="&com;hasManufacturer">
+        <rdfs:label rdf:datatype="&xsd;string">hasManufacturer</rdfs:label>
+        <rdfs:comment xml:lang="en">This data property indicate the manufacturer of a device.</rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;Device"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasManufacturerUrl -->
+
+    <owl:DatatypeProperty rdf:about="&com;hasManufacturerUrl">
+        <rdfs:label rdf:datatype="&xsd;string">hasManufacturerUrl</rdfs:label>
+        <rdfs:comment xml:lang="en">This data property contains the url of the manufacturer.</rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;Device"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasModelName -->
+
+    <owl:DatatypeProperty rdf:about="&com;hasModelName">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasModelName</rdfs:label>
+        <rdfs:comment xml:lang="en">This data property contains the model name of a device.</rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;Device"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasModelNumber -->
+
+    <owl:DatatypeProperty rdf:about="&com;hasModelNumber">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasModelNumber</rdfs:label>
+        <rdfs:comment xml:lang="en">This data property describes the model number of device.</rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;Device"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasName -->
+
+    <owl:DatatypeProperty rdf:about="&com;hasName">
+        <rdfs:label rdf:datatype="&xsd;string">hasName</rdfs:label>
+        <rdfs:comment xml:lang="en">This data property describes the name of something, e. g., a device or a software.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="&owl;Thing"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasOwner -->
+
+    <owl:DatatypeProperty rdf:about="&com;hasOwner">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasOwner</rdfs:label>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dev;Device"/>
+                    <rdf:Description rdf:about="&soft;RuntimeEnvironment"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasValue -->
+
+    <owl:DatatypeProperty rdf:about="&com;hasValue">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasValue</rdfs:label>
+        <rdfs:comment xml:lang="en">This data property contains the value of the measurand.</rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;Measurand"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasVendor -->
+
+    <owl:DatatypeProperty rdf:about="&com;hasVendor">
+        <rdfs:label rdf:datatype="&xsd;string">hasVendor</rdfs:label>
+        <rdfs:comment xml:lang="en">This data property describe the vendor of a thing, e. g., of a device or software.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="&owl;Thing"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasVersion -->
+
+    <owl:DatatypeProperty rdf:about="&com;hasVersion">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasVersion</rdfs:label>
+        <rdfs:comment xml:lang="en">This data property describe the version of a thing, e. g., a device or software
+            component.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dev;Device"/>
+                    <rdf:Description rdf:about="&soft;SoftwareThing"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasAutoFocus -->
+
+    <owl:DatatypeProperty rdf:about="&dev;hasAutoFocus">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasAutoFocus</rdfs:label>
+        <rdfs:label xml:lang="en">This data property describe the auto focus capability of camera.</rdfs:label>
+        <rdfs:domain rdf:resource="&dev;Camera"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasCpuArchitecture -->
+
+    <owl:DatatypeProperty rdf:about="&dev;hasCpuArchitecture">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasCPUArchitecture</rdfs:label>
+        <rdfs:comment xml:lang="en">This data property describes the architecture of a CPU. Possible values are CISC
+            or RISC.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;CPU"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasHeight -->
+
+    <owl:DatatypeProperty rdf:about="&dev;hasHeight">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasHeight</rdfs:label>
+        <rdfs:comment xml:lang="en">This data property describes the height of camera/display resolution or the height
+            of a side relation entity.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dev;Resolution"/>
+                    <rdf:Description rdf:about="&dev;SideRelation"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasLEDFlash -->
+
+    <owl:DatatypeProperty rdf:about="&dev;hasLEDFlash">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasLEDFlash</rdfs:label>
+        <rdfs:comment xml:lang="en">This data property indicates the property of a camera.</rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;Camera"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasLevel -->
+
+    <owl:DatatypeProperty rdf:about="&dev;hasLevel">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasLevel</rdfs:label>
+        <rdfs:comment xml:lang="en">This data property describe the state of charge.</rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;Battery"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasMaxHeight -->
+
+    <owl:DatatypeProperty rdf:about="&dev;hasMaxHeight">
+        <rdfs:subPropertyOf rdf:resource="&dev;hasHeight"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dev;Resolution"/>
+                    <rdf:Description rdf:about="&dev;SideRelation"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasMaxWidth -->
+
+    <owl:DatatypeProperty rdf:about="&dev;hasMaxWidth">
+        <rdfs:subPropertyOf rdf:resource="&dev;hasWidth"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dev;Resolution"/>
+                    <rdf:Description rdf:about="&dev;SideRelation"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasMaximum -->
+
+    <owl:DatatypeProperty rdf:about="&dev;hasMaximum">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasMaximum</rdfs:label>
+        <rdfs:comment xml:lang="en">This data property describe the maximum of the sensors value range.</rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;Sensor"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasMinHeight -->
+
+    <owl:DatatypeProperty rdf:about="&dev;hasMinHeight">
+        <rdfs:subPropertyOf rdf:resource="&dev;hasHeight"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasMinWidth -->
+
+    <owl:DatatypeProperty rdf:about="&dev;hasMinWidth">
+        <rdfs:subPropertyOf rdf:resource="&dev;hasWidth"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dev;Resolution"/>
+                    <rdf:Description rdf:about="&dev;SideRelation"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasScaleSymbol -->
+
+    <owl:DatatypeProperty rdf:about="&dev;hasScaleSymbol">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasScaleSymbol</rdfs:label>
+        <rdfs:comment xml:lang="en">This data property indicates the scale symbol a measurands scale has.</rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;Scale"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasWidth -->
+
+    <owl:DatatypeProperty rdf:about="&dev;hasWidth">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasWidth</rdfs:label>
+        <rdfs:comment xml:lang="en">This data property describes the height of camera/display resolution or the height
+            of a side relation entity.
+        </rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dev;Resolution"/>
+                    <rdf:Description rdf:about="&dev;SideRelation"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#inDisplayMode -->
+
+    <owl:DatatypeProperty rdf:about="&dev;inDisplayMode">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&dev;Display"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">landscape</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">portrait</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#isFrontCamera -->
+
+    <owl:DatatypeProperty rdf:about="&dev;isFrontCamera">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">isFrontCamera</rdfs:label>
+        <rdfs:comment xml:lang="en">This data property indicates if the specified camera is the front camera of a
+            device.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&dev;Camera"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#isMobile -->
+
+    <owl:DatatypeProperty rdf:about="&dev;isMobile">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">isMobile</rdfs:label>
+        <rdfs:comment xml:lang="en">This data property indicates the mobility of something. If the domain object is
+            the device, than this property indicates the device mobility. If the domain object is software component,
+            than the
+            property indicates the mobile code (migratability) of a software component.
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="&com;PhysicalThing"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#hasInterface -->
+
+    <owl:DatatypeProperty rdf:about="&soft;hasInterface">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&soft;Service"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#hasSessionId -->
+
+    <owl:DatatypeProperty rdf:about="&soft;hasSessionId">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">hasSessionId</rdfs:label>
+        <rdfs:domain rdf:resource="&soft;CSRClient"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform#Acceleration -->
+
+    <owl:Class rdf:about="http://mmt.inf.tu-dresden.de/documa/ontologies/platform#Acceleration">
+        <rdfs:subClassOf rdf:resource="&dev;Measurand"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://mmt.inf.tu-dresden.de/documa/ontologies/platform#hasY"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;double"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://mmt.inf.tu-dresden.de/documa/ontologies/platform#hasX"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;double"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://mmt.inf.tu-dresden.de/documa/ontologies/platform#hasZ"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;double"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#Aspect -->
+
+    <owl:Class rdf:about="&com;Aspect">
+        <rdfs:label rdf:datatype="&xsd;string">Aspect</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a generic context aspect.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#AsynchronousCommunication -->
+
+    <owl:Class rdf:about="&com;AsynchronousCommunication">
+        <rdfs:label rdf:datatype="&xsd;string">AsynchronousCommunication
+        </rdfs:label>
+        <rdfs:subClassOf rdf:resource="&com;Communication"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents the
+            asychronous communication capability.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#BidirectionalCommunication -->
+
+    <owl:Class rdf:about="&com;BidirectionalCommunication">
+        <rdfs:label rdf:datatype="&xsd;string">BidirectionalCommunication
+        </rdfs:label>
+        <rdfs:subClassOf rdf:resource="&com;Communication"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents the
+            capability to communicate in a bidirectional manner.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#Communication -->
+
+    <owl:Class rdf:about="&com;Communication">
+        <rdfs:label rdf:datatype="&xsd;string">Communication</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&com;Aspect"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents the communication capabilities of the platform
+            context.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#Interaction -->
+
+    <owl:Class rdf:about="&com;Interaction">
+        <rdfs:label rdf:datatype="&xsd;string">Interaction</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&com;Aspect"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents different interaction aspects, such as
+            interaction tasks
+            or interaction forms.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#InteractionTask -->
+
+    <owl:Class rdf:about="&com;InteractionTask">
+        <rdfs:label rdf:datatype="&xsd;string">InteractionTask</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&com;Interaction"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents the information type a user can input into an
+            interactive device.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#PhysicalThing -->
+
+    <owl:Class rdf:about="&com;PhysicalThing">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#SynchronousCommunication -->
+
+    <owl:Class rdf:about="&com;SynchronousCommunication">
+        <rdfs:label rdf:datatype="&xsd;string">SynchronousCommunication
+        </rdfs:label>
+        <rdfs:subClassOf rdf:resource="&com;Communication"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents the platform capability to communicate
+            sychronously, e.
+            g., via a Instant Messaging application.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#UnidirectionalCommunication -->
+
+    <owl:Class rdf:about="&com;UnidirectionalCommunication">
+        <rdfs:label rdf:datatype="&xsd;string">UnidirectionalCommunication</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&com;Communication"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents the platforms capabiltiy to communicate
+            unidirectionally.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#ARM -->
+
+    <owl:Class rdf:about="&dev;ARM">
+        <rdfs:label rdf:datatype="&xsd;string">ARM</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;CPU"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasAdressWidth"/>
+                <owl:hasValue rdf:resource="&dev;AW_32bit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a ARM cpu.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#AccelerometerSensor -->
+
+    <owl:Class rdf:about="&dev;AccelerometerSensor">
+        <rdfs:label rdf:datatype="&xsd;string">AccelerometerSensor</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Sensor"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasMeasurand"/>
+                <owl:onClass rdf:resource="http://mmt.inf.tu-dresden.de/documa/ontologies/platform#Acceleration"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;supportsModality"/>
+                <owl:hasValue rdf:resource="&mod;KinestheticModality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a accelerometer sensor.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#AdressWidth -->
+
+    <owl:Class rdf:about="&dev;AdressWidth">
+        <rdfs:subClassOf rdf:resource="&dev;Measurand"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Amperage -->
+
+    <owl:Class rdf:about="&dev;Amperage">
+        <rdfs:label rdf:datatype="&xsd;string">Amperage</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Measurand"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasScale"/>
+                <owl:hasValue rdf:resource="&dev;MilliAmpere"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represent the flow of electric charge through a medium.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#AndroidSmartphone -->
+
+    <owl:Class rdf:about="&dev;AndroidSmartphone">
+        <rdfs:label rdf:datatype="&xsd;string">AndroidSmartphone</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Smartphone"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;currentOperatingSystem"/>
+                <owl:allValuesFrom rdf:resource="&soft;Android"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a
+            smartphone that executes the mobile operating system
+            Android.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#AndroidTablet -->
+
+    <owl:Class rdf:about="&dev;AndroidTablet">
+        <rdfs:label rdf:datatype="&xsd;string">AndroidTablet</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Tablet"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;currentOperatingSystem"/>
+                <owl:allValuesFrom rdf:resource="&soft;Android"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a tablet
+            pc that executes the mobile operating system
+            Android only.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Battery -->
+
+    <owl:Class rdf:about="&dev;Battery">
+        <rdfs:label rdf:datatype="&xsd;string">Battery</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Device"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasLevel"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;double"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasTemperature"/>
+                <owl:onClass rdf:resource="&dev;Temperature"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a battery used in a device.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#CPU -->
+
+    <owl:Class rdf:about="&dev;CPU">
+        <rdfs:label rdf:datatype="&xsd;string">CPU</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Device"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasAdressWidth"/>
+                <owl:onClass rdf:resource="&dev;AdressWidth"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&com;hasVersion"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a cpu used in computing device.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Cache -->
+
+    <owl:Class rdf:about="&dev;Cache">
+        <rdfs:label rdf:datatype="&xsd;string">Cache</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Memory"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents cache
+            memory that is used by a processor or a hdd.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Camera -->
+
+    <owl:Class rdf:about="&dev;Camera">
+        <rdfs:label rdf:datatype="&xsd;string">Camera</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;InputDevice"/>
+        <rdfs:subClassOf rdf:resource="&dev;LightSensor"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasResolution"/>
+                <owl:onClass rdf:resource="&dev;Resolution"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;supportsModality"/>
+                <owl:hasValue rdf:resource="&mod;VisualModality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasFramerate"/>
+                <owl:onClass rdf:resource="&dev;Framerate"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a camera.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#CameraSceneMode -->
+
+    <owl:Class rdf:about="&dev;CameraSceneMode">
+        <rdfs:label rdf:datatype="&xsd;string">CameraSceneMode</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Measurand"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents available scene modes of a camera.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#CommunicationDevice -->
+
+    <owl:Class rdf:about="&dev;CommunicationDevice">
+        <rdfs:label rdf:datatype="&xsd;string">CommunicationDevice</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Device"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents all devices used to communicate.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#CompassSensor -->
+
+    <owl:Class rdf:about="&dev;CompassSensor">
+        <rdfs:label rdf:datatype="&xsd;string">CompassSensor</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Sensor"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a
+            compass or magnetic field sensor.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#ComputingDevice -->
+
+    <owl:Class rdf:about="&dev;ComputingDevice">
+        <rdfs:label rdf:datatype="&xsd;string">ComputingDevice</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;InteractiveDevice"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;currentOperatingSystem"/>
+                <owl:onClass rdf:resource="&soft;OperatingSystem"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasMemory"/>
+                <owl:onClass rdf:resource="&dev;Memory"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;embedsCPU"/>
+                <owl:onClass rdf:resource="&dev;CPU"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a computing device that is defined as an
+            interactive
+            device that embeds a cpu and a memory unit.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#DesktopPC -->
+
+    <owl:Class rdf:about="&dev;DesktopPC">
+        <rdfs:label rdf:datatype="&xsd;string">DesktopPC</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;ComputingDevice"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;isMobile"/>
+                <owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasInputDevice"/>
+                <owl:onClass rdf:resource="&dev;Keyboard"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasInputDevice"/>
+                <owl:onClass rdf:resource="&dev;Mouse"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasOutputDevice"/>
+                <owl:onClass rdf:resource="&dev;Display"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a desktop pc.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Device -->
+
+    <owl:Class rdf:about="&dev;Device">
+        <rdfs:label rdf:datatype="&xsd;string">Device</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&com;PhysicalThing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&com;hasOwner"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&com;hasModelName"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&com;hasVendor"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&com;hasManufacturerUrl"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;anyURI"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&com;hasName"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&com;hasModelNumber"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;embeds"/>
+                <owl:onClass rdf:resource="&dev;Device"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&com;hasManufacturer"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&com;hasCurrentUser"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This concept represents a device.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Display -->
+
+    <owl:Class rdf:about="&dev;Display">
+        <rdfs:subClassOf rdf:resource="&dev;OutputDevice"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;supportsModality"/>
+                <owl:hasValue rdf:resource="&mod;VisualModality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasPixelDensity"/>
+                <owl:onClass rdf:resource="&dev;PixelDensity"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasFramerate"/>
+                <owl:onClass rdf:resource="&dev;Framerate"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasResolution"/>
+                <owl:onClass rdf:resource="&dev;Resolution"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;inDisplayMode"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Framerate -->
+
+    <owl:Class rdf:about="&dev;Framerate">
+        <rdfs:label rdf:datatype="&xsd;string">Framerate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Measurand"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents the frequency a which an imaging device
+            produces/visualize image sequences.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Frequency -->
+
+    <owl:Class rdf:about="&dev;Frequency">
+        <rdfs:label rdf:datatype="&xsd;string">Frequency</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Measurand"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#GyroscopeSensor -->
+
+    <owl:Class rdf:about="&dev;GyroscopeSensor">
+        <rdfs:label rdf:datatype="&xsd;string">GyroscopeSensor</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Sensor"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;supportsModality"/>
+                <owl:hasValue rdf:resource="&mod;KinestheticModality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a sensor that has the ability to determine the
+            position
+            in space.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#InputDevice -->
+
+    <owl:Class rdf:about="&dev;InputDevice">
+        <rdfs:label rdf:datatype="&xsd;string">InputDevice</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Device"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;supportsModality"/>
+                <owl:hasValue rdf:resource="&mod;InputModality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a device that is used to input data.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#InteractiveDevice -->
+
+    <owl:Class rdf:about="&dev;InteractiveDevice">
+        <rdfs:label rdf:datatype="&xsd;string">InteractiveDevice</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Device"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;supportsModality"/>
+                <owl:hasValue rdf:resource="&mod;InputModality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&com;hasDevicePicture"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;anyURI"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;supportsModality"/>
+                <owl:hasValue rdf:resource="&mod;OutputModality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a device that supports an in- and an output
+            modality.
+            The user uses the input and output modality to communicate with the device.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Keyboard -->
+
+    <owl:Class rdf:about="&dev;Keyboard">
+        <rdfs:label rdf:datatype="&xsd;string">Keyboard</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;InputDevice"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;supportsModality"/>
+                <owl:hasValue rdf:resource="&mod;TactileModality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a keyboard input device.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#LightSensor -->
+
+    <owl:Class rdf:about="&dev;LightSensor">
+        <rdfs:label rdf:datatype="&xsd;string">LightSensor</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Sensor"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;supportsModality"/>
+                <owl:hasValue rdf:resource="&mod;VisualModality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a sensor that integrates a CMOS chip to determine
+            if
+            there is light or not.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Measurand -->
+
+    <owl:Class rdf:about="&dev;Measurand">
+        <rdfs:label rdf:datatype="&xsd;string">Measurand</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&com;hasValue"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;isMeasurandFrom"/>
+                <owl:onClass rdf:resource="&com;PhysicalThing"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasScale"/>
+                <owl:onClass rdf:resource="&dev;Scale"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents measurand that indicate the state of a device, e.
+            g.
+            energy consumption etc.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Memory -->
+
+    <owl:Class rdf:about="&dev;Memory">
+        <rdfs:label rdf:datatype="&xsd;string">Memory</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Measurand"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasScale"/>
+                <owl:allValuesFrom rdf:resource="&dev;MemoryScale"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents the amount of memory that is used by software or
+            used as
+            part of a computing device.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#MemoryScale -->
+
+    <owl:Class rdf:about="&dev;MemoryScale">
+        <rdfs:subClassOf rdf:resource="&dev;Scale"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Microphone -->
+
+    <owl:Class rdf:about="&dev;Microphone">
+        <rdfs:label rdf:datatype="&xsd;string">Microphone</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;InputDevice"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;supportsModality"/>
+                <owl:hasValue rdf:resource="&mod;AcousticModality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a microphone.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#MobileDevice -->
+
+    <owl:Class rdf:about="&dev;MobileDevice">
+        <rdfs:subClassOf rdf:resource="&dev;Device"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;embedsBattery"/>
+                <owl:onClass rdf:resource="&dev;Battery"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;isMobile"/>
+                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Mouse -->
+
+    <owl:Class rdf:about="&dev;Mouse">
+        <rdfs:label rdf:datatype="&xsd;string">Mouse</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;PointingDevice"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a mouse.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#MultitouchDisplay -->
+
+    <owl:Class rdf:about="&dev;MultitouchDisplay">
+        <rdfs:label rdf:datatype="&xsd;string">MultitouchDisplay</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Display"/>
+        <rdfs:subClassOf rdf:resource="&dev;InputDevice"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;supportsModality"/>
+                <owl:hasValue rdf:resource="&mod;TactileModality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;supportsModality"/>
+                <owl:hasValue rdf:resource="&mod;VisualModality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a
+            display that allows multitouch input.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Notebook -->
+
+    <owl:Class rdf:about="&dev;Notebook">
+        <rdfs:label rdf:datatype="&xsd;string">Notebook</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;ComputingDevice"/>
+        <rdfs:subClassOf rdf:resource="&dev;MobileDevice"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasInputDevice"/>
+                <owl:onClass rdf:resource="&dev;Keyboard"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasOutputDevice"/>
+                <owl:onClass rdf:resource="&dev;Display"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasInputDevice"/>
+                <owl:onClass rdf:resource="&dev;Mouse"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasInputDevice"/>
+                <owl:onClass rdf:resource="&dev;Touchpad"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a notebook device, which is very similar to the
+            DesktopPC concept. Both concepts a separated by its mobility.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#OutputDevice -->
+
+    <owl:Class rdf:about="&dev;OutputDevice">
+        <rdfs:subClassOf rdf:resource="&dev;Device"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;supportsModality"/>
+                <owl:hasValue rdf:resource="&mod;OutputModality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#PhysicalScale -->
+
+    <owl:Class rdf:about="&dev;PhysicalScale">
+        <rdfs:subClassOf rdf:resource="&dev;Scale"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#PixelDensity -->
+
+    <owl:Class rdf:about="&dev;PixelDensity">
+        <rdfs:label rdf:datatype="&xsd;string">Density</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Measurand"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasScale"/>
+                <owl:hasValue rdf:resource="&dev;ppi"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents the number of individual dots that can be placed
+            in line
+            within the span of 1 inch.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#PointingDevice -->
+
+    <owl:Class rdf:about="&dev;PointingDevice">
+        <rdfs:label rdf:datatype="&xsd;string">PointingDevice</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;InputDevice"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;supportsModality"/>
+                <owl:hasValue rdf:resource="&mod;TactileModality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents an input device that allows the user to interact
+            with UI
+            elements by pointing on them, such as the mouse or a stylus.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#ProximitySensor -->
+
+    <owl:Class rdf:about="&dev;ProximitySensor">
+        <rdfs:label rdf:datatype="&xsd;string">ProximitySensor</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Sensor"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents sensor that has the ability to determine the
+            presence of
+            nearby objects without any physical contact.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#RAM -->
+
+    <owl:Class rdf:about="&dev;RAM">
+        <rdfs:label rdf:datatype="&xsd;string">RAM</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Memory"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents RAM memory.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#RefreshRate -->
+
+    <owl:Class rdf:about="&dev;RefreshRate">
+        <rdfs:label rdf:datatype="&xsd;string">RefreshRate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Measurand"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents the number of times in second a display draws
+            data.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Resolution -->
+
+    <owl:Class rdf:about="&dev;Resolution">
+        <rdfs:label rdf:datatype="&xsd;string">Resolution</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Measurand"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasWidth"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasHeight"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasSideRelation"/>
+                <owl:onClass rdf:resource="&dev;SideRelation"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents the image resolution of a display or camera.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Scale -->
+
+    <owl:Class rdf:about="&dev;Scale">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasScaleSymbol"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Sensor -->
+
+    <owl:Class rdf:about="&dev;Sensor">
+        <rdfs:label rdf:datatype="&xsd;string">Sensor</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;InputDevice"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasMaximum"/>
+                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasAmperage"/>
+                <owl:someValuesFrom rdf:resource="&dev;Amperage"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://mmt.inf.tu-dresden.de/documa/ontologies/platform#hasErrorMessage"/>
+                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents sensor.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#SideRelation -->
+
+    <owl:Class rdf:about="&dev;SideRelation">
+        <rdfs:subClassOf rdf:resource="&dev;Measurand"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasWidth"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasHeight"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#SmartTV -->
+
+    <owl:Class rdf:about="&dev;SmartTV">
+        <rdfs:label rdf:datatype="&xsd;string">SmartTV</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;ComputingDevice"/>
+        <rdfs:subClassOf rdf:resource="&dev;TvDevice"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a smart tv, which is the same as a TV device and
+            its
+            additional web capabilities.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Smartphone -->
+
+    <owl:Class rdf:about="&dev;Smartphone">
+        <rdfs:label rdf:datatype="&xsd;string">Smartphone</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;ComputingDevice"/>
+        <rdfs:subClassOf rdf:resource="&dev;MobileDevice"/>
+        <rdfs:subClassOf rdf:resource="&dev;Telephone"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;execute"/>
+                <owl:onClass rdf:resource="&soft;MobileBrowser"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasInputDevice"/>
+                <owl:onClass rdf:resource="&dev;MultitouchDisplay"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;embedsSensor"/>
+                <owl:onClass rdf:resource="&dev;Sensor"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;currentOperatingSystem"/>
+                <owl:allValuesFrom rdf:resource="&soft;MobileOperatingSystem"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasInputDevice"/>
+                <owl:onClass rdf:resource="&dev;Camera"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a smartphone. It is a telephone that integrates
+            web
+            capabilities like a browser or an email client. Another distinction to a feature phone is that it has an
+            open
+            available API (provided by a mobile operating system).
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Speaker -->
+
+    <owl:Class rdf:about="&dev;Speaker">
+        <rdfs:subClassOf rdf:resource="&dev;OutputDevice"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;supportsModality"/>
+                <owl:hasValue rdf:resource="&mod;AcousticModality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Tablet -->
+
+    <owl:Class rdf:about="&dev;Tablet">
+        <rdfs:label rdf:datatype="&xsd;string">Tablet</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;ComputingDevice"/>
+        <rdfs:subClassOf rdf:resource="&dev;MobileDevice"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;execute"/>
+                <owl:onClass rdf:resource="&soft;MobileBrowser"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasInputDevice"/>
+                <owl:onClass rdf:resource="&dev;Microphone"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasInputDevice"/>
+                <owl:onClass rdf:resource="&dev;Camera"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;currentOperatingSystem"/>
+                <owl:allValuesFrom rdf:resource="&soft;MobileOperatingSystem"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasOutputDevice"/>
+                <owl:onClass rdf:resource="&dev;Speaker"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasInputDevice"/>
+                <owl:onClass rdf:resource="&dev;MultitouchDisplay"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;embedsSensor"/>
+                <owl:onClass rdf:resource="&dev;Sensor"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasOutputDevice"/>
+                <owl:onClass rdf:resource="&dev;MultitouchDisplay"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a tablet
+            pc.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Telephone -->
+
+    <owl:Class rdf:about="&dev;Telephone">
+        <rdfs:label rdf:datatype="&xsd;string">Telephone</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;CommunicationDevice"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a
+            telephone as a communication device.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Temperature -->
+
+    <owl:Class rdf:about="&dev;Temperature">
+        <rdfs:label rdf:datatype="&xsd;string">Temperature</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Measurand"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasScale"/>
+                <owl:allValuesFrom rdf:resource="&dev;TemperatureScale"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents the temperature.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#TemperatureScale -->
+
+    <owl:Class rdf:about="&dev;TemperatureScale">
+        <rdfs:subClassOf rdf:resource="&dev;PhysicalScale"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Touchpad -->
+
+    <owl:Class rdf:about="&dev;Touchpad">
+        <rdfs:label rdf:datatype="&xsd;string">TouchPad</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;PointingDevice"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a touch pad</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#TvDevice -->
+
+    <owl:Class rdf:about="&dev;TvDevice">
+        <rdfs:label rdf:datatype="&xsd;string">TV</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;InteractiveDevice"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;supportsModality"/>
+                <owl:hasValue rdf:resource="&mod;AcousticModality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;supportsModality"/>
+                <owl:hasValue rdf:resource="&mod;VisualModality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;embeds"/>
+                <owl:someValuesFrom rdf:resource="&dev;Speaker"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;embeds"/>
+                <owl:someValuesFrom rdf:resource="&dev;Display"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a TV as an interactive device that enables the
+            user to
+            consume audio visual information that are communicated in only one direction.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#VisualDevice -->
+
+    <owl:Class rdf:about="&dev;VisualDevice">
+        <rdfs:subClassOf rdf:resource="&dev;Device"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasResolution"/>
+                <owl:onClass rdf:resource="&dev;Resolution"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;supportsModality"/>
+                <owl:hasValue rdf:resource="&mod;VisualModality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Voltage -->
+
+    <owl:Class rdf:about="&dev;Voltage">
+        <rdfs:label rdf:datatype="&xsd;string">Voltage</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Measurand"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasScale"/>
+                <owl:hasValue rdf:resource="&dev;Volt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents the electric tension between two charge units.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#WPSmartphone -->
+
+    <owl:Class rdf:about="&dev;WPSmartphone">
+        <rdfs:label rdf:datatype="&xsd;string">WPSmartphone</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Smartphone"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;currentOperatingSystem"/>
+                <owl:allValuesFrom rdf:resource="&soft;WindowsPhone"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a smartphone that executes the mobile operating
+            system
+            WindowsPhone.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#iPad -->
+
+    <owl:Class rdf:about="&dev;iPad">
+        <rdfs:label rdf:datatype="&xsd;string">iPad</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Tablet"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;currentOperatingSystem"/>
+                <owl:allValuesFrom rdf:resource="&soft;iOS"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a tablet that executes the mobile operating
+            system iOS
+            only. It is supplied by Apple.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#iPhone -->
+
+    <owl:Class rdf:about="&dev;iPhone">
+        <rdfs:label rdf:datatype="&xsd;string">iPhone</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;Smartphone"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;currentOperatingSystem"/>
+                <owl:allValuesFrom rdf:resource="&soft;iOS"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a smartphone that executes the mobile operating
+            system
+            iOS.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#x64 -->
+
+    <owl:Class rdf:about="&dev;x64">
+        <rdfs:label rdf:datatype="&xsd;string">x64</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;CPU"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasAdressWidth"/>
+                <owl:hasValue rdf:resource="&dev;AW_64bit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a intel 64bit cpu.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#x86 -->
+
+    <owl:Class rdf:about="&dev;x86">
+        <rdfs:label rdf:datatype="&xsd;string">x86</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dev;CPU"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dev;hasAdressWidth"/>
+                <owl:hasValue rdf:resource="&dev;AW_32bit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents an intel 32bit cpu.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#Medium -->
+
+    <owl:Class rdf:about="&mod;Medium">
+        <rdfs:label rdf:datatype="&xsd;string">Medium</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&mod;ModalityThing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;isMediumFrom"/>
+                <owl:onClass rdf:resource="&mod;Modality"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents the channel the user inputs information into an
+            interactive system, such as visual and acoustic IO.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#Modality -->
+
+    <owl:Class rdf:about="&mod;Modality">
+        <rdfs:label rdf:datatype="&xsd;string">Modality</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&mod;ModalityThing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;hasDirection"/>
+                <owl:onClass rdf:resource="&mod;ModalityDirection"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;hasMedium"/>
+                <owl:onClass rdf:resource="&mod;Medium"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;hasMode"/>
+                <owl:onClass rdf:resource="&mod;Mode"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;isSupportedByDevice"/>
+                <owl:onClass rdf:resource="&dev;Device"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents the channel a user communicates with an
+            interactive
+            system.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#ModalityDirection -->
+
+    <owl:Class rdf:about="&mod;ModalityDirection">
+        <rdfs:subClassOf rdf:resource="&mod;ModalityThing"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#ModalityThing -->
+
+    <owl:Class rdf:about="&mod;ModalityThing"/>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#Mode -->
+
+    <owl:Class rdf:about="&mod;Mode">
+        <rdfs:label rdf:datatype="&xsd;string">Mode</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&mod;ModalityThing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mod;isModeFrom"/>
+                <owl:onClass rdf:resource="&mod;Modality"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents the mode of a modality, for example, the video
+            mode of
+            the visual input of the camera.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#API -->
+
+    <owl:Class rdf:about="&soft;API">
+        <rdfs:label rdf:datatype="&xsd;string">API</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;SoftwareThing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&soft;providedBy"/>
+                <owl:onClass rdf:resource="&soft;RuntimeEnvironment"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents an API that is provided by a software, such as an
+            operating system or a runtime environment.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#Android -->
+
+    <owl:Class rdf:about="&soft;Android">
+        <rdfs:label rdf:datatype="&xsd;string">Android</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;MobileOperatingSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&com;hasVendor"/>
+                <owl:hasValue rdf:datatype="&xsd;string">Google</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents all mobile operating systems Android from
+            Google.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#Application -->
+
+    <owl:Class rdf:about="&soft;Application">
+        <rdfs:label rdf:datatype="&xsd;string">Application</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;SoftwareThing"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents an application.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#AudioFormat -->
+
+    <owl:Class rdf:about="&soft;AudioFormat">
+        <rdfs:label rdf:datatype="&xsd;string">AudioFormat</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;Format"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a
+            particular audio format, such as MP3 or WAV.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#AudioRecorder -->
+
+    <owl:Class rdf:about="&soft;AudioRecorder">
+        <rdfs:label rdf:datatype="&xsd;string">AudioRecorder</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;MediaRecorder"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents an
+            application capable of recording audio data.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#BatteryStatusService -->
+
+    <owl:Class rdf:about="&soft;BatteryStatusService">
+        <rdfs:subClassOf rdf:resource="&soft;DeviceService"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#Browser -->
+
+    <owl:Class rdf:about="&soft;Browser">
+        <rdfs:label rdf:datatype="&xsd;string">Browser</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;Application"/>
+        <rdfs:subClassOf rdf:resource="&soft;RuntimeEnvironment"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&soft;providesEngine"/>
+                <owl:onClass rdf:resource="&soft;BrowserEngine"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a webbrowser that can execute a mashup
+            component.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#BrowserEngine -->
+
+    <owl:Class rdf:about="&soft;BrowserEngine">
+        <rdfs:label rdf:datatype="&xsd;string">BrowserEngine</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;Engine"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&soft;isBrowserEngineOf"/>
+                <owl:onClass rdf:resource="&soft;Browser"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class encompass all
+            engines that are used to visulize web page
+            descriptions in html
+            format.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#BrowserPlugin -->
+
+    <owl:Class rdf:about="&soft;BrowserPlugin">
+        <rdfs:label rdf:datatype="&xsd;string">BrowserPlugin</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;Plugin"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&soft;executedBy"/>
+                <owl:allValuesFrom rdf:resource="&soft;Browser"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a
+            software component that extends the functionalities of
+            a browser
+            application.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#CSRClient -->
+
+    <owl:Class rdf:about="&soft;CSRClient">
+        <rdfs:label rdf:datatype="&xsd;string">CSRClient</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;RuntimeEnvironment"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&soft;hasSessionId"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&soft;hasService"/>
+                <owl:onClass rdf:resource="&soft;Service"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#CSRServer -->
+
+    <owl:Class rdf:about="&soft;CSRServer">
+        <rdfs:label rdf:datatype="&xsd;string">CSRServer</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;RuntimeEnvironment"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#CameraService -->
+
+    <owl:Class rdf:about="&soft;CameraService">
+        <rdfs:subClassOf rdf:resource="&soft;DeviceService"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#CompiledLanguage -->
+
+    <owl:Class rdf:about="&soft;CompiledLanguage">
+        <rdfs:label rdf:datatype="&xsd;string">CompiledLanguage</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;Format"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represent the
+            concept of a computing language that is compiled into
+            another
+            representation format.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#ContactService -->
+
+    <owl:Class rdf:about="&soft;ContactService">
+        <rdfs:subClassOf rdf:resource="&soft;DeviceService"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#DeclarativeLanguage -->
+
+    <owl:Class rdf:about="&soft;DeclarativeLanguage">
+        <rdfs:label rdf:datatype="&xsd;string">DeclarativeLanguage</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;Format"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents every
+            description language, e. g. markup languages.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#DesktopClient -->
+
+    <owl:Class rdf:about="&soft;DesktopClient">
+        <rdfs:label rdf:datatype="&xsd;string">DesktopClient</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;CSRClient"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&soft;executedBy"/>
+                <owl:onClass rdf:resource="&dev;DesktopPC"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#DeviceInfoService -->
+
+    <owl:Class rdf:about="&soft;DeviceInfoService">
+        <rdfs:subClassOf rdf:resource="&soft;DeviceService"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#DeviceService -->
+
+    <owl:Class rdf:about="&soft;DeviceService">
+        <rdfs:subClassOf rdf:resource="&soft;Service"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&com;hasVersion"/>
+                <owl:hasValue rdf:datatype="&xsd;string">1.0.0</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#DialogsService -->
+
+    <owl:Class rdf:about="&soft;DialogsService">
+        <rdfs:subClassOf rdf:resource="&soft;DeviceService"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#EmailClient -->
+
+    <owl:Class rdf:about="&soft;EmailClient">
+        <rdfs:subClassOf rdf:resource="&soft;Application"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#Engine -->
+
+    <owl:Class rdf:about="&soft;Engine">
+        <rdfs:label rdf:datatype="&xsd;string">Engine</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;RuntimeEnvironment"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&soft;engineProvidedBy"/>
+                <owl:onClass rdf:resource="&soft;RuntimeEnvironment"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class refers to the
+            rendering capabilities of a software. An engine
+            transforms input data
+            into specific output data, e. g., html web page description is
+            transformed into a visual
+            representation.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#FileSystemService -->
+
+    <owl:Class rdf:about="&soft;FileSystemService">
+        <rdfs:subClassOf rdf:resource="&soft;DeviceService"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#FileTransferService -->
+
+    <owl:Class rdf:about="&soft;FileTransferService">
+        <rdfs:subClassOf rdf:resource="&soft;DeviceService"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#Format -->
+
+    <owl:Class rdf:about="&soft;Format">
+        <rdfs:label rdf:datatype="&xsd;string">Format</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;SoftwareThing"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a
+            formalized representation of information in a specific
+            fashion.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#GeckoBrowser -->
+
+    <owl:Class rdf:about="&soft;GeckoBrowser">
+        <rdfs:label rdf:datatype="&xsd;string">GeckoBrowser</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&soft;Browser"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&soft;providesEngine"/>
+                        <owl:hasValue rdf:resource="&soft;GeckoEngine"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a browser that executes web application on the
+            basis of
+            a gecko engine, which provides a specific API. The class is needed to formalize a dependency between a
+            mashup
+            component a gecko specific features, e. g., html5 styling capabilities.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#GeolocationService -->
+
+    <owl:Class rdf:about="&soft;GeolocationService">
+        <rdfs:subClassOf rdf:resource="&soft;DeviceService"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#GlobalizationService -->
+
+    <owl:Class rdf:about="&soft;GlobalizationService">
+        <rdfs:subClassOf rdf:resource="&soft;DeviceService"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#GyroscopeService -->
+
+    <owl:Class rdf:about="&soft;GyroscopeService">
+        <rdfs:subClassOf rdf:resource="&soft;DeviceService"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#HTML5API -->
+
+    <owl:Class rdf:about="&soft;HTML5API">
+        <rdfs:label rdf:datatype="&xsd;string">Webkit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;API"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#ImageFormat -->
+
+    <owl:Class rdf:about="&soft;ImageFormat">
+        <rdfs:label rdf:datatype="&xsd;string">ImageFormat</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;Format"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a
+            particular image format, such as jpeg, gif or png.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#InAppBrowserService -->
+
+    <owl:Class rdf:about="&soft;InAppBrowserService">
+        <rdfs:subClassOf rdf:resource="&soft;DeviceService"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#InterpretedLanguage -->
+
+    <owl:Class rdf:about="&soft;InterpretedLanguage">
+        <rdfs:label rdf:datatype="&xsd;string">InterpretedLanguage</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;Format"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class encompass every computing lanuage which is interpreted.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#MediaCaptureService -->
+
+    <owl:Class rdf:about="&soft;MediaCaptureService">
+        <rdfs:subClassOf rdf:resource="&soft;DeviceService"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#MediaPlayer -->
+
+    <owl:Class rdf:about="&soft;MediaPlayer">
+        <rdfs:subClassOf rdf:resource="&soft;Application"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#MediaRecorder -->
+
+    <owl:Class rdf:about="&soft;MediaRecorder">
+        <rdfs:label rdf:datatype="&xsd;string">MediaRecorder</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;Application"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents an application capable of recording different
+            kind of
+            media, such a audio or video.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#MediaService -->
+
+    <owl:Class rdf:about="&soft;MediaService">
+        <rdfs:subClassOf rdf:resource="&soft;DeviceService"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#MobileBrowser -->
+
+    <owl:Class rdf:about="&soft;MobileBrowser">
+        <rdfs:label rdf:datatype="&xsd;string">MobileBrowser</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&soft;Browser"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&soft;executedBy"/>
+                        <owl:onClass rdf:resource="&dev;MobileDevice"/>
+                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1
+                        </owl:minQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&soft;isPartOfOperatingSystem"/>
+                        <owl:onClass rdf:resource="&soft;MobileOperatingSystem"/>
+                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1
+                        </owl:minQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a webbrowser that is executed only in the context
+            of a
+            mobile operating system, e. g., mobile Safari web browser. Today, these browsers provide only a subset of
+            the
+            functionalities a desktop browser supports.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#MobileClient -->
+
+    <owl:Class rdf:about="&soft;MobileClient">
+        <rdfs:label rdf:datatype="&xsd;string">Mobile Client</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;CSRClient"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#MobileOperatingSystem -->
+
+    <owl:Class rdf:about="&soft;MobileOperatingSystem">
+        <rdfs:label rdf:datatype="&xsd;string">Mobile OS</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;OperatingSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&soft;executedBy"/>
+                <owl:onClass rdf:resource="&dev;MobileDevice"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents an operating system that is used on a mobile
+            device.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#MotionService -->
+
+    <owl:Class rdf:about="&soft;MotionService">
+        <rdfs:subClassOf rdf:resource="&soft;DeviceService"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#NetworkInformationService -->
+
+    <owl:Class rdf:about="&soft;NetworkInformationService">
+        <rdfs:subClassOf rdf:resource="&soft;DeviceService"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#OperatingSystem -->
+
+    <owl:Class rdf:about="&soft;OperatingSystem">
+        <rdfs:label rdf:datatype="&xsd;string">OS</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;SoftwareThing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&soft;provides"/>
+                <owl:onClass rdf:resource="&soft;Application"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a operating system of a device.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#OrientationService -->
+
+    <owl:Class rdf:about="&soft;OrientationService">
+        <rdfs:subClassOf rdf:resource="&soft;DeviceService"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#Platform -->
+
+    <owl:Class rdf:about="&soft;Platform">
+        <rdfs:label rdf:datatype="&xsd;string">Platform</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;SoftwareThing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&com;hasID"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&soft;basedOn"/>
+                <owl:onClass rdf:resource="&soft;SoftwareThing"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">This class represents the platform concept that encapsulates 3 components: the
+            device as a hardware specification, the software and its capabilities in different aspects, e. g., the
+            communication
+            capabilites.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#Plugin -->
+
+    <owl:Class rdf:about="&soft;Plugin">
+        <rdfs:label rdf:datatype="&xsd;string">Plugin</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;SoftwareThing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&soft;pluginProvidedBy"/>
+                <owl:onClass rdf:resource="&soft;RuntimeEnvironment"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a software components that adds specific
+            functionalities
+            to a pre-existing software application, i. e., it extends the functionality set of an application.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#RuntimeEnvironment -->
+
+    <owl:Class rdf:about="&soft;RuntimeEnvironment">
+        <rdfs:label rdf:datatype="&xsd;string">RuntimeEnvironment</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;SoftwareThing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&soft;isPartOfOperatingSystem"/>
+                <owl:onClass rdf:resource="&soft;OperatingSystem"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a software runtime environment. It enables and
+            support
+            the execution of an application or an application component.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#Service -->
+
+    <owl:Class rdf:about="&soft;Service">
+        <rdfs:subClassOf rdf:resource="&soft;SoftwareThing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&com;hasID"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&soft;hasInterface"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;anyURI"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#SoftwareThing -->
+
+    <owl:Class rdf:about="&soft;SoftwareThing">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&com;hasName"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&com;hasVersion"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&soft;executedBy"/>
+                <owl:onClass rdf:resource="&dev;ComputingDevice"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class all software aspects that are needed to describe the
+            platform.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#VibrationService -->
+
+    <owl:Class rdf:about="&soft;VibrationService">
+        <rdfs:subClassOf rdf:resource="&soft;DeviceService"/>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#VideoFormat -->
+
+    <owl:Class rdf:about="&soft;VideoFormat">
+        <rdfs:label rdf:datatype="&xsd;string">VideoFormat</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;Format"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a particular video format, such as AVI or MP4.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#VideoRecorder -->
+
+    <owl:Class rdf:about="&soft;VideoRecorder">
+        <rdfs:label rdf:datatype="&xsd;string">VideoRecorder</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;MediaRecorder"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents an application capable of recording video data.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#WebkitBrowser -->
+
+    <owl:Class rdf:about="&soft;WebkitBrowser">
+        <rdfs:label rdf:datatype="&xsd;string">WebkitBrowser</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&soft;Browser"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&soft;providesEngine"/>
+                        <owl:hasValue rdf:resource="&soft;WebkitEngine"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a browser that executes web application on the
+            basis of
+            the webkit engine, which provides a specific API. The class is needed to formalize a dependency between a
+            mashup
+            component and webkit specific features, e. g., html5 styling capabilities.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#WindowsPhone -->
+
+    <owl:Class rdf:about="&soft;WindowsPhone">
+        <rdfs:label rdf:datatype="&xsd;string">WindowsPhone</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;MobileOperatingSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&com;hasVendor"/>
+                <owl:hasValue rdf:datatype="&xsd;string">Microsoft</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents the mobile operating system WindowsPhone from
+            Microsoft.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#iOS -->
+
+    <owl:Class rdf:about="&soft;iOS">
+        <rdfs:label rdf:datatype="&xsd;string">iOS</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&soft;MobileOperatingSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&com;hasVendor"/>
+                <owl:hasValue rdf:datatype="&xsd;string">Apple</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents the mobile operating system iOS from Apple.
+        </rdfs:comment>
+    </owl:Class>
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#Confirmation -->
+
+    <owl:NamedIndividual rdf:about="&com;Confirmation">
+        <rdf:type rdf:resource="&com;InteractionTask"/>
+        <rdfs:label rdf:datatype="&xsd;string">Confirmation</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a confirmation input a user can do to finish an
+            action.
+        </rdfs:comment>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#Email -->
+
+    <owl:NamedIndividual rdf:about="&com;Email">
+        <rdf:type rdf:resource="&com;AsynchronousCommunication"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#InstantMessaging -->
+
+    <owl:NamedIndividual rdf:about="&com;InstantMessaging">
+        <rdf:type rdf:resource="&com;SynchronousCommunication"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#Positioning -->
+
+    <owl:NamedIndividual rdf:about="&com;Positioning">
+        <rdf:type rdf:resource="&com;InteractionTask"/>
+        <rdfs:label rdf:datatype="&xsd;string">Positioning</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a positioning input performed by the user via the
+            mouse,
+            the touch pad or the touch sensitive display.
+        </rdfs:comment>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#Quantification -->
+
+    <owl:NamedIndividual rdf:about="&com;Quantification">
+        <rdf:type rdf:resource="&com;InteractionTask"/>
+        <rdfs:label rdf:datatype="&xsd;string">Quantification</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a quantification input, for example, to determine
+            the
+            count of a product in an online shop.
+        </rdfs:comment>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#SMS -->
+
+    <owl:NamedIndividual rdf:about="&com;SMS">
+        <rdf:type rdf:resource="&com;AsynchronousCommunication"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#Selection -->
+
+    <owl:NamedIndividual rdf:about="&com;Selection">
+        <rdf:type rdf:resource="&com;InteractionTask"/>
+        <rdfs:label rdf:datatype="&xsd;string">Selection</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents the selection action.</rdfs:comment>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#Telephony -->
+
+    <owl:NamedIndividual rdf:about="&com;Telephony">
+        <rdf:type rdf:resource="&com;BidirectionalCommunication"/>
+        <rdf:type rdf:resource="&com;SynchronousCommunication"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#TextInput -->
+
+    <owl:NamedIndividual rdf:about="&com;TextInput">
+        <rdf:type rdf:resource="&com;InteractionTask"/>
+        <rdfs:label rdf:datatype="&xsd;string">TextInput</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents the text input action of the user.</rdfs:comment>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#AW_32bit -->
+
+    <owl:NamedIndividual rdf:about="&dev;AW_32bit">
+        <rdf:type rdf:resource="&dev;AdressWidth"/>
+        <com:hasValue rdf:datatype="&xsd;integer">32</com:hasValue>
+        <dev:hasScale rdf:resource="&dev;Bit"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#AW_64bit -->
+
+    <owl:NamedIndividual rdf:about="&dev;AW_64bit">
+        <rdf:type rdf:resource="&dev;AdressWidth"/>
+        <com:hasValue rdf:datatype="&xsd;integer">64</com:hasValue>
+        <dev:hasScale rdf:resource="&dev;Bit"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Ampere -->
+
+    <owl:NamedIndividual rdf:about="&dev;Ampere">
+        <rdf:type rdf:resource="&dev;PhysicalScale"/>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">A</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Auto -->
+
+    <owl:NamedIndividual rdf:about="&dev;Auto">
+        <rdf:type rdf:resource="&dev;CameraSceneMode"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Bit -->
+
+    <owl:NamedIndividual rdf:about="&dev;Bit">
+        <rdf:type rdf:resource="&dev;MemoryScale"/>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">bit</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Byte -->
+
+    <owl:NamedIndividual rdf:about="&dev;Byte">
+        <rdf:type rdf:resource="&dev;MemoryScale"/>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">byte</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Framerate_10 -->
+
+    <owl:NamedIndividual rdf:about="&dev;Framerate_10">
+        <rdf:type rdf:resource="&dev;Framerate"/>
+        <com:hasValue rdf:datatype="&xsd;integer">10</com:hasValue>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Framerate_15 -->
+
+    <owl:NamedIndividual rdf:about="&dev;Framerate_15">
+        <rdf:type rdf:resource="&dev;Framerate"/>
+        <com:hasValue rdf:datatype="&xsd;integer">15</com:hasValue>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Framerate_24 -->
+
+    <owl:NamedIndividual rdf:about="&dev;Framerate_24">
+        <rdf:type rdf:resource="&dev;Framerate"/>
+        <com:hasValue rdf:datatype="&xsd;integer">24</com:hasValue>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Framerate_30 -->
+
+    <owl:NamedIndividual rdf:about="&dev;Framerate_30">
+        <rdf:type rdf:resource="&dev;Framerate"/>
+        <com:hasValue rdf:datatype="&xsd;integer">30</com:hasValue>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#GigaByte -->
+
+    <owl:NamedIndividual rdf:about="&dev;GigaByte">
+        <rdf:type rdf:resource="&dev;MemoryScale"/>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">GB</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#GradCelsius -->
+
+    <owl:NamedIndividual rdf:about="&dev;GradCelsius">
+        <rdf:type rdf:resource="&dev;TemperatureScale"/>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">C</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#GradFahrenheit -->
+
+    <owl:NamedIndividual rdf:about="&dev;GradFahrenheit">
+        <rdf:type rdf:resource="&dev;TemperatureScale"/>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">F</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Hertz -->
+
+    <owl:NamedIndividual rdf:about="&dev;Hertz">
+        <rdf:type rdf:resource="&dev;PhysicalScale"/>
+        <rdfs:label rdf:datatype="&xsd;string">Hertz</rdfs:label>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">Hz</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Kelvin -->
+
+    <owl:NamedIndividual rdf:about="&dev;Kelvin">
+        <rdf:type rdf:resource="&dev;TemperatureScale"/>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">K</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#KiloByte -->
+
+    <owl:NamedIndividual rdf:about="&dev;KiloByte">
+        <rdf:type rdf:resource="&dev;MemoryScale"/>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">kb</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#KiloHertz -->
+
+    <owl:NamedIndividual rdf:about="&dev;KiloHertz">
+        <rdf:type rdf:resource="&dev;PhysicalScale"/>
+        <rdfs:label rdf:datatype="&xsd;string">Kilo Hertz</rdfs:label>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">kHz</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Landscape -->
+
+    <owl:NamedIndividual rdf:about="&dev;Landscape">
+        <rdf:type rdf:resource="&dev;CameraSceneMode"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#MegaByte -->
+
+    <owl:NamedIndividual rdf:about="&dev;MegaByte">
+        <rdf:type rdf:resource="&dev;MemoryScale"/>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">MB</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#MegaHertz -->
+
+    <owl:NamedIndividual rdf:about="&dev;MegaHertz">
+        <rdf:type rdf:resource="&dev;PhysicalScale"/>
+        <rdfs:label rdf:datatype="&xsd;string">Mega Hertz</rdfs:label>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">MHz</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#MilliAmpere -->
+
+    <owl:NamedIndividual rdf:about="&dev;MilliAmpere">
+        <rdf:type rdf:resource="&dev;PhysicalScale"/>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">mA</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#MilliVolt -->
+
+    <owl:NamedIndividual rdf:about="&dev;MilliVolt">
+        <rdf:type rdf:resource="&dev;PhysicalScale"/>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">mV</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Portrait -->
+
+    <owl:NamedIndividual rdf:about="&dev;Portrait">
+        <rdf:type rdf:resource="&dev;CameraSceneMode"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#RefreshRate_68 -->
+
+    <owl:NamedIndividual rdf:about="&dev;RefreshRate_68">
+        <rdf:type rdf:resource="&dev;RefreshRate"/>
+        <com:hasValue rdf:datatype="&xsd;integer">68</com:hasValue>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Res_2MP -->
+
+    <owl:NamedIndividual rdf:about="&dev;Res_2MP">
+        <rdf:type rdf:resource="&dev;Resolution"/>
+        <dev:hasHeight rdf:datatype="&xsd;integer">1200</dev:hasHeight>
+        <dev:hasWidth rdf:datatype="&xsd;integer">1600</dev:hasWidth>
+        <dev:hasScale rdf:resource="&dev;pixel"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Res_5MP -->
+
+    <owl:NamedIndividual rdf:about="&dev;Res_5MP">
+        <rdf:type rdf:resource="&dev;Resolution"/>
+        <dev:hasHeight rdf:datatype="&xsd;integer">1944</dev:hasHeight>
+        <dev:hasWidth rdf:datatype="&xsd;integer">2592</dev:hasWidth>
+        <dev:hasScale rdf:resource="&dev;pixel"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Res_720p -->
+
+    <owl:NamedIndividual rdf:about="&dev;Res_720p">
+        <rdf:type rdf:resource="&dev;Resolution"/>
+        <dev:hasWidth rdf:datatype="&xsd;integer">1280</dev:hasWidth>
+        <dev:hasHeight rdf:datatype="&xsd;integer">720</dev:hasHeight>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Res_HVGA -->
+
+    <owl:NamedIndividual rdf:about="&dev;Res_HVGA">
+        <rdf:type rdf:resource="&dev;Resolution"/>
+        <dev:hasHeight rdf:datatype="&xsd;integer">320</dev:hasHeight>
+        <dev:hasWidth rdf:datatype="&xsd;integer">480</dev:hasWidth>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Res_WVGA -->
+
+    <owl:NamedIndividual rdf:about="&dev;Res_WVGA">
+        <rdf:type rdf:resource="&dev;Resolution"/>
+        <dev:hasHeight rdf:datatype="&xsd;integer">480</dev:hasHeight>
+        <dev:hasWidth rdf:datatype="&xsd;integer">800</dev:hasWidth>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#SideRelation_16to9 -->
+
+    <owl:NamedIndividual rdf:about="&dev;SideRelation_16to9">
+        <rdf:type rdf:resource="&dev;SideRelation"/>
+        <dev:hasWidth rdf:datatype="&xsd;integer">16</dev:hasWidth>
+        <dev:hasHeight rdf:datatype="&xsd;integer">9</dev:hasHeight>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#SideRelation_4to3 -->
+
+    <owl:NamedIndividual rdf:about="&dev;SideRelation_4to3">
+        <rdf:type rdf:resource="&dev;SideRelation"/>
+        <dev:hasHeight rdf:datatype="&xsd;integer">3</dev:hasHeight>
+        <dev:hasWidth rdf:datatype="&xsd;integer">4</dev:hasWidth>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#SideRelation_8to5 -->
+
+    <owl:NamedIndividual rdf:about="&dev;SideRelation_8to5">
+        <rdf:type rdf:resource="&dev;SideRelation"/>
+        <dev:hasHeight rdf:datatype="&xsd;integer">5</dev:hasHeight>
+        <dev:hasWidth rdf:datatype="&xsd;integer">8</dev:hasWidth>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#Volt -->
+
+    <owl:NamedIndividual rdf:about="&dev;Volt">
+        <rdf:type rdf:resource="&dev;PhysicalScale"/>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">V</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#bpm -->
+
+    <owl:NamedIndividual rdf:about="&dev;bpm">
+        <rdf:type rdf:resource="&dev;Scale"/>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">bpm</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#dpi -->
+
+    <owl:NamedIndividual rdf:about="&dev;dpi">
+        <rdf:type rdf:resource="&dev;Scale"/>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">dpi</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#fps -->
+
+    <owl:NamedIndividual rdf:about="&dev;fps">
+        <rdf:type rdf:resource="&dev;Scale"/>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">fps</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#inch -->
+
+    <owl:NamedIndividual rdf:about="&dev;inch">
+        <rdf:type rdf:resource="&dev;Scale"/>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">in</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#pixel -->
+
+    <owl:NamedIndividual rdf:about="&dev;pixel">
+        <rdf:type rdf:resource="&dev;Scale"/>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">px</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#ppi -->
+
+    <owl:NamedIndividual rdf:about="&dev;ppi">
+        <rdf:type rdf:resource="&dev;Scale"/>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">ppi</dev:hasScaleSymbol>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#Acoustic -->
+
+    <owl:NamedIndividual rdf:about="&mod;Acoustic">
+        <rdf:type rdf:resource="&mod;Medium"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#AcousticModality -->
+
+    <owl:NamedIndividual rdf:about="&mod;AcousticModality">
+        <rdf:type rdf:resource="&mod;Modality"/>
+        <mod:hasMedium rdf:resource="&mod;Acoustic"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#Cursor -->
+
+    <owl:NamedIndividual rdf:about="&mod;Cursor">
+        <rdf:type rdf:resource="&mod;Mode"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#Image -->
+
+    <owl:NamedIndividual rdf:about="&mod;Image">
+        <rdf:type rdf:resource="&mod;Mode"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#In -->
+
+    <owl:NamedIndividual rdf:about="&mod;In">
+        <rdf:type rdf:resource="&mod;ModalityDirection"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#Ink -->
+
+    <owl:NamedIndividual rdf:about="&mod;Ink">
+        <rdf:type rdf:resource="&mod;Mode"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#InputModality -->
+
+    <owl:NamedIndividual rdf:about="&mod;InputModality">
+        <rdf:type rdf:resource="&mod;Modality"/>
+        <mod:hasDirection rdf:resource="&mod;In"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#Keys -->
+
+    <owl:NamedIndividual rdf:about="&mod;Keys">
+        <rdf:type rdf:resource="&mod;Mode"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#Kinestethic -->
+
+    <owl:NamedIndividual rdf:about="&mod;Kinestethic">
+        <rdf:type rdf:resource="&mod;Medium"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#KinestheticModality -->
+
+    <owl:NamedIndividual rdf:about="&mod;KinestheticModality">
+        <rdf:type rdf:resource="&mod;Modality"/>
+        <mod:hasMedium rdf:resource="&mod;Kinestethic"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#Out -->
+
+    <owl:NamedIndividual rdf:about="&mod;Out">
+        <rdf:type rdf:resource="&mod;ModalityDirection"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#OutputModality -->
+
+    <owl:NamedIndividual rdf:about="&mod;OutputModality">
+        <rdf:type rdf:resource="&mod;Modality"/>
+        <mod:hasDirection rdf:resource="&mod;Out"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#Tactile -->
+
+    <owl:NamedIndividual rdf:about="&mod;Tactile">
+        <rdf:type rdf:resource="&mod;Medium"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#TactileModality -->
+
+    <owl:NamedIndividual rdf:about="&mod;TactileModality">
+        <rdf:type rdf:resource="&mod;Modality"/>
+        <mod:hasMedium rdf:resource="&mod;Tactile"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#Touch -->
+
+    <owl:NamedIndividual rdf:about="&mod;Touch">
+        <rdf:type rdf:resource="&mod;Mode"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#Video -->
+
+    <owl:NamedIndividual rdf:about="&mod;Video">
+        <rdf:type rdf:resource="&mod;Mode"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#Visual -->
+
+    <owl:NamedIndividual rdf:about="&mod;Visual">
+        <rdf:type rdf:resource="&mod;Medium"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#VisualModality -->
+
+    <owl:NamedIndividual rdf:about="&mod;VisualModality">
+        <rdf:type rdf:resource="&mod;Modality"/>
+        <mod:hasMedium rdf:resource="&mod;Visual"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#ANIMATIONAPI -->
+
+    <owl:NamedIndividual rdf:about="&soft;ANIMATIONAPI">
+        <rdf:type rdf:resource="&soft;HTML5API"/>
+        <rdfs:label rdf:datatype="&xsd;string">Animation</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#AUDIOAPI -->
+
+    <owl:NamedIndividual rdf:about="&soft;AUDIOAPI">
+        <rdf:type rdf:resource="&soft;HTML5API"/>
+        <rdfs:label rdf:datatype="&xsd;string">Audio</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#BatteryStatusService1 -->
+
+    <owl:NamedIndividual rdf:about="&soft;BatteryStatusService1">
+        <rdf:type rdf:resource="&soft;BatteryStatusService"/>
+        <com:hasID rdf:datatype="&xsd;string">batteryStatusService1</com:hasID>
+        <soft:hasInterface rdf:datatype="&xsd;anyURI">http://mmt.inf.tu-dresden.de/documa/components/BatteryService
+        </soft:hasInterface>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#CANVASAPI -->
+
+    <owl:NamedIndividual rdf:about="&soft;CANVASAPI">
+        <rdf:type rdf:resource="&soft;HTML5API"/>
+        <rdfs:label rdf:datatype="&xsd;string">Canvas</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#CameraService1 -->
+
+    <owl:NamedIndividual rdf:about="&soft;CameraService1">
+        <rdf:type rdf:resource="&soft;CameraService"/>
+        <com:hasID rdf:datatype="&xsd;string">cameraService1</com:hasID>
+        <soft:hasInterface rdf:datatype="&xsd;anyURI">http://mmt.inf.tu-dresden.de/documa/components/CameraService
+        </soft:hasInterface>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#Chrome -->
+
+    <owl:NamedIndividual rdf:about="&soft;Chrome">
+        <rdf:type rdf:resource="&soft;WebkitBrowser"/>
+        <rdfs:label rdf:datatype="&xsd;string">Chrome</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#Chromium -->
+
+    <owl:NamedIndividual rdf:about="&soft;Chromium">
+        <rdf:type rdf:resource="&soft;WebkitBrowser"/>
+        <rdfs:label rdf:datatype="&xsd;string">Chromium</rdfs:label>
+        <com:hasVersion rdf:datatype="&xsd;string">24.0</com:hasVersion>
+        <com:hasName rdf:datatype="&xsd;string">Chromium</com:hasName>
+        <com:hasVendor rdf:datatype="&xsd;string">Google</com:hasVendor>
+        <soft:includes rdf:resource="&soft;Flash"/>
+        <soft:providesPlugin rdf:resource="&soft;Flash"/>
+        <soft:providesPlugin rdf:resource="&soft;Silverlight"/>
+        <soft:includes rdf:resource="&soft;Silverlight"/>
+        <soft:providesBrowserEngine rdf:resource="&soft;WebkitEngine"/>
+        <soft:isPartOfOperatingSystem rdf:resource="&soft;Windows"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#ContactsService1 -->
+
+    <owl:NamedIndividual rdf:about="&soft;ContactsService1">
+        <rdf:type rdf:resource="&soft;ContactService"/>
+        <com:hasID rdf:datatype="&xsd;string">contactsService1</com:hasID>
+        <soft:hasInterface rdf:datatype="&xsd;anyURI">http://mmt.inf.tu-dresden.de/documa/components/ContactService
+        </soft:hasInterface>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#DOMAPI -->
+
+    <owl:NamedIndividual rdf:about="&soft;DOMAPI">
+        <rdf:type rdf:resource="&soft;HTML5API"/>
+        <rdfs:label rdf:datatype="&xsd;string">DOM</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#DeviceInfoService1 -->
+
+    <owl:NamedIndividual rdf:about="&soft;DeviceInfoService1">
+        <rdf:type rdf:resource="&soft;DeviceInfoService"/>
+        <com:hasID rdf:datatype="&xsd;string">deviceInfoService1</com:hasID>
+        <soft:hasInterface rdf:datatype="&xsd;anyURI">http://mmt.inf.tu-dresden.de/documa/components/DeviceInfoService
+        </soft:hasInterface>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#DialogsService1 -->
+
+    <owl:NamedIndividual rdf:about="&soft;DialogsService1">
+        <rdf:type rdf:resource="&soft;DialogsService"/>
+        <com:hasID rdf:datatype="&xsd;string">dialogsService1</com:hasID>
+        <soft:hasInterface rdf:datatype="&xsd;anyURI">http://mmt.inf.tu-dresden.de/documa/components/DialogService
+        </soft:hasInterface>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#FILEAPI -->
+
+    <owl:NamedIndividual rdf:about="&soft;FILEAPI">
+        <rdf:type rdf:resource="&soft;HTML5API"/>
+        <rdfs:label rdf:datatype="&xsd;string">File</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#FileSystemService1 -->
+
+    <owl:NamedIndividual rdf:about="&soft;FileSystemService1">
+        <rdf:type rdf:resource="&soft;FileSystemService"/>
+        <com:hasID rdf:datatype="&xsd;string">filesystemService1</com:hasID>
+        <soft:hasInterface rdf:datatype="&xsd;anyURI">http://mmt.inf.tu-dresden.de/documa/components/FilesystemService
+        </soft:hasInterface>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#FileTransferService1 -->
+
+    <owl:NamedIndividual rdf:about="&soft;FileTransferService1">
+        <rdf:type rdf:resource="&soft;FileTransferService"/>
+        <com:hasID rdf:datatype="&xsd;string">fileTransferService1</com:hasID>
+        <soft:hasInterface rdf:datatype="&xsd;anyURI">
+            http://mmt.inf.tu-dresden.de/documa/components/FiletransferService
+        </soft:hasInterface>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#Firefox -->
+
+    <owl:NamedIndividual rdf:about="&soft;Firefox">
+        <rdf:type rdf:resource="&soft;GeckoBrowser"/>
+        <rdfs:label rdf:datatype="&xsd;string">Firefox</rdfs:label>
+        <com:hasVersion rdf:datatype="&xsd;string">18.0.2</com:hasVersion>
+        <com:hasName rdf:datatype="&xsd;string">Firefox</com:hasName>
+        <com:hasVendor rdf:datatype="&xsd;string">Mozilla</com:hasVendor>
+        <soft:providesPlugin rdf:resource="&soft;Flash"/>
+        <soft:providesBrowserEngine rdf:resource="&soft;GeckoEngine"/>
+        <soft:providesPlugin rdf:resource="&soft;Silverlight"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#Flash -->
+
+    <owl:NamedIndividual rdf:about="&soft;Flash">
+        <rdf:type rdf:resource="&soft;BrowserPlugin"/>
+        <rdf:type rdf:resource="&soft;RuntimeEnvironment"/>
+        <rdfs:label rdf:datatype="&xsd;string">Flash</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string">This individual represents the flash browser plugin.</rdfs:comment>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#Froyo -->
+
+    <owl:NamedIndividual rdf:about="&soft;Froyo">
+        <rdf:type rdf:resource="&soft;Android"/>
+        <com:hasVersion rdf:datatype="&xsd;string">2.2</com:hasVersion>
+        <com:hasVendor rdf:datatype="&xsd;string">Google</com:hasVendor>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#GeckoEngine -->
+
+    <owl:NamedIndividual rdf:about="&soft;GeckoEngine">
+        <rdf:type rdf:resource="&soft;BrowserEngine"/>
+        <rdfs:label rdf:datatype="&xsd;string">Gecko</rdfs:label>
+        <soft:isBrowserEngineOf rdf:resource="&soft;Firefox"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#GeolocationService1 -->
+
+    <owl:NamedIndividual rdf:about="&soft;GeolocationService1">
+        <rdf:type rdf:resource="&soft;GeolocationService"/>
+        <com:hasID rdf:datatype="&xsd;string">geolocationService1</com:hasID>
+        <soft:hasInterface rdf:datatype="&xsd;anyURI">
+            http://mmt.inf.tu-dresden.de/documa/components/GeolocationService
+        </soft:hasInterface>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#GingerBread -->
+
+    <owl:NamedIndividual rdf:about="&soft;GingerBread">
+        <rdf:type rdf:resource="&soft;Android"/>
+        <com:hasVersion rdf:datatype="&xsd;string">2.3.8</com:hasVersion>
+        <com:hasVendor rdf:datatype="&xsd;string">Google</com:hasVendor>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#GlobalizationService1 -->
+
+    <owl:NamedIndividual rdf:about="&soft;GlobalizationService1">
+        <rdf:type rdf:resource="&soft;GlobalizationService"/>
+        <com:hasID rdf:datatype="&xsd;string">globalizationService1</com:hasID>
+        <soft:hasInterface rdf:datatype="&xsd;anyURI">
+            http://mmt.inf.tu-dresden.de/documa/components/GlobalizationService
+        </soft:hasInterface>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#GyroscopeService1 -->
+
+    <owl:NamedIndividual rdf:about="&soft;GyroscopeService1">
+        <rdf:type rdf:resource="&soft;GyroscopeService"/>
+        <com:hasID rdf:datatype="&xsd;string">gyroscopeService1</com:hasID>
+        <soft:hasInterface rdf:datatype="&xsd;anyURI">http://mmt.inf.tu-dresden.de/documa/components/GyroscopeService
+        </soft:hasInterface>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#IceCream -->
+
+    <owl:NamedIndividual rdf:about="&soft;IceCream">
+        <rdf:type rdf:resource="&soft;Android"/>
+        <com:hasVersion rdf:datatype="&xsd;string">4.0.0</com:hasVersion>
+        <com:hasVendor rdf:datatype="&xsd;string">Google</com:hasVendor>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#InAppBrowserService1 -->
+
+    <owl:NamedIndividual rdf:about="&soft;InAppBrowserService1">
+        <rdf:type rdf:resource="&soft;InAppBrowserService"/>
+        <soft:hasInterface rdf:datatype="&xsd;anyURI">
+            http://mmt.inf.tu-dresden.de/documa/components/InappbrowserService
+        </soft:hasInterface>
+        <com:hasID rdf:datatype="&xsd;string">inAppBrowserService1</com:hasID>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#Linux -->
+
+    <owl:NamedIndividual rdf:about="&soft;Linux">
+        <rdf:type rdf:resource="&soft;OperatingSystem"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#MacOS -->
+
+    <owl:NamedIndividual rdf:about="&soft;MacOS">
+        <rdf:type rdf:resource="&soft;OperatingSystem"/>
+        <com:hasVendor rdf:datatype="&xsd;string">Apple</com:hasVendor>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#Mango -->
+
+    <owl:NamedIndividual rdf:about="&soft;Mango">
+        <rdf:type rdf:resource="&soft;WindowsPhone"/>
+        <com:hasVersion rdf:datatype="&xsd;string">7.5.0</com:hasVersion>
+        <com:hasVendor rdf:datatype="&xsd;string">Microsoft</com:hasVendor>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#MediaCaptureService1 -->
+
+    <owl:NamedIndividual rdf:about="&soft;MediaCaptureService1">
+        <rdf:type rdf:resource="&soft;MediaCaptureService"/>
+        <com:hasID rdf:datatype="&xsd;string">captureService1</com:hasID>
+        <soft:hasInterface rdf:datatype="&xsd;anyURI">
+            http://mmt.inf.tu-dresden.de/documa/components/MediaCaptureService
+        </soft:hasInterface>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#MediaService1 -->
+
+    <owl:NamedIndividual rdf:about="&soft;MediaService1">
+        <rdf:type rdf:resource="&soft;MediaService"/>
+        <soft:hasInterface rdf:datatype="&xsd;anyURI">http://mmt.inf.tu-dresden.de/documa/components/MediaService
+        </soft:hasInterface>
+        <com:hasID rdf:datatype="&xsd;string">mediaService1</com:hasID>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#MotionService1 -->
+
+    <owl:NamedIndividual rdf:about="&soft;MotionService1">
+        <rdf:type rdf:resource="&soft;MotionService"/>
+        <soft:hasInterface rdf:datatype="&xsd;anyURI">http://mmt.inf.tu-dresden.de/documa/components/MotionService
+        </soft:hasInterface>
+        <com:hasID rdf:datatype="&xsd;string">motionService1</com:hasID>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#NetworkInformationService1 -->
+
+    <owl:NamedIndividual rdf:about="&soft;NetworkInformationService1">
+        <rdf:type rdf:resource="&soft;NetworkInformationService"/>
+        <soft:hasInterface rdf:datatype="&xsd;anyURI">http://mmt.inf.tu-dresden.de/documa/components/NetworkService
+        </soft:hasInterface>
+        <com:hasID rdf:datatype="&xsd;string">networkService1</com:hasID>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#OrientationService1 -->
+
+    <owl:NamedIndividual rdf:about="&soft;OrientationService1">
+        <rdf:type rdf:resource="&soft;OrientationService"/>
+        <soft:hasInterface rdf:datatype="&xsd;anyURI">http://mmt.inf.tu-dresden.de/documa/components/CompassService
+        </soft:hasInterface>
+        <com:hasID rdf:datatype="&xsd;string">orientationService1</com:hasID>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#STORAGEAPI -->
+
+    <owl:NamedIndividual rdf:about="&soft;STORAGEAPI">
+        <rdf:type rdf:resource="&soft;HTML5API"/>
+        <rdfs:label rdf:datatype="&xsd;string">Storage</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#Safari -->
+
+    <owl:NamedIndividual rdf:about="&soft;Safari">
+        <rdf:type rdf:resource="&soft;WebkitBrowser"/>
+        <rdfs:label rdf:datatype="&xsd;string">Safari</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#Silverlight -->
+
+    <owl:NamedIndividual rdf:about="&soft;Silverlight">
+        <rdf:type rdf:resource="&soft;BrowserPlugin"/>
+        <rdf:type rdf:resource="&soft;RuntimeEnvironment"/>
+        <rdfs:label rdf:datatype="&xsd;string">Silverlight</rdfs:label>
+        <rdfs:comment xml:lang="en">This individual represents the silverlight browser plugin.</rdfs:comment>
+        <soft:pluginProvidedBy rdf:resource="&soft;Windows"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#StatusBarService1 -->
+
+    <owl:NamedIndividual rdf:about="&soft;StatusBarService1">
+        <com:hasID rdf:datatype="&xsd;string">statusBarService1</com:hasID>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#VIDEOAPI -->
+
+    <owl:NamedIndividual rdf:about="&soft;VIDEOAPI">
+        <rdf:type rdf:resource="&soft;HTML5API"/>
+        <rdfs:label rdf:datatype="&xsd;string">Video</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#VibrationService1 -->
+
+    <owl:NamedIndividual rdf:about="&soft;VibrationService1">
+        <rdf:type rdf:resource="&soft;VibrationService"/>
+        <soft:hasInterface rdf:datatype="&xsd;anyURI">http://mmt.inf.tu-dresden.de/documa/components/VibrationService
+        </soft:hasInterface>
+        <com:hasID rdf:datatype="&xsd;string">vibrationService1</com:hasID>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#WEBGLAPI -->
+
+    <owl:NamedIndividual rdf:about="&soft;WEBGLAPI">
+        <rdf:type rdf:resource="&soft;HTML5API"/>
+        <rdfs:label rdf:datatype="&xsd;string">WebGL</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#WEBNOTIFICATIONAPI -->
+
+    <owl:NamedIndividual rdf:about="&soft;WEBNOTIFICATIONAPI">
+        <rdf:type rdf:resource="&soft;HTML5API"/>
+        <rdfs:label rdf:datatype="&xsd;string">Notification</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#WEBSOCKETAPI -->
+
+    <owl:NamedIndividual rdf:about="&soft;WEBSOCKETAPI">
+        <rdf:type rdf:resource="&soft;HTML5API"/>
+        <rdfs:label rdf:datatype="&xsd;string">WebSocket</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#WORKERSAPI -->
+
+    <owl:NamedIndividual rdf:about="&soft;WORKERSAPI">
+        <rdf:type rdf:resource="&soft;HTML5API"/>
+        <rdfs:label rdf:datatype="&xsd;string">Workers</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#WebkitEngine -->
+
+    <owl:NamedIndividual rdf:about="&soft;WebkitEngine">
+        <rdf:type rdf:resource="&soft;BrowserEngine"/>
+        <rdfs:label rdf:datatype="&xsd;string">Webkit</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#Windows -->
+
+    <owl:NamedIndividual rdf:about="&soft;Windows">
+        <rdf:type rdf:resource="&soft;OperatingSystem"/>
+        <com:hasVendor rdf:datatype="&xsd;string">Microsoft</com:hasVendor>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#iOS5 -->
+
+    <owl:NamedIndividual rdf:about="&soft;iOS5">
+        <rdf:type rdf:resource="&soft;iOS"/>
+        <com:hasVersion rdf:datatype="&xsd;string">5.1.0</com:hasVersion>
+        <com:hasVendor rdf:datatype="&xsd;string">Apple</com:hasVendor>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+        <!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

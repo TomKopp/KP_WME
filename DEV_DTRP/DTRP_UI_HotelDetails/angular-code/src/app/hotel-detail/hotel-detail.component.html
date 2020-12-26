@@ -1,0 +1,26 @@
+<div *ngIf="hotelData;else no_hotel_selected" class="hotel-detail-wrapper-out">
+  <header *ngIf="windowWidth <= 900">
+    <button mat-icon-button (click)="onGoBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </header>
+  <div [class]="windowWidth > 900?'hotel-detail-wrapper hotel-detail-wrapper-big-screen':'hotel-detail-wrapper hotel-detail-wrapper-small-screen'">
+    <div class="hotel-detail-slideshow">
+      <slideshow [imageUrls]="hotelMainImages" [showDots]="true" #slideshow></slideshow>
+    </div>
+    <div class="hotel-detail-slideshow-images">
+      <div *ngFor="let image of hotelMainImages; let detailImageIndex = index" class="hotel-detail-slideshow-image-item" 
+      [style.backgroundImage]="'url('+ image +')'" (click)="onSelectDetailImage(detailImageIndex)">
+      </div>
+    </div>
+    <div class="hotel-offers-feature-wrapper">
+      <app-hotel-offers [windowWidth]="windowWidth" [offersList]="hotelData?.offers" (selectedOffer)="openDialog($event)"></app-hotel-offers>
+      <app-hotel-detail-features [featureList]="hotelData?.hotelFeatureList" [windowWidth]="windowWidth"></app-hotel-detail-features>
+    </div>
+  </div>
+</div>
+<ng-template #no_hotel_selected>
+  <div class="hotel-detail-no-hotel-selected">
+    No Hotel Selected
+  </div>
+</ng-template>

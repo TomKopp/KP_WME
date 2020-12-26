@@ -1,0 +1,19 @@
+<div class="csr-mui-panel csr-mui-iconitem-container" ng-switch="layout">
+	<div class="close-btn" ng-click="close($event)">
+		<span class="glyphicon glyphicon-remove"></span>
+	</div>
+	<!-- create a vertical aligned icon item -->
+	<div ng-switch-when="vertical" class="csr-mui-iconitem-v">
+		<div>
+			<img ng-src="{{icon}}"/>
+		</div>
+		<span>{{label}}</span>
+	</div>
+	<!-- create a horizontal aligned icon item -->
+	<div ng-switch-when="horizontal" class="csr-mui-iconitem-h">
+		<div>
+			<img ng-src="{{icon}}"/>
+		</div>
+		<span>{{label}}</span>
+	</div>
+</div>

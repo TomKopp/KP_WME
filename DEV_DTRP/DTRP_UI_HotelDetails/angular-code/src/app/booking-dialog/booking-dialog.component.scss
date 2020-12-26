@@ -1,0 +1,20 @@
+.stepper-wrapper {
+    position: relative;
+    height: calc(100% - 52px);
+}
+
+.action-button-wrapper {
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+}
+
+.booking-submit {
+    background: green;
+    color: white !important;
+}
+
+.booking-submit-disabled {
+    background: gray;
+    color: white !important;
+}

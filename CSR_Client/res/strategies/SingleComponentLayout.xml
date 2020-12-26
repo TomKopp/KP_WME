@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layoutstrategy
+	xmlns="http://mmt.inf.tu-dresden.de/2014/documa/layoutstrategy"
+	xmlns:e="http://mmt.inf.tu-dresden.de/2014/documa/expressions"
+	name="Single Component"
+	id="sc-layout"
+	active="true">
+	<meta>
+		<icon>
+			<url>res/img/scl.png</url>
+		</icon>
+	</meta>
+	<precondition>
+		<e:compare op="eq">
+			<e:all-count/>
+			<e:number>1</e:number>
+		</e:compare>
+	</precondition>
+	<algorithm>
+		<bounds>
+			<width>
+				<e:viewport-width/>
+			</width>
+			<height>
+				<e:viewport-height/>
+			</height>
+		</bounds>
+	</algorithm>
+</layoutstrategy>

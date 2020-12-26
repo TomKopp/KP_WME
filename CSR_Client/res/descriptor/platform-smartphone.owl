@@ -1,0 +1,321 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY spin "http://spinrdf.org/spin#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY platform "http://mmt.inf.tu-dresden.de/documa/ontologies/platform#" >
+    <!ENTITY com "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#" >
+    <!ENTITY dev "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#" >
+    <!ENTITY soft "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#" >
+    <!ENTITY smartphone "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#" >
+    ]>
+
+
+<rdf:RDF xmlns="http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#"
+         xml:base="http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone"
+         xmlns:com="http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#"
+         xmlns:smartphone="http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#"
+         xmlns:dev="http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:spin="http://spinrdf.org/spin#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:platform="http://mmt.inf.tu-dresden.de/documa/ontologies/platform#"
+         xmlns:soft="http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#">
+    <owl:Ontology rdf:about="http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone">
+        <owl:versionInfo rdf:datatype="&xsd;double">0.8</owl:versionInfo>
+        <rdfs:comment rdf:datatype="&xsd;double">06.10.2014 added device service concepts to the mobile client sample
+        </rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="&xsd;string">Oliver Mroß</rdfs:isDefinedBy>
+        <owl:imports rdf:resource="http://mmt.inf.tu-dresden.de/documa/ontologies/platform"/>
+        <spin:imports rdf:resource="http://topbraid.org/spin/owlrl-all"/>
+    </owl:Ontology>
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#ARM_LG -->
+
+    <owl:NamedIndividual rdf:about="&smartphone;ARM_LG">
+        <rdf:type rdf:resource="&dev;ARM"/>
+        <rdfs:label rdf:datatype="&xsd;string">LG ARM Cpu</rdfs:label>
+        <com:hasManufacturer rdf:datatype="&xsd;string">ARM</com:hasManufacturer>
+        <com:hasModelName rdf:datatype="&xsd;string">ARMv7 Processor rev 2</com:hasModelName>
+        <dev:hasCpuArchitecture rdf:datatype="&xsd;string">RISC</dev:hasCpuArchitecture>
+        <com:hasVersion rdf:datatype="&xsd;string">v7</com:hasVersion>
+        <dev:hasMeasurand rdf:resource="&smartphone;Frequency_Arm_CPU_LG"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#Accelerometer_LG -->
+
+    <owl:NamedIndividual rdf:about="&smartphone;Accelerometer_LG">
+        <rdf:type rdf:resource="&dev;AccelerometerSensor"/>
+        <com:hasVendor rdf:datatype="&xsd;string">Invensense</com:hasVendor>
+        <dev:hasAmperage rdf:resource="&smartphone;Amperage_1"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#Amperage_1 -->
+
+    <owl:NamedIndividual rdf:about="&smartphone;Amperage_1">
+        <rdf:type rdf:resource="&dev;Amperage"/>
+        <rdfs:label rdf:datatype="&xsd;string">LG Sensor Amperage</rdfs:label>
+        <com:hasValue rdf:datatype="&xsd;string">0.5</com:hasValue>
+        <dev:isMeasurandFrom rdf:resource="&smartphone;GyroscopeSensor_LG"/>
+        <dev:hasScale rdf:resource="&dev;Ampere"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#Amperage_2 -->
+
+    <owl:NamedIndividual rdf:about="&smartphone;Amperage_2">
+        <rdf:type rdf:resource="&dev;Amperage"/>
+        <com:hasValue rdf:datatype="&xsd;double">0.5</com:hasValue>
+        <dev:isMeasurandFrom rdf:resource="&smartphone;Amperage_2"/>
+        <dev:hasScale rdf:resource="&dev;Ampere"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#AndroidBrowser -->
+
+    <owl:NamedIndividual rdf:about="&smartphone;AndroidBrowser">
+        <rdf:type rdf:resource="&soft;MobileBrowser"/>
+        <rdfs:label rdf:datatype="&xsd;string">Android Browser</rdfs:label>
+        <com:hasName rdf:datatype="&xsd;string">Android Browser</com:hasName>
+        <com:hasVendor rdf:datatype="&xsd;string">Google</com:hasVendor>
+        <soft:isPartOfOperatingSystem rdf:resource="&smartphone;JellyBean_LG"/>
+        <soft:providesAPI rdf:resource="&soft;AUDIOAPI"/>
+        <soft:providesAPI rdf:resource="&soft;CANVASAPI"/>
+        <soft:providesAPI rdf:resource="&soft;DOMAPI"/>
+        <soft:providesAPI rdf:resource="&soft;FILEAPI"/>
+        <soft:providesBrowserPlugin rdf:resource="&soft;Flash"/>
+        <soft:providesAPI rdf:resource="&soft;STORAGEAPI"/>
+        <soft:providesAPI rdf:resource="&soft;VIDEOAPI"/>
+        <soft:providesBrowserEngine rdf:resource="&soft;WebkitEngine"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#Battery_LG -->
+
+    <owl:NamedIndividual rdf:about="&smartphone;Battery_LG">
+        <rdf:type rdf:resource="&dev;Battery"/>
+        <rdfs:label rdf:datatype="&xsd;string">LG Battery</rdfs:label>
+        <dev:hasTemperature rdf:resource="&smartphone;Temperature_25"/>
+        <dev:hasVoltage rdf:resource="&smartphone;Voltage_Battery_LG"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#Camera_LG_Back -->
+
+    <owl:NamedIndividual rdf:about="&smartphone;Camera_LG_Back">
+        <rdf:type rdf:resource="&dev;Camera"/>
+        <rdfs:label rdf:datatype="&xsd;string">LG Back Camera</rdfs:label>
+        <dev:isFrontCamera rdf:datatype="&xsd;boolean">false</dev:isFrontCamera>
+        <dev:hasLEDFlash rdf:datatype="&xsd;boolean">true</dev:hasLEDFlash>
+        <dev:hasAutoFocus rdf:datatype="&xsd;boolean">true</dev:hasAutoFocus>
+        <dev:hasSceneMode rdf:resource="&dev;Auto"/>
+        <dev:hasFramerate rdf:resource="&dev;Framerate_15"/>
+        <dev:hasFramerate rdf:resource="&dev;Framerate_30"/>
+        <dev:hasResolution rdf:resource="&dev;Res_5MP"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#Camera_LG_Front -->
+
+    <owl:NamedIndividual rdf:about="&smartphone;Camera_LG_Front">
+        <rdf:type rdf:resource="&dev;Camera"/>
+        <rdfs:label rdf:datatype="&xsd;string">LG Front Camera</rdfs:label>
+        <dev:hasAutoFocus rdf:datatype="&xsd;boolean">true</dev:hasAutoFocus>
+        <dev:hasLEDFlash rdf:datatype="&xsd;boolean">true</dev:hasLEDFlash>
+        <dev:isFrontCamera rdf:datatype="&xsd;boolean">true</dev:isFrontCamera>
+        <dev:hasResolution rdf:resource="&dev;Res_2MP"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#Frequency_Arm_CPU_LG -->
+
+    <owl:NamedIndividual rdf:about="&smartphone;Frequency_Arm_CPU_LG">
+        <rdf:type rdf:resource="&dev;Frequency"/>
+        <rdfs:label rdf:datatype="&xsd;string">LG Cpu Frequency</rdfs:label>
+        <com:hasValue rdf:datatype="&xsd;string">1000</com:hasValue>
+        <dev:isMeasurandFrom rdf:resource="&smartphone;ARM_LG"/>
+        <dev:hasScale rdf:resource="&dev;MegaHertz"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#GyroscopeSensor_LG -->
+
+    <owl:NamedIndividual rdf:about="&smartphone;GyroscopeSensor_LG">
+        <rdf:type rdf:resource="&dev;GyroscopeSensor"/>
+        <rdfs:label rdf:datatype="&xsd;string">LG Gyroscope Sensor</rdfs:label>
+        <com:hasManufacturer rdf:datatype="&xsd;string">Invensense</com:hasManufacturer>
+        <dev:hasAmperage rdf:resource="&smartphone;Amperage_1"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#JellyBean_LG -->
+
+    <owl:NamedIndividual rdf:about="&smartphone;JellyBean_LG">
+        <rdf:type rdf:resource="&soft;Android"/>
+        <rdfs:label rdf:datatype="&xsd;string">Android JellyBean</rdfs:label>
+        <com:hasVersion rdf:datatype="&xsd;string">4.1.2</com:hasVersion>
+        <com:hasVendor rdf:datatype="&xsd;string">Google</com:hasVendor>
+        <com:hasName rdf:datatype="&xsd;string">JellyBean</com:hasName>
+        <soft:executedBy rdf:resource="&smartphone;LG_P970"/>
+        <com:enablesAspect rdf:resource="&com;Telephony"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#LG_P970 -->
+
+    <owl:NamedIndividual rdf:about="&smartphone;LG_P970">
+        <rdf:type rdf:resource="&dev;AndroidSmartphone"/>
+        <rdfs:label rdf:datatype="&xsd;string">LG Smartphone</rdfs:label>
+        <com:hasDevicePicture rdf:datatype="&xsd;anyURI">http://csr.mmt.inf.tu-dresden.de:8080/libs/pics/smartphone_icon.png</com:hasDevicePicture>
+        <com:hasModelNumber rdf:datatype="&xsd;string">970</com:hasModelNumber>
+        <com:hasManufacturer rdf:datatype="&xsd;string">LG</com:hasManufacturer>
+        <com:hasModelName rdf:datatype="&xsd;string">LG P970</com:hasModelName>
+        <com:hasName rdf:datatype="&xsd;string">Oliver&apos;s Android Smartphone</com:hasName>
+        <com:hasOwner rdf:datatype="&xsd;string">oliver.mross@tu-dresden.de</com:hasOwner>
+        <dev:isMobile rdf:datatype="&xsd;boolean">true</dev:isMobile>
+        <dev:embedsCPU rdf:resource="&smartphone;ARM_LG"/>
+        <dev:embedsBattery rdf:resource="&smartphone;Battery_LG"/>
+        <dev:hasInputDevice rdf:resource="&smartphone;Camera_LG_Back"/>
+        <dev:hasInputDevice rdf:resource="&smartphone;Camera_LG_Front"/>
+        <dev:embedsSensor rdf:resource="&smartphone;GyroscopeSensor_LG"/>
+        <dev:currentOperatingSystem rdf:resource="&smartphone;JellyBean_LG"/>
+        <dev:hasOutputDevice rdf:resource="&smartphone;MultitouchDisplay_LG"/>
+        <dev:hasInputDevice rdf:resource="&smartphone;MultitouchDisplay_LG"/>
+        <dev:hasMaximalMemory rdf:resource="&smartphone;RAM_LG"/>
+        <dev:hasOutputDevice rdf:resource="&smartphone;Speaker_LG"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#MobileClient_CSR -->
+
+    <owl:NamedIndividual rdf:about="&smartphone;MobileClient_CSR">
+        <rdf:type rdf:resource="&soft;MobileClient"/>
+        <rdfs:label rdf:datatype="&xsd;string">Android Mobile CSR Client</rdfs:label>
+        <com:hasVersion rdf:datatype="&xsd;string">1.16.0</com:hasVersion>
+        <com:hasName rdf:datatype="&xsd;string">CSRMobileClient</com:hasName>
+        <com:hasID rdf:datatype="&xsd;string">LGCSR01</com:hasID>
+        <com:hasVendor rdf:datatype="&xsd;string">MMT</com:hasVendor>
+        <soft:providedBy rdf:resource="&smartphone;AndroidBrowser"/>
+        <soft:executedBy rdf:resource="&smartphone;LG_P970"/>
+        <soft:hasService rdf:resource="&soft;BatteryStatusService1"/>
+        <soft:hasService rdf:resource="&soft;CameraService1"/>
+        <soft:hasService rdf:resource="&soft;DeviceInfoService1"/>
+        <soft:hasService rdf:resource="&soft;GeolocationService1"/>
+        <soft:hasService rdf:resource="&soft;MotionService1"/>
+        <soft:hasService rdf:resource="&soft;NetworkInformationService1"/>
+        <soft:hasService rdf:resource="&soft;OrientationService1"/>
+        <soft:hasService rdf:resource="&soft;SpeechService1"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#MobileFirefox -->
+
+    <owl:NamedIndividual rdf:about="&smartphone;MobileFirefox">
+        <rdf:type rdf:resource="&soft;MobileBrowser"/>
+        <rdfs:label rdf:datatype="&xsd;string">Android Mobile Firefox</rdfs:label>
+        <com:hasVersion rdf:datatype="&xsd;string">19.0</com:hasVersion>
+        <com:hasName rdf:datatype="&xsd;string">Mobile Firefox</com:hasName>
+        <com:hasVendor rdf:datatype="&xsd;string">Mozilla</com:hasVendor>
+        <soft:isPartOfOperatingSystem rdf:resource="&smartphone;JellyBean_LG"/>
+        <soft:executedBy rdf:resource="&smartphone;LG_P970"/>
+        <soft:providesAPI rdf:resource="&soft;ANIMATIONAPI"/>
+        <soft:providesAPI rdf:resource="&soft;AUDIOAPI"/>
+        <soft:providesAPI rdf:resource="&soft;CANVASAPI"/>
+        <soft:providesAPI rdf:resource="&soft;DOMAPI"/>
+        <soft:providesAPI rdf:resource="&soft;FILEAPI"/>
+        <soft:providesBrowserPlugin rdf:resource="&soft;Flash"/>
+        <soft:providesBrowserEngine rdf:resource="&soft;GeckoEngine"/>
+        <soft:providesAPI rdf:resource="&soft;STORAGEAPI"/>
+        <soft:providesAPI rdf:resource="&soft;VIDEOAPI"/>
+        <soft:providesAPI rdf:resource="&soft;WEBGLAPI"/>
+        <soft:providesAPI rdf:resource="&soft;WEBSOCKETAPI"/>
+        <soft:providesAPI rdf:resource="&soft;WORKERSAPI"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#MultitouchDisplay_LG -->
+
+    <owl:NamedIndividual rdf:about="&smartphone;MultitouchDisplay_LG">
+        <rdf:type rdf:resource="&dev;MultitouchDisplay"/>
+        <rdfs:label rdf:datatype="&xsd;string">LG MDisplay</rdfs:label>
+        <dev:hasPixelDensity rdf:resource="&smartphone;PixelDensity_LG"/>
+        <dev:hasFramerate rdf:resource="&dev;Framerate_30"/>
+        <dev:hasMeasurand rdf:resource="&dev;RefreshRate_68"/>
+        <dev:hasResolution rdf:resource="&dev;Res_WVGA"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#PixelDensity_LG -->
+
+    <owl:NamedIndividual rdf:about="&smartphone;PixelDensity_LG">
+        <rdf:type rdf:resource="&dev;PixelDensity"/>
+        <rdfs:label rdf:datatype="&xsd;string">LG Optimus Pixel Density</rdfs:label>
+        <com:hasValue rdf:datatype="&xsd;string">240</com:hasValue>
+        <com:hasName rdf:datatype="&xsd;string">highpixeldensity</com:hasName>
+        <dev:isMeasurandFrom rdf:resource="&smartphone;MultitouchDisplay_LG"/>
+        <dev:hasScale rdf:resource="&dev;dpi"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#RAM_LG -->
+
+    <owl:NamedIndividual rdf:about="&smartphone;RAM_LG">
+        <rdf:type rdf:resource="&dev;RAM"/>
+        <rdfs:label rdf:datatype="&xsd;string">LG Optimus RAM</rdfs:label>
+        <com:hasValue rdf:datatype="&xsd;string">437</com:hasValue>
+        <dev:isMeasurandFrom rdf:resource="&smartphone;LG_P970"/>
+        <dev:hasScale rdf:resource="&dev;MegaByte"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#Speaker_LG -->
+
+    <owl:NamedIndividual rdf:about="&smartphone;Speaker_LG">
+        <rdf:type rdf:resource="&dev;Speaker"/>
+        <rdfs:label rdf:datatype="&xsd;string">LG Optimus Speaker</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#Temperature_25 -->
+
+    <owl:NamedIndividual rdf:about="&smartphone;Temperature_25">
+        <rdf:type rdf:resource="&dev;Temperature"/>
+        <rdfs:label rdf:datatype="&xsd;string">LG CPU Temperature</rdfs:label>
+        <com:hasValue rdf:datatype="&xsd;string">25.0</com:hasValue>
+        <dev:isMeasurandFrom rdf:resource="&smartphone;Battery_LG"/>
+        <dev:hasScale rdf:resource="&dev;GradCelsius"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#Voltage_Battery_LG -->
+
+    <owl:NamedIndividual rdf:about="&smartphone;Voltage_Battery_LG">
+        <rdf:type rdf:resource="&dev;Voltage"/>
+        <rdfs:label rdf:datatype="&xsd;string">LG Battery Voltage</rdfs:label>
+        <com:hasValue rdf:datatype="&xsd;string">3</com:hasValue>
+        <dev:isMeasurandFrom rdf:resource="&smartphone;Battery_LG"/>
+        <dev:hasScale rdf:resource="&dev;MilliVolt"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+    <!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

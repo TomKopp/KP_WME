@@ -1,0 +1,144 @@
+.ui-pnotify.basicNotification .ui-pnotify-container {
+    background-color: #404040 !important;
+    background-image: none !important;
+    border: none !important;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.ui-pnotify.basicNotification .ui-pnotify-title, .ui-pnotify.basicNotification .ui-pnotify-text {
+    font-family: Arial, Helvetica, sans-serif !important;
+    text-shadow: 2px 2px 3px black !important;
+    font-size: 10pt !important;
+    color: #FFF !important;
+    padding-left: 20px !important;
+    line-height: 1.2 !important;
+    text-rendering: geometricPrecision !important;
+}
+
+.ui-pnotify.basicNotification .ui-pnotify-title {
+    font-weight: 700;
+}
+
+.ui-pnotify.basicNotification .ui-pnotify-icon {
+    float: left;
+}
+
+.ui-pnotify.basicNotification .picon {
+    margin: 3px;
+    width: 33px;
+    height: 33px;
+}
+
+.ui-pnotify.gregorBlichmann .ui-pnotify-container {
+    background-color: #408140 !important;
+}
+
+/* ##### BUDDY LIST ######### */
+.buddyListWindow {
+    background-color: #333;
+    width: 150px !important;
+    border: 3px solid #666666;
+    margin: 0px 0px 0px 0px;
+    height: auto;
+    box-shadow: 0 0 8px rgba(142, 188, 17, 0);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color: #eee !important;
+    opacity: 0.8;
+}
+
+.buddylist-header {
+    font-size: 0.9em;
+    font-family: "Calibri", Arial, sans-serif;
+    color: #EEE;
+    display: block;
+    font-weight: 500;
+    background: #666;
+    width: 150px;
+    text-align: center;
+    padding: 3px 0px;
+}
+
+.buddylist-body {
+    background: #404040;
+}
+
+.buddyContainer {
+    padding: 4px;
+}
+
+.buddylabel {
+    padding-top: 6px;
+}
+
+.buddyicon {
+    float: left;
+    width: 30px;
+    height: 30px;
+    border: 2px solid;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background: url('http://127.0.0.1:8020/CSR_Desktop_Client/res/img/buddyicon.png');
+    margin-right: 3px;
+}
+
+/* ##### User's access right ######### */
+.userRight {
+    position: absolute;
+    z-index: 1;
+    top: 3px;
+    right: 7px;
+    font-family: tahoma;
+    font-weight: bold;
+    font-size: 11px;
+    color: #15428b
+}
+
+*
+
+/
+
+.component-panel .userRight {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 28px;
+    z-index: 1;
+    top: -15px;
+    right: -15px;
+    width: 32px;
+    height: 32px;
+    padding: 2px;
+    text-indent: -9999px;
+}
+
+.component-panel .own {
+    display: none !important;
+}
+
+.component-panel .consume {
+    background-color: #444;
+    background-image: url("../img/white/icon_09.png");
+}
+
+.component-panel .contribute {
+    background-color: #eb6;
+    background-image: url("../img/white/icon_10.png");
+}
+
+.component-panel .redefine {
+    background-color: #7b0;
+    background-image: url("../img/white/icon_11.png");
+}
+
+
+
+
+
+
+
+

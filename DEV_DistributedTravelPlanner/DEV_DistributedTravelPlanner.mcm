@@ -1,0 +1,114 @@
+<mcm:MashupComposition xmlns:xmi="http://www.omg.org/XMI"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mcm="http://mmt.inf.tu-dresden.de/mcm/1.15"
+	author="{{USER}}"
+	id="{{MCM_ID}}"
+	version="{{MCM_VERSION}}"
+	name="DistributedTravelPlanner">
+	<conceptualModel>
+		<components>
+			<!-- FlightDetails -->
+			<component xsi:type="mcm:UIComponent" instanceid="c1" componentid="https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DTRP/DTRP_UI_FlightDetails/">
+				<operation name="onUpdateTripSections">
+					<parameter name="tripSections" type="xs:string"/>
+				</operation>
+				<event name="updateTripSections">
+					<parameter name="tripSections" type="xs:string"/>
+				</event>
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasTitle" value="FlightDetails" name="title" />
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasWidth" value="800" name="width" />
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasHeight" value="600" name="height" />
+			</component>
+			<!-- HotelDetails -->
+			<component xsi:type="mcm:UIComponent" instanceid="c2" componentid="mc://documa/components/DTRP_UI_HotelDetails" isResizable="false">
+				<operation name="onUpdateTripSections">
+					<parameter name="tripSections" type="xs:string"/>
+				</operation>
+				<event name="updateTripSections">
+					<parameter name="tripSections" type="xs:string"/>
+				</event>
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasTitle" value="HotelDetails" name="title" />
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasWidth" value="800" name="width" />
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasHeight" value="600" name="height" />
+			</component>
+			<!-- TravelCatalog -->
+			<component xsi:type="mcm:UIComponent" instanceid="tc" componentid="https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DTRP/DTRP_UI_TravelCatalog/">
+				<operation name="onUpdateTripSections">
+					<parameter name="tripSections" type="xs:string"/>
+				</operation>
+				<operation name="getMedia" />
+				<event name="updateTripSections">
+					<parameter name="tripSections" type="xs:string"/>
+				</event>
+				<event name="sendMedia">
+					<parameter name="media" type="xs:string" />
+				</event>
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasTitle" value="TravelCatalog" name="title" />
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasWidth" value="800" name="width" />
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasHeight" value="600" name="height" />
+			</component>
+			<!-- TravelDetails -->
+			<component xsi:type="mcm:UIComponent" instanceid="td" componentid="https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DTRP/DTRP_UI_TravelDetails/">
+                <operation name="onUpdateTripSections">
+                    <parameter name="tripSections" type="xs:string"/>
+                </operation>
+                <event name="updateTripSections">
+                    <parameter name="tripSections" type="xs:string"/>
+                </event>
+                <property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasTitle" value="TravelDetails" name="title" />
+                <property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasWidth" value="800" name="width" />
+                <property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasHeight" value="600" name="height" />
+            </component>
+		</components>
+	</conceptualModel>
+	<!-- <layoutModel>
+		<layout xsi:type="mcm:AbsoluteLayout" name="device1">
+			<bounds height="4000" width="1000" />
+			<position locate="c1" x="0" y="0">
+				<bounds height="1000" width="1000" />
+			</position>
+			<position locate="c2" x="0" y="1000">
+				<bounds height="1000" width="1000" />
+			</position>
+			<position locate="tc" x="0" y="2000">
+				<bounds height="1000" width="1000" />
+			</position>
+			<position locate="td" x="0" y="3000">
+                <bounds height="1000" width="1000" />
+            </position>
+		</layout>
+	</layoutModel> -->
+	<!-- <screenflowModel initialView="Device1">
+		<view name="Device1" layout="device1" />
+	</screenflowModel> -->
+	<communicationModel>
+		<channel xsi:type="mcm:Link" name="c1">
+			<parameter name="tripSections" type="xs:string"/>
+			<publisher event="//component[@instanceid='c1']/event[@name='updateTripSections']" />
+			<subscriber operation="//component[@instanceid='c2']/operation[@name='onUpdateTripSections']" />
+			<subscriber operation="//component[@instanceid='tc']/operation[@name='onUpdateTripSections']" />
+			<subscriber operation="//component[@instanceid='td']/operation[@name='onUpdateTripSections']" />
+		</channel>
+		<channel xsi:type="mcm:Link" name="c2">
+			<parameter name="tripSections" type="xs:string"/>
+			<publisher event="//component[@instanceid='c2']/event[@name='updateTripSections']" />
+			<subscriber operation="//component[@instanceid='c1']/operation[@name='onUpdateTripSections']" />
+			<subscriber operation="//component[@instanceid='tc']/operation[@name='onUpdateTripSections']" />
+			<subscriber operation="//component[@instanceid='td']/operation[@name='onUpdateTripSections']" />
+		</channel>
+		<channel xsi:type="mcm:Link" name="tc">
+			<parameter name="tripSections" type="xs:string"/>
+			<publisher event="//component[@instanceid='tc']/event[@name='updateTripSections']" />
+			<subscriber operation="//component[@instanceid='c1']/operation[@name='onUpdateTripSections']" />
+			<subscriber operation="//component[@instanceid='c2']/operation[@name='onUpdateTripSections']" />
+			<subscriber operation="//component[@instanceid='td']/operation[@name='onUpdateTripSections']" />
+		</channel>
+		<channel xsi:type="mcm:Link" name="td">
+			<parameter name="tripSections" type="xs:string"/>
+			<publisher event="//component[@instanceid='td']/event[@name='updateTripSections']" />
+			<subscriber operation="//component[@instanceid='c1']/operation[@name='onUpdateTripSections']" />
+			<subscriber operation="//component[@instanceid='c2']/operation[@name='onUpdateTripSections']" />
+			<subscriber operation="//component[@instanceid='tc']/operation[@name='onUpdateTripSections']" />
+		</channel>
+	</communicationModel>
+</mcm:MashupComposition>

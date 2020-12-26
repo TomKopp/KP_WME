@@ -1,0 +1,277 @@
+{
+	"sid": "f06b677c-e169-4b4e-b2ad-4228a927baaa",
+	"client": {
+		"@graph": [
+			{
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#CSR_DesktopClient",
+				"@type": [
+					"rdfs:Resource",
+					"_:b1",
+					"_:b7",
+					"soft:DesktopClient",
+					"_:b6",
+					"owl:Thing",
+					"owl:NamedIndividual",
+					"soft:RuntimeEnvironment",
+					"_:b3",
+					"_:b12",
+					"soft:CSRClient",
+					"_:b4",
+					"_:b10",
+					"soft:SoftwareThing",
+					"_:b13",
+					"_:b14",
+					"_:b11",
+					"_:b0",
+					"_:b8",
+					"_:b15",
+					"_:b2"
+				],
+				"hasCurrentUser": "8cae98a6-884f-4a8d-85f1-0548202de981",
+				"hasName": "CSR Desktop Browser Client",
+				"hasVendor": "Google",
+				"hasVersion": "1.16.0",
+				"executedBy": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#DesktopPC_Windows",
+				"hasSessionId": "f06b677c-e169-4b4e-b2ad-4228a927baaa",
+				"includes": "soft:CSRLoggedIn",
+				"isIncludedBy": "soft:Chromium",
+				"providedBy": "soft:Chromium",
+				"provides": "soft:CSRLoggedIn",
+				"label": "CSRDesktopClient",
+				"topDataProperty": "8cae98a6-884f-4a8d-85f1-0548202de981"
+			},
+			{
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#DesktopPC_Windows",
+				"@type": [
+					"_:b16",
+					"_:b17",
+					"_:b6",
+					"dev:Device",
+					"_:b18",
+					"_:b19",
+					"rdfs:Resource",
+					"owl:Thing",
+					"_:b20",
+					"dev:DesktopPC",
+					"_:b1",
+					"_:b8",
+					"_:b21",
+					"_:b3",
+					"dev:InteractiveDevice",
+					"_:b22",
+					"_:b23",
+					"_:b24",
+					"_:b0",
+					"_:b25",
+					"_:b26",
+					"owl:NamedIndividual",
+					"_:b11",
+					"_:b27",
+					"_:b28",
+					"_:b29",
+					"_:b30",
+					"com:PhysicalThing",
+					"_:b31",
+					"_:b32",
+					"_:b33",
+					"_:b34",
+					"_:b35",
+					"_:b36",
+					"_:b37",
+					"_:b38",
+					"dev:ComputingDevice"
+				],
+				"hasDevicePicture": "res/img/device/tv_icon.png",
+				"hasName": "Smartboard",
+				"hasOwner": "oliver.mross@tu-dresden.de",
+				"hasVendor": "Hewlett-Packard",
+				"currentOperatingSystem": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#Windows10",
+				"embeds": [
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#LogitechMouse",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#EizoPC_Display_2",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#EizoPC_Display",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#QuadCoreCPU",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#LogitechWebcam",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#HeadSet_Speaker",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#LogitechKeyboard"
+				],
+				"embedsCPU": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#QuadCoreCPU",
+				"execute": [
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#CSR_DesktopClient",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#Windows10",
+					"soft:Chromium"
+				],
+				"hasInputDevice": [
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#LogitechKeyboard",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#LogitechMouse",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#LogitechWebcam"
+				],
+				"hasMaximalMemory": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#RAM_4GB",
+				"hasMeasurand": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#RAM_4GB",
+				"hasMemory": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#RAM_4GB",
+				"hasOutputDevice": [
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#HeadSet_Speaker",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#EizoPC_Display_2",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#EizoPC_Display"
+				],
+				"dev:isMobile": false,
+				"supportsModality": [
+					"mod:OutputModality",
+					"mod:InputModality"
+				],
+				"label": "WindowsPC"
+			},
+			{
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#Windows10",
+				"@type": [
+					"_:b0",
+					"owl:NamedIndividual",
+					"_:b1",
+					"_:b2",
+					"_:b3",
+					"_:b4",
+					"_:b5",
+					"_:b6",
+					"soft:OperatingSystem",
+					"_:b7",
+					"_:b8",
+					"soft:SoftwareThing",
+					"rdfs:Resource",
+					"soft:RuntimeEnvironment",
+					"_:b9",
+					"_:b10",
+					"_:b11",
+					"owl:Thing"
+				],
+				"hasName": "Windows NT",
+				"hasVendor": "Microsoft",
+				"hasVersion": "10",
+				"executedBy": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#DesktopPC_Windows",
+				"includes": [
+					"soft:WebkitEngine",
+					"soft:Safari",
+					"soft:Chromium",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#CSR_DesktopClient",
+					"soft:CSRLoggedIn",
+					"soft:Flash",
+					"soft:Chrome",
+					"soft:Firefox",
+					"soft:Silverlight",
+					"soft:GeckoEngine"
+				],
+				"provides": [
+					"soft:Safari",
+					"soft:Chrome",
+					"soft:Firefox",
+					"soft:Chromium"
+				],
+				"label": "WindowsPC"
+			}
+		],
+		"@context": {
+			"includes": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#includes",
+				"@type": "@id"
+			},
+			"hasVersion": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasVersion"
+			},
+			"provides": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#provides",
+				"@type": "@id"
+			},
+			"label": {
+				"@id": "http://www.w3.org/2000/01/rdf-schema#label"
+			},
+			"executedBy": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#executedBy",
+				"@type": "@id"
+			},
+			"hasName": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasName"
+			},
+			"hasVendor": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasVendor"
+			},
+			"hasCurrentUser": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasCurrentUser"
+			},
+			"hasSessionId": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#hasSessionId"
+			},
+			"providedBy": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#providedBy",
+				"@type": "@id"
+			},
+			"topDataProperty": {
+				"@id": "http://www.w3.org/2002/07/owl#topDataProperty"
+			},
+			"isIncludedBy": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#isIncludedBy",
+				"@type": "@id"
+			},
+			"embedsCPU": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#embedsCPU",
+				"@type": "@id"
+			},
+			"supportsModality": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#supportsModality",
+				"@type": "@id"
+			},
+			"hasInputDevice": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasInputDevice",
+				"@type": "@id"
+			},
+			"embeds": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#embeds",
+				"@type": "@id"
+			},
+			"hasOutputDevice": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasOutputDevice",
+				"@type": "@id"
+			},
+			"hasDevicePicture": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasDevicePicture",
+				"@type": "http://www.w3.org/2001/XMLSchema#anyURI"
+			},
+			"execute": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#execute",
+				"@type": "@id"
+			},
+			"hasOwner": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasOwner"
+			},
+			"currentOperatingSystem": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#currentOperatingSystem",
+				"@type": "@id"
+			},
+			"hasMemory": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasMemory",
+				"@type": "@id"
+			},
+			"hasMeasurand": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasMeasurand",
+				"@type": "@id"
+			},
+			"isMobile": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#isMobile",
+				"@type": "http://www.w3.org/2001/XMLSchema#boolean"
+			},
+			"hasMaximalMemory": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasMaximalMemory",
+				"@type": "@id"
+			},
+			"com": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#",
+			"mod": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#",
+			"dev": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#",
+			"owl": "http://www.w3.org/2002/07/owl#",
+			"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+			"xml": "http://www.w3.org/XML/1998/namespace",
+			"spin": "http://spinrdf.org/spin#",
+			"xsd": "http://www.w3.org/2001/XMLSchema#",
+			"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+			"platform": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform#",
+			"soft": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#"
+		}
+	}
+}

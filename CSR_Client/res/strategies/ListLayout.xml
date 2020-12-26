@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layoutstrategy
+		xmlns="http://mmt.inf.tu-dresden.de/2014/documa/layoutstrategy"
+		xmlns:e="http://mmt.inf.tu-dresden.de/2014/documa/expressions"
+		id="list"
+		name="List Layout"
+		active="true">
+	<meta>
+		<icon>
+			<url>http://141.76.68.53:8080/csrclient/res/img/list.png</url>
+		</icon>
+	</meta>
+	<precondition>
+		<e:and>
+			<!-- there should be at least more than one component -->
+			<e:compare op="gt">
+				<e:all-count/>
+				<e:number>1</e:number>
+			</e:compare>
+			<!-- viewport width should not be much greater than the viewport height -->
+			<e:compare op="le">
+				<e:viewport-width/>
+				<e:multiply>
+					<e:viewport-height/>
+					<e:number>0.8</e:number>
+				</e:multiply>
+			</e:compare>
+		</e:and>
+	</precondition>
+	<ratingcriteria>
+		<!-- increase rating when viewport width is less than its height -->
+		<criterion scope="global" weight="1.5">
+			<e:compare op="lt">
+				<e:viewport-width/>
+				<e:viewport-height/>
+			</e:compare>
+		</criterion>
+		<!-- increase strategy rating when component height is less or equal the half of the viewport height -->
+		<criterion scope="individual" weight="1.3">
+			<e:compare op="lt">
+				<e:current-height/>
+				<e:divide>
+					<e:viewport-height/>
+					<e:number>2</e:number>
+				</e:divide>
+			</e:compare>
+		</criterion>
+	</ratingcriteria>
+	<algorithm>
+		<select>
+			<where>
+				<e:boolean>true</e:boolean>
+			</where>
+		</select>
+		<bounds>
+			<width>
+				<e:viewport-width/>
+			</width>
+			<height>
+				<e:current-height/>
+			</height>
+		</bounds>
+	</algorithm>
+</layoutstrategy>

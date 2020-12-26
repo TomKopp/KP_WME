@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layoutstrategy
+	xmlns="http://mmt.inf.tu-dresden.de/2014/documa/layoutstrategy"
+	xmlns:e="http://mmt.inf.tu-dresden.de/2014/documa/expressions"
+	id="bigSmall"
+	name="BoS Layout"
+	active="false">
+	<meta>
+		<icon>
+			<url>res/img/bos.png</url>
+		</icon>
+	</meta>
+	<precondition>
+		<e:compare op="gt">
+			<e:all-count />
+			<e:number>1</e:number>
+		</e:compare>
+	</precondition>
+	<ratingcriteria>
+		<criterion scope="individual">
+			<e:or>
+				<e:and>
+					<e:neg>
+						<e:compare op="eq">
+							<e:current-index />
+							<e:number>0</e:number>
+						</e:compare>
+					</e:neg>
+					<e:compare op="gt">
+						<e:divide>
+							<e:viewport-width />
+							<e:subtract>
+								<e:all-count />
+								<e:number>1</e:number>
+							</e:subtract>
+						</e:divide>
+						<e:divide>
+							<e:current-width />
+							<e:number>1.5</e:number>
+						</e:divide>
+					</e:compare>
+				</e:and>
+				<e:and>
+					<e:compare op="eq">
+						<e:current-index />
+						<e:number>0</e:number>
+					</e:compare>
+					<e:compare op="le">
+						<e:absolute>
+							<e:divide>
+								<e:subtract>
+									<e:divide>
+										<e:current-width />
+										<e:current-height />
+									</e:divide>
+									<e:divide>
+										<e:viewport-width />
+										<e:viewport-height />
+									</e:divide>
+								</e:subtract>
+								<e:divide>
+									<e:viewport-width />
+									<e:viewport-height />
+								</e:divide>
+							</e:divide>
+						</e:absolute>
+						<e:number>0.5</e:number>
+					</e:compare>
+				</e:and>
+			</e:or>
+		</criterion>
+	</ratingcriteria>
+	<algorithm>
+		<select>
+			<where>
+				<e:compare op="eq">
+					<e:current-index />
+					<e:number>0</e:number>
+				</e:compare>
+			</where>
+		</select>
+		<bounds>
+			<width>
+				<e:viewport-width />
+			</width>
+			<height>
+				<e:multiply>
+					<e:divide>
+						<e:viewport-height />
+						<e:number>3</e:number>
+					</e:divide>
+					<e:number>2</e:number>
+				</e:multiply>
+			</height>
+		</bounds>
+		<select>
+			<where>
+				<e:neg>
+					<e:compare op="eq">
+						<e:current-index />
+						<e:number>0</e:number>
+					</e:compare>
+				</e:neg>
+			</where>
+		</select>
+		<bounds>
+			<width>
+				<e:divide>
+					<e:viewport-width />
+					<e:selection-count />
+				</e:divide>
+			</width>
+			<height>
+				<e:divide>
+					<e:viewport-height />
+					<e:number>3</e:number>
+				</e:divide>
+			</height>
+		</bounds>
+	</algorithm>
+</layoutstrategy>

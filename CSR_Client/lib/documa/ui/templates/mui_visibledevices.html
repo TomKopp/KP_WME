@@ -1,0 +1,30 @@
+<div class="csr-mui-devices">
+	<h5>Visible neighbour devices</h5>
+
+	<div class="list-group csr-mui-udevices-list csr-mui-panel">
+		<!-- create a visual representation for each usable device -->
+		<a ng-repeat="device in devices"
+		   csr-drag="onDeviceDrag($event, device)"
+		   class="{{device.isCurrent() ? 'list-group-item list-group-item-success':'list-group-item'}}"
+		   data-toggle="tooltip" data-placement="top" title="Drag it on left container panel!">
+			<!-- definition of draggable device item -->
+			<div class="csr-mui-udevitem">
+				<div class="row">
+					<div class="col-md-5">
+						<img draggable="false" class="csr-mui-udevicon" ng-src="{{device.getDevicePicture()}}"/>
+					</div>
+					<div class="col-md-7">
+						<div class="csr-mui-udevpanel">
+							<span class="csr-mui-udev-header" ng-if="device.isCurrent()">Current device</span>
+							<span class="label label-default">Name</span>&nbsp;{{device.getDeviceName()}}<br/>
+							<span class="label label-default">Vendor</span>&nbsp;{{device.getVendorName()}}<br/>
+							<span class="label label-default">OS</span>&nbsp;{{device.getOSName()}}<br/>
+							<span class="label label-default">User</span>&nbsp;{{device.getUserId()}}<br/>
+						</div>
+						<button type="button" class="btn btn-success csr-mui-btn">Details</button>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>

@@ -1,0 +1,57 @@
+Manifest-Version: 1.0
+Built-By: oliver
+Class-Path: log4j-1.2.16.jar csr-runtime-0.0.1.jar jaxb-api-2.3.0.jar 
+ jaxb-runtime-2.3.0.jar jaxb-core-2.3.0.jar txw2-2.3.0.jar istack-comm
+ ons-runtime-3.0.5.jar stax-ex-1.7.8.jar FastInfoset-1.2.13.jar javax.
+ activation-api-1.2.0.jar jena-tdb-3.7.0.jar jena-arq-3.7.0.jar jena-s
+ haded-guava-3.7.0.jar jsonld-java-0.11.1.jar httpclient-cache-4.5.3.j
+ ar libthrift-0.10.0.jar jcl-over-slf4j-1.7.25.jar commons-lang3-3.4.j
+ ar jena-tdb2-3.7.0.jar jena-dboe-trans-data-3.7.0.jar jena-dboe-trans
+ action-3.7.0.jar jena-dboe-base-3.7.0.jar jena-dboe-index-3.7.0.jar j
+ ena-rdfconnection-3.7.0.jar csr-services-0.0.1.jar jersey-client-2.23
+ .2.jar javax.ws.rs-api-2.0.1.jar jersey-common-2.23.2.jar javax.annot
+ ation-api-1.2.jar jersey-guava-2.23.2.jar osgi-resource-locator-1.0.1
+ .jar hk2-api-2.5.0-b05.jar hk2-utils-2.5.0-b05.jar aopalliance-repack
+ aged-2.5.0-b05.jar javax.inject-2.5.0-b05.jar hk2-locator-2.5.0-b05.j
+ ar javassist-3.20.0-GA.jar commons-validator-1.5.0.jar commons-beanut
+ ils-1.9.2.jar commons-digester-1.8.1.jar commons-logging-1.2.jar comm
+ ons-collections-3.2.2.jar axis2-1.5.1.jar axis2-transport-local-1.5.1
+ .jar axis2-kernel-1.5.1.jar geronimo-ws-metadata_2.0_spec-1.1.2.jar g
+ eronimo-jta_1.1_spec-1.1.jar commons-httpclient-3.1.jar commons-fileu
+ pload-1.2.jar wsdl4j-1.6.2.jar XmlSchema-1.4.3.jar neethi-2.0.4.jar w
+ oden-api-1.0M8.jar ant-1.7.0.jar ant-launcher-1.7.0.jar xmlParserAPIs
+ -2.6.0.jar woden-impl-dom-1.0M8.jar axiom-dom-1.2.8.jar mail-1.4.jar 
+ xalan-2.7.0.jar wstx-asl-3.2.4.jar geronimo-stax-api_1.0_spec-1.0.1.j
+ ar commons-io-2.4.jar axis2-transport-http-1.5.1.jar axis-wsdl4j-1.5.
+ 1.jar axiom-api-1.2.8.jar geronimo-activation_1.1_spec-1.0.1.jar gero
+ nimo-javamail_1.4_spec-1.2.jar jaxen-1.1.1.jar xml-apis-1.4.01.jar ax
+ iom-impl-1.2.8.jar xmlbeans-2.3.0.jar stax-api-1.0.1.jar csr-communic
+ ation-0.0.1.jar spring-beans-2.5.6.jar spring-context-2.5.6.jar aopal
+ liance-1.0.jar spring-core-2.5.6.jar spring-web-2.5.6.jar xbean-sprin
+ g-3.9.jar apollo-broker-1.7.1.jar apollo-dto-1.7.1.jar jackson-core-2
+ .1.0.jar jackson-annotations-2.1.0.jar jackson-databind-2.1.0.jar apo
+ llo-selector-1.7.1.jar hawtdispatch-transport-1.20.jar hawtdispatch-1
+ .20.jar hawtdispatch-scala-1.20.jar activemq-jaas-5.7.0.jar jasypt-1.
+ 6.jar hawtbuf-proto-1.10.jar snakeyaml-1.7.jar scala-library-2.10.0.j
+ ar apollo-cli-1.7.1.jar airline-0.6.jar javax.inject-1.jar guava-12.0
+ .jar jsr305-1.3.9.jar jansi-1.11.jar apollo-stomp-1.7.1.jar apollo-le
+ veldb-1.7.1.jar leveldb-api-0.6.jar leveldb-0.6.jar leveldbjni-1.8.ja
+ r hawtjni-runtime-1.9.jar leveldbjni-osx-1.8.jar leveldbjni-linux32-1
+ .8.jar leveldbjni-linux64-1.8.jar leveldbjni-win32-1.8.jar leveldbjni
+ -win64-1.8.jar apollo-util-1.7.1.jar jetty-servlet-8.1.11.v20130520.j
+ ar jetty-security-8.1.11.v20130520.jar jetty-server-8.1.11.v20130520.
+ jar javax.servlet-3.0.0.v201112011016.jar jetty-continuation-8.1.11.v
+ 20130520.jar jetty-http-8.1.11.v20130520.jar jetty-websocket-8.1.11.v
+ 20130609.jar jetty-util-8.1.11.v20130520.jar jetty-io-8.1.11.v2013052
+ 0.jar stompjms-client-1.19.jar hawtbuf-1.9.jar json-lib-2.4-jdk15.jar
+  commons-lang-2.5.jar ezmorph-1.0.6.jar httpcore-4.3.2.jar httpclient
+ -4.3.2.jar commons-codec-1.6.jar csr-discovery-0.0.1.jar jena-core-3.
+ 7.0.jar jena-iri-3.7.0.jar commons-cli-1.4.jar jena-base-3.7.0.jar co
+ mmons-csv-1.5.jar collection-0.7.jar jena-cmds-3.7.0.jar johnzon-core
+ -1.1.7.jar javax.json-api-1.1.2.jar commons-email-1.1.jar activation-
+ 1.1.jar csr-core-1.16.1.jar csr-util-0.0.1.jar xom-1.2.5.jar xercesIm
+ pl-2.8.0.jar smcdl-1.16.2.jar mcm-1.15.3.jar commons-jxpath-1.3.jar j
+ grapht-core-1.0.0.jar
+Created-By: Apache Maven 3.5.3
+Build-Jdk: 1.8.0_181
+

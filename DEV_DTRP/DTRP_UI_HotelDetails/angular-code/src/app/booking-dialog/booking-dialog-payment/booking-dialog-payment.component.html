@@ -1,0 +1,7 @@
+<div>
+  <mat-radio-group (change)="selectPaymentOption($event.value)">
+    <div *ngFor="let paymentOption of paymentOptions" class="payment-option">
+      <mat-radio-button [value]="paymentOption.value">{{paymentOption.label}}</mat-radio-button>
+    </div>
+  </mat-radio-group>
+</div>

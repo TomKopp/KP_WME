@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Hotel buchen</h1>
+<div mat-dialog-content class="stepper-wrapper">
+  <mat-horizontal-stepper [linear]="true" #stepper>
+    <mat-step>
+      <ng-template matStepLabel>Personelle Daten</ng-template>
+      <app-booking-dialog-personal-data (personalDataValid)="changePersonalData($event)"></app-booking-dialog-personal-data>
+      <div class="action-button-wrapper">
+        <button mat-button matStepperNext [disabled]="!selectedPersonalData">Weiter</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Bezahlung</ng-template>
+      <app-booking-dialog-payment (selectedPayment)="changePayment($event)"></app-booking-dialog-payment>
+      <div class="action-button-wrapper">
+        <button mat-button matStepperPrevious>Zurück</button>
+        <button mat-button matStepperNext [disabled]="!selectedPaymentOption" class="booking-submit" [style.background]="!!selectedPaymentOption?null:'grey'">Kostenpflichtig buchen</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Fertig</ng-template>
+      <app-booking-dialog-ready [hotelData]="data"></app-booking-dialog-ready>
+      <div class="action-button-wrapper">
+        <button mat-button (click)="closeDialog()">Fertig</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
+<!-- <div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div> -->

@@ -1,0 +1,9 @@
+{
+  "build" : "desktop",
+  "version" : "1.11",
+  "vendor" : "MMT",
+  "name" : "csr_desktop_client",
+  "public_space" : {
+    "windows" : "/csr/public_space"
+  }
+}

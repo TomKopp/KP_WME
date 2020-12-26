@@ -1,0 +1,37 @@
+<div class="csr-mui-distribution-main">
+	<div class="close-btn" ng-click="close($event)">
+		<span class="glyphicon glyphicon-remove"></span>
+	</div>
+	<div class="csr-mui-panel csr-mui-distribution">
+		<!-- component collection -->
+		<div class="csr-mui-distribution-cmps" csr-drop="onComponentDropped($event)">
+			<!--<div class="title">Components</div>-->
+			<div class="csr-mui-distribution-container">
+				<!-- component container -->
+				<mui-icon-item ng-repeat="component in components"
+				               layout="vertical"
+				               id="{{component.getInstanceId()}}"
+				               icon="{{component.getIcon()}}"
+				               label="{{component.getName()}}"/>
+			</div>
+		</div>
+		<div class="csr-mui-distribution-conf">
+			<img src="./res/img/arrow_forward.png"/>
+		</div>
+		<div class="csr-mui-distribution-dev">
+			<!--<div class="title">Target devices</div>-->
+			<div class="csr-mui-udevitem">
+				<div class="csr-mui-udevitem-header">
+					<img draggable="false" class="csr-mui-udevicon"
+					     ng-src="{{device.getDevicePicture()}}"/>
+					<span class="csr-mui-udev-name">{{device.getDeviceName()}}</span><br/>
+				</div>
+				<div class="csr-mui-udevitem-body">
+					<span class="label label-default">Vendor</span>&nbsp;{{device.getVendorName()}}<br/>
+					<span class="label label-default">OS</span>&nbsp;{{device.getOSName()}}<br/>
+					<span class="label label-default">User</span>&nbsp;{{device.getUserId()}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

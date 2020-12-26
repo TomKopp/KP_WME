@@ -1,0 +1,63 @@
+.hotel-offers-wrapper {
+    float: left;
+    overflow: auto;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    background: white;
+}
+.hotel-offers-big-screen {
+    width: calc(100% - 285px);
+    margin: 0px 5px;
+    margin-right: 10px;
+}
+.hotel-offers-small-screen {
+    width: calc(100% - 10px);
+    margin: 0px 5px;
+}
+.hotel-offers-item-wrapper {
+    height: 120px;
+    padding: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.hotel-offers-item-select, .hotel-offers-item-price, .hotel-offers-item-rooms, .hotel-offers-item-name, .hotel-offers-item-img {
+    float: left;
+    text-align: center;
+}
+
+.hotel-offers-item-img {
+    width: 120px;
+    height: 120px;
+    background-size: cover;
+    background-position: center;
+}
+.hotel-offers-item-name {
+    font-weight: bold;
+    font-size: 18px;
+    text-align: left;
+}
+.hotel-offers-item-select {
+    width: calc(20% - 30px);
+}
+.hotel-offers-item-select button {
+    margin-top: 46px;
+}
+.hotel-offers-item-rooms {
+    width: calc(25% - 35px);
+    height: 24px;
+    margin-top: 50px;
+}
+.hotel-offers-item-price {
+    width: calc(20% - 35px);
+    height: 40px;
+    margin-top: 44px;
+    font-size: 12px;
+}
+.hotel-offers-item-price-sum {
+    font-weight: bold;
+    font-size: 20px;
+}
+.hotel-offers-item-name {
+    width: calc(35% - 50px);
+    padding-top: 10px;
+    padding-left: 10px;
+}

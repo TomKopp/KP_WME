@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ax29="http://mcm.mmt.inf.tudresden.de/xsd" xmlns:ns="http://service.compre.edyra.inf.tudresden.de" xmlns:ax25="http://beans.service.compre.edyra.inf.tudresden.de/xsd" xmlns:ax26="http://beans.integration.cruise.inf.tudresden.de/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:ax211="http://matchingresult.beans.integration.cruise.inf.tudresden.de/xsd" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://service.compre.edyra.inf.tudresden.de">
+    <wsdl:documentation>Serves for querying recommendations.</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://mcm.mmt.inf.tudresden.de/xsd">
+            <xs:complexType name="MappingDefinition">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="mappings" nillable="true" type="ax29:Mappings"/>
+                    <xs:element minOccurs="0" name="signature" nillable="true" type="ax29:Signature"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Mappings">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="forward" nillable="true" type="xs:anyType"/>
+                    <xs:element minOccurs="0" name="parameterJoin" nillable="true" type="xs:anyType"/>
+                    <xs:element minOccurs="0" name="parameterSplit" nillable="true" type="xs:anyType"/>
+                    <xs:element minOccurs="0" name="partialSubstitution" nillable="true" type="xs:anyType"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Signature">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="sourceParameterType" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="targetParameterType" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://beans.integration.cruise.inf.tudresden.de/xsd">
+            <xs:complexType name="Capability">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="activity" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="entity" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="requiresInteraction" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="weight" type="xs:float"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax212="http://matchingresult.beans.integration.cruise.inf.tudresden.de/xsd" xmlns:ax28="http://beans.service.compre.edyra.inf.tudresden.de/xsd" xmlns:ax210="http://mcm.mmt.inf.tudresden.de/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://service.compre.edyra.inf.tudresden.de">
+            <xs:import namespace="http://beans.service.compre.edyra.inf.tudresden.de/xsd"/>
+            <xs:import namespace="http://mcm.mmt.inf.tudresden.de/xsd"/>
+            <xs:import namespace="http://matchingresult.beans.integration.cruise.inf.tudresden.de/xsd"/>
+            <xs:element name="getPossibleComplexPatterns">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ireq" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="components" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPossibleComplexPatternsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCompletionPatterns">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="components" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="channels" nillable="true" type="ax28:ChannelInfo"/>
+                        <xs:element minOccurs="0" name="maxResults" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCompletionPatternsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCouplingsForComponent">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="componentID" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="interfaceElementID" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="max" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCouplingsForComponentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCuppleableComponentsByEvent">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ireq" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCuppleableComponentsByEventResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPossibleCouplings">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ireq" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="components" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPossibleCouplingsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCuppleableComponentsByOperations">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ireq" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCuppleableComponentsByOperationsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCouplings">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="componentID" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="interfaceElementID" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="componentID2" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="interfaceElementID2" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="max" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCouplingsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getExchangableComponents">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="componentID" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getExchangableComponentsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCoocurrances">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="forComponent" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="max" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCoocurrancesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getComponentsByText">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="query" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="maxResults" type="xs:int"/>
+                        <xs:element minOccurs="0" name="isUI" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="runtimeVersion" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="runtimeID" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="semanticOnly" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="requirements" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getComponentsByTextResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCompositionsByText">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="query" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="maxResults" type="xs:int"/>
+                        <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="semanticOnly" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCompositionsByTextResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getMediationRuleByID">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getMediationRuleByIDResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax29:MappingDefinition"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getMediationRulesBySignature">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="sourceParams" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="targetParams" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getMediationRulesBySignatureResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax29:MappingDefinition"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getMapping">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="cid" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="cid2" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getMappingResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax212:MatchingResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://matchingresult.beans.integration.cruise.inf.tudresden.de/xsd">
+            <xs:complexType name="MatchingResult">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="eventmapping" nillable="true" type="ax211:OperationAndEventMapping"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="operationmapping" nillable="true" type="ax211:OperationAndEventMapping"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="propertymapping" nillable="true" type="ax211:Mapping"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Mapping">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="match" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="OperationAndEventMapping">
+                <xs:complexContent>
+                    <xs:extension base="ax211:Mapping">
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="parametermapping" nillable="true" type="ax211:Mapping"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax27="http://beans.integration.cruise.inf.tudresden.de/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://beans.service.compre.edyra.inf.tudresden.de/xsd">
+            <xs:import namespace="http://beans.integration.cruise.inf.tudresden.de/xsd"/>
+            <xs:complexType name="ChannelInfo">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="cap" nillable="true" type="ax27:Capability"/>
+                    <xs:element minOccurs="0" name="publisherElementID" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="publisherID" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="subscriberElementID" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="subscriberID" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="type" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getExchangableComponentsRequest">
+        <wsdl:part name="parameters" element="ns:getExchangableComponents"/>
+    </wsdl:message>
+    <wsdl:message name="getExchangableComponentsResponse">
+        <wsdl:part name="parameters" element="ns:getExchangableComponentsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getPossibleComplexPatternsRequest">
+        <wsdl:part name="parameters" element="ns:getPossibleComplexPatterns"/>
+    </wsdl:message>
+    <wsdl:message name="getPossibleComplexPatternsResponse">
+        <wsdl:part name="parameters" element="ns:getPossibleComplexPatternsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getComponentsByTextRequest">
+        <wsdl:part name="parameters" element="ns:getComponentsByText"/>
+    </wsdl:message>
+    <wsdl:message name="getComponentsByTextResponse">
+        <wsdl:part name="parameters" element="ns:getComponentsByTextResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getCompletionPatternsRequest">
+        <wsdl:part name="parameters" element="ns:getCompletionPatterns"/>
+    </wsdl:message>
+    <wsdl:message name="getCompletionPatternsResponse">
+        <wsdl:part name="parameters" element="ns:getCompletionPatternsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getCouplingsRequest">
+        <wsdl:part name="parameters" element="ns:getCouplings"/>
+    </wsdl:message>
+    <wsdl:message name="getCouplingsResponse">
+        <wsdl:part name="parameters" element="ns:getCouplingsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getMediationRuleByIDRequest">
+        <wsdl:part name="parameters" element="ns:getMediationRuleByID"/>
+    </wsdl:message>
+    <wsdl:message name="getMediationRuleByIDResponse">
+        <wsdl:part name="parameters" element="ns:getMediationRuleByIDResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getMediationRulesBySignatureRequest">
+        <wsdl:part name="parameters" element="ns:getMediationRulesBySignature"/>
+    </wsdl:message>
+    <wsdl:message name="getMediationRulesBySignatureResponse">
+        <wsdl:part name="parameters" element="ns:getMediationRulesBySignatureResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getCouplingsForComponentRequest">
+        <wsdl:part name="parameters" element="ns:getCouplingsForComponent"/>
+    </wsdl:message>
+    <wsdl:message name="getCouplingsForComponentResponse">
+        <wsdl:part name="parameters" element="ns:getCouplingsForComponentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getCompositionsByTextRequest">
+        <wsdl:part name="parameters" element="ns:getCompositionsByText"/>
+    </wsdl:message>
+    <wsdl:message name="getCompositionsByTextResponse">
+        <wsdl:part name="parameters" element="ns:getCompositionsByTextResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getPossibleCouplingsRequest">
+        <wsdl:part name="parameters" element="ns:getPossibleCouplings"/>
+    </wsdl:message>
+    <wsdl:message name="getPossibleCouplingsResponse">
+        <wsdl:part name="parameters" element="ns:getPossibleCouplingsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getCuppleableComponentsByOperationsRequest">
+        <wsdl:part name="parameters" element="ns:getCuppleableComponentsByOperations"/>
+    </wsdl:message>
+    <wsdl:message name="getCuppleableComponentsByOperationsResponse">
+        <wsdl:part name="parameters" element="ns:getCuppleableComponentsByOperationsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getCuppleableComponentsByEventRequest">
+        <wsdl:part name="parameters" element="ns:getCuppleableComponentsByEvent"/>
+    </wsdl:message>
+    <wsdl:message name="getCuppleableComponentsByEventResponse">
+        <wsdl:part name="parameters" element="ns:getCuppleableComponentsByEventResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getMappingRequest">
+        <wsdl:part name="parameters" element="ns:getMapping"/>
+    </wsdl:message>
+    <wsdl:message name="getMappingResponse">
+        <wsdl:part name="parameters" element="ns:getMappingResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getCoocurrancesRequest">
+        <wsdl:part name="parameters" element="ns:getCoocurrances"/>
+    </wsdl:message>
+    <wsdl:message name="getCoocurrancesResponse">
+        <wsdl:part name="parameters" element="ns:getCoocurrancesResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="RecommendationServicePortType">
+        <wsdl:operation name="getExchangableComponents">
+            <wsdl:input message="ns:getExchangableComponentsRequest" wsaw:Action="urn:getExchangableComponents"/>
+            <wsdl:output message="ns:getExchangableComponentsResponse" wsaw:Action="urn:getExchangableComponentsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getPossibleComplexPatterns">
+            <wsdl:input message="ns:getPossibleComplexPatternsRequest" wsaw:Action="urn:getPossibleComplexPatterns"/>
+            <wsdl:output message="ns:getPossibleComplexPatternsResponse" wsaw:Action="urn:getPossibleComplexPatternsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByText">
+            <wsdl:input message="ns:getComponentsByTextRequest" wsaw:Action="urn:getComponentsByText"/>
+            <wsdl:output message="ns:getComponentsByTextResponse" wsaw:Action="urn:getComponentsByTextResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getCompletionPatterns">
+            <wsdl:input message="ns:getCompletionPatternsRequest" wsaw:Action="urn:getCompletionPatterns"/>
+            <wsdl:output message="ns:getCompletionPatternsResponse" wsaw:Action="urn:getCompletionPatternsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getCouplings">
+            <wsdl:input message="ns:getCouplingsRequest" wsaw:Action="urn:getCouplings"/>
+            <wsdl:output message="ns:getCouplingsResponse" wsaw:Action="urn:getCouplingsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getMediationRuleByID">
+            <wsdl:input message="ns:getMediationRuleByIDRequest" wsaw:Action="urn:getMediationRuleByID"/>
+            <wsdl:output message="ns:getMediationRuleByIDResponse" wsaw:Action="urn:getMediationRuleByIDResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getMediationRulesBySignature">
+            <wsdl:input message="ns:getMediationRulesBySignatureRequest" wsaw:Action="urn:getMediationRulesBySignature"/>
+            <wsdl:output message="ns:getMediationRulesBySignatureResponse" wsaw:Action="urn:getMediationRulesBySignatureResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getCouplingsForComponent">
+            <wsdl:input message="ns:getCouplingsForComponentRequest" wsaw:Action="urn:getCouplingsForComponent"/>
+            <wsdl:output message="ns:getCouplingsForComponentResponse" wsaw:Action="urn:getCouplingsForComponentResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getCompositionsByText">
+            <wsdl:input message="ns:getCompositionsByTextRequest" wsaw:Action="urn:getCompositionsByText"/>
+            <wsdl:output message="ns:getCompositionsByTextResponse" wsaw:Action="urn:getCompositionsByTextResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getPossibleCouplings">
+            <wsdl:input message="ns:getPossibleCouplingsRequest" wsaw:Action="urn:getPossibleCouplings"/>
+            <wsdl:output message="ns:getPossibleCouplingsResponse" wsaw:Action="urn:getPossibleCouplingsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getCuppleableComponentsByOperations">
+            <wsdl:input message="ns:getCuppleableComponentsByOperationsRequest" wsaw:Action="urn:getCuppleableComponentsByOperations"/>
+            <wsdl:output message="ns:getCuppleableComponentsByOperationsResponse" wsaw:Action="urn:getCuppleableComponentsByOperationsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getCuppleableComponentsByEvent">
+            <wsdl:input message="ns:getCuppleableComponentsByEventRequest" wsaw:Action="urn:getCuppleableComponentsByEvent"/>
+            <wsdl:output message="ns:getCuppleableComponentsByEventResponse" wsaw:Action="urn:getCuppleableComponentsByEventResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getMapping">
+            <wsdl:input message="ns:getMappingRequest" wsaw:Action="urn:getMapping"/>
+            <wsdl:output message="ns:getMappingResponse" wsaw:Action="urn:getMappingResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getCoocurrances">
+            <wsdl:input message="ns:getCoocurrancesRequest" wsaw:Action="urn:getCoocurrances"/>
+            <wsdl:output message="ns:getCoocurrancesResponse" wsaw:Action="urn:getCoocurrancesResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="RecommendationServiceSoap11Binding" type="ns:RecommendationServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getExchangableComponents">
+            <soap:operation soapAction="urn:getExchangableComponents" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPossibleComplexPatterns">
+            <soap:operation soapAction="urn:getPossibleComplexPatterns" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByText">
+            <soap:operation soapAction="urn:getComponentsByText" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCompletionPatterns">
+            <soap:operation soapAction="urn:getCompletionPatterns" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCouplings">
+            <soap:operation soapAction="urn:getCouplings" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMediationRuleByID">
+            <soap:operation soapAction="urn:getMediationRuleByID" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMediationRulesBySignature">
+            <soap:operation soapAction="urn:getMediationRulesBySignature" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCouplingsForComponent">
+            <soap:operation soapAction="urn:getCouplingsForComponent" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCompositionsByText">
+            <soap:operation soapAction="urn:getCompositionsByText" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPossibleCouplings">
+            <soap:operation soapAction="urn:getPossibleCouplings" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCuppleableComponentsByOperations">
+            <soap:operation soapAction="urn:getCuppleableComponentsByOperations" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCuppleableComponentsByEvent">
+            <soap:operation soapAction="urn:getCuppleableComponentsByEvent" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMapping">
+            <soap:operation soapAction="urn:getMapping" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCoocurrances">
+            <soap:operation soapAction="urn:getCoocurrances" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RecommendationServiceSoap12Binding" type="ns:RecommendationServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getExchangableComponents">
+            <soap12:operation soapAction="urn:getExchangableComponents" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPossibleComplexPatterns">
+            <soap12:operation soapAction="urn:getPossibleComplexPatterns" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByText">
+            <soap12:operation soapAction="urn:getComponentsByText" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCompletionPatterns">
+            <soap12:operation soapAction="urn:getCompletionPatterns" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCouplings">
+            <soap12:operation soapAction="urn:getCouplings" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMediationRuleByID">
+            <soap12:operation soapAction="urn:getMediationRuleByID" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMediationRulesBySignature">
+            <soap12:operation soapAction="urn:getMediationRulesBySignature" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCouplingsForComponent">
+            <soap12:operation soapAction="urn:getCouplingsForComponent" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCompositionsByText">
+            <soap12:operation soapAction="urn:getCompositionsByText" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPossibleCouplings">
+            <soap12:operation soapAction="urn:getPossibleCouplings" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCuppleableComponentsByOperations">
+            <soap12:operation soapAction="urn:getCuppleableComponentsByOperations" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCuppleableComponentsByEvent">
+            <soap12:operation soapAction="urn:getCuppleableComponentsByEvent" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMapping">
+            <soap12:operation soapAction="urn:getMapping" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCoocurrances">
+            <soap12:operation soapAction="urn:getCoocurrances" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RecommendationServiceHttpBinding" type="ns:RecommendationServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="getExchangableComponents">
+            <http:operation location="getExchangableComponents"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPossibleComplexPatterns">
+            <http:operation location="getPossibleComplexPatterns"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByText">
+            <http:operation location="getComponentsByText"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCompletionPatterns">
+            <http:operation location="getCompletionPatterns"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCouplings">
+            <http:operation location="getCouplings"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMediationRuleByID">
+            <http:operation location="getMediationRuleByID"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMediationRulesBySignature">
+            <http:operation location="getMediationRulesBySignature"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCouplingsForComponent">
+            <http:operation location="getCouplingsForComponent"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCompositionsByText">
+            <http:operation location="getCompositionsByText"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPossibleCouplings">
+            <http:operation location="getPossibleCouplings"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCuppleableComponentsByOperations">
+            <http:operation location="getCuppleableComponentsByOperations"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCuppleableComponentsByEvent">
+            <http:operation location="getCuppleableComponentsByEvent"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMapping">
+            <http:operation location="getMapping"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCoocurrances">
+            <http:operation location="getCoocurrances"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="RecommendationService">
+        <wsdl:port name="RecommendationServiceHttpSoap11Endpoint" binding="ns:RecommendationServiceSoap11Binding">
+            <soap:address location="http://141.76.68.50:8080/CoRe/services/RecommendationService.RecommendationServiceHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="RecommendationServiceHttpSoap12Endpoint" binding="ns:RecommendationServiceSoap12Binding">
+            <soap12:address location="http://141.76.68.50:8080/CoRe/services/RecommendationService.RecommendationServiceHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="RecommendationServiceHttpEndpoint" binding="ns:RecommendationServiceHttpBinding">
+            <http:address location="http://141.76.68.50:8080/CoRe/services/RecommendationService.RecommendationServiceHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

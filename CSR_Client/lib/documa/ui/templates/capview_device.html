@@ -1,0 +1,13 @@
+<div id="capPanel{{i}}{{j}}" class="capPanel panel" ng-init="index = (i * rows) - rows + j - 1;">
+	<div class="panel-heading" ng-init="device = cntr.getDistributionDevice(index)">
+		<h5 style="margin: 0">
+			<img draggable="false" class="csr-mui-udevicon" src="{{device.getDevicePicture()}}" style="height: 25px; width: 25px">
+			{{device.getDeviceName()}} - {{device.getVendorName()}}
+		</h5>
+	</div>
+	<div ng-attr-id="" class="device panel-body">
+		<capview-component ng-repeat="component in cntr.getDistributionComponents(index)">
+		</capview-component>
+	</div>
+</div>
+

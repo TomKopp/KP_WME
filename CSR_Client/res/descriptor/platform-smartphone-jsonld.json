@@ -1,0 +1,191 @@
+{
+	"client": {
+		"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#MobileClient_CSR",
+		"http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasID": "LGCSR01",
+		"http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasName": "CSRMobileClient",
+		"http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasVendor": "MMT",
+		"http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasVersion": "1.13.0",
+		"executedBy": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#LG_P970",
+		"hasSessionId": "db0d9b13-9b36-4712-b84c-2d2325762942",
+		"isIncludedBy": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#AndroidBrowser",
+		"providedBy": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#AndroidBrowser",
+		"@context": {
+			"isIncludedBy": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#isIncludedBy",
+				"@type": "@id"
+			},
+			"hasSessionId": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#hasSessionId",
+			"hasVersion": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasVersion",
+				"@type": "http://www.w3.org/2001/XMLSchema#string"
+			},
+			"hasID": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasID",
+				"@type": "http://www.w3.org/2001/XMLSchema#string"
+			},
+			"hasVendor": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasVendor",
+				"@type": "http://www.w3.org/2001/XMLSchema#string"
+			},
+			"executedBy": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#executedBy",
+				"@type": "@id"
+			},
+			"providedBy": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#providedBy",
+				"@type": "@id"
+			},
+			"hasName": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasName",
+				"@type": "http://www.w3.org/2001/XMLSchema#string"
+			}
+		}
+	},
+	"device": {
+		"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#LG_P970",
+		"hasDevicePicture": "http://upload.wikimedia.org/wikipedia/commons/a/ab/Pda_black.png",
+		"http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasManufacturer": "LG\t\t",
+		"http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasModelName": "LG P970\t\t",
+		"http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasModelNumber": "970\t\t",
+		"http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasName": "Oliver's Android Smartphone\t\t",
+		"currentOperatingSystem": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#JellyBean_LG",
+		"embeds": [
+			"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#ARM_LG",
+			"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#Battery_LG",
+			"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#MultitouchDisplay_LG",
+			"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#Camera_LG_Back",
+			"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#GyroscopeSensor_LG",
+			"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#Speaker_LG",
+			"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#Camera_LG_Front"
+		],
+		"embedsBattery": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#Battery_LG",
+		"embedsCPU": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#ARM_LG",
+		"embedsSensor": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#GyroscopeSensor_LG",
+		"execute": [
+			"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#MobileFirefox",
+			"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#MobileClient_CSR",
+			"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#JellyBean_LG"
+		],
+		"hasInputDevice": [
+			"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#Camera_LG_Back",
+			"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#Camera_LG_Front",
+			"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#MultitouchDisplay_LG"
+		],
+		"hasMaximalMemory": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#RAM_LG",
+		"hasMeasurand": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#RAM_LG",
+		"hasMemory": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#RAM_LG",
+		"hasOutputDevice": [
+			"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#Speaker_LG",
+			"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#MultitouchDisplay_LG"
+		],
+		"http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#isMobile": true,
+		"supportsModality": [
+			"http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#OutputModality",
+			"http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#InputModality"
+		],
+		"@context": {
+			"isMobile": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#isMobile",
+				"@type": "http://www.w3.org/2001/XMLSchema#boolean"
+			},
+			"hasMemory": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasMemory",
+				"@type": "@id"
+			},
+			"embeds": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#embeds",
+				"@type": "@id"
+			},
+			"embedsBattery": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#embedsBattery",
+				"@type": "@id"
+			},
+			"hasMaximalMemory": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasMaximalMemory",
+				"@type": "@id"
+			},
+			"supportsModality": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#supportsModality",
+				"@type": "@id"
+			},
+			"embedsSensor": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#embedsSensor",
+				"@type": "@id"
+			},
+			"hasName": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasName",
+				"@type": "http://www.w3.org/2001/XMLSchema#string"
+			},
+			"hasModelNumber": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasModelNumber",
+				"@type": "http://www.w3.org/2001/XMLSchema#string"
+			},
+			"hasDevicePicture": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasDevicePicture",
+				"@type": "http://www.w3.org/2001/XMLSchema#anyURI"
+			},
+			"hasOutputDevice": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasOutputDevice",
+				"@type": "@id"
+			},
+			"hasInputDevice": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasInputDevice",
+				"@type": "@id"
+			},
+			"execute": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#execute",
+				"@type": "@id"
+			},
+			"embedsCPU": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#embedsCPU",
+				"@type": "@id"
+			},
+			"hasManufacturer": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasManufacturer",
+				"@type": "http://www.w3.org/2001/XMLSchema#string"
+			},
+			"currentOperatingSystem": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#currentOperatingSystem",
+				"@type": "@id"
+			},
+			"hasMeasurand": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasMeasurand",
+				"@type": "@id"
+			},
+			"hasModelName": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasModelName",
+				"@type": "http://www.w3.org/2001/XMLSchema#string"
+			}
+		}
+	},
+	"os": {
+		"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#JellyBean_LG",
+		"enablesAspect": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#Telephony",
+		"http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasName": "JellyBean",
+		"http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasVendor": "Google",
+		"http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasVersion": "4.1.2",
+		"executedBy": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-smartphone#LG_P970",
+		"@context": {
+			"hasVersion": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasVersion",
+				"@type": "http://www.w3.org/2001/XMLSchema#string"
+			},
+			"hasVendor": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasVendor",
+				"@type": "http://www.w3.org/2001/XMLSchema#string"
+			},
+			"executedBy": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#executedBy",
+				"@type": "@id"
+			},
+			"enablesAspect": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#enablesAspect",
+				"@type": "@id"
+			},
+			"hasName": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasName",
+				"@type": "http://www.w3.org/2001/XMLSchema#string"
+			}
+		}
+	}
+}

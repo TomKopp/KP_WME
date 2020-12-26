@@ -1,0 +1,82 @@
+<div class="csr-mui-appconfig">
+	<h5>Create Application</h5>
+
+	<div class="csr-mui-panel">
+		<form class="form-horizontal" role="form">
+			<div class="form-group">
+				<label for="mui-ac-name" class="control-label col-sm-2">Name</label>
+				<!-- application name input -->
+				<div class="col-sm-10">
+					<input id="mui-ac-name" type="text" class="form-control" placeholder="Name?"
+					       ng-model="appName"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="mui-ac-descr" class="control-label col-sm-2">Description</label>
+				<!-- application description input -->
+				<div class="col-sm-10">
+					<input id="mui-ac-descr" type="text" class="form-control" placeholder="Description?"
+					       ng-model="appDescr"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="mui-ac-cnts" class="control-label col-sm-2">Container</label>
+				<!-- container panel dropzone -->
+				<div id="mui-ac-cnts" class="col-sm-10">
+					<div class="csr-mui-containerpanel"
+					     ng-mouseover="onMouseOverContainerPanel($event)"
+					     ng-mouseleave="onMouseLeaveContainerPanel($event)"
+					     csr-drop="onContainerDropped($event)"
+					     csr-drag-over="onContainerDragOver($event)"
+					     csr-drag-leave="onContainerDragLeave($event)"
+					     csr-drag-enter="onContainerDragEnter($event)">
+						<!-- /////////////////////////// -->
+						<!-- dropzone for usable devices -->
+						<!-- /////////////////////////// -->
+						<!-- definition of drop item -->
+						<div class="csr-mui-panel csr-mui-containeritem" ng-repeat="device in containers"
+						     csr-drag="onContainerItemDrag($event, device)"
+						     csr-drag-end="onContainerItemDragEnd($event)">
+							<div class="row">
+								<div class="col-sm-12">
+									<img draggable="false" ng-src="{{device.getDevicePicture()}}"/>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<span>{{device.getDeviceName()}}</span>
+								</div>
+							</div>
+						</div>
+						<!-- /////////////////////////////// -->
+						<!-- eof dropzone for usable devices -->
+						<!-- /////////////////////////////// -->
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-8">
+					<span style="margin-left: 5px">
+						<label class="radio-inline"><input type="radio" name="seltest" ng-model="testcase"
+						                                   ng-value="MIGR_OPTIONS" checked>Test Scenario</label>
+						<label class="radio-inline"><input type="radio" name="seltest" ng-model="testcase"
+						                                   ng-value="DEFAULT">Default</label>
+					</span>
+				</div>
+				<div class="col-sm-4">
+					<div class="btn-group" role="group" ng-switch="(appName && containers.length > 0) ? true : false">
+						<button type="button" class="btn btn-danger csr-mui-btn"
+						        ng-click="clearSettings()">Clear
+						</button>
+						<button ng-switch-when="true" type="button" class="btn btn-success csr-mui-btn"
+						        ng-click="createApp()">Create
+						</button>
+						<button ng-switch-when="false" type="button" class="btn btn-success csr-mui-btn"
+						        disabled>Create
+						</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

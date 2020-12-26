@@ -1,0 +1,37 @@
+<div class="capview-components">
+	<div ng-attr-id="channelRow_{{ component.uid }}" class="channelRow">
+		<div class="left controlPoint"></div><div class="right controlPoint"></div>
+	</div>
+	
+	<div ng-attr-id="cHeader_{{ component.uid }}" class="cHeader clearfix">
+		<span>{{component.info.name}}</span>
+		<div ng-click="cntr.onCloseButtonClicked(component.uid, component.id)" class="cClose clickable">close</div>
+		<div ng-click="cntr.onMinimizeButtonClicked(component.uid)" ng-attr-id="{{ component.uid }}minimize" ng-click="cntr.onMinimizeButtonClicked()" class="cMinimize clickable"></div>	
+		
+		<div class="iconClass" ng-attr-id="icon_{{ component.uid }}">
+			<img src="{{ component.info.icon }}" />
+		</div>
+	
+	</div>
+	
+	<div class="capContent" ng-attr-id = "capContent_{{ component.uid }}">
+		
+		<div class="capability-header capRow clickable" ng-click="cntr.toggleCapabilities(component.uid)"  ng-attr-id = "capHeader_{{ component.uid }}">
+			<span class="capability-header">Capabilities</span>
+		</div>
+		
+			<div class="capability nointeraction capRow clickable" ng-repeat="cap in component.cap" ng-if="cap.operation == 'noOperation' && cap.event == 'noEvent'">
+				<span class="label-text">{{cntr.getCapabilityLabel(cap)}}</span>
+			</div>
+		
+	
+			<div ng-attr-id="{{ cap.event }}{{ cap.operation }}_{{ component.uid }}" class="capability interaction capRow clickable" ng-repeat="cap in component.cap" ng-if="cap.operation != 'noOperation' || cap.event != 'noEvent'" activity="{{ cap.activity }}" entity="{{ cap.entity }}">
+					
+				<div ng-attr-id="{{ cap.operation }}_{{ component.uid }}" ng-if="cap.operation != 'noOperation'" class="connectionPoint incoming" >{{ cap.operation }}</div>
+				<span class="label-text">{{cntr.getCapabilityLabel(cap)}}</span>
+				<div ng-attr-id="{{ cap.event }}_{{ component.uid }}" ng-if="cap.event != 'noEvent'" class="connectionPoint outgoing">{{ cap.event }}</div>	
+				
+			</div>
+			  
+	</div>
+</div>

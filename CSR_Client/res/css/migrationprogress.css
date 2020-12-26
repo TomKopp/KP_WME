@@ -1,0 +1,113 @@
+#migrationProgress {
+
+}
+
+#migrationProgress .migration-component {
+    display: flex;
+    align-items: stretch;
+}
+
+#migrationProgress .migration-distribution {
+    display: flex;
+    align-items: center;
+    border: 1px solid #eee;
+    margin-bottom: 30px;
+}
+
+#migrationProgress .migration-distribution:last-child {
+    margin-bottom: 0;
+}
+
+#migrationProgress .migration-device-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border: 1px solid #eee;
+}
+
+#migrationProgress .migration-device {
+    display: block;
+}
+
+#migrationProgress .migration-device img {
+    width: 50px;
+    margin: 5px auto;
+}
+
+#migrationProgress .migration-device span {
+
+}
+
+#migrationProgress .progress-wrapper {
+    margin: 5px;
+    padding: 0 5px;
+    border-right: 2px solid #ddd;
+    border-left: 2px solid #ddd;
+}
+
+#migrationProgress .progress {
+    display: flex;
+    align-items: center;
+
+    margin: 0;
+    height: 20px;
+
+    border-radius: 2px;
+
+    word-wrap: break-word;
+}
+
+#migrationProgress .progress-status {
+    color: #999;
+    text-align: center;
+    font-size: 90%;
+}
+
+#migrationProgress .progress-bar {
+    overflow: hidden;
+}
+
+#migrationProgress .progress-bar-reverse {
+
+}
+
+#migrationProgress .progress-bar-reverse:last-child:before {
+
+}
+
+#migrationProgress .progress-bar-reverse-success {
+
+}
+
+#migrationProgress .progress-bar-reverse-success:last-child:before {
+    background-color: #eeeeee;
+}
+
+#migrationProgress .progress-panel {
+    display: flex;
+    align-items: center;
+}
+
+#migrationProgress .executable > div, #migrationProgress .replaceable > div {
+    padding: 0;
+}
+
+#migrationProgress .migration-component-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+#migrationProgress .migration-component-item label {
+    overflow: hidden;
+}
+
+#migrationProgress .migration-component-item img {
+    height: 25px;
+}
+
+#migrationProgress .modal-header .glyphicon {
+    padding: 0 20px;
+}
+
+
+

@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<title>CSR Client</title>
+
+	<!-- third party stylesheets -->
+	<link rel="stylesheet" type="text/css" href="lib/ext/resources/css/ext-all.css"/>
+	<link rel="stylesheet" type="text/css" href="lib/ext/resources/css/xtheme-gray.css"/>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/themes/paper/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="lib/jquery.pnotify/jquery.pnotify.default.css"/>
+	<link rel="stylesheet" type="text/css" href="lib/dropzone/css/dropzone.css"/>
+	<link rel="stylesheet" type="text/css" href="lib/fontawesome/css/font-awesome.min.css"/>
+
+	<!-- Include this file if you are using Pines Icons. -->
+	<link href="lib/jquery.pnotify/jquery.pnotify.default.icons.css" media="all" rel="stylesheet" type="text/css"/>
+
+	<!-- Custom stylesheets -->
+	<link href="res/css/basic.css" media="all" rel="stylesheet" type="text/css"/>
+	<link href="res/css/baseview.css" media="all" rel="stylesheet" type="text/css"/>
+	<link href="res/css/awareness.css" media="all" rel="stylesheet" type="text/css"/>
+	<link href="res/css/sidebar.css" media="all" rel="stylesheet" type="text/css"/>
+	<link href="res/css/coordination.css" media="all" rel="stylesheet" type="text/css"/>
+	<link href="res/css/searchpanel.css" media="all" rel="stylesheet" type="text/css"/>
+	<link href="res/css/metaui.css" media="all" rel="stylesheet" type="text/css"/>
+	<link href="res/css/capviewconfig.css" media="all" rel="stylesheet" type="text/css"/>
+	<link href="res/css/migrationoptions.css" media="all" rel="stylesheet" type="text/css"/>
+	<link href="res/css/migrationprogress.css" media="all" rel="stylesheet" type="text/css"/>
+	<link href="res/css/histview.css" media="all" rel="stylesheet" type="text/css"/>
+	<!-- own stuff -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.2/jquery.mCustomScrollbar.css" media="all" rel="stylesheet" type="text/css"/>
+
+	<!--  3rd party libs -->
+	<script type="text/javascript" src="lib/ext/adapter/ext/ext-base.min.js"></script>
+	<script type="text/javascript" src="lib/ext/ext-all.min.js"></script>
+	<script type="text/javascript" src="lib/sockjs/sockjs-0.3.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="lib/stompjs/stomp.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="lib/uuid/uuid.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="lib/jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="lib/jquery.pnotify/jquery.pnotify.min.js"></script>
+	<script type="text/javascript" src="lib/dropzone/dropzone.min.js"></script>
+	<script type="text/javascript" src="lib/angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="lib/es6/es6-promise.min.js"></script>
+	<script type="text/javascript" src="lib/uaparser/ua-parser.min.js"></script>
+	<script type="text/javascript" src="lib/d3/d3.min.js"></script>
+	<script type="text/javascript" src="lib/jsplumb/jsPlumb-2.0.5.js"></script>
+	<!-- new stuff trying to fix stuff -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.2/jquery.mCustomScrollbar.js"></script>
+</head>
+<body ng-controller="DocumaController">
+<!-- framework libraries -->
+<script type="text/javascript" src="lib/documa/DoCUMA.js" charset="UTF-8"></script>
+
+
+<!--<script type="text/javascript" src="lib/jsonld/jsonld.min.js"></script>-->
+<script type="text/javascript">
+	Ext.onReady(function(){
+		console.log('Loading scripts ...');
+		Documa.load(function(){
+			console.log("... finished!");
+			if (Documa.isNodeWebkit()) {
+				// current runtime environment is node-webkit based
+				var __dirname = process.cwd();
+			}
+		});
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,463 @@
+#metaview{
+	background: rgba(0,0,0,0.75);
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	visibility: hidden;
+}
+
+.cHeader{
+	line-height: 26px;
+	background-color: black;
+	padding-left: 10px;
+	height: 26px;
+	color:white;
+}
+
+.component_overlay{
+	overflow-y: hidden;
+	color:#fff;
+}
+
+.capview{
+	left: -1px;
+	position:relative;
+}
+
+.capRow{
+	position:relative;
+	height: 24px;
+	z-index:1;
+	border: 1px solid #333;
+	border-width:0 1px 1px 1px;
+	text-align:center;
+	line-height:24px;
+	color: white;
+}
+
+.capRow.hidden{
+	display: none !important;
+}
+
+.capContent{
+	width:100%;
+	display: inherit;
+}
+
+.device{
+	/*overflow-y: scroll;
+	height:720px;*/
+}
+
+.iconClass{
+  display: none;
+	visibility: hidden;
+
+}
+
+.iconClass img{
+	max-width: 100px;
+	max-height: 100px;
+	margin: 10px 100px;
+}
+
+.channelRow {
+	height:20px;
+}
+
+.controlPoint{
+/*	position: absolute;*/
+	width:20px;
+ 	height: 20px;
+/*	background-color: red;*/
+}
+
+.controlPoint.left{
+	float: left;
+	left: 0px;
+}
+
+.controlPoint.right{
+	float: right;
+	right: 0px;
+}
+
+.connectionPoint{
+  position:absolute;
+  top:2px;
+  width:20px;
+  height: 20px;
+  background-size: 20px;
+  background-repeat:no-repeat;
+  text-indent:-9999px;
+  background-image: url('../img/cp.png');
+  cursor: pointer;
+}
+
+.connectionPoint:hover{
+  background-image: url('../img/cph.png');
+}
+
+.connectionPoint.selected{
+	background-image: url('../img/cpout.png');
+}
+
+.connectionPoint.recommended{
+	background-image: url('../img/cpin.png');
+}
+
+.connectionPoint.outgoing{
+    float: right;
+    right:0;
+}
+
+.connectionPoint.incoming{
+  float: left;
+  left:0;
+}
+
+.jsplumb-connector { z-index:0; }
+.jsplumb-endpoint { 
+	z-index:50;
+	}
+
+.capPanel .grayed{
+  background-color: #bbb !important;
+}
+
+.notRecommended{
+	background-image: url('../img/cprot.png');
+}
+
+.recommended{
+	background-image: url('../img/cpgruen.png');
+}
+
+.leerbutton{
+	width:2px;
+	color: rgba(0,0,0,0.5);
+	display:inline;
+}
+
+.iInfo{
+  float: right;
+  width:24px;
+  height: 24px;
+  /*border: 1px solid #000000;*/
+  background-image: url('../img/info.png');
+  background-size: 20px;
+  background-repeat:no-repeat;
+
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.iInfo:hover{
+	background-image: url('../img/infoh.png')
+}
+
+/*Operations to the Component*/
+.cClose{
+  float: right;
+  width:20px;
+  height: 26px;
+  /*text-align: bottom;*/
+  /*border: 1px solid #000000;*/
+  background-image: url('../img/bin.png');
+  background-size: 20px;
+  background-repeat:no-repeat;
+
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.cClose:hover{
+  background-image: url('../img/binh.png');
+  background-size: 20px;
+  background-repeat:no-repeat;
+}
+
+.cMinimize{
+  float: right;
+  width:20px;
+  height: 26px;
+  /*border: 1px solid #000000;*/
+  background-image: url('../img/minn.png');
+  background-size: 20px;
+  background-repeat:no-repeat;
+}
+
+.cMinimize:hover{
+  background-image: url('../img/minnh.png');
+}
+
+/*no operation capabilities violet */
+.capability.nooperation{
+  background-color: rgba(153, 119, 221, 0.87);
+}
+
+/* properties - green*/
+.property-header, .property{
+  background-color: rgba(136, 187, 85, 0.87);
+}
+
+.property-header:hover, .property:hover{
+  background-color:#9c6;
+}
+
+/* operation capabilities - blue*/
+.capability-header, .capability.interaction{
+  background-color:rgba(51, 170, 221, 0.87);
+}
+
+.capability-header:hover, .capability.interaction:hover{
+  background-color:#5be;
+}
+
+.capability-header, .property-header, .eo-header{
+	cursor:pointer;
+}
+
+/* remove Background for header spans */
+span.capability-header, span.property-header{
+	background: none;
+}
+
+/* capability - orange*/
+.capability.nointeraction{
+  background-color: #e54;
+}
+
+.capability.nointeraction:hover{
+  background-color: #f65;
+}
+
+
+/* events and operations - blue */
+.eo-header, .event, .operation{
+  background-color: rgba(31, 133, 181, 0.86);
+}
+
+.callbackOperation{
+  background-color: #70bedb;
+}
+
+.eo-header:hover, .event:hover, .operation:hover{
+  background-color: #70bedb;
+}
+
+
+/*format metadata*/
+
+#metaPopUp{
+
+}
+#metaHead{
+
+}
+
+#metadataContent .metadata-ul{
+	font-family:Arial;
+	font-size: 16px;
+	list-style-type: disc;
+	padding-left:10px;
+}
+
+#metadataContent .metadata-li:last-child{
+	font-family:Arial;
+	list-style-type: square;
+	padding-bottom: 2em;
+	padding-left:15px;
+}
+
+
+
+/* ##### ProfView ######### */
+
+.profPanel{
+	width: 100%;
+	display: inherit;
+}
+
+.profPanel .profRow{
+	position:relative;
+	height: 24px;
+	border: 1px solid #333;
+	border-width:0 1px 1px 1px;
+	text-align:center;
+	line-height:24px;
+}
+
+.profPanel .connectionPoint{
+	top: 2px;
+  	width:20px;
+  	height: 20px;
+  	background-repeat:no-repeat;
+  	background-size: 100% auto;
+  	background-image: url('../img/cp.png');
+}
+
+.profPanel .connectionPoint:hover{
+  background-image: url('../img/cph.png');
+}
+
+.profPanel .connectionPoint.selected{
+	background-image: url('../img/cpout.png');
+}
+
+.profPanel .connectionPoint.recommended{
+	background-image: url('../img/cpin.png');
+}
+
+.profPanel .connectionPoint.outgoing{
+    position: absolute;
+    right:0;
+}
+
+.profPanel .connectionPoint.incoming{
+  position: absolute;
+  left:0;
+}
+
+
+
+
+/* properties */
+.profPanel .property_name, .profPanel .property_value{
+	width: 50%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.profPanel .property_name{
+	float: left;
+}
+
+.profPanel .property_value input{
+	background: transparent;
+    border: none;
+    color: white;
+}
+
+.rowHidden{
+	height: 0 !important;
+	border: none !important;
+	/*display: flex;*/
+	top: -24px;
+	visibility: hidden;
+}
+
+
+/* service component panel */
+
+#sc-view{
+	background: #ddd;
+}
+
+.sc-panel {
+  position: absolute;
+  bottom: 0 !important;
+  right: 0 !important;
+  left: auto !important;
+  top: auto !important;
+}
+
+.service-component{
+	float: left;
+	margin: 20px;
+	border: 0px;
+	background: #fff;
+}
+
+.service-component .x-tool-close {
+background: none;
+background-image: url("../img/gray/icon_dark_02.png");
+background-size: 18px;
+background-repeat: no-repeat;
+width: 18px;
+height: 18px;
+margin-top: -2px;
+margin-right: 2px;
+}
+
+.service-component-name{
+	margin:4px;
+	border-bottom: 1px solid #999;
+	font-weight: 700;
+}
+
+.service-component-body{
+	padding:5px;
+}
+
+.service-icon{
+	display:inline-block;
+	max-width:250px;
+	max-height:250px;
+}
+
+.dataRow.greyedOut{
+
+background-color:#808080;
+}
+
+/* ##### TOOLTIP ######### */
+[data-tip] {
+        position:relative;
+}
+[data-tip]:before {
+        content:'';
+        display:none;
+        border:6px solid #1a1a1a;
+        border-top-color:transparent;
+		border-left-color:#1a1a1a;
+		border-right-color: transparent;
+        border-bottom-color:transparent;
+        position:absolute;
+        top:4px;
+        z-index:1000;
+        font-size:0;
+        line-height:0;
+        width:0;
+        height:0;
+}
+[data-tip]:after {
+        display: none;
+        content: attr(data-tip);
+        position: absolute;
+        /*top: -2px;*/
+        bottom: -1px;
+        padding: 4px 8px;
+        background: #1a1a1a;
+        color: #fff;
+        z-index: 1000;
+        font-size: 12px;
+        line-height: normal;
+        word-wrap: normal;
+}
+[data-tip]:hover:before,
+[data-tip]:hover:after {
+        display:block;
+}
+
+.tip-right[data-tip]:after {
+	left:28px;
+}
+
+.tip-right[data-tip]:before {
+	border-right-color:#1a1a1a;
+	border-left-color:transparent;
+	left:16px;
+}
+
+.tip-left[data-tip]:after {
+	right:28px;
+}
+
+.tip-left[data-tip]:before {
+	right:16px;
+}

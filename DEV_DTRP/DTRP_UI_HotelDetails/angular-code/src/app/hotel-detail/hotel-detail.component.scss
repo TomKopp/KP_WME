@@ -1,0 +1,43 @@
+.hotel-detail-wrapper-out {
+    height: calc(100% - 80px);
+    margin-top: 80px;
+    overflow-y: auto;
+}
+.hotel-detail-wrapper {
+    overflow: auto;
+}
+.hotel-detail-slideshow {
+    width: 100%;
+    height: 400px;
+    overflow: auto;
+}
+.hotel-detail-slideshow-image-item {
+    width: 100px;
+    height: 60px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 8px 0px 0px 8px;
+    float: left;
+    cursor: pointer;
+}
+.hotel-detail-slideshow-images {
+    width: 100%;
+    overflow: auto;
+    background: #282828;
+    padding-bottom: 10px;
+}
+.hotel-detail-wrapper-big-screen {
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+.hotel-detail-wrapper-small-screen {
+    width: 100%;
+}
+.hotel-detail-no-hotel-selected {
+    text-align: center;
+}
+.hotel-offers-feature-wrapper {
+    margin-top: 20px;
+}

@@ -1,0 +1,1502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	targetNamespace="http://mmt.inf.tu-dresden.de/smcdl/1.16"
+	elementFormDefault="qualified"
+	version="1.16"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:meta="http://mmt.inf.tu-dresden.de/smcdl/1.16/metadata"
+	xmlns:con="http://mmt.inf.tu-dresden.de/smcdl/1.16/container"
+	xmlns:smcdl="http://mmt.inf.tu-dresden.de/smcdl/1.16">
+	<xs:annotation>
+		<xs:documentation>This schema defines the description language for mashup
+			components in CRUISe and EDYRA, which are
+			modeled by their properties,
+			operations, events, and capabilities. SMCDL declares the interface (i.e.
+			properties, operations, and events) of a mashup component in an abstract,
+			implementation-independent way. Additionally, a binding
+			of a component
+			implementation to the interface parts is defined.
+			Furthermore, SMCDL provides
+			means for semantic annotation and description of mashup components.
+		</xs:documentation>
+	</xs:annotation>
+	<xs:import
+		namespace="http://mmt.inf.tu-dresden.de/smcdl/1.16/metadata"
+		schemaLocation="Metadata.xsd" />
+	<xs:import
+		namespace="http://mmt.inf.tu-dresden.de/smcdl/1.16/container"
+		schemaLocation="Container.xsd" />
+	<xs:complexType name="Component">
+		<xs:sequence>
+			<xs:element
+				ref="smcdl:capability"
+				minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element
+				ref="meta:metadata"
+				minOccurs="0" />
+			<xs:element
+				ref="smcdl:requirements"
+				minOccurs="1"
+				maxOccurs="1" />
+			<xs:element ref="smcdl:interface" />
+			<xs:element ref="smcdl:binding" />
+		</xs:sequence>
+		<xs:attribute
+			name="id"
+			type="xs:anyURI"
+			use="required">
+			<xs:annotation>
+				<xs:documentation>A globally unique identifier of the component, e.g.
+					"http://inf.tu-dresden.de/cruise/components/service/routing/vvo"
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute
+			name="name"
+			type="xs:string"
+			use="required">
+			<xs:annotation>
+				<xs:documentation>A human readable name of the component, e.g. "VVO Routing
+					Service"
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute
+			name="isUI"
+			type="xs:boolean"
+			use="required">
+			<xs:annotation>
+				<xs:documentation>Indicates the type of this component, i.e whether its an
+					UI or non-UI component.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute
+			name="version"
+			type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The version of the component.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute
+			name="signature"
+			type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Contains a digital signature to verify the document's
+					integrity and origin.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<!-- ################# ATTRIBUTES ############################ -->
+
+	<xs:attributeGroup name="modelRef.attributeGroup">
+		<xs:attribute
+			name="activity"
+			type="xs:QName"
+			use="required">
+			<xs:annotation>
+				<xs:documentation>Contains a references to a semantic concept describing In
+					general, it is recommended to utilize a
+					action classification as underlying
+					semantic model.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute
+			name="entity"
+			type="xs:QName"
+			use="required">
+			<xs:annotation>
+				<xs:documentation>Contains a references to a semantic concept to enable
+					semantic annotations for the component
+					interface. In general, it is
+					recommended to utilize a action classification as underlying semantic
+					model.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+
+
+	<!-- ################# INTERFACE TYPES ############################ -->
+
+	<xs:complexType name="Interface">
+		<xs:sequence>
+			<xs:element
+				ref="smcdl:property"
+				minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element
+				ref="smcdl:event"
+				minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element
+				ref="smcdl:operation"
+				minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element
+				ref="smcdl:dragSource"
+				minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType
+		name="ITypable"
+		abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				An interface for elements that are linked to a semantic
+				type (ontology concept). Additionally,
+				example data can be
+				attached and have
+				to comply with the standard grounding
+				schema of the semantic type.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				name="exampledata"
+				type="smcdl:Exampledata"
+				minOccurs="0"
+				maxOccurs="unbounded">
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute
+			name="type"
+			type="xs:QName">
+			<xs:annotation>
+				<xs:documentation>
+					The semantic type of this ITypable, i.e the URI of a
+					concept in an external ontology represented by
+					a QName.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute
+				name="isCollection"
+				type="xs:boolean"
+				use="optional"
+				default="false"/>
+		<xs:attribute
+			name="dataSize"
+			type="xs:nonNegativeInteger"
+			use="optional"
+			default="0">
+			<xs:annotation>
+				<xs:documentation>
+					This attribute describes the data size of the element in
+					Byte.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Property">
+		<xs:complexContent>
+			<xs:extension base="smcdl:ITypable">
+				<xs:sequence>
+					<xs:element
+						ref="meta:documentation"
+						minOccurs="0" />
+					<xs:element
+						name="default"
+						type="xs:anyType"
+						minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+								Contains a default value for this
+								property.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element
+						ref="smcdl:changeEvent"
+						minOccurs="0"
+						maxOccurs="1" />
+					<xs:element
+						ref="smcdl:causes"
+						minOccurs="0"
+						maxOccurs="1" />
+					<xs:element
+						ref="smcdl:causedBy"
+						minOccurs="0"
+						maxOccurs="1" />
+				</xs:sequence>
+				<xs:attribute
+					name="name"
+					type="xs:string"
+					use="required">
+					<xs:annotation>
+						<xs:documentation>
+							The name of the property (must be unique
+							within the scope
+							of the class.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute
+					name="transient"
+					type="xs:boolean"
+					use="optional"
+					default="false">
+					<xs:annotation>
+						<xs:documentation>
+							If this property is part of the memento.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+
+				<xs:attribute
+					name="readonly"
+					type="xs:boolean">
+					<xs:annotation>
+						<xs:documentation>
+							Specifies that a property can only be read,
+							not edited at
+							run time (if set to "true").
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute
+					name="configOnly"
+					type="xs:boolean"
+					default="false"
+					use="optional">
+					<xs:annotation>
+						<xs:documentation>
+							Specifies that a property only serves for
+							initial
+							configuration of a component, but
+							has no
+							relevance for state
+							representation.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute
+						name="required"
+						type="xs:boolean"
+						use="optional"
+						default="false"/>
+				<xs:attribute
+					name="nature"
+					use="optional">
+					<xs:annotation>
+						<xs:documentation>
+							Specifies if the property is suited for
+							coordination and
+							which kind of coordination
+							(i.e.
+							highlight
+							or selection)
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="data" />
+							<xs:enumeration value="filter" />
+							<xs:enumeration value="visual" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DragSource">
+		<xs:sequence>
+			<xs:element
+				ref="meta:documentation"
+				minOccurs="0" />
+			<xs:element
+				ref="smcdl:parameter"
+				minOccurs="1"
+				maxOccurs="1" />
+		</xs:sequence>
+		<xs:attribute
+			name="name"
+			type="xs:string"
+			use="required" />
+	</xs:complexType>
+	<xs:complexType name="Event">
+		<xs:sequence>
+			<xs:element
+				ref="meta:documentation"
+				minOccurs="0" />
+			<xs:element
+				ref="smcdl:parameter"
+				minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element
+				ref="smcdl:callbackOperation"
+				minOccurs="0"
+				maxOccurs="1" />
+			<xs:element
+				ref="smcdl:commBehavior"
+				minOccurs="0"
+				maxOccurs="1" />
+			<xs:element
+				ref="smcdl:causedBy"
+				minOccurs="0"
+				maxOccurs="1" />
+		</xs:sequence>
+		<xs:attribute
+			name="name"
+			type="xs:string"
+			use="required" />
+		<xs:attribute
+			name="isContext"
+			type="xs:boolean"
+			default="false"
+			use="optional" />
+	</xs:complexType>
+	<xs:complexType name="Operation">
+		<xs:sequence>
+			<xs:element
+				ref="meta:documentation"
+				minOccurs="0" />
+			<xs:element
+					name="capability"
+					type="smcdl:OperationCapability"
+					minOccurs="0"
+					maxOccurs="unbounded"/>
+			<xs:element
+				ref="smcdl:parameter"
+				minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element
+				ref="smcdl:returnEvent"
+				minOccurs="0"
+				maxOccurs="1" />
+		</xs:sequence>
+		<xs:attribute
+			name="name"
+			type="xs:string"
+			use="required" />
+		<xs:attribute
+			name="syncable"
+			type="xs:boolean"
+			use="optional" />
+	</xs:complexType>
+	<xs:complexType name="Parameter">
+		<xs:complexContent>
+			<xs:extension base="smcdl:ITypable">
+				<xs:sequence>
+					<xs:element
+						ref="meta:documentation"
+						minOccurs="0" />
+				</xs:sequence>
+				<xs:attribute
+					name="name"
+					type="xs:string"
+					use="required">
+					<xs:annotation>
+						<xs:documentation>The name of the typable object (currently parameter or
+							property). It has to be unique for the
+							whole component (property) or the
+							event/operation (parameter).
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ChangeEvent">
+		<xs:attribute
+			name="name"
+			type="xs:string"
+			use="required" />
+	</xs:complexType>
+	<xs:complexType name="CallbackOperation">
+		<xs:attribute
+			name="name"
+			type="xs:string"
+			use="required" />
+	</xs:complexType>
+	<xs:complexType name="ReturnEvent">
+		<xs:attribute
+			name="name"
+			type="xs:string"
+			use="required" />
+	</xs:complexType>
+	<xs:complexType name="AtomicOperation">
+		<xs:complexContent>
+			<xs:extension base="smcdl:ITypable">
+				<xs:annotation>
+					<xs:documentation>
+						Represents a single operation from an user interaction
+						ontology, e.g. a click, a drag, a key
+						press, a swipe etc.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:attribute
+						name="id"
+						type="xs:ID"
+						use="required"/>
+				<xs:attribute
+					name="element"
+					type="xs:string"
+					use="required">
+					<xs:annotation>
+						<xs:documentation>
+							A CSS selector matching the elements where this
+							operation is applicable.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute
+					name="modifier"
+					type="xs:QName">
+					<xs:annotation>
+						<xs:documentation>
+							An optional modifier for the user interaction operation,
+							e.g. the key that has to be pressed.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SequentialOperation">
+		<xs:annotation>
+			<xs:documentation>
+				Represents a sequence of operations. E.g. open the menu,
+				then choose "sort".
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+					ref="smcdl:atomicoperation"
+					minOccurs="2"
+					maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute
+				name="id"
+				type="xs:ID"
+				use="required"/>
+	</xs:complexType>
+	<xs:complexType name="ParallelOperation">
+		<xs:annotation>
+			<xs:documentation>
+				Represents parallel operations that have to happen
+				simultaniously. E.g. keyboard shortcuts like
+				STRG+T.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+					ref="smcdl:atomicoperation"
+					minOccurs="2"
+					maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute
+				name="id"
+				type="xs:ID"
+				use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Capability">
+		<xs:annotation>
+			<xs:documentation>
+				A capability describes functional semantics of
+				components
+				and operations as a tuple of a task and a
+				modified entity. Furthermore, every
+				capability may
+				require user interaction or not to be achieved.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				name="viewbinding"
+				type="smcdl:ViewBinding"
+				minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element
+				ref="smcdl:causes"
+				minOccurs="0"
+				maxOccurs="1" />
+			<xs:element
+				ref="smcdl:causedBy"
+				minOccurs="0"
+				maxOccurs="1" />
+		</xs:sequence>
+		<xs:attributeGroup ref="smcdl:modelRef.attributeGroup" />
+		<xs:attribute
+			name="requiresInteraction"
+			type="xs:boolean"
+			use="optional"
+			default="true">
+			<xs:annotation>
+				<xs:documentation>
+					Indicates whether user interaction with the
+					componente is
+					required in order to achive the
+					capability
+					or not.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute
+			name="id"
+			type="xs:ID"
+			use="required" />
+		<xs:attribute
+			name="activityModifier"
+			type="xs:QName">
+			<xs:annotation>
+				<xs:documentation>
+					References a semantic concept in order to specify
+					the
+					activity more precisly, e.g., activity=sort
+					activityModified=hasName
+					entity=hotel to express
+					that hotels are sorted by name.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute
+			name="entityContext"
+			type="xs:QName">
+			<xs:annotation>
+				<xs:documentation>
+					References a semantic concept in order to specify
+					the
+					context of the entity more precisly, e.g.,
+					entity=hasName
+					entityContext=Hotel Activity=Select to express
+					that the name of a hotel can
+					be selected.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="OperationCapability">
+		<xs:annotation>
+			<xs:documentation>A special capability for operations with fixed provider
+				attribute.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="smcdl:Capability">
+				<xs:sequence>
+					<xs:element
+						name="viewbinding"
+						type="smcdl:ViewBinding"
+						minOccurs="0"
+						maxOccurs="unbounded" />
+					<xs:element
+						ref="smcdl:causes"
+						minOccurs="0"
+						maxOccurs="1" />
+					<xs:element
+						ref="smcdl:causedBy"
+						minOccurs="0"
+						maxOccurs="1" />
+				</xs:sequence>
+				<xs:attributeGroup ref="smcdl:modelRef.attributeGroup"/>
+				<xs:attribute
+					name="requiresInteraction"
+					type="xs:boolean"
+					fixed="false" />
+				<xs:attribute
+					name="id"
+					type="xs:ID"
+					use="required" />
+				<xs:attribute
+					name="activityModifier"
+					type="xs:QName">
+					<xs:annotation>
+						<xs:documentation>
+							A reference to a data variable of the component's
+							generic schema. Used in the assistance for
+							information like "sort by
+							[label of data variable]".
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute
+					name="entityContext"
+					type="xs:QName" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ViewBinding">
+		<xs:annotation>
+			<xs:documentation>Describes how a UI capability is manifested on the
+				component's view in terms of UI elements and
+				interaction steps.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:choice
+			minOccurs="0"
+			maxOccurs="unbounded">
+			<xs:element ref="smcdl:sequentialoperation" />
+			<xs:element ref="smcdl:paralleloperation" />
+			<xs:element ref="smcdl:atomicoperation" />
+		</xs:choice>
+		<xs:attribute
+			name="wait"
+			type="smcdl:WaitingTimePattern"
+			default="5s">
+			<xs:annotation>
+				<xs:documentation>
+					Used to tell the assistance generation service how long it
+					should wait before taking a screenshot.
+					Intended to prevent premature
+					screenshots when there might be long-running animations. Format should be
+					something
+					like 1h14m40s.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Requirements">
+		<xs:sequence>
+			<xs:element ref="smcdl:runtimes" />
+			<xs:element
+				minOccurs="0"
+				maxOccurs="unbounded"
+				ref="meta:requirement" />
+			<xs:element
+				minOccurs="0"
+				maxOccurs="unbounded"
+				ref="con:containerRequirement" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType
+		name="Exampledata"
+		mixed="true">
+		<xs:annotation>
+			<xs:documentation>Comprises test data that can be referenced by their URL or
+				included inline.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute
+					name="url"
+					type="xs:anyURI"
+					use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="CommBehavior">
+		<xs:annotation>
+			<xs:documentation>Describes the communication behavior.
+				A static behavior
+				means the communication takes place in
+				static,
+				therefore, fixed
+				intervals/periods.
+				A dynamic behavior means the communication is not
+				predictable
+				regarding the
+				time of occurance, i.e., depending on user
+				interaction.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element
+				name="staticBehavior"
+				minOccurs="1"
+				maxOccurs="1"
+				type="smcdl:StaticBehavior" />
+			<xs:element
+				name="dynamicBehavior"
+				minOccurs="1"
+				maxOccurs="1" />
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="StaticBehavior">
+		<xs:annotation>
+			<xs:documentation>Describes a static communication behavior.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute
+			name="period"
+			type="xs:positiveInteger"
+			use="required">
+			<xs:annotation>
+				<xs:documentation>Notates the static communication period (in miliseconds).
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+
+	<!-- ##################### BINDING TYPES ########################### -->
+	<xs:complexType name="Binding">
+		<xs:annotation>
+			<xs:documentation>
+				A binding contains all information necessary to bind a
+				concrete component implementation to the
+				interface
+				defined above. Code
+				templates allow to specify how
+				properties declared in the interface are read
+				and set,
+				how
+				listeners can be registered and unregistered for the
+				events
+				declared in the interface, and how the operations
+				declared
+				can be invoked for
+				a concrete implementation.
+				Code templates contain placeholders that are
+				application-specific. Their
+				content can not be defined
+				before the component
+				is
+				integrated. The information to
+				fill the
+				placeholders must be supplied
+				by
+				the
+				application integrating the component. A binding
+				contains
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				ref="smcdl:dependencies"
+				minOccurs="0" />
+			<xs:element
+				ref="smcdl:initialization"
+				minOccurs="0" />
+			<xs:element
+				ref="smcdl:constructor"
+				minOccurs="1"
+				maxOccurs="1" />
+			<xs:element
+				ref="smcdl:destructor"
+				minOccurs="0" />
+			<xs:element
+				ref="smcdl:rendering"
+				minOccurs="0" />
+			<xs:element
+				ref="smcdl:hide"
+				minOccurs="0" />
+			<xs:element
+				ref="smcdl:accessor"
+				minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element
+				ref="smcdl:eventsink"
+				minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element
+				ref="smcdl:invocation"
+				minOccurs="0"
+				maxOccurs="unbounded" />
+
+		</xs:sequence>
+		<xs:attribute
+			name="bindingtype"
+			type="smcdl:Bindingtype"
+			default="mapping_simplewrapper">
+			<xs:annotation>
+				<xs:documentation>
+					The type of binding used: Set to ’codetemplates’ if
+					the
+					implementation uses code templates.
+					Otherwise, set to
+					'mapping_#mappingtype#' where
+					#mappingtype# identifies the mapping used to
+					produce
+					the code
+					skeleton
+					from the class.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Runtimes">
+		<xs:sequence>
+			<xs:element
+				ref="smcdl:runtime"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Runtime">
+		<xs:attribute
+			name="id"
+			type="xs:anyURI"
+			use="required" />
+		<xs:attribute
+			name="version"
+			type="meta:Version"
+			use="required" />
+	</xs:complexType>
+	<xs:complexType name="Dependencies">
+		<xs:annotation>
+			<xs:documentation>
+				Contains a list of dependency elemens that specify
+				libraries to be included.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				ref="smcdl:dependency"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Dependency">
+		<xs:annotation>
+			<xs:documentation>
+				Specifies a runtime dependency of the component
+				implementation, i.e., a library file that must be
+				included and loaded to run
+				the component, by the means
+				of a URI and a programming language (e.g.,
+				JavaScript,
+				CSS)
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				name="url"
+				type="xs:anyURI"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute
+			name="language"
+			type="xs:QName">
+			<xs:annotation>
+				<xs:documentation>
+					Programming language of the dependency, e.g.,
+					"Java",
+					"JavaScript", "CSS".
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Initialization">
+		<xs:annotation>
+			<xs:documentation>
+				This optional element contains a code template of an
+				initialization routine that must be executed
+				before the component can be
+				instanciated. For instance,
+				it can be used to initialize a UI framework. One
+				concrete
+				example that requires such initialization is Google Maps v2
+				(see
+				http://code.google.com/intl/de-DE/apis/ajax/documentation/).
+				Before the
+				Google Map component can be instanciated,
+				a
+				load-routine must be run. To be
+				able to wait for the
+				initialization to complete (callbacks may be used, like
+				in
+				Google
+				Maps Version 2), the initialization element
+				has a test attribute that
+				holds a code fragment. A
+				runtime must
+				repeatetly
+				execute this code fragment
+				after
+				the initialization routine has been invoked until it
+				evalutes to true.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="smcdl:code" />
+		</xs:sequence>
+		<xs:attribute
+			name="test"
+			type="xs:string" />
+	</xs:complexType>
+	<xs:complexType name="CodeTemplate">
+		<xs:annotation>
+			<xs:documentation>
+				This type defines an element that contains a code
+				template,
+				e.g., for constructing or destructing a
+				component, for (un)registering
+				events, for
+				postprocessing, etc. It is used by the dedicated
+				elements.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="smcdl:code" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Accessor">
+		<xs:annotation>
+			<xs:documentation>
+				Contains a code template for calls that read or set
+				property values of a component.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="smcdl:code" />
+		</xs:sequence>
+		<xs:attribute
+			name="type"
+			use="required">
+			<xs:annotation>
+				<xs:documentation>
+					Defines, how the property value is accessed (get/set).
+				</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="get" />
+					<xs:enumeration value="set" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute
+			name="property"
+			type="xs:string"
+			use="required">
+			<xs:annotation>
+				<xs:documentation>
+					Defines, how the property value is accessed (get/set).
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Eventsink">
+		<xs:annotation>
+			<xs:documentation>
+				Contains code templates for registering and
+				unregistering
+				event listeners with events thrown by a
+				component.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				ref="smcdl:handler"
+				minOccurs="0" />
+			<xs:element ref="smcdl:register" />
+			<xs:element ref="smcdl:unregister" />
+		</xs:sequence>
+		<xs:attribute
+			name="event"
+			type="xs:string"
+			use="required">
+			<xs:annotation>
+				<xs:documentation>
+					The name of the event for which the sinks are
+					(un)registered.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Invocation">
+		<xs:annotation>
+			<xs:documentation>
+				This type contains a code template to invoke an
+				operation of
+				the mashup component.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="smcdl:code" />
+		</xs:sequence>
+		<xs:attribute
+			name="operation"
+			type="xs:string"
+			use="required">
+			<xs:annotation>
+				<xs:documentation>
+					The name of the operation for which the code
+					template is
+					responsible.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType
+		name="ParameterReference"
+		abstract="true">
+		<xs:attribute
+			name="parameter"
+			type="xs:string"
+			use="required" />
+	</xs:complexType>
+	<xs:complexType name="PropertyReference">
+		<xs:attribute
+			name="property"
+			type="xs:string"
+			use="required" />
+	</xs:complexType>
+	<xs:complexType name="TypeReference">
+		<xs:annotation>
+			<xs:documentation>References exactly one semantic type.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute
+			name="type"
+			type="xs:QName"
+			use="required" />
+	</xs:complexType>
+	<xs:complexType name="OperationParameterReference">
+		<xs:annotation>
+			<xs:documentation>Maps one parameter to one or more operations given by their
+				name.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="smcdl:ParameterReference">
+				<xs:sequence>
+					<xs:element
+						name="operation"
+						type="xs:string"
+						minOccurs="1"
+						maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EventParameterReference">
+		<xs:annotation>
+			<xs:documentation>Maps one parameter to one or more events given by their
+				name.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="smcdl:ParameterReference">
+				<xs:sequence>
+					<xs:element
+						name="event"
+						type="xs:string"
+						minOccurs="1"
+						maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+
+
+	<!-- ############################## SIMPLE TYPES ###################################### -->
+	<xs:simpleType name="QNameList">
+		<xs:list itemType="xs:QName" />
+	</xs:simpleType>
+	<xs:simpleType name="WaitingTimePattern">
+		<xs:restriction base="xs:token">
+			<!-- 1H3m33S -->
+			<xs:pattern value="(\d+[Hh])?(\d?\d[Mm])?\d?\d[Ss]" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CapSelector">
+		<xs:annotation>
+			<xs:documentation>A CapSelector serves to identify capabilities in the
+				attributes causes and dependsOn used for
+				chaining.
+				To this end, a regular
+				expression is defined that
+				requires at least one cap-ID. Furthermore,
+				multiple
+				IDs can
+				be connected via logic "and" and "or".
+
+				However, default schema
+				validation will not suffice
+				to ensure that there are
+				actual cap-ID referenced.
+				This has to be done by dedicated tools.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern
+				value="([a-z]|[A-Z]|\d)+(\s(and|or)\s([a-z]|[A-Z]|\d)+)*">
+			</xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Bindingtype">
+		<xs:annotation>
+			<xs:documentation>
+				Defines the values allowed for the interfacebinding's
+				'bindingtype' attribute ('codetemplates' or
+				'mapping_#mappingtype#')
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="codetemplates|(mapping_\S+)" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- ############################## ELEMENT DECLARATIONS ###################################### -->
+
+	<xs:element
+		name="component"
+		type="smcdl:Component">
+		<xs:annotation>
+			<xs:documentation>
+				This is the root element of a SMCDL description, defining
+				the capabilities, meta-data, interface and
+				binding of a
+				mashup component in a
+				generic and platform-independent way.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<!-- ## INTERFACE ELEMENTS ### -->
+	<xs:element
+		name="interface"
+		type="smcdl:Interface">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of the component interface (properties,
+				events,
+				and operations)
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="parameter"
+		type="smcdl:Parameter">
+		<xs:annotation>
+			<xs:documentation>
+				A typed parameter of an operation or event.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="changeEvent"
+		type="smcdl:ChangeEvent">
+		<xs:annotation>
+			<xs:documentation>
+				A reference to an event that indicate a change.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="callbackOperation"
+		type="smcdl:CallbackOperation">
+		<xs:annotation>
+			<xs:documentation>
+				A reference to an operation to call back after a delivery
+				of a response.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="returnEvent"
+		type="smcdl:ReturnEvent">
+		<xs:annotation>
+			<xs:documentation>
+				A typed return value.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="property"
+		type="smcdl:Property">
+		<xs:annotation>
+			<xs:documentation>
+				Represents on (configurable] property of a component,
+				which
+				can be accessed by
+				get/setProperty(name).
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="event"
+		type="smcdl:Event">
+		<xs:annotation>
+			<xs:documentation>
+				An event published by this component.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="operation"
+		type="smcdl:Operation">
+		<xs:annotation>
+			<xs:documentation>
+				An operation offered by components of this class.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="dragSource"
+		type="smcdl:DragSource">
+		<xs:annotation>
+			<xs:documentation>
+				A drag source represents the dragged datatype,
+				which can be
+				accessed by getData after a drop.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="commBehavior"
+		type="smcdl:CommBehavior">
+		<xs:annotation>
+			<xs:documentation>
+				An element describing the communication behavior
+				of an
+				event.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="causes"
+		type="smcdl:CapSelector">
+		<xs:annotation>
+			<xs:documentation>Describes the functional relation of capabilities
+				by
+				expressing causality. Thereby, different logic
+				connectives may be
+				utilized in
+				case a capability causes several other.
+				Inverse of "causedBy".
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="causedBy"
+		type="smcdl:CapSelector">
+		<xs:annotation>
+			<xs:documentation>Describes the functional relation of capabilities
+				by
+				expressing dependency. Thereby, different logic
+				connectives may be
+				utilized in
+				case a capability depends on several other.
+				Inverse of "causes".
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="capability"
+		type="smcdl:Capability" />
+	<xs:element
+		name="atomicoperation"
+		type="smcdl:AtomicOperation" />
+	<xs:element
+		name="sequentialoperation"
+		type="smcdl:SequentialOperation" />
+	<xs:element
+		name="paralleloperation"
+		type="smcdl:ParallelOperation" />
+	<xs:element
+		name="exampledata"
+		type="smcdl:Exampledata" />
+	<xs:element
+		name="requirements"
+		type="smcdl:Requirements" />
+
+	<!-- ## BINDING ELEMENTS ### -->
+	<xs:element
+		name="runtimes"
+		type="smcdl:Runtimes">
+		<xs:annotation>
+			<xs:documentation>
+				Contains information on compatibility with CRUISe runtimes.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="runtime"
+		type="smcdl:Runtime">
+		<xs:annotation>
+			<xs:documentation>Represents a CRUISe runtime by its ID and a version.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="binding"
+		type="smcdl:Binding">
+		<xs:annotation>
+			<xs:documentation>
+				This element contains the binding of the component
+				implementation to the interface.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="dependencies"
+		type="smcdl:Dependencies" />
+	<xs:element
+		name="dependency"
+		type="smcdl:Dependency" />
+	<xs:element
+		name="initialization"
+		type="smcdl:Initialization" />
+	<xs:element
+		name="code"
+		type="xs:string" />
+	<xs:element
+		name="accessor"
+		type="smcdl:Accessor" />
+	<xs:element
+		name="eventsink"
+		type="smcdl:Eventsink" />
+	<xs:element
+		name="constructor"
+		type="smcdl:CodeTemplate">
+		<xs:annotation>
+			<xs:documentation>
+				Contains a code template to create an instance of the
+				mashup component.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="destructor"
+		type="smcdl:CodeTemplate">
+		<xs:annotation>
+			<xs:documentation>
+				Contains a code template used to destruct an instance of
+				the mashup component.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="rendering"
+		type="smcdl:CodeTemplate">
+		<xs:annotation>
+			<xs:documentation>
+				Contains a code template for the calls that render the
+				component. (UI-specific)
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="hide"
+		type="smcdl:CodeTemplate">
+		<xs:annotation>
+			<xs:documentation>
+				Contains a code template to set a UI component invisible
+				(UI-specific).
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="register"
+		type="smcdl:CodeTemplate">
+		<xs:annotation>
+			<xs:documentation>
+				Contains a code template for registering event
+				listeners.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="unregister"
+		type="smcdl:CodeTemplate">
+		<xs:annotation>
+			<xs:documentation>
+				Contains a code template for unregistering event
+				listeners.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="handler"
+		type="smcdl:CodeTemplate">
+		<xs:annotation>
+			<xs:documentation>
+				This element can be used to include a handler code
+				template
+				that acts as an adapter between an
+				application-specific event handler (which
+				is implemented
+				against an event described in the interface through its
+				XSD
+				data type) and the data type and event handling
+				system used internally by the
+				component implementation.
+				The adapter
+				code can be (i) used for data type
+				conversions and (ii) to make the application's event
+				listener implementations
+				independent from the specifics
+				of the component implementation.
+
+				Example: A
+				calender UI component offers the event
+				'dateSelected'. The XSD datatype of
+				the object
+				representing the event is specified by the XSD datatype
+				http://www.w3.org/2001/XMLSchema-datatypes#date, which
+				is to be passed as a
+				parameter to an
+				application-specific event
+				listener function. The
+				implementation of the UI component however requires
+				event listeners to be
+				implemented by a
+				function that
+				accepts the two parameters 'dateSelected' (a
+				string
+				representation of the selected date) and 'source' (a
+				reference to the
+				component instance that triggered the
+				event). Assuming that the data
+				conversion from the
+				string
+				format
+				used internally by the calender UI
+				component
+				to the XSD datatype
+				http://www.w3.org/2001/XMLSchema-datatypes#date is
+				implemented by a function called 'convertInternal2XSD'
+				that takes
+				the target
+				datatype name and the object to be
+				converted as input parameters and returns
+				the XML
+				result, the code
+				templates for the handler would look as
+				follows in
+				the
+				code template language for javascript
+				proposed in the CRUISe
+				project:
+
+				handler
+				code template: function(dateSelected,
+				source)
+				{var xsd =
+				convertInternal2XSD('http://www.w3.org/2001/XMLSchema-datatypes#date',
+				dateSelected);
+				@event:dateSelect@(xsd);}
+
+				Note
+				that the placeholder
+				@event:dateSelected@ will be
+				replaced by name of the
+				application-specific
+				event
+				listener
+				function. Note that a runtime must use the code
+				template from
+				the register element to
+				register the event
+				handler
+				constructed from the
+				handler
+				code template.
+
+				Note that all authors of language bindings for
+				mcdl-C
+				descriptions must
+				agree upon a common signature for
+				application-specific event
+				listener methods/functions in
+				order to provide compatible
+				handler code
+				templates.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="invocation"
+		type="smcdl:Invocation" />
+	<xs:element
+		name="transformation"
+		type="xs:string" />
+</xs:schema>

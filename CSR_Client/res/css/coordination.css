@@ -1,0 +1,50 @@
+/* ##### Sharing Mode Window ######### */
+.sharingWindow {
+    background-color: #333;
+    width: 550px !important;
+    border: 3px solid #666666;
+    margin: 0px 0px 0px 0px;
+    height: 500px;
+    overflow: auto;
+    box-shadow: 0 0 8px rgba(142, 188, 17, 0);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.sharingWindow-header {
+    font-size: 1.3em;
+    font-family: "Calibri", Arial, sans-serif;
+    color: #eee !important;
+    font-weight: 500;
+    background: #666;
+    padding: 5px 5px 5px 5px;
+}
+
+.sharingWindow-body {
+    color: #333 !important;
+    border: 0px;
+}
+
+.section-header {
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 700;
+    padding: 5px 0px 0px 0px;
+
+}
+
+#componentsCheckboxGroup input, #compositionCheckbox, #channelCheckbox {
+    float: left;
+    margin-right: 5px;
+}
+
+#userNameField, #accessRightsComboBox {
+    height: 13px;
+}
+
+/* ##### Transparent Div ######### */
+.transparentDiv {
+    position: absolute;
+    z-index: 2;
+}

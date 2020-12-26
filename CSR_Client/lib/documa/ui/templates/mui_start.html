@@ -1,0 +1,30 @@
+<div id="csr-mui-startframe" class="container-fluid">
+	<div class="row">
+		<!-- application list -->
+		<div class="col-md-4 csr-mui-cols">
+			<div id="csr-mui-left" class="panel panel-default">
+				<!-- adding here apps panel -->
+				<mui-applications controller="appList"/>
+			</div>
+		</div>
+		<div class="col-md-8 csr-mui-cols">
+			<!-- device panel -->
+			<div id="csr-mui-right" class="panel panel-default">
+				<div class="col-md-12">
+					<div class="row">
+						<!-- creating current device view -->
+						<mui-own-device-panel controller="ownDeviceView"/>
+					</div>
+					<div class="row">
+						<div class="col-md-7 csr-mui-cols">
+							<mui-app-config-view controller="appConfigView"/>
+						</div>
+						<div class="col-md-5 csr-mui-cols">
+							<mui-devices-view controller="usableDevicesView"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,1770 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://soap.repository.cruise.inf.tudresden.de" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax23="http://vizboard.beans.integration.cruise.inf.tudresden.de/xsd" xmlns:ax21="http://matchingresult.beans.integration.cruise.inf.tudresden.de/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://soap.repository.cruise.inf.tudresden.de">
+    <wsdl:documentation>Serves for managing and querying descriptors of suitable mashup components.</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:ax24="http://vizboard.beans.integration.cruise.inf.tudresden.de/xsd" xmlns:ax22="http://matchingresult.beans.integration.cruise.inf.tudresden.de/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://soap.repository.cruise.inf.tudresden.de">
+            <xs:import namespace="http://matchingresult.beans.integration.cruise.inf.tudresden.de/xsd"/>
+            <xs:import namespace="http://vizboard.beans.integration.cruise.inf.tudresden.de/xsd"/>
+            <xs:element name="query">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="sparql" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="queryResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="registerComponent">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="newMCDL" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="registerComponentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAuth">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAuthResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAllComponents">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAllComponentsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getComponentsByEvents">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="componentEvents" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="offset" type="xs:int"/>
+                        <xs:element minOccurs="0" name="amount" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getComponentsByEventsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getComponentsByKeywords">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="keywords" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="offset" type="xs:int"/>
+                        <xs:element minOccurs="0" name="amount" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getComponentsByKeywordsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getComponentsByOperations">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="componentOperations" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="offset" type="xs:int"/>
+                        <xs:element minOccurs="0" name="amount" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getComponentsByOperationsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getComponentsByPlatform">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="platform" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="offset" type="xs:int"/>
+                        <xs:element minOccurs="0" name="amount" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getComponentsByPlatformResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getComponentsBySemantic">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="componentSemantic" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="offset" type="xs:int"/>
+                        <xs:element minOccurs="0" name="amount" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getComponentsBySemanticResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="doSparqlRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="sparql" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="doSparqlRequestResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateComponent">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="newMCDL" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateComponentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="registerOrUpdateComponent">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="newMCDL" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="registerOrUpdateComponentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateQualityProperty">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="attribute" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="value" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateQualityPropertyResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateQualityPropertyWithConcern">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="attribute" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="concern" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="value" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateQualityPropertyWithConcernResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getImagesByComponentAndCapability">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="componentId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="capabilityId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getImagesByComponentAndCapabilityResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getVisualAttributes">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="propertyUri" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getVisualAttributesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getMcdlByID">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="componentID" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getMcdlByIDResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="listRegisteredOntologies">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="listRegisteredOntologiesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getSMCDLMatch">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="templateID" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="componentID" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getSMCDLMatchResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax21:SMCDLMatch"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getComponentsByTask">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="task" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="treshold" type="xs:double"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getComponentsByTaskResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getUIComponentsByData">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="vbFilterRequest" nillable="true" type="ax23:UiFilterType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getUIComponentsByDataResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getDataForComponent">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="componentID" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="queryHash" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="file_id" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="mappingNR" type="xs:int"/>
+                        <xs:element minOccurs="0" name="additionalProperties" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getDataForComponentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="runAssistance">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="runAssistanceResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addQualityProperty">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="attribute" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="value" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addQualityPropertyResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addQualityPropertyWithConcern">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="attribute" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="concern" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="value" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addQualityPropertyWithConcernResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteQualityProperty">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="attribute" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteQualityPropertyResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteQualityPropertyWithConcern">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="attribute" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="concern" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteQualityPropertyWithConcernResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteComponent">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="componentID" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteComponentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="listTopRatedComponents">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="topk" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="listTopRatedComponentsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="listMostPopularComponents">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="topk" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="listMostPopularComponentsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getComponentsByTemplate">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="integrationRequest" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getComponentsByTemplateResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getOntology">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="uri" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getOntologyResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://vizboard.beans.integration.cruise.inf.tudresden.de/xsd">
+            <xs:complexType name="UiFilterType">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="facet" nillable="true" type="ax23:Facet"/>
+                    <xs:element minOccurs="0" name="preselection" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="runtime" nillable="true" type="ax23:Runtime"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="selectedData" nillable="true" type="ax23:SelectedDataType"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Facet">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="uri" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="valueUri" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Runtime">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="version" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="SelectedDataType">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="dataClass" nillable="true" type="ax23:DataClassType"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="DataClassType">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="property" nillable="true" type="ax23:PropertyType"/>
+                    <xs:element minOccurs="0" name="uri" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PropertyType">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="dataClass" nillable="true" type="ax23:DataClassType"/>
+                    <xs:element minOccurs="0" name="uri" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://matchingresult.beans.integration.cruise.inf.tudresden.de/xsd">
+            <xs:complexType name="SMCDLMatch">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="matchingResult" nillable="true" type="ax21:MatchingResult"/>
+                    <xs:element minOccurs="0" name="smcdl" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="MatchingResult">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="eventmapping" nillable="true" type="ax21:OperationAndEventMapping"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="operationmapping" nillable="true" type="ax21:OperationAndEventMapping"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="propertymapping" nillable="true" type="ax21:Mapping"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Mapping">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="match" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="OperationAndEventMapping">
+                <xs:complexContent>
+                    <xs:extension base="ax21:Mapping">
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="parametermapping" nillable="true" type="ax21:Mapping"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getComponentsByTaskRequest">
+        <wsdl:part name="parameters" element="ns:getComponentsByTask"/>
+    </wsdl:message>
+    <wsdl:message name="getComponentsByTaskResponse">
+        <wsdl:part name="parameters" element="ns:getComponentsByTaskResponse"/>
+    </wsdl:message>
+    <wsdl:message name="listMostPopularComponentsRequest">
+        <wsdl:part name="parameters" element="ns:listMostPopularComponents"/>
+    </wsdl:message>
+    <wsdl:message name="listMostPopularComponentsResponse">
+        <wsdl:part name="parameters" element="ns:listMostPopularComponentsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteQualityPropertyRequest">
+        <wsdl:part name="parameters" element="ns:deleteQualityProperty"/>
+    </wsdl:message>
+    <wsdl:message name="deleteQualityPropertyResponse">
+        <wsdl:part name="parameters" element="ns:deleteQualityPropertyResponse"/>
+    </wsdl:message>
+    <wsdl:message name="updateQualityPropertyWithConcernRequest">
+        <wsdl:part name="parameters" element="ns:updateQualityPropertyWithConcern"/>
+    </wsdl:message>
+    <wsdl:message name="updateQualityPropertyWithConcernResponse">
+        <wsdl:part name="parameters" element="ns:updateQualityPropertyWithConcernResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getComponentsByOperationsRequest">
+        <wsdl:part name="parameters" element="ns:getComponentsByOperations"/>
+    </wsdl:message>
+    <wsdl:message name="getComponentsByOperationsResponse">
+        <wsdl:part name="parameters" element="ns:getComponentsByOperationsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteComponentRequest">
+        <wsdl:part name="parameters" element="ns:deleteComponent"/>
+    </wsdl:message>
+    <wsdl:message name="deleteComponentResponse">
+        <wsdl:part name="parameters" element="ns:deleteComponentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="queryRequest">
+        <wsdl:part name="parameters" element="ns:query"/>
+    </wsdl:message>
+    <wsdl:message name="queryResponse">
+        <wsdl:part name="parameters" element="ns:queryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getImagesByComponentAndCapabilityRequest">
+        <wsdl:part name="parameters" element="ns:getImagesByComponentAndCapability"/>
+    </wsdl:message>
+    <wsdl:message name="getImagesByComponentAndCapabilityResponse">
+        <wsdl:part name="parameters" element="ns:getImagesByComponentAndCapabilityResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getAuthRequest">
+        <wsdl:part name="parameters" element="ns:getAuth"/>
+    </wsdl:message>
+    <wsdl:message name="getAuthResponse">
+        <wsdl:part name="parameters" element="ns:getAuthResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getVisualAttributesRequest">
+        <wsdl:part name="parameters" element="ns:getVisualAttributes"/>
+    </wsdl:message>
+    <wsdl:message name="getVisualAttributesResponse">
+        <wsdl:part name="parameters" element="ns:getVisualAttributesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="registerComponentRequest">
+        <wsdl:part name="parameters" element="ns:registerComponent"/>
+    </wsdl:message>
+    <wsdl:message name="registerComponentResponse">
+        <wsdl:part name="parameters" element="ns:registerComponentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="doSparqlRequestRequest">
+        <wsdl:part name="parameters" element="ns:doSparqlRequest"/>
+    </wsdl:message>
+    <wsdl:message name="doSparqlRequestResponse">
+        <wsdl:part name="parameters" element="ns:doSparqlRequestResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getComponentsByEventsRequest">
+        <wsdl:part name="parameters" element="ns:getComponentsByEvents"/>
+    </wsdl:message>
+    <wsdl:message name="getComponentsByEventsResponse">
+        <wsdl:part name="parameters" element="ns:getComponentsByEventsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getAllComponentsRequest">
+        <wsdl:part name="parameters" element="ns:getAllComponents"/>
+    </wsdl:message>
+    <wsdl:message name="getAllComponentsResponse">
+        <wsdl:part name="parameters" element="ns:getAllComponentsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="updateComponentRequest">
+        <wsdl:part name="parameters" element="ns:updateComponent"/>
+    </wsdl:message>
+    <wsdl:message name="updateComponentResponse">
+        <wsdl:part name="parameters" element="ns:updateComponentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getComponentsByPlatformRequest">
+        <wsdl:part name="parameters" element="ns:getComponentsByPlatform"/>
+    </wsdl:message>
+    <wsdl:message name="getComponentsByPlatformResponse">
+        <wsdl:part name="parameters" element="ns:getComponentsByPlatformResponse"/>
+    </wsdl:message>
+    <wsdl:message name="registerOrUpdateComponentRequest">
+        <wsdl:part name="parameters" element="ns:registerOrUpdateComponent"/>
+    </wsdl:message>
+    <wsdl:message name="registerOrUpdateComponentResponse">
+        <wsdl:part name="parameters" element="ns:registerOrUpdateComponentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteQualityPropertyWithConcernRequest">
+        <wsdl:part name="parameters" element="ns:deleteQualityPropertyWithConcern"/>
+    </wsdl:message>
+    <wsdl:message name="deleteQualityPropertyWithConcernResponse">
+        <wsdl:part name="parameters" element="ns:deleteQualityPropertyWithConcernResponse"/>
+    </wsdl:message>
+    <wsdl:message name="listTopRatedComponentsRequest">
+        <wsdl:part name="parameters" element="ns:listTopRatedComponents"/>
+    </wsdl:message>
+    <wsdl:message name="listTopRatedComponentsResponse">
+        <wsdl:part name="parameters" element="ns:listTopRatedComponentsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="addQualityPropertyRequest">
+        <wsdl:part name="parameters" element="ns:addQualityProperty"/>
+    </wsdl:message>
+    <wsdl:message name="addQualityPropertyResponse">
+        <wsdl:part name="parameters" element="ns:addQualityPropertyResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getUIComponentsByDataRequest">
+        <wsdl:part name="parameters" element="ns:getUIComponentsByData"/>
+    </wsdl:message>
+    <wsdl:message name="getUIComponentsByDataResponse">
+        <wsdl:part name="parameters" element="ns:getUIComponentsByDataResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getComponentsByTemplateRequest">
+        <wsdl:part name="parameters" element="ns:getComponentsByTemplate"/>
+    </wsdl:message>
+    <wsdl:message name="getComponentsByTemplateResponse">
+        <wsdl:part name="parameters" element="ns:getComponentsByTemplateResponse"/>
+    </wsdl:message>
+    <wsdl:message name="addQualityPropertyWithConcernRequest">
+        <wsdl:part name="parameters" element="ns:addQualityPropertyWithConcern"/>
+    </wsdl:message>
+    <wsdl:message name="addQualityPropertyWithConcernResponse">
+        <wsdl:part name="parameters" element="ns:addQualityPropertyWithConcernResponse"/>
+    </wsdl:message>
+    <wsdl:message name="listRegisteredOntologiesRequest">
+        <wsdl:part name="parameters" element="ns:listRegisteredOntologies"/>
+    </wsdl:message>
+    <wsdl:message name="listRegisteredOntologiesResponse">
+        <wsdl:part name="parameters" element="ns:listRegisteredOntologiesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getComponentsBySemanticRequest">
+        <wsdl:part name="parameters" element="ns:getComponentsBySemantic"/>
+    </wsdl:message>
+    <wsdl:message name="getComponentsBySemanticResponse">
+        <wsdl:part name="parameters" element="ns:getComponentsBySemanticResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getMcdlByIDRequest">
+        <wsdl:part name="parameters" element="ns:getMcdlByID"/>
+    </wsdl:message>
+    <wsdl:message name="getMcdlByIDResponse">
+        <wsdl:part name="parameters" element="ns:getMcdlByIDResponse"/>
+    </wsdl:message>
+    <wsdl:message name="updateQualityPropertyRequest">
+        <wsdl:part name="parameters" element="ns:updateQualityProperty"/>
+    </wsdl:message>
+    <wsdl:message name="updateQualityPropertyResponse">
+        <wsdl:part name="parameters" element="ns:updateQualityPropertyResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getOntologyRequest">
+        <wsdl:part name="parameters" element="ns:getOntology"/>
+    </wsdl:message>
+    <wsdl:message name="getOntologyResponse">
+        <wsdl:part name="parameters" element="ns:getOntologyResponse"/>
+    </wsdl:message>
+    <wsdl:message name="runAssistanceRequest">
+        <wsdl:part name="parameters" element="ns:runAssistance"/>
+    </wsdl:message>
+    <wsdl:message name="runAssistanceResponse">
+        <wsdl:part name="parameters" element="ns:runAssistanceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getDataForComponentRequest">
+        <wsdl:part name="parameters" element="ns:getDataForComponent"/>
+    </wsdl:message>
+    <wsdl:message name="getDataForComponentResponse">
+        <wsdl:part name="parameters" element="ns:getDataForComponentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getComponentsByKeywordsRequest">
+        <wsdl:part name="parameters" element="ns:getComponentsByKeywords"/>
+    </wsdl:message>
+    <wsdl:message name="getComponentsByKeywordsResponse">
+        <wsdl:part name="parameters" element="ns:getComponentsByKeywordsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getSMCDLMatchRequest">
+        <wsdl:part name="parameters" element="ns:getSMCDLMatch"/>
+    </wsdl:message>
+    <wsdl:message name="getSMCDLMatchResponse">
+        <wsdl:part name="parameters" element="ns:getSMCDLMatchResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="CoReServicePortType">
+        <wsdl:operation name="getComponentsByTask">
+            <wsdl:input message="ns:getComponentsByTaskRequest" wsaw:Action="urn:getComponentsByTask"/>
+            <wsdl:output message="ns:getComponentsByTaskResponse" wsaw:Action="urn:getComponentsByTaskResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="listMostPopularComponents">
+            <wsdl:input message="ns:listMostPopularComponentsRequest" wsaw:Action="urn:listMostPopularComponents"/>
+            <wsdl:output message="ns:listMostPopularComponentsResponse" wsaw:Action="urn:listMostPopularComponentsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteQualityProperty">
+            <wsdl:input message="ns:deleteQualityPropertyRequest" wsaw:Action="urn:deleteQualityProperty"/>
+            <wsdl:output message="ns:deleteQualityPropertyResponse" wsaw:Action="urn:deleteQualityPropertyResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateQualityPropertyWithConcern">
+            <wsdl:input message="ns:updateQualityPropertyWithConcernRequest" wsaw:Action="urn:updateQualityPropertyWithConcern"/>
+            <wsdl:output message="ns:updateQualityPropertyWithConcernResponse" wsaw:Action="urn:updateQualityPropertyWithConcernResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByOperations">
+            <wsdl:input message="ns:getComponentsByOperationsRequest" wsaw:Action="urn:getComponentsByOperations"/>
+            <wsdl:output message="ns:getComponentsByOperationsResponse" wsaw:Action="urn:getComponentsByOperationsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteComponent">
+            <wsdl:input message="ns:deleteComponentRequest" wsaw:Action="urn:deleteComponent"/>
+            <wsdl:output message="ns:deleteComponentResponse" wsaw:Action="urn:deleteComponentResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="query">
+            <wsdl:input message="ns:queryRequest" wsaw:Action="urn:query"/>
+            <wsdl:output message="ns:queryResponse" wsaw:Action="urn:queryResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getImagesByComponentAndCapability">
+            <wsdl:input message="ns:getImagesByComponentAndCapabilityRequest" wsaw:Action="urn:getImagesByComponentAndCapability"/>
+            <wsdl:output message="ns:getImagesByComponentAndCapabilityResponse" wsaw:Action="urn:getImagesByComponentAndCapabilityResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAuth">
+            <wsdl:input message="ns:getAuthRequest" wsaw:Action="urn:getAuth"/>
+            <wsdl:output message="ns:getAuthResponse" wsaw:Action="urn:getAuthResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getVisualAttributes">
+            <wsdl:input message="ns:getVisualAttributesRequest" wsaw:Action="urn:getVisualAttributes"/>
+            <wsdl:output message="ns:getVisualAttributesResponse" wsaw:Action="urn:getVisualAttributesResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="registerComponent">
+            <wsdl:input message="ns:registerComponentRequest" wsaw:Action="urn:registerComponent"/>
+            <wsdl:output message="ns:registerComponentResponse" wsaw:Action="urn:registerComponentResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="doSparqlRequest">
+            <wsdl:input message="ns:doSparqlRequestRequest" wsaw:Action="urn:doSparqlRequest"/>
+            <wsdl:output message="ns:doSparqlRequestResponse" wsaw:Action="urn:doSparqlRequestResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByEvents">
+            <wsdl:input message="ns:getComponentsByEventsRequest" wsaw:Action="urn:getComponentsByEvents"/>
+            <wsdl:output message="ns:getComponentsByEventsResponse" wsaw:Action="urn:getComponentsByEventsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAllComponents">
+            <wsdl:input message="ns:getAllComponentsRequest" wsaw:Action="urn:getAllComponents"/>
+            <wsdl:output message="ns:getAllComponentsResponse" wsaw:Action="urn:getAllComponentsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateComponent">
+            <wsdl:input message="ns:updateComponentRequest" wsaw:Action="urn:updateComponent"/>
+            <wsdl:output message="ns:updateComponentResponse" wsaw:Action="urn:updateComponentResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByPlatform">
+            <wsdl:input message="ns:getComponentsByPlatformRequest" wsaw:Action="urn:getComponentsByPlatform"/>
+            <wsdl:output message="ns:getComponentsByPlatformResponse" wsaw:Action="urn:getComponentsByPlatformResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="registerOrUpdateComponent">
+            <wsdl:input message="ns:registerOrUpdateComponentRequest" wsaw:Action="urn:registerOrUpdateComponent"/>
+            <wsdl:output message="ns:registerOrUpdateComponentResponse" wsaw:Action="urn:registerOrUpdateComponentResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteQualityPropertyWithConcern">
+            <wsdl:input message="ns:deleteQualityPropertyWithConcernRequest" wsaw:Action="urn:deleteQualityPropertyWithConcern"/>
+            <wsdl:output message="ns:deleteQualityPropertyWithConcernResponse" wsaw:Action="urn:deleteQualityPropertyWithConcernResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="listTopRatedComponents">
+            <wsdl:input message="ns:listTopRatedComponentsRequest" wsaw:Action="urn:listTopRatedComponents"/>
+            <wsdl:output message="ns:listTopRatedComponentsResponse" wsaw:Action="urn:listTopRatedComponentsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addQualityProperty">
+            <wsdl:input message="ns:addQualityPropertyRequest" wsaw:Action="urn:addQualityProperty"/>
+            <wsdl:output message="ns:addQualityPropertyResponse" wsaw:Action="urn:addQualityPropertyResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getUIComponentsByData">
+            <wsdl:input message="ns:getUIComponentsByDataRequest" wsaw:Action="urn:getUIComponentsByData"/>
+            <wsdl:output message="ns:getUIComponentsByDataResponse" wsaw:Action="urn:getUIComponentsByDataResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByTemplate">
+            <wsdl:input message="ns:getComponentsByTemplateRequest" wsaw:Action="urn:getComponentsByTemplate"/>
+            <wsdl:output message="ns:getComponentsByTemplateResponse" wsaw:Action="urn:getComponentsByTemplateResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addQualityPropertyWithConcern">
+            <wsdl:input message="ns:addQualityPropertyWithConcernRequest" wsaw:Action="urn:addQualityPropertyWithConcern"/>
+            <wsdl:output message="ns:addQualityPropertyWithConcernResponse" wsaw:Action="urn:addQualityPropertyWithConcernResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="listRegisteredOntologies">
+            <wsdl:input message="ns:listRegisteredOntologiesRequest" wsaw:Action="urn:listRegisteredOntologies"/>
+            <wsdl:output message="ns:listRegisteredOntologiesResponse" wsaw:Action="urn:listRegisteredOntologiesResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsBySemantic">
+            <wsdl:input message="ns:getComponentsBySemanticRequest" wsaw:Action="urn:getComponentsBySemantic"/>
+            <wsdl:output message="ns:getComponentsBySemanticResponse" wsaw:Action="urn:getComponentsBySemanticResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getMcdlByID">
+            <wsdl:input message="ns:getMcdlByIDRequest" wsaw:Action="urn:getMcdlByID"/>
+            <wsdl:output message="ns:getMcdlByIDResponse" wsaw:Action="urn:getMcdlByIDResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateQualityProperty">
+            <wsdl:input message="ns:updateQualityPropertyRequest" wsaw:Action="urn:updateQualityProperty"/>
+            <wsdl:output message="ns:updateQualityPropertyResponse" wsaw:Action="urn:updateQualityPropertyResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getOntology">
+            <wsdl:input message="ns:getOntologyRequest" wsaw:Action="urn:getOntology"/>
+            <wsdl:output message="ns:getOntologyResponse" wsaw:Action="urn:getOntologyResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="runAssistance">
+            <wsdl:input message="ns:runAssistanceRequest" wsaw:Action="urn:runAssistance"/>
+            <wsdl:output message="ns:runAssistanceResponse" wsaw:Action="urn:runAssistanceResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getDataForComponent">
+            <wsdl:input message="ns:getDataForComponentRequest" wsaw:Action="urn:getDataForComponent"/>
+            <wsdl:output message="ns:getDataForComponentResponse" wsaw:Action="urn:getDataForComponentResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByKeywords">
+            <wsdl:input message="ns:getComponentsByKeywordsRequest" wsaw:Action="urn:getComponentsByKeywords"/>
+            <wsdl:output message="ns:getComponentsByKeywordsResponse" wsaw:Action="urn:getComponentsByKeywordsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getSMCDLMatch">
+            <wsdl:input message="ns:getSMCDLMatchRequest" wsaw:Action="urn:getSMCDLMatch"/>
+            <wsdl:output message="ns:getSMCDLMatchResponse" wsaw:Action="urn:getSMCDLMatchResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CoReServiceSoap11Binding" type="ns:CoReServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getComponentsByTask">
+            <soap:operation soapAction="urn:getComponentsByTask" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="listMostPopularComponents">
+            <soap:operation soapAction="urn:listMostPopularComponents" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteQualityProperty">
+            <soap:operation soapAction="urn:deleteQualityProperty" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateQualityPropertyWithConcern">
+            <soap:operation soapAction="urn:updateQualityPropertyWithConcern" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByOperations">
+            <soap:operation soapAction="urn:getComponentsByOperations" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteComponent">
+            <soap:operation soapAction="urn:deleteComponent" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="query">
+            <soap:operation soapAction="urn:query" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getImagesByComponentAndCapability">
+            <soap:operation soapAction="urn:getImagesByComponentAndCapability" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAuth">
+            <soap:operation soapAction="urn:getAuth" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getVisualAttributes">
+            <soap:operation soapAction="urn:getVisualAttributes" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registerComponent">
+            <soap:operation soapAction="urn:registerComponent" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="doSparqlRequest">
+            <soap:operation soapAction="urn:doSparqlRequest" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByEvents">
+            <soap:operation soapAction="urn:getComponentsByEvents" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAllComponents">
+            <soap:operation soapAction="urn:getAllComponents" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateComponent">
+            <soap:operation soapAction="urn:updateComponent" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByPlatform">
+            <soap:operation soapAction="urn:getComponentsByPlatform" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registerOrUpdateComponent">
+            <soap:operation soapAction="urn:registerOrUpdateComponent" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteQualityPropertyWithConcern">
+            <soap:operation soapAction="urn:deleteQualityPropertyWithConcern" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="listTopRatedComponents">
+            <soap:operation soapAction="urn:listTopRatedComponents" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUIComponentsByData">
+            <soap:operation soapAction="urn:getUIComponentsByData" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addQualityProperty">
+            <soap:operation soapAction="urn:addQualityProperty" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addQualityPropertyWithConcern">
+            <soap:operation soapAction="urn:addQualityPropertyWithConcern" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByTemplate">
+            <soap:operation soapAction="urn:getComponentsByTemplate" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="listRegisteredOntologies">
+            <soap:operation soapAction="urn:listRegisteredOntologies" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsBySemantic">
+            <soap:operation soapAction="urn:getComponentsBySemantic" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMcdlByID">
+            <soap:operation soapAction="urn:getMcdlByID" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateQualityProperty">
+            <soap:operation soapAction="urn:updateQualityProperty" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getOntology">
+            <soap:operation soapAction="urn:getOntology" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="runAssistance">
+            <soap:operation soapAction="urn:runAssistance" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDataForComponent">
+            <soap:operation soapAction="urn:getDataForComponent" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByKeywords">
+            <soap:operation soapAction="urn:getComponentsByKeywords" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getSMCDLMatch">
+            <soap:operation soapAction="urn:getSMCDLMatch" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="CoReServiceSoap12Binding" type="ns:CoReServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getComponentsByTask">
+            <soap12:operation soapAction="urn:getComponentsByTask" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="listMostPopularComponents">
+            <soap12:operation soapAction="urn:listMostPopularComponents" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteQualityProperty">
+            <soap12:operation soapAction="urn:deleteQualityProperty" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateQualityPropertyWithConcern">
+            <soap12:operation soapAction="urn:updateQualityPropertyWithConcern" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByOperations">
+            <soap12:operation soapAction="urn:getComponentsByOperations" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteComponent">
+            <soap12:operation soapAction="urn:deleteComponent" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="query">
+            <soap12:operation soapAction="urn:query" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getImagesByComponentAndCapability">
+            <soap12:operation soapAction="urn:getImagesByComponentAndCapability" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAuth">
+            <soap12:operation soapAction="urn:getAuth" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getVisualAttributes">
+            <soap12:operation soapAction="urn:getVisualAttributes" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registerComponent">
+            <soap12:operation soapAction="urn:registerComponent" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="doSparqlRequest">
+            <soap12:operation soapAction="urn:doSparqlRequest" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByEvents">
+            <soap12:operation soapAction="urn:getComponentsByEvents" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAllComponents">
+            <soap12:operation soapAction="urn:getAllComponents" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateComponent">
+            <soap12:operation soapAction="urn:updateComponent" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByPlatform">
+            <soap12:operation soapAction="urn:getComponentsByPlatform" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registerOrUpdateComponent">
+            <soap12:operation soapAction="urn:registerOrUpdateComponent" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteQualityPropertyWithConcern">
+            <soap12:operation soapAction="urn:deleteQualityPropertyWithConcern" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="listTopRatedComponents">
+            <soap12:operation soapAction="urn:listTopRatedComponents" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUIComponentsByData">
+            <soap12:operation soapAction="urn:getUIComponentsByData" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addQualityProperty">
+            <soap12:operation soapAction="urn:addQualityProperty" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addQualityPropertyWithConcern">
+            <soap12:operation soapAction="urn:addQualityPropertyWithConcern" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByTemplate">
+            <soap12:operation soapAction="urn:getComponentsByTemplate" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="listRegisteredOntologies">
+            <soap12:operation soapAction="urn:listRegisteredOntologies" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsBySemantic">
+            <soap12:operation soapAction="urn:getComponentsBySemantic" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMcdlByID">
+            <soap12:operation soapAction="urn:getMcdlByID" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateQualityProperty">
+            <soap12:operation soapAction="urn:updateQualityProperty" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getOntology">
+            <soap12:operation soapAction="urn:getOntology" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="runAssistance">
+            <soap12:operation soapAction="urn:runAssistance" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDataForComponent">
+            <soap12:operation soapAction="urn:getDataForComponent" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByKeywords">
+            <soap12:operation soapAction="urn:getComponentsByKeywords" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getSMCDLMatch">
+            <soap12:operation soapAction="urn:getSMCDLMatch" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="CoReServiceHttpBinding" type="ns:CoReServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="getComponentsByTask">
+            <http:operation location="getComponentsByTask"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="listMostPopularComponents">
+            <http:operation location="listMostPopularComponents"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteQualityProperty">
+            <http:operation location="deleteQualityProperty"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateQualityPropertyWithConcern">
+            <http:operation location="updateQualityPropertyWithConcern"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByOperations">
+            <http:operation location="getComponentsByOperations"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteComponent">
+            <http:operation location="deleteComponent"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="query">
+            <http:operation location="query"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getImagesByComponentAndCapability">
+            <http:operation location="getImagesByComponentAndCapability"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAuth">
+            <http:operation location="getAuth"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getVisualAttributes">
+            <http:operation location="getVisualAttributes"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registerComponent">
+            <http:operation location="registerComponent"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="doSparqlRequest">
+            <http:operation location="doSparqlRequest"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByEvents">
+            <http:operation location="getComponentsByEvents"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAllComponents">
+            <http:operation location="getAllComponents"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateComponent">
+            <http:operation location="updateComponent"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByPlatform">
+            <http:operation location="getComponentsByPlatform"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registerOrUpdateComponent">
+            <http:operation location="registerOrUpdateComponent"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteQualityPropertyWithConcern">
+            <http:operation location="deleteQualityPropertyWithConcern"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="listTopRatedComponents">
+            <http:operation location="listTopRatedComponents"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUIComponentsByData">
+            <http:operation location="getUIComponentsByData"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addQualityProperty">
+            <http:operation location="addQualityProperty"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addQualityPropertyWithConcern">
+            <http:operation location="addQualityPropertyWithConcern"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByTemplate">
+            <http:operation location="getComponentsByTemplate"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="listRegisteredOntologies">
+            <http:operation location="listRegisteredOntologies"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsBySemantic">
+            <http:operation location="getComponentsBySemantic"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMcdlByID">
+            <http:operation location="getMcdlByID"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateQualityProperty">
+            <http:operation location="updateQualityProperty"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getOntology">
+            <http:operation location="getOntology"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="runAssistance">
+            <http:operation location="runAssistance"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDataForComponent">
+            <http:operation location="getDataForComponent"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getComponentsByKeywords">
+            <http:operation location="getComponentsByKeywords"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getSMCDLMatch">
+            <http:operation location="getSMCDLMatch"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="CoReService">
+        <wsdl:port name="CoReServiceHttpSoap11Endpoint" binding="ns:CoReServiceSoap11Binding">
+            <soap:address location="http://141.76.68.50:8080/CoRe/services/CoReService.CoReServiceHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="CoReServiceHttpSoap12Endpoint" binding="ns:CoReServiceSoap12Binding">
+            <soap12:address location="http://141.76.68.50:8080/CoRe/services/CoReService.CoReServiceHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="CoReServiceHttpEndpoint" binding="ns:CoReServiceHttpBinding">
+            <http:address location="http://141.76.68.50:8080/CoRe/services/CoReService.CoReServiceHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

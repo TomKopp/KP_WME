@@ -1,0 +1,133 @@
+#dist-cmp-panel .thumb-wrap {
+	float: left;
+	margin: 4px;
+	margin-right: 0;
+	padding: 5px;
+}
+
+#dist-cmp-panel .thumb {
+	background: #dddddd;
+	padding: 5px;
+	border: 1px solid #999999;
+	border-radius: 3px;
+}
+
+#dist-cmp-panel .thumb p{
+	font-size: smaller;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+#dist-target-panel {
+	border: 1px solid #FFFFFF;
+}
+
+#dist-target-panel .x-view-over {
+	/*border: 1px solid #dddddd;*/
+	background: #eff5fb;
+	border-radius: 3px;
+	border: 1px solid #396095;
+}
+
+#dist-target-panel .x-view-selected {
+	background: #eff5fb;
+	border:1px solid #99bbe8;
+	padding: 4px;
+}
+
+.csr-strategy-container .csr-ls-wrap {
+    width: 150px;
+    height: 150px;
+    padding: 3px;
+    background: #EEEEEE;
+    border-radius: 3px;
+    border: 1px solid #888888;
+}
+
+.csr-strategy-container .x-view-over {
+    background: #eff5fb;
+    border-radius: 3px;
+    border: 1px solid #396095;
+}
+
+.csr-strategy-container .x-view-selected {
+    background: #aaaaaa;
+    border:1px solid #99bbe8;
+    padding: 4px;
+}
+
+#dist-target-panel .thumb-wrap {
+	float: left;
+	margin: 4px;
+	margin-right: 0;
+	padding: 5px;
+}
+
+#dist-target-panel .thumb {
+	background: #dddddd;
+	padding: 5px;
+	border: 1px solid #999999;
+	border-radius: 3px;
+}
+
+#dist-target-panel .thumb img{
+	width: 64px;
+	margin: 5px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+}
+
+#dist-target-panel .thumb p{
+	font-size: smaller;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+.csr-dist-selectionpanel {
+	border: 1px solid #428BCA;
+}
+
+.csr-distitem-panel {
+	background: #EEEEEE;
+}
+
+.csr-distitem-cmps.csr-distitem-cmps-over{
+	background-color: #BBFFBB;
+}
+
+.csr-device-wrap .csr-device img {
+	width: 64px;
+	margin: 5px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+}
+
+.csr-cmp-wrap {
+	width: 300px;
+	margin: 5px;
+	padding: 5px;
+	display: inline-block;
+}
+
+ul li.csr-cmp-wrap.x-view-over {
+	background-color: #eff5fb;
+	border: 1px solid #99bbe8;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+ul li.csr-cmp-wrap.x-view-selected {
+	background-color: #eff5fb;
+	border:1px solid #99bbe8;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+div.csr-ls-wrap {
+    border: 3px;
+    border-radius: 3px;
+    text-align: center;
+}
+
+img.csr-ls-icon {
+    width: 100px;
+    height: 100px;
+}

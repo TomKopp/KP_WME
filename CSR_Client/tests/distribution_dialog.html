@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Distribution dialog</title>
+	<link rel="stylesheet" type="text/css" href="../lib/bootstrap/themes/paper/bootstrap.min.css"/>
+	<script type="text/javascript" src="../lib/jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../lib/bootstrap/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		.distribution-dialog {
+			min-height: 800px;
+		}
+
+		.csr-mui-panel {
+			border: 1px solid #DDDDDD;
+			border-radius: 5px;
+			background-color: #f9f9f9;
+		}
+
+		.csr-mui-list {
+			border: 1px solid #DDDDDD;
+			border-radius: 0px;
+			background-color: #ffffff;
+		}
+
+		.component-list, .devices-list {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			align-items: center;
+			overflow: auto;
+		}
+
+		.distributions-list {
+			display: flex;
+			flex-direction: column;
+			overflow: auto;
+			height: 450px;
+		}
+
+		.component-item, .device-item {
+			display: inline-block;
+			background-color: #f2f2f2;
+			min-width: 150px;
+			max-width: 200px;
+			min-height: 60px;
+			max-height: 200px;
+			margin: 5px;
+			padding: 10px;
+		}
+
+		.component-icon-name, .device-icon-name {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+
+		.component-icon-name .component-name, .device-icon-name .device-name {
+			margin-left: 5px;
+			font-size: 1.3em;
+			font-weight: bold;
+			line-height: 1.2em;
+		}
+
+		.component-icon-name .component-icon, .device-icon-name .device-icon {
+			width: 32px;
+			height: 32px;
+		}
+
+		.component-description, .device-description {
+			margin-top: 10px;
+			min-height: 50px;
+			max-height: 120px;
+			line-height: 1.2em;
+			overflow: auto;
+		}
+
+		.distribution-item {
+			height: 180px;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: space-around;
+			align-items: stretch;
+			padding: 5px;
+			margin: 5px;
+		}
+
+		.distribution-item-components {
+			flex: 2;
+			margin-right: 5px;
+			background-color: #ffffff;
+		}
+
+		.distribution-item-devices {
+			flex: 2;
+			margin-left: 5px;
+			background-color: #ffffff;
+		}
+
+		.distribution-item-conf {
+			flex: 1;
+			display: flex;
+			background-color: #ffffff;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: center;
+			align-items: center;
+			padding: 10px;
+		}
+
+		.distribution-item-title {
+			height: 25px;
+			padding-left: 5px;
+			padding-top: 2px;
+			background-color: #dddddd;
+		}
+
+		.distribution-item-container {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+			align-items: flex-start;
+			padding: 8px;
+			margin-bottom: 12px;
+			overflow: auto;
+			max-height: 141px;
+			border-color: #dddddd;
+			border-style: solid;
+			border-width: 1px 0px 0px 0px;
+		}
+
+		.distribution-item-entity {
+			width: 62px;
+			height: 62px;
+			padding: 3px;
+			font-size: 0.8em;
+			line-height: 1em;
+			margin-right: 5px;
+			margin-bottom: 5px;
+		}
+
+		.distribution-item-conf button {
+			width: 100px;
+			padding: 2px;
+			box-shadow: 0px 0px;
+			background: linear-gradient(0deg, #02A3E5, #78D1F6);
+		}
+
+		.distribution-item-conf img {
+			height: 65px;
+			width: 55px;
+		}
+
+		.distribution-item-entity img {
+			width: 32px;
+			height: 32px;
+			margin-left: -2px;
+		}
+	</style>
+</head>
+<body>
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#mui-cdist-dialog">
+	Launch demo modal
+</button>
+
+<div id="mui-cdist-dialog" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content distribution-dialog">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">Component distribution</h4>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-6">
+							<h6>Components</h6>
+
+							<div class="component-list csr-mui-panel">
+								<div class="component-item">
+									<div class="component-icon-name">
+										<img class="component-icon" src="../res/img/puzzle.png"/>
+										<span class="component-name">Component Name</span>
+									</div>
+									<div class="component-description">
+										<p>
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+											eirmod
+											tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+											At
+											vero eos et accusam et
+										</p>
+									</div>
+								</div>
+								<div class="component-item">
+									<div class="component-icon-name">
+										<img class="component-icon" src="../res/img/puzzle.png"/>
+										<span class="component-name">Component Name</span>
+									</div>
+									<div class="component-description">
+										<p>
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+											eirmod
+											tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+											At
+											vero eos et accusam et
+										</p>
+									</div>
+								</div>
+								<div class="component-item">
+									<div class="component-icon-name">
+										<img class="component-icon" src="../res/img/puzzle.png"/>
+										<span class="component-name">Component Name</span>
+									</div>
+									<div class="component-description">
+										<p>
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+											eirmod
+											tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+											At
+											vero eos et accusam et
+										</p>
+									</div>
+								</div>
+								<div class="component-item">
+									<div class="component-icon-name">
+										<img class="component-icon" src="../res/img/puzzle.png"/>
+										<span class="component-name">Component Name</span>
+									</div>
+									<div class="component-description">
+										<p>
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+											eirmod
+											tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+											At vero eos et accusam et
+										</p>
+									</div>
+								</div>
+								<div class="component-item">
+									<div class="component-icon-name">
+										<img class="component-icon" src="../res/img/puzzle.png"/>
+										<span class="component-name">Component Name</span>
+									</div>
+									<div class="component-description">
+										<p>
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+											eirmod
+											tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+											At vero eos et accusam et
+										</p>
+									</div>
+								</div>
+								<div class="component-item">
+									<div class="component-icon-name">
+										<img class="component-icon" src="../res/img/puzzle.png"/>
+										<span class="component-name">Component Name</span>
+									</div>
+									<div class="component-description">
+										<p>
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+											eirmod
+											tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+											At vero eos et accusam et
+										</p>
+									</div>
+								</div>
+								<div class="component-item">
+									<div class="component-icon-name">
+										<img class="component-icon" src="../res/img/puzzle.png"/>
+										<span class="component-name">Component Name</span>
+									</div>
+									<div class="component-description">
+										<p>
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+											eirmod
+											tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+											At vero eos et accusam et
+										</p>
+									</div>
+								</div>
+								<div class="component-item">
+									<div class="component-icon-name">
+										<img class="component-icon" src="../res/img/puzzle.png"/>
+										<span class="component-name">Component Name</span>
+									</div>
+									<div class="component-description">
+										<p>
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+											eirmod
+											tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+											At vero eos et accusam et
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<h6>Devices</h6>
+
+							<div class="devices-list csr-mui-panel">
+								<div class="device-item">
+									<div class="device-icon-name">
+										<img class="device-icon" src="../res/img/device/laptop_icon.png"/>
+										<span class="device-name">Device Name</span>
+									</div>
+									<div class="device-description">
+										<p>
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+											eirmod
+											tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+											At vero eos et accusam et
+										</p>
+									</div>
+								</div>
+								<div class="device-item">
+									<div class="device-icon-name">
+										<img class="device-icon" src="../res/img/device/laptop_icon.png"/>
+										<span class="device-name">Device Name</span>
+									</div>
+									<div class="device-description">
+										<p>
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+											eirmod
+											tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+											At vero eos et accusam et
+										</p>
+									</div>
+								</div>
+								<div class="device-item">
+									<div class="device-icon-name">
+										<img class="device-icon" src="../res/img/device/laptop_icon.png"/>
+										<span class="device-name">Device Name</span>
+									</div>
+									<div class="device-description">
+										<p>
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+											eirmod
+											tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+											At vero eos et accusam et
+										</p>
+									</div>
+								</div>
+								<div class="device-item">
+									<div class="device-icon-name">
+										<img class="device-icon" src="../res/img/device/laptop_icon.png"/>
+										<span class="device-name">Device Name</span>
+									</div>
+									<div class="device-description">
+										<p>
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+											eirmod
+											tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+											At vero eos et accusam et
+										</p>
+									</div>
+								</div>
+								<div class="device-item">
+									<div class="device-icon-name">
+										<img class="device-icon" src="../res/img/device/laptop_icon.png"/>
+										<span class="device-name">Device Name</span>
+									</div>
+									<div class="device-description">
+										<p>
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+											eirmod
+											tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+											At vero eos et accusam et
+										</p>
+									</div>
+								</div>
+								<div class="device-item">
+									<div class="device-icon-name">
+										<img class="device-icon" src="../res/img/device/laptop_icon.png"/>
+										<span class="device-name">Device Name</span>
+									</div>
+									<div class="device-description">
+										<p>
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+											eirmod
+											tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+											At vero eos et accusam et
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<h6>Distributions</h6>
+							<!-- vertical list of distribution items -->
+							<div class="distributions-list csr-mui-list">
+								<!-- visual representation of distribution item -->
+								<div class="distribution-item csr-mui-panel">
+									<div class="distribution-item-components csr-mui-list">
+										<!-- title -->
+										<div class="distribution-item-title">Components</div>
+										<!-- component container -->
+										<div class="distribution-item-container">
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+										</div>
+									</div>
+									<div class="distribution-item-conf">
+										<div class="dropdown">
+											<button class="btn btn-default dropdown-toggle" type="button"
+											        data-toggle="dropdown">
+												configure<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu">
+												<li><a href="#">simple</a></li>
+												<li><a href="#">cloning</a></li>
+												<li><a href="#">copying</a></li>
+											</ul>
+										</div>
+										<img src="../res/img/arrow_forward.png"/>
+									</div>
+									<div class="distribution-item-devices csr-mui-list">
+										<!-- title -->
+										<div class="distribution-item-title">Devices</div>
+										<!-- device container -->
+										<div class="distribution-item-container">
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="distribution-item csr-mui-panel">
+									<div class="distribution-item-components csr-mui-list">
+										<!-- title -->
+										<div class="distribution-item-title">Components</div>
+										<!-- component container -->
+										<div class="distribution-item-container">
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+										</div>
+									</div>
+									<div class="distribution-item-conf">
+										<div class="dropdown">
+											<button class="btn btn-default dropdown-toggle" type="button"
+											        data-toggle="dropdown">
+												configure<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu">
+												<li><a href="#">simple</a></li>
+												<li><a href="#">cloning</a></li>
+												<li><a href="#">copying</a></li>
+											</ul>
+										</div>
+										<img src="../res/img/arrow_forward.png"/>
+									</div>
+									<div class="distribution-item-devices csr-mui-list">
+										<!-- title -->
+										<div class="distribution-item-title">Devices</div>
+										<!-- device container -->
+										<div class="distribution-item-container">
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="distribution-item csr-mui-panel">
+									<div class="distribution-item-components csr-mui-list">
+										<!-- title -->
+										<div class="distribution-item-title">Components</div>
+										<!-- component container -->
+										<div class="distribution-item-container">
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/puzzle.png"/>
+												<span>Component Name</span>
+											</div>
+										</div>
+									</div>
+									<div class="distribution-item-conf">
+										<div class="dropdown">
+											<button class="btn btn-default dropdown-toggle" type="button"
+											        data-toggle="dropdown">
+												configure<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu">
+												<li><a href="#">simple</a></li>
+												<li><a href="#">cloning</a></li>
+												<li><a href="#">copying</a></li>
+											</ul>
+										</div>
+										<img src="../res/img/arrow_forward.png"/>
+									</div>
+									<div class="distribution-item-devices csr-mui-list">
+										<!-- title -->
+										<div class="distribution-item-title">Devices</div>
+										<!-- device container -->
+										<div class="distribution-item-container">
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+											<div class="distribution-item-entity csr-mui-panel">
+												<img src="../res/img/device/laptop_icon.png"/>
+												<span>Device Name</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

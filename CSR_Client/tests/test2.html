@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.min.css"/>
+	<script type="text/javascript" src="../lib/jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../lib/bootstrap/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		#csr-mui-loadericon {
+			margin: 10px;
+		}
+
+		.loader-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+	</style>
+</head>
+<body>
+<div class="container-fluid">
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#csr-mui-loader">open</button>
+
+	<div id="csr-mui-loader" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="loader-container">
+						<div>
+							<img id="csr-mui-loadericon" style="width: 62px; height: 62px"
+							     src="res/img/loader/loader_3.gif"/>
+						</div>
+						<div>
+							<p>message</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

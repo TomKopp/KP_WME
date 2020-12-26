@@ -1,0 +1,55 @@
+#sp {
+	position: absolute;
+	top: 50px !important;
+	display: block;
+	width: 100%;
+}
+
+#sp .x-toolbar {
+	width: 100% !important;
+}
+
+#sp .x-window-body {
+	background-color: #fff;
+}
+
+#sp_dataView .thumb-wrap {
+	width: 110px;
+	float: left;
+	margin: 0 10px 5px 0;
+	border: 1px solid #99bbe8;
+	position: relative;
+	overflow: hidden;
+}
+
+#sp_dataView .thumb-wrap:hover {
+	background: #e6f0fc;
+	border: 1px solid #99bbe8;
+	cursor: pointer;
+}
+
+#sp_dataView .thumb {
+	width: 90px;
+	margin: 10px;
+}
+
+#sp_dataView img {
+	width: 90px;
+	height: 90px;
+}
+
+#sp_dataView p {
+	background: url("../../lib/ext/resources/images/default/toolbar/bg.gif");
+	height: 36px;
+	margin: 0 0 5px 0;
+	padding: 5px;
+	border: 1px solid #99bbe8;
+	border-width: 0 0 1px 0;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 12px;
+	color: #15428b;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+}

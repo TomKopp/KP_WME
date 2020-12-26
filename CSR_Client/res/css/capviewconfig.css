@@ -1,0 +1,149 @@
+.modal.in .modal-dialog {
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
+
+
+.highlightit img{
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+}
+
+.highlightit:hover img{
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+    -moz-opacity: 1;
+    opacity: 1;
+}
+
+.highlightit:checked img{
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+    -moz-opacity: 1;
+    opacity: 1;
+}
+
+.click:checked img{
+    opacity: 1;
+}
+
+input.click:checked + img{
+    opacity: 1;
+    box-shadow: 0 3px 25px #646464;
+}
+.hover11 label img {
+    opacity: 0.5;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.hover11 label:hover img {
+    opacity: 1;
+}
+.click{
+    opacity: 0;
+    z-index: 100;
+}
+
+#modalbtn{
+    padding: 10px;
+}
+
+#cvconfig-window{
+    box-shadow: 0 3px 25px #646464;
+    background-color: white;
+}
+
+#cvconfig-window .cvconfig-header{
+    box-shadow: 0 3px 25px #646464;
+    background-color: white;
+    border-width: 0px;
+    overflow: hidden;
+    background-image: none !important;
+    color: #fff;
+}
+#cvconfig-window .config-body{
+    height : 100%;
+    background-color: white;
+    position: absolute;
+}
+.rowCV {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.cvconfig-el-mask {
+    /*background-color: rgba(33, 200, 68, 0.36);*/
+    background-color: #000000 !important;
+}
+
+.titleMargin{
+    margin-left: 5px;
+    margin-right: 50px;
+}
+
+#cvconfig-window .cvconfig-footer{
+    width: 100% !important;
+}
+
+.x-tool-CVconfig-close-button {
+    /*background: none;*/
+    background-image: url("../../res/img/gray/icon_dark_02.png");
+    background-size: 20px;
+    background-repeat: no-repeat;
+    -webkit-transform: scaleY(-1);
+    width: 30px;
+    height: 30px;
+}
+
+#cvconfig-window .device-list .device, #cvconfig-window .layout-list .layout {
+	margin: 10px;
+	padding: 6px;
+	display: inline-block;
+	background-color: lightblue;
+}
+
+
+
+
+#cvconfig-window .device-list .device-active {
+	background-color: lightblue;
+    box-shadow: 1px 3px 10px;
+}
+
+#cvconfig-window .device-list .device:hover, #cvconfig-window .layout-list .layout-active, #cvconfig-window .layout-list .layout:hover {
+    box-shadow: 1px 3px 10px;
+}
+
+#cvconfig-window .device-list .device .device-header .device-icon {
+	width: 40px;
+	height: 40px;
+	margin: 5px;
+}
+
+#cvconfig-window .layout-list .layout .layout-icon {
+	width: 120px;
+	height: 120px;
+	margin: 5px;
+}
+
+#deviceNotification-window{
+    /*box-shadow: 0 3px 25px #646464;*/
+    background-color: #ff9800;
+    background-image: none !important;
+    left: initial !important;
+    right: 20px !important;
+}
+
+.x-tool-DeviceNotification-close-button {
+    /*background: none;*/
+    background-image: url("../img/white/icon_02.png");
+    background-size: 20px;
+    background-repeat: no-repeat;
+    -webkit-transform: scaleY(-1);
+    width: 30px;
+    height: 30px;
+}
+#modalbtn{
+    padding: 10px;
+    background-color: white !important;
+}

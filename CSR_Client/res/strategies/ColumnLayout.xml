@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layoutstrategy
+	xmlns="http://mmt.inf.tu-dresden.de/2014/documa/layoutstrategy"
+	xmlns:e="http://mmt.inf.tu-dresden.de/2014/documa/expressions"
+	id="column"
+	name="Column Layout"
+	active="true">
+	<meta>
+		<icon>
+			<url>res/img/column.png</url>
+		</icon>
+	</meta>
+	<precondition>
+		<!-- strategy is applicable only if there are more than one components and if the width of all together is smaller than 
+			the viewport width -->
+		<e:and>
+			<e:compare op="gt">
+				<e:all-count />
+				<e:number>1</e:number>
+			</e:compare>
+			<e:compare op="le">
+				<e:sum>
+					<e:all-width />
+				</e:sum>
+				<e:viewport-width />
+			</e:compare>
+		</e:and>
+	</precondition>
+	<ratingcriteria>
+		<criterion scope="global">
+			<e:compare op="gt">
+				<e:viewport-width />
+				<e:viewport-height />
+			</e:compare>
+		</criterion>
+		<criterion scope="individual">
+			<e:compare op="le">
+				<e:absolute>
+					<e:subtract>
+						<e:divide>
+							<e:current-height />
+							<e:viewport-height />
+						</e:divide>
+						<e:number>1</e:number>
+					</e:subtract>
+				</e:absolute>
+				<e:number>0.5</e:number>
+			</e:compare>
+		</criterion>
+	</ratingcriteria>
+	<algorithm>
+		<bounds>
+			<width>
+				<e:current-width />
+			</width>
+			<height>
+				<e:current-height />
+			</height>
+		</bounds>
+	</algorithm>
+</layoutstrategy>

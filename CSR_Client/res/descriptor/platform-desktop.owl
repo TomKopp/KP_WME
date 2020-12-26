@@ -1,0 +1,282 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY spin "http://spinrdf.org/spin#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY platform "http://mmt.inf.tu-dresden.de/documa/ontologies/platform#" >
+    <!ENTITY com "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#" >
+        <!ENTITY dev "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#" >
+    <!ENTITY desktop "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#" >
+    <!ENTITY soft "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#" >
+]>
+
+
+<rdf:RDF xmlns="http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#"
+         xml:base="http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop"
+         xmlns:com="http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#"
+         xmlns:desktop="http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#"
+         xmlns:dev="http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:spin="http://spinrdf.org/spin#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:platform="http://mmt.inf.tu-dresden.de/documa/ontologies/platform#"
+         xmlns:soft="http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#">
+    <owl:Ontology rdf:about="http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop">
+        <rdfs:label rdf:datatype="&xsd;string">Desktop Platform Instance</rdfs:label>
+        <owl:versionInfo rdf:datatype="&xsd;double">0.8</owl:versionInfo>
+        <rdfs:comment rdf:datatype="&xsd;string">
+            06.10.2014 added device service relation into desktop client sample
+            23.08.2015 added &apos;hasOwner&apos; and &apos;hasCurrentUser&apos; datatype property
+        </rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="&xsd;string">Oliver Mross</rdfs:isDefinedBy>
+        <owl:imports rdf:resource="http://mmt.inf.tu-dresden.de/documa/ontologies/platform"/>
+        <spin:imports rdf:resource="http://topbraid.org/spin/owlrl-all"/>
+    </owl:Ontology>
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#CSR_DesktopClient -->
+
+    <owl:NamedIndividual rdf:about="&desktop;CSR_DesktopClient">
+        <rdf:type rdf:resource="&soft;DesktopClient"/>
+        <rdfs:label rdf:datatype="&xsd;string">CSRDesktopClient</rdfs:label>
+        <com:hasVersion rdf:datatype="&xsd;string">1.16.0</com:hasVersion>
+        <com:hasName rdf:datatype="&xsd;string">CSR Desktop Browser Client</com:hasName>
+        <com:hasVendor rdf:datatype="&xsd;string">Google</com:hasVendor>
+        <soft:executedBy rdf:resource="&desktop;DesktopPC_Windows"/>
+        <soft:providedBy rdf:resource="&soft;Chromium"/>
+        <soft:hasService rdf:resource="&soft;GeolocationService1"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#DesktopPC_Windows -->
+
+    <owl:NamedIndividual rdf:about="&desktop;DesktopPC_Windows">
+        <rdf:type rdf:resource="&dev;DesktopPC"/>
+        <rdfs:label rdf:datatype="&xsd;string">WindowsPC</rdfs:label>
+        <com:hasName rdf:datatype="&xsd;string">EMross</com:hasName>
+        <com:hasVendor rdf:datatype="&xsd;string">Hewlett-Packard</com:hasVendor>
+        <dev:isMobile rdf:datatype="&xsd;boolean">false</dev:isMobile>
+        <com:hasDevicePicture rdf:datatype="&xsd;anyURI">http://csr.mmt.inf.tu-dresden.de:8080/libs/pics/desktop_icon.png</com:hasDevicePicture>
+        <com:hasOwner rdf:datatype="&xsd;string">oliver.mross@tu-dresden.de</com:hasOwner>
+        <dev:hasOutputDevice rdf:resource="&desktop;EizoPC_Display"/>
+        <dev:hasOutputDevice rdf:resource="&desktop;EizoPC_Display_2"/>
+        <dev:hasOutputDevice rdf:resource="&desktop;HeadSet_Speaker"/>
+        <dev:hasInputDevice rdf:resource="&desktop;LogitechKeyboard"/>
+        <dev:hasInputDevice rdf:resource="&desktop;LogitechMouse"/>
+        <dev:hasInputDevice rdf:resource="&desktop;LogitechWebcam"/>
+        <dev:embedsCPU rdf:resource="&desktop;QuadCoreCPU"/>
+        <dev:hasMaximalMemory rdf:resource="&desktop;RAM_4GB"/>
+        <dev:currentOperatingSystem rdf:resource="&desktop;Windows10"/>
+        <dev:execute rdf:resource="&soft;Chromium"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#EizoPC_Display -->
+
+    <owl:NamedIndividual rdf:about="&desktop;EizoPC_Display">
+        <rdf:type rdf:resource="&dev;Display"/>
+        <rdfs:label rdf:datatype="&xsd;string">Eizo PC Display</rdfs:label>
+        <com:hasModelNumber rdf:datatype="&xsd;string">0815</com:hasModelNumber>
+        <com:hasName rdf:datatype="&xsd;string">EIZO Small Display</com:hasName>
+        <com:hasManufacturer rdf:datatype="&xsd;string">Eizo</com:hasManufacturer>
+        <com:hasModelName rdf:datatype="&xsd;string">Eizo Display</com:hasModelName>
+        <dev:isMobile rdf:datatype="&xsd;boolean">false</dev:isMobile>
+        <com:hasManufacturerUrl rdf:datatype="&xsd;anyURI">http://www.eizo.de/home.html</com:hasManufacturerUrl>
+        <dev:hasResolution rdf:resource="&desktop;EizoResolution_1240_1024"/>
+        <dev:hasFramerate rdf:resource="&dev;Framerate_24"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#EizoPC_Display_2 -->
+
+    <owl:NamedIndividual rdf:about="&desktop;EizoPC_Display_2">
+        <rdf:type rdf:resource="&dev;Display"/>
+        <com:hasManufacturer rdf:datatype="&xsd;string">Eizo</com:hasManufacturer>
+        <dev:hasPixelDensity rdf:resource="&desktop;PixelDensity_90ppi"/>
+        <dev:hasFramerate rdf:resource="&dev;Framerate_24"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#EizoResolution_1240_1024 -->
+
+    <owl:NamedIndividual rdf:about="&desktop;EizoResolution_1240_1024">
+        <rdf:type rdf:resource="&dev;Resolution"/>
+        <rdfs:label rdf:datatype="&xsd;string">EizoDisplayResolution</rdfs:label>
+        <dev:hasHeight rdf:datatype="&xsd;integer">1024</dev:hasHeight>
+        <dev:hasWidth rdf:datatype="&xsd;integer">1240</dev:hasWidth>
+        <dev:hasSideRelation rdf:resource="&dev;SideRelation_4to3"/>
+        <dev:hasScale rdf:resource="&dev;pixel"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#EizoResolution_1920_1680 -->
+
+    <owl:NamedIndividual rdf:about="&desktop;EizoResolution_1920_1680">
+        <rdf:type rdf:resource="&dev;Resolution"/>
+        <dev:hasHeight rdf:datatype="&xsd;integer">1680</dev:hasHeight>
+        <dev:hasWidth rdf:datatype="&xsd;integer">1920</dev:hasWidth>
+        <com:hasVendor rdf:datatype="&xsd;string">Eizo</com:hasVendor>
+        <dev:isMeasurandFrom rdf:resource="&desktop;EizoPC_Display_2"/>
+        <dev:hasSideRelation rdf:resource="&dev;SideRelation_16to9"/>
+        <dev:hasScale rdf:resource="&dev;pixel"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#HeadSet_Speaker -->
+
+    <owl:NamedIndividual rdf:about="&desktop;HeadSet_Speaker">
+        <rdf:type rdf:resource="&dev;Speaker"/>
+        <rdfs:label rdf:datatype="&xsd;string">HeadSet</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#Intel_Dual_Core -->
+
+    <owl:NamedIndividual rdf:about="&desktop;Intel_Dual_Core">
+        <rdf:type rdf:resource="&dev;x64"/>
+        <rdfs:label rdf:datatype="&xsd;string">IntelDualCore</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#LogitechKeyboard -->
+
+    <owl:NamedIndividual rdf:about="&desktop;LogitechKeyboard">
+        <rdf:type rdf:resource="&dev;Keyboard"/>
+        <rdfs:label rdf:datatype="&xsd;string">WindowsPC</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#LogitechMouse -->
+
+    <owl:NamedIndividual rdf:about="&desktop;LogitechMouse">
+        <rdf:type rdf:resource="&dev;Mouse"/>
+        <rdfs:label rdf:datatype="&xsd;string">LogitechMouse</rdfs:label>
+        <com:hasVendor rdf:datatype="&xsd;string">Logitech</com:hasVendor>
+        <com:hasName rdf:datatype="&xsd;string">Logitech Mouse</com:hasName>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#LogitechWebcam -->
+
+    <owl:NamedIndividual rdf:about="&desktop;LogitechWebcam">
+        <rdf:type rdf:resource="&dev;Camera"/>
+        <rdfs:label rdf:datatype="&xsd;string">LogitechWebcam</rdfs:label>
+        <com:hasModelNumber rdf:datatype="&xsd;string">990</com:hasModelNumber>
+        <com:hasVendor rdf:datatype="&xsd;string">Logitech</com:hasVendor>
+        <com:hasManufacturer rdf:datatype="&xsd;string">Logitech</com:hasManufacturer>
+        <com:hasName rdf:datatype="&xsd;string">My Webcam</com:hasName>
+        <com:hasModelName rdf:datatype="&xsd;string">WebCam P990</com:hasModelName>
+        <dev:hasLEDFlash rdf:datatype="&xsd;boolean">false</dev:hasLEDFlash>
+        <dev:hasAutoFocus rdf:datatype="&xsd;boolean">false</dev:hasAutoFocus>
+        <com:hasManufacturerUrl rdf:datatype="&xsd;anyURI">http://www.logitech.com/de-de/product/webcam-C110?crid=34
+        </com:hasManufacturerUrl>
+        <dev:isFrontCamera rdf:datatype="&xsd;boolean">true</dev:isFrontCamera>
+        <dev:hasFramerate rdf:resource="&dev;Framerate_10"/>
+        <dev:hasFramerate rdf:resource="&dev;Framerate_15"/>
+        <dev:hasFramerate rdf:resource="&dev;Framerate_24"/>
+        <dev:hasFramerate rdf:resource="&dev;Framerate_30"/>
+        <dev:hasSceneMode rdf:resource="&dev;Landscape"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#LogitechWebcam_Res -->
+
+    <owl:NamedIndividual rdf:about="&desktop;LogitechWebcam_Res">
+        <rdf:type rdf:resource="&dev;Resolution"/>
+        <rdfs:label rdf:datatype="&xsd;string">requiresPlugin</rdfs:label>
+        <dev:hasHeight rdf:datatype="&xsd;integer">480</dev:hasHeight>
+        <dev:hasWidth rdf:datatype="&xsd;integer">640</dev:hasWidth>
+        <dev:isMeasurandFrom rdf:resource="&desktop;LogitechWebcam"/>
+        <dev:hasSideRelation rdf:resource="&dev;SideRelation_4to3"/>
+        <dev:hasScale rdf:resource="&dev;pixel"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#MemoryScale_GB -->
+
+    <owl:NamedIndividual rdf:about="&desktop;MemoryScale_GB">
+        <rdf:type rdf:resource="&dev;MemoryScale"/>
+        <rdfs:label rdf:datatype="&xsd;string">MemoryAmount</rdfs:label>
+        <dev:hasScaleSymbol rdf:datatype="&xsd;string">GB</dev:hasScaleSymbol>
+        <com:hasName rdf:datatype="&xsd;string">Gigabyte Memory</com:hasName>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#PixelDensity_90ppi -->
+
+    <owl:NamedIndividual rdf:about="&desktop;PixelDensity_90ppi">
+        <rdf:type rdf:resource="&dev;PixelDensity"/>
+        <rdfs:label rdf:datatype="&xsd;string">PixelDensity</rdfs:label>
+        <com:hasValue rdf:datatype="&xsd;string">90</com:hasValue>
+        <com:hasName rdf:datatype="&xsd;string">90ppi</com:hasName>
+        <dev:isMeasurandFrom rdf:resource="&desktop;EizoPC_Display"/>
+        <dev:hasScale rdf:resource="&dev;ppi"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#QuadCoreCPU -->
+
+    <owl:NamedIndividual rdf:about="&desktop;QuadCoreCPU">
+        <rdf:type rdf:resource="&dev;x64"/>
+        <com:hasVendor rdf:datatype="&xsd;string">Intel</com:hasVendor>
+        <dev:hasAdressWidth rdf:resource="&dev;AW_64bit"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#RAM_4GB -->
+
+    <owl:NamedIndividual rdf:about="&desktop;RAM_4GB">
+        <rdf:type rdf:resource="&dev;RAM"/>
+        <rdfs:label rdf:datatype="&xsd;string">RAM</rdfs:label>
+        <com:hasValue rdf:datatype="&xsd;string">4</com:hasValue>
+        <dev:hasScale rdf:resource="&desktop;MemoryScale_GB"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://mmt.inf.tu-dresden.de/documa/ontologies/platform-desktop#Windows7 -->
+
+    <owl:NamedIndividual rdf:about="&desktop;Windows10">
+        <rdf:type rdf:resource="&soft;OperatingSystem"/>
+        <rdfs:label rdf:datatype="&xsd;string">WindowsPC</rdfs:label>
+        <com:hasVersion rdf:datatype="&xsd;string">10</com:hasVersion>
+        <com:hasVendor rdf:datatype="&xsd;string">Microsoft</com:hasVendor>
+        <com:hasName rdf:datatype="&xsd;string">Windows NT</com:hasName>
+        <soft:executedBy rdf:resource="&desktop;DesktopPC_Windows"/>
+        <soft:provides rdf:resource="&soft;Chrome"/>
+        <soft:provides rdf:resource="&soft;Chromium"/>
+        <soft:provides rdf:resource="&soft;Firefox"/>
+        <soft:provides rdf:resource="&soft;Safari"/>
+    </owl:NamedIndividual>
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="&soft;CSRClient">
+        <rdfs:comment rdf:datatype="&xsd;string">This class represents a csr client runtime.</rdfs:comment>
+    </rdf:Description>
+</rdf:RDF>
+
+
+        <!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

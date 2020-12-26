@@ -1,0 +1,79 @@
+.hotel-list-wrapper {
+    height: 100%;
+}
+.hotel-list-items {
+    height: calc(100% - 268px);
+    overflow: auto;
+}
+.hotel-list-img {
+    width: 64px;
+    height: 64px;
+    border-radius: 32px;
+    float: left;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hotel-list-description {
+    width: calc(100% - 64px);
+    height: 100%;
+    float: left;
+}
+
+.hotel-list-description h2 {
+    font-size: 16px;
+    float: left;
+    margin: 0px;
+    margin-top: 6px;
+    margin-left: 8px;
+    margin-right: 4px;
+}
+
+.hotel-list-item-wrapper {
+    height: 64px;
+    padding: 10px;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    cursor: pointer;
+}
+
+.hotel-list-small-screen {
+    width: 100%;
+}
+
+.hotel-list-big-screen {
+    width: 300px;
+    height: 100%;
+    float: left;
+    border-right: 1px solid rgba(0,0,0,.12);
+    background: white;
+}
+
+.hotel-list-filter-menu {
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    margin-top: 90px;
+    overflow: auto;
+}
+
+.filter-feature-list-item {
+    float: left;
+    width: 50px;
+    height: 50px;
+}
+
+.filter-feature-list, .filter-rating-list {
+    width: 100%;
+    overflow: auto;
+}
+.filter-rating-list button {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    margin: 3px;
+}
+
+.filter-feature-list-label, .filter-rating-list-label {
+    font-size: 14px;
+    padding: 0px 4px;
+}

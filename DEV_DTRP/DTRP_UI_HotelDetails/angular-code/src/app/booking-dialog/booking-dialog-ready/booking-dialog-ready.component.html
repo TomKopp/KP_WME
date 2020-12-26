@@ -1,0 +1,17 @@
+<div class="booking-dialog-ready-wrapper">
+  <h1>Ihre Buchung war erfolgreich!</h1>
+  <div class="booking-dialog-ready-content">
+    <div class="booking-dialog-ready-image-wrapper" [style.backgroundImage]="'url(' + hotelData.offer.img + ')'">
+      <div class="booking-dialog-ready-image-info-overlay">
+        <h2>{{hotelData.hotelData.name}}</h2>
+        <div class="booking-dialog-ready-rating-container">
+          <app-hotel-rating [numberOfStars]="hotelData.hotelData.rating"></app-hotel-rating>
+        </div>
+      </div>
+    </div>
+    <div class="booking-dialog-ready-info-container">
+      <div>{{hotelData.offer.name}}</div>
+      <div>02.01.2019 - 03.02.2019</div>
+    </div>
+  </div>
+</div>

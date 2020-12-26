@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test Page</title>
+	<link rel="stylesheet" type="text/css" href="../lib/bootstrap/themes/paper/bootstrap.min.css"/>
+	<script type="text/javascript" src="../lib/bootstrap/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		body {
+			background-color: rgba(228, 228, 228, 0.53);
+		}
+
+		#mui-left, #mui-right {
+			min-height: 800px;
+			margin: 10px;
+		}
+
+		#mui-loadable-apps-list, #mui-joinable-apps-list {
+			max-height: 400px;
+			overflow: auto;
+		}
+
+		#mui-owndevice-dev {
+			border: 1px solid #EEEEEE;
+			border-radius: 5px;
+			padding: 10px;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+		}
+	</style>
+</head>
+<body>
+<div class="container-fluid">
+	<div id="mui-left" class="col-md-3 panel panel-default">
+		<div class="panel-body">
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation">
+					<a href="#apps" role="tab" data-toggle="tab">Apps</a>
+				</li>
+				<li role="presentation">
+					<a href="#search" role="tab" data-toggle="tab">Search</a>
+				</li>
+				<li role="presentation">
+					<a href="#info" role="tab" data-toggle="tab">Info</a>
+				</li>
+			</ul>
+			<!-- tab panes -->
+			<div class="tab-content">
+				<div id="apps" role="tabpanel" class="tab-pane active">
+					<div id="mui-loadable-apps" class="row">
+						<h5>Available Apps</h5>
+
+						<div id="mui-loadable-apps-list" class="list-group">
+							<a class="list-group-item">
+								<h5>App 1</h5>
+
+								<p>
+									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+									tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+								</p>
+							</a>
+							<a class="list-group-item">
+								<h5>App 2</h5>
+
+								<p>
+									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+									tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+								</p>
+							</a>
+							<a class="list-group-item">
+								<h5>App 3</h5>
+
+								<p>
+									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+									tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+								</p>
+							</a>
+							<a class="list-group-item">
+								<h5>App 4</h5>
+
+								<p>
+									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+									tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+								</p>
+							</a>
+							<a class="list-group-item">
+								<h5>App 5</h5>
+
+								<p>
+									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+									tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+								</p>
+							</a>
+						</div>
+					</div>
+					<div id="mui-joinable-apps" class="row">
+						<h5>Joinable Apps</h5>
+
+						<div id="mui-joinable-apps-list" class="list-group">
+							<a class="list-group-item">
+								<h5>App 1</h5>
+								<h6>
+									<span class="label label-default">ID</span> app1
+									<span class="label label-default">Version</span> 1.0.0
+								</h6>
+
+							</a>
+							<a class="list-group-item">
+								<h5>App 2</h5>
+
+								<p>
+									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+									tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+								</p>
+							</a>
+							<a class="list-group-item">
+								<h5>App 3</h5>
+
+								<p>
+									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+									tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+								</p>
+							</a>
+							<a class="list-group-item">
+								<h5>App 4</h5>
+
+								<p>
+									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+									tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+								</p>
+							</a>
+							<a class="list-group-item">
+								<h5>App 5</h5>
+
+								<p>
+									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+									tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+								</p>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div id="search" role="tabpanel" class="tab-pane">
+					<!-- adding here search panel -->
+				</div>
+				<div id="info" role="tabpanel" class="tab-pane">
+					<!-- adding here info panel -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="mui-right" class="col-md-8 panel panel-default">
+		<div id="mui-owndevice">
+			<h3>Your current device</h3>
+
+			<div class="row">
+				<div class="col-md-4">
+					<div id="mui-owndevice-dev">
+						<img src="../res/img/device/laptop_icon.png">
+						<div>
+							<span class="label label-default">Name:</span>&nbsp;Oliver's Notebook<br/>
+							<span class="label label-default">OS:</span>&nbsp;Windows 10<br/>
+							<span class="label label-default">Vendor:</span>&nbsp;Hewlet Packard<br/>
+							<button type="button" class="btn btn-default">Show Details</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8"></div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

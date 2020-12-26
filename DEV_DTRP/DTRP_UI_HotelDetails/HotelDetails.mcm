@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mcm:MashupComposition xmi:version="2.0" 
+	    			   xmlns:mcm="http://mmt.inf.tu-dresden.de/mcm/1.15"
+	                  author="bob@documa.com"
+	                  xmlns:xmi="http://www.omg.org/XMI" 
+	                  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+				   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	                  xmlns:dt="http://mmt.inf.tu-dresden.de/documa/components/datatypes"
+	                  name="HotelDetails"
+	                  id="testsp1" version="1.0.0" xsi:schemaLocation="http://mmt.inf.tu-dresden.de/mcm/1.15">
+    <conceptualModel>
+        <components>
+            <component xsi:type="mcm:UIComponent" instanceid="sp1"
+                       componentid="https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DTRP/DTRP_UI_HotelDetails/">
+
+                <!-- Operations -->
+                <operation name="triggerTestEvent"/>
+
+                <!-- Events -->
+                <event name="testEventTriggered">
+                    <parameter type="xs:string"
+                               name="text"/>
+                </event>
+
+                <!-- Properties -->
+                <property name="height"
+                          type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasHeight"
+                          value="600"/>
+                <property name="width"
+                          type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasWidth"
+                          value="800"/>
+                <property name="title"
+                          type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasTitle"
+                          value="Hotel Details"/>
+                <property name="textContent"
+                          type="xs:string"
+                          value="test"/>
+
+            </component>
+        </components>
+    </conceptualModel>
+    <layoutModel>
+        <layout xsi:type="mcm:AbsoluteLayout" name="defaultLayout">
+            <bounds width="800" height="600" unit="pixel"/>
+            <position unit="pixel" locate="sp1" x="5" y="5">
+                <bounds width="800" height="600" unit="pixel"/>
+            </position>
+        </layout>
+    </layoutModel>
+    <screenflowModel initialView="StartView">
+        <view name="StartView" layout="defaultLayout"/>
+    </screenflowModel>
+    <communicationModel/>
+</mcm:MashupComposition>

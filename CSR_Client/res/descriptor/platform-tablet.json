@@ -1,0 +1,289 @@
+{
+	"sid": "efc5fcf5-a178-47e5-a441-e2517dd6475d",
+	"client": {
+		"@graph": [
+			{
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#Lollipop5_1",
+				"@type": [
+					"_:b12",
+					"_:b11",
+					"_:b46",
+					"soft:OperatingSystem",
+					"_:b47",
+					"_:b5",
+					"_:b9",
+					"_:b10",
+					"soft:Android",
+					"soft:SoftwareThing",
+					"owl:NamedIndividual",
+					"_:b48",
+					"soft:MobileOperatingSystem",
+					"owl:Thing",
+					"_:b6",
+					"_:b4",
+					"rdfs:Resource"
+				],
+				"enablesAspect": "com:Telephony",
+				"hasName": "Lollipop",
+				"hasVendor": "Google",
+				"hasVersion": "5.1.1",
+				"executedBy": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#Transformer300t",
+				"label": "Android JellyBean"
+			},
+			{
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#TabletClient_CSR",
+				"@type": [
+					"_:b0",
+					"_:b1",
+					"_:b2",
+					"rdfs:Resource",
+					"owl:NamedIndividual",
+					"soft:RuntimeEnvironment",
+					"_:b3",
+					"_:b4",
+					"soft:SoftwareThing",
+					"owl:Thing",
+					"soft:MobileClient",
+					"_:b5",
+					"_:b6",
+					"_:b7",
+					"_:b8",
+					"_:b9",
+					"_:b10",
+					"_:b11",
+					"_:b12",
+					"soft:CSRClient",
+					"_:b13"
+				],
+				"hasCurrentUser": "8cae98a6-884f-4a8d-85f1-0548202de981",
+				"hasID": "TF300TCSR01",
+				"hasName": "CSR Tablet Client",
+				"hasVendor": "MMT",
+				"hasVersion": "1.16.0",
+				"executedBy": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#Transformer300t",
+				"hasSessionId": "efc5fcf5-a178-47e5-a441-e2517dd6475d",
+				"isIncludedBy": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#AndroidBrowser",
+				"providedBy": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#AndroidBrowser",
+				"label": "Android Tablet CSR Client",
+				"topDataProperty": "8cae98a6-884f-4a8d-85f1-0548202de981"
+			},
+			{
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#Transformer300t",
+				"@type": [
+					"_:b14",
+					"dev:Tablet",
+					"_:b13",
+					"_:b15",
+					"_:b16",
+					"_:b17",
+					"_:b18",
+					"_:b19",
+					"dev:ComputingDevice",
+					"owl:Thing",
+					"_:b20",
+					"_:b21",
+					"_:b22",
+					"_:b23",
+					"_:b24",
+					"dev:MobileDevice",
+					"rdfs:Resource",
+					"_:b25",
+					"dev:InteractiveDevice",
+					"owl:NamedIndividual",
+					"_:b26",
+					"_:b27",
+					"_:b28",
+					"_:b12",
+					"_:b29",
+					"_:b30",
+					"_:b31",
+					"_:b32",
+					"_:b11",
+					"_:b33",
+					"_:b34",
+					"_:b35",
+					"_:b3",
+					"_:b6",
+					"_:b9",
+					"_:b36",
+					"dev:AndroidTablet",
+					"_:b37",
+					"_:b38",
+					"_:b39",
+					"dev:Device",
+					"_:b40",
+					"com:PhysicalThing",
+					"_:b41",
+					"_:b42",
+					"_:b43",
+					"_:b44",
+					"_:b45"
+				],
+				"hasDevicePicture": "./res/img/device/tablet_icon.png",
+				"hasManufacturer": "ASUS",
+				"hasModelName": "Transformer 300T",
+				"hasModelNumber": "300",
+				"hasName": "Oliver's Android Tablet",
+				"hasOwner": "oliver.mross@tu-dresden.de",
+				"currentOperatingSystem": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#Lollipop5_1",
+				"embeds": [
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#Camera_TF300T_Back",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#Camera_TF300T_Front",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#MultitouchDisplay_TF300T",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#Nvidia_Tegra3",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#Speaker_TF300T",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#Battery_TF300T",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#GyroscopeSensor_TF300T"
+				],
+				"embedsBattery": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#Battery_TF300T",
+				"embedsCPU": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#Nvidia_Tegra3",
+				"embedsSensor": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#GyroscopeSensor_TF300T",
+				"execute": [
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#TabletClient_CSR",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#MobileFirefox",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#Lollipop5_1"
+				],
+				"hasInputDevice": [
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#Camera_TF300T_Back",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#Camera_TF300T_Front",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#MultitouchDisplay_TF300T"
+				],
+				"hasMaximalMemory": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#RAM_TF300T",
+				"hasMeasurand": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#RAM_TF300T",
+				"hasMemory": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#RAM_TF300T",
+				"hasOutputDevice": [
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#MultitouchDisplay_TF300T",
+					"http://mmt.inf.tu-dresden.de/documa/ontologies/platform-tablet#Speaker_TF300T"
+				],
+				"dev:isMobile": true,
+				"supportsModality": [
+					"mod:OutputModality",
+					"mod:InputModality"
+				]
+			}
+		],
+		"@context": {
+			"hasName": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasName"
+			},
+			"providedBy": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#providedBy",
+				"@type": "@id"
+			},
+			"hasVersion": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasVersion"
+			},
+			"hasID": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasID"
+			},
+			"label": {
+				"@id": "http://www.w3.org/2000/01/rdf-schema#label"
+			},
+			"hasVendor": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasVendor"
+			},
+			"isIncludedBy": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#isIncludedBy",
+				"@type": "@id"
+			},
+			"executedBy": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#executedBy",
+				"@type": "@id"
+			},
+			"hasCurrentUser": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasCurrentUser"
+			},
+			"hasSessionId": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#hasSessionId"
+			},
+			"topDataProperty": {
+				"@id": "http://www.w3.org/2002/07/owl#topDataProperty"
+			},
+			"embedsCPU": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#embedsCPU",
+				"@type": "@id"
+			},
+			"embeds": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#embeds",
+				"@type": "@id"
+			},
+			"supportsModality": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#supportsModality",
+				"@type": "@id"
+			},
+			"hasModelName": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasModelName"
+			},
+			"isMobile": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#isMobile",
+				"@type": "http://www.w3.org/2001/XMLSchema#boolean"
+			},
+			"hasMeasurand": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasMeasurand",
+				"@type": "@id"
+			},
+			"hasManufacturer": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasManufacturer"
+			},
+			"hasInputDevice": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasInputDevice",
+				"@type": "@id"
+			},
+			"hasMaximalMemory": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasMaximalMemory",
+				"@type": "@id"
+			},
+			"hasDevicePicture": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasDevicePicture",
+				"@type": "http://www.w3.org/2001/XMLSchema#anyURI"
+			},
+			"hasMemory": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasMemory",
+				"@type": "@id"
+			},
+			"hasOutputDevice": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#hasOutputDevice",
+				"@type": "@id"
+			},
+			"execute": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#execute",
+				"@type": "@id"
+			},
+			"hasOwner": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasOwner"
+			},
+			"currentOperatingSystem": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#currentOperatingSystem",
+				"@type": "@id"
+			},
+			"hasModelNumber": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#hasModelNumber"
+			},
+			"embedsBattery": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#embedsBattery",
+				"@type": "@id"
+			},
+			"embedsSensor": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#embedsSensor",
+				"@type": "@id"
+			},
+			"enablesAspect": {
+				"@id": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#enablesAspect",
+				"@type": "@id"
+			},
+			"com": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#",
+			"mod": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/modality#",
+			"software": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#",
+			"owl": "http://www.w3.org/2002/07/owl#",
+			"xsd": "http://www.w3.org/2001/XMLSchema#",
+			"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+			"dev": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#",
+			"common": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/common#",
+			"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+			"xml": "http://www.w3.org/XML/1998/namespace",
+			"spin": "http://spinrdf.org/spin#",
+			"device": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/device#",
+			"soft": "http://mmt.inf.tu-dresden.de/documa/ontologies/platform/software#"
+		}
+	}
+}

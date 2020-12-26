@@ -1,0 +1,451 @@
+{
+    "options": [{
+        "id": "f601d0f8-a7e1-4ad7-9c3d-38e157458698",
+        "sourceDevice": "690cf9bb-47a5-4b4f-8f0d-7fad57268343",
+        "distributions": [{
+            "container": "3ea63a6e-952c-11e6-ae22-56b6b6499611",
+            "executables": [{
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/SlidePresenter",
+                "features": []
+            }],
+            "nonexecutables": [],
+            "replaceables": [
+                {
+                "component": {
+                    "component": "mc://documa/components/SketchingMobile",
+                    "features": []
+                },
+                "mappings": [{
+                    "candidate": {
+                        "component": "mc://documa/components/SketchingDesktop",
+                        "features": []
+                    },
+                    "degree": 0.9
+                }]
+            }, {
+                "component": {
+                    "component": "mc://documa/components/TextEditorMobile",
+                    "features": []
+                },
+                "mappings": [{
+                    "candidate": {
+                        "component": "mc://documa/components/TextEditor",
+                        "features": []
+                    },
+                    "degree": 0.9
+                }]
+            }]
+        }, {
+            "container": "3ff5c8f9-6bde-4a5a-a8b2-1d2ec9350a4d",
+            "executables": [{
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/DropboxComponent",
+                "features": []
+            }, {
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/PresentationController",
+                "features": []
+            }],
+            "nonexecutables": [],
+            "replaceables": []
+        }],
+        "cause": {
+            "cause": "low battery",
+            "source": "Oliver's Smartphone"
+        },
+        "effects": [{
+            "value": "3",
+            "target": "affected_devices",
+            "unit": null
+        }, {
+            "value": "7.5",
+            "target": "app_lifespan",
+            "unit": {
+                "name": "hour",
+                "symbol": "h"
+            }
+        }, {
+            "value": "320",
+            "target": "avg_latency",
+            "unit": {
+                "name": "millisec",
+                "symbol": "ms"
+            }
+        }]
+    }, {
+        "id": "2d640d1a-b82c-40c0-92dd-7afd8413ad7c",
+        "sourceDevice": "690cf9bb-47a5-4b4f-8f0d-7fad57268343",
+        "distributions": [{
+            "container": "3ff5c8f9-6bde-4a5a-a8b2-1d2ec9350a4d",
+            "executables": [{
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/DropboxComponent",
+                "features": []
+            }, {
+                "component": "mc://documa/components/TextEditorMobile",
+                "features": []
+            }, {
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/PresentationController",
+                "features": []
+            }],
+            "nonexecutables": [],
+            "replaceables": []
+        }, {
+            "container": "3ea63a6e-952c-11e6-ae22-56b6b6499611",
+            "executables": [{
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/SlidePresenter",
+                "features": []
+            }],
+            "nonexecutables": [],
+            "replaceables": [{
+                "component": {
+                    "component": "mc://documa/components/SketchingMobile",
+                    "features": []
+                },
+                "mappings": [{
+                    "candidate": {
+                        "component": "mc://documa/components/SketchingDesktop",
+                        "features": []
+                    },
+                    "degree": 0.9
+                }]
+            }]
+        }],
+        "cause": {
+            "cause": "low battery",
+            "source": "Oliver's Smartphone"
+        },
+        "effects": [{
+            "value": "7.5",
+            "target": "app_lifespan",
+            "unit": {
+                "name": "hour",
+                "symbol": "h"
+            }
+        }, {
+            "value": "320",
+            "target": "avg_latency",
+            "unit": {
+                "name": "millisec",
+                "symbol": "ms"
+            }
+        }, {
+            "value": "3",
+            "target": "affected_devices",
+            "unit": null
+        }]
+    }, {
+        "id": "7c3b360a-831b-4e89-9746-76ecbc9be934",
+        "sourceDevice": "690cf9bb-47a5-4b4f-8f0d-7fad57268343",
+        "distributions": [{
+            "container": "3ea63a6e-952c-11e6-ae22-56b6b6499611",
+            "executables": [{
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/SlidePresenter",
+                "features": []
+            }],
+            "nonexecutables": [],
+            "replaceables": []
+        }, {
+            "container": "3ff5c8f9-6bde-4a5a-a8b2-1d2ec9350a4d",
+            "executables": [{
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/PresentationController",
+                "features": []
+            }, {
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/DropboxComponent",
+                "features": []
+            }, {
+                "component": "mc://documa/components/TextEditorMobile",
+                "features": []
+            }],
+            "nonexecutables": [],
+            "replaceables": [{
+                "component": {
+                    "component": "mc://documa/components/SketchingMobile",
+                    "features": []
+                },
+                "mappings": [{
+                    "candidate": {
+                        "component": "mc://documa/components/SketchingTablet",
+                        "features": []
+                    },
+                    "degree": 0.9
+                }]
+            }]
+        }],
+        "cause": {
+            "cause": "low battery",
+            "source": "Oliver's Smartphone"
+        },
+        "effects": [{
+            "value": "7.5",
+            "target": "app_lifespan",
+            "unit": {
+                "name": "hour",
+                "symbol": "h"
+            }
+        }, {
+            "value": "2",
+            "target": "affected_devices",
+            "unit": null
+        }, {
+            "value": "320",
+            "target": "avg_latency",
+            "unit": {
+                "name": "millisec",
+                "symbol": "ms"
+            }
+        }]
+    }, {
+        "id": "254e0d55-3133-4f06-9c8b-210d3000afc7",
+        "sourceDevice": "690cf9bb-47a5-4b4f-8f0d-7fad57268343",
+        "distributions": [{
+            "container": "3ea63a6e-952c-11e6-ae22-56b6b6499611",
+            "executables": [],
+            "nonexecutables": [],
+            "replaceables": [{
+                "component": {
+                    "component": "mc://documa/components/SketchingMobile",
+                    "features": []
+                },
+                "mappings": [{
+                    "candidate": {
+                        "component": "mc://documa/components/SketchingDesktop",
+                        "features": []
+                    },
+                    "degree": 0.9
+                }]
+            }, {
+                "component": {
+                    "component": "mc://documa/components/TextEditorMobile",
+                    "features": []
+                },
+                "mappings": [{
+                    "candidate": {
+                        "component": "mc://documa/components/TextEditor",
+                        "features": []
+                    },
+                    "degree": 0.9
+                }]
+            }]
+        }, {
+            "container": "3ff5c8f9-6bde-4a5a-a8b2-1d2ec9350a4d",
+            "executables": [{
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/SlidePresenter",
+                "features": []
+            }, {
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/PresentationController",
+                "features": []
+            }, {
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/DropboxComponent",
+                "features": []
+            }],
+            "nonexecutables": [],
+            "replaceables": []
+        }],
+        "cause": {
+            "cause": "low battery",
+            "source": "Oliver's Smartphone"
+        },
+        "effects": [{
+            "value": "3",
+            "target": "affected_devices",
+            "unit": null
+        }, {
+            "value": "7.5",
+            "target": "app_lifespan",
+            "unit": {
+                "name": "hour",
+                "symbol": "h"
+            }
+        }, {
+            "value": "320",
+            "target": "avg_latency",
+            "unit": {
+                "name": "millisec",
+                "symbol": "ms"
+            }
+        }]
+    }, {
+        "id": "471e916e-9527-11e6-ae22-56b6b6499611",
+        "sourceDevice": "690cf9bb-47a5-4b4f-8f0d-7fad57268343",
+        "distributions": [{
+            "container": "3ff5c8f9-6bde-4a5a-a8b2-1d2ec9350a4d",
+            "executables": [{
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/DropboxComponent",
+                "features": []
+            }, {
+                "component": "mc://documa/components/TextEditorMobile",
+                "features": []
+            }, {
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/SlidePresenter",
+                "features": []
+            }, {
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/PresentationController",
+                "features": []
+            }],
+            "nonexecutables": [],
+            "replaceables": [{
+                "component": {
+                    "component": "mc://documa/components/SketchingMobile",
+                    "features": []
+                },
+                "mappings": [{
+                    "candidate": {
+                        "component": "mc://documa/components/SketchingTablet",
+                        "features": []
+                    },
+                    "degree": 0.9
+                }]
+            }]
+        }],
+        "cause": {
+            "cause": "low battery",
+            "source": "Oliver's Smartphone"
+        },
+        "effects": [{
+            "value": "7.5",
+            "target": "app_lifespan",
+            "unit": {
+                "name": "hour",
+                "symbol": "h"
+            }
+        }, {
+            "value": "320",
+            "target": "avg_latency",
+            "unit": {
+                "name": "millisec",
+                "symbol": "ms"
+            }
+        }, {
+            "value": "2",
+            "target": "affected_devices",
+            "unit": null
+        }]
+    }, {
+        "id": "bc8e8357-8ab1-4356-b75b-e3bff4e338f0",
+        "sourceDevice": "690cf9bb-47a5-4b4f-8f0d-7fad57268343",
+        "distributions": [{
+            "container": "3ea63a6e-952c-11e6-ae22-56b6b6499611",
+            "executables": [],
+            "nonexecutables": [],
+            "replaceables": [{
+                "component": {
+                    "component": "mc://documa/components/TextEditorMobile",
+                    "features": []
+                },
+                "mappings": [{
+                    "candidate": {
+                        "component": "mc://documa/components/TextEditor",
+                        "features": []
+                    },
+                    "degree": 0.9
+                }]
+            }]
+        }, {
+            "container": "3ff5c8f9-6bde-4a5a-a8b2-1d2ec9350a4d",
+            "executables": [{
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/PresentationController",
+                "features": []
+            }, {
+                "component": "mc://documa/components/TextEditorMobile",
+                "features": []
+            }, {
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/DropboxComponent",
+                "features": []
+            }, {
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/SlidePresenter",
+                "features": []
+            }],
+            "nonexecutables": [],
+            "replaceables": [{
+                "component": {
+                    "component": "mc://documa/components/SketchingMobile",
+                    "features": []
+                },
+                "mappings": [{
+                    "candidate": {
+                        "component": "mc://documa/components/SketchingTablet",
+                        "features": []
+                    },
+                    "degree": 0.9
+                }]
+            }]
+        }],
+        "cause": {
+            "cause": "low battery",
+            "source": "Oliver's Smartphone"
+        },
+        "effects": [{
+            "value": "7.5",
+            "target": "app_lifespan",
+            "unit": {
+                "name": "hour",
+                "symbol": "h"
+            }
+        }, {
+            "value": "3",
+            "target": "affected_devices",
+            "unit": null
+        }, {
+            "value": "320",
+            "target": "avg_latency",
+            "unit": {
+                "name": "millisec",
+                "symbol": "ms"
+            }
+        }]
+    }, {
+        "id": "fcb9e7ec-954c-11e6-ae22-56b6b6499611",
+        "sourceDevice": "690cf9bb-47a5-4b4f-8f0d-7fad57268343",
+        "distributions": [{
+            "container": "3ff5c8f9-6bde-4a5a-a8b2-1d2ec9350a4d",
+            "executables": [{
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/PresentationController",
+                "features": []
+            }, {
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/SlidePresenter",
+                "features": []
+            }, {
+                "component": "http://mmt.inf.tu-dresden.de/documa/components/DropboxComponent",
+                "features": []
+            }, {
+                "component": "mc://documa/components/TextEditorMobile",
+                "features": []
+            }],
+            "nonexecutables": [],
+            "replaceables": [{
+                "component": {
+                    "component": "mc://documa/components/SketchingMobile",
+                    "features": []
+                },
+                "mappings": [{
+                    "candidate": {
+                        "component": "mc://documa/components/SketchingDesktop",
+                        "features": []
+                    },
+                    "degree": 0.9
+                }]
+            }]
+        }],
+        "cause": {
+            "cause": "low battery",
+            "source": "Oliver's Smartphone"
+        },
+        "effects": [{
+            "value": "2",
+            "target": "affected_devices",
+            "unit": null
+        }, {
+            "value": "7.5",
+            "target": "app_lifespan",
+            "unit": {
+                "name": "hour",
+                "symbol": "h"
+            }
+        }, {
+            "value": "320",
+            "target": "avg_latency",
+            "unit": {
+                "name": "millisec",
+                "symbol": "ms"
+            }
+        }]
+    }]
+}

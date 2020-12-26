@@ -1,0 +1,18 @@
+<div [class]="windowWidth > 900?'hotel-offers-wrapper hotel-offers-big-screen':'hotel-offers-wrapper hotel-offers-small-screen'">
+  <div class="hotel-offers-item-wrapper" *ngFor="let offerItem of sortOffersByPrice(offersList)">
+    <div class="hotel-offers-item-img" [style.backgroundImage]="'url('+ offerItem.img +')'"></div>
+    <div class="hotel-offers-item-name">
+      {{offerItem.name}}
+    </div>
+    <div class="hotel-offers-item-rooms">
+      <mat-icon>person</mat-icon>
+    </div>
+    <div class="hotel-offers-item-price">
+        <span class="hotel-offers-item-price-sum" *ngIf="offerItem.pricePerNight">{{offerItem.pricePerNight}}€</span><br>pro Nacht
+        <span *ngIf="!offerItem.pricePerNight"> - </span>
+    </div>
+    <div class="hotel-offers-item-select">
+      <button mat-button (click)="selectOffer(offerItem)">Auswählen</button>
+    </div>
+  </div>
+</div>

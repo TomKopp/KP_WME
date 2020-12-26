@@ -1,0 +1,216 @@
+<!-- dialog header -->
+<div class="modal-header">
+    <h4 class="modal-title"><span class="glyphicon glyphicon-retweet"></span>Migration process status</h4>
+</div>
+
+<!-- dialog body -->
+<div class="modal-body">
+
+    <!-- message -->
+    <div class="row" ng-show="messageShow">
+        <div class="col-xs-12 col-ms-12 col-md-12 col-lg-12">
+            <div class="alert" ng-class="message.styleClass" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                {{message.text}}
+            </div>
+        </div>
+    </div>
+
+    <!-- migration components -->
+    <div class="row" ng-show="migrationComponents">
+        <div ng-repeat="migrationComponent in migrationComponents track by migrationComponent.getId()"
+             class="migration-component">
+            <span class="hidden">{{migrationComponent.getId()}}</span>
+
+
+            <div class="col-xs-2 col-ms-2 col-md-2 col-lg-2">
+                <!-- source device -->
+                <div class="well migration-device-wrapper">
+                    <div class="migration-device text-center">
+                        <img ng-src="{{migrationComponent.getSourceDevice().getDevicePicture()}}" alt=""
+                             class="img-responsive"/>
+                        <span>{{migrationComponent.getSourceDevice().getDeviceName()}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-10 col-ms-10 col-md-10 col-lg-10">
+
+                <!-- migration component distributions -->
+                <div ng-repeat="distribution in migrationComponent.getDistributionOptions() track by $index"
+                     class="well migration-distribution">
+
+                    <!-- less details -->
+                    <div ng-hide="isExtendedView" class="col-xs-10 col-ms-10 col-md-10 col-lg-10">
+                        <div class="row">
+                            <div class="progress-panel">
+                                <div class="col-xs-3 col-ms-3 col-md-3 col-lg-3">
+                                    <div class="migration-component-item"
+                                         ng-repeat="executable in distribution.getExecutables() track by $index">
+                                        <label>{{components.get(executable.getComponentId()).getName()}}</label>
+                                        <img ng-src="{{components.get(executable.getComponentId()).getIcon()}}" alt=""
+                                             class="img-responsive"/>
+                                    </div>
+                                    <div class="migration-component-item"
+                                         ng-repeat="replaceable in distribution.getReplaceables() track by $index">
+                                        <label>{{components.get(replaceable.getComponentItem().getComponentId()).getName()}}</label>
+                                        <img ng-src="{{components.get(replaceable.getComponentItem().getComponentId()).getIcon()}}"
+                                             alt=""
+                                             class="img-responsive"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6 col-ms-6 col-md-6 col-lg-6">
+                                    <div class="progress-wrapper">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped"
+                                                 role="progressbar"
+                                                 ng-class="distribution.getConditionType().styleClass"
+                                                 ng-style="{width: distribution.getProgressRate() +'%'}">
+                                                {{distribution.getProgressRate()+"%"}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-3 col-ms-3 col-md-3 col-lg-3">
+                                    <div class="migration-component-item"
+                                         ng-repeat="executable in distribution.getExecutables() track by $index">
+                                        <img ng-src="{{components.get(executable.getComponentId()).getIcon()}}" alt=""
+                                             class="img-responsive"/>
+                                        <label>{{components.get(executable.getComponentId()).getName()}}</label>
+                                    </div>
+                                    <div class="migration-component-item"
+                                         ng-repeat="replaceable in distribution.getReplaceables() track by $index">
+                                        <img ng-src="{{components.get(replaceable.getCandidates()[0].getComponentItem().getComponentId()).getIcon()}}"
+                                             alt=""
+                                             class="img-responsive"/>
+                                        <label>{{components.get(replaceable.getCandidates()[0].getComponentItem().getComponentId()).getName()}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--extended view-->
+                    <div ng-show="isExtendedView" class="col-xs-10 col-ms-10 col-md-10 col-lg-10">
+
+                        <!-- executables -->
+                        <div class="row"
+                             ng-repeat="executable in distribution.getExecutables() track by $index">
+                            <div class="progress-panel">
+
+                                <div class="col-xs-3 col-ms-3 col-md-3 col-lg-3">
+                                    <div class="migration-component-item">
+                                        <label>{{components.get(executable.getComponentId()).getName()}}</label>
+                                        <img ng-src="{{components.get(executable.getComponentId()).getIcon()}}" alt=""
+                                             class="img-responsive"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6 col-ms-6 col-md-6 col-lg-6">
+                                    <div class="progress-wrapper">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped"
+                                                 ng-class="executable.getStatus().getConditionType().styleClass"
+                                                 role="progressbar"
+                                                 ng-style="{width: executable.getStatus().getProgressRate()+'%'}">
+                                                {{executable.getStatus().getProgressRate()+'%'}}
+                                            </div>
+                                        </div>
+                                        <div class="progress-status">
+                                            {{executable.getStatus().getStatusType().message}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-3 col-ms-3 col-md-3 col-lg-3">
+                                    <div class="migration-component-item">
+                                        <img ng-src="{{components.get(executable.getComponentId()).getIcon()}}" alt=""
+                                             class="img-responsive"/>
+                                        <label>{{components.get(executable.getComponentId()).getName()}}</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- replaceables -->
+                        <div class="row"
+                             ng-repeat="replaceable in distribution.getReplaceables() track by $index">
+                            <div class="progress-panel">
+
+                                <div class="col-xs-3 col-ms-3 col-md-3 col-lg-3">
+                                    <div class="migration-component-item">
+                                        <label>{{components.get(replaceable.getComponentItem().getComponentId()).getName()}}</label>
+                                        <img ng-src="{{components.get(replaceable.getComponentItem().getComponentId()).getIcon()}}"
+                                             alt=""
+                                             class="img-responsive"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6 col-ms-6 col-md-6 col-lg-6">
+                                    <div class="progress-wrapper">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped"
+                                                 ng-class="replaceable.getStatus().getConditionType().styleClass"
+                                                 role="progressbar"
+                                                 ng-style="{width: replaceable.getStatus().getProgressRate()+'%'}">
+                                                {{replaceable.getStatus().getProgressRate()+'%'}}
+                                            </div>
+                                        </div>
+                                        <div class="progress-status">
+                                            {{replaceable.getStatus().getStatusType().message}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-3 col-ms-3 col-md-3 col-lg-3">
+                                    <div class="migration-component-item">
+                                        <img ng-src="{{components.get(replaceable.getCandidates()[0].getComponentItem().getComponentId()).getIcon()}}"
+                                             alt=""
+                                             class="img-responsive"/>
+                                        <label>{{components.get(replaceable.getCandidates()[0].getComponentItem().getComponentId()).getName()}}</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-2 col-ms-2 col-md-2 col-lg-2">
+                        <!-- target device -->
+                        <div class="migration-device text-center">
+                            <img ng-src="{{distribution.getDevice().getDevicePicture()}}" alt=""
+                                 class="img-responsive"/>
+                            <span>{{distribution.getDevice().getDeviceName()}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- dialog footer -->
+<div class="modal-footer">
+    <button id="migrationProgressButtonExtended" type="button" class="btn btn-default" href="#">
+        <span class="glyphicon" ng-class="button_details.iconClass"></span>
+        <span>{{button_details.text}}</span>
+    </button>
+    <button id="migrationProgressButtonCancel" type="button" class="btn btn-danger" href="#"
+            ng-show="button_cancel.show">
+        <span class="glyphicon glyphicon-remove"></span>
+        <span>Abbrechen</span>
+    </button>
+    <button id="migrationProgressButtonWait" type="button" class="btn btn-warning" href="#" ng-show="button_wait.show"
+            disabled="disabled">
+        <span class="glyphicon glyphicon-repeat"></span>
+        <span>Bitte Warten!</span>
+    </button>
+    <button id="migrationProgressButtonSuccess" type="button" class="btn btn-success" href="#"
+            ng-show="button_success.show">
+        <span class="glyphicon glyphicon-ok"></span>
+        <span>Schließen</span>
+    </button>
+</div>

@@ -1,0 +1,31 @@
+<div id="csr-mui-mainframe-block" class="container-fluid">
+    <div id="csr-mui-main" class="carousel slide" data-ride="carousel">
+        <!-- wrapper for pages -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <!-- metaui start view -->
+                <metaui-start controller="startView"/>
+            </div>
+            <div class="item">
+                <!-- metaui distribution view -->
+                <mui-distribution-view controller="distView" application="currentApplication"/>
+            </div>
+        </div>
+        <div>
+            <div>
+                <!-- loader -->
+                <mui-loader controller="loadView"/>
+            </div>
+            <div>
+                <!-- distribution dialog -->
+                <mui-components controller="distributionDialog"/>
+            </div>
+
+        </div>
+    </div>
+
+    <div>
+        <!-- migration dialog -->
+        <migration-dialog controller="migrationDialog"></migration-dialog>
+    </div>
+</div>

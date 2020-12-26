@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layoutstrategy 
+	xmlns="http://mmt.inf.tu-dresden.de/2014/documa/layoutstrategy" 
+	xmlns:t="http://mmt.inf.tu-dresden.de/2014/documa/expressions" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://mmt.inf.tu-dresden.de/2014/documa/layoutstrategy LayoutStrategy.xsd"
+	id="testStrategy1" name="Test Strategy 1">
+	<meta>
+		<icon>
+			<url>http://myicon.png</url>
+		</icon>
+	</meta>
+	<precondition>
+		<t:compare op="gt">
+			<t:all-count/>
+			<t:number>1</t:number>
+		</t:compare>
+	</precondition>
+	<ratingcriteria>
+		<criterion scope="individual">
+			<t:or>
+				<t:and>
+					<t:neg>
+						<t:compare op="eq">
+							<t:current-index/>
+							<t:number>0</t:number>
+						</t:compare>
+					</t:neg>
+					<t:compare op="gt">
+						<t:divide>
+							<t:viewport-width/>
+							<t:subtract>
+								<t:all-count/>
+								<t:number>1</t:number>
+							</t:subtract>
+						</t:divide>
+						<t:divide>
+							<t:current-width/>
+							<t:number>1.5</t:number>
+						</t:divide>
+					</t:compare>
+				</t:and>
+				<t:and>
+					<t:compare op="eq">
+						<t:current-index/>
+						<t:number>0</t:number>
+					</t:compare>
+					<t:compare op="le">
+						<t:absolute>
+							<t:divide>
+								<t:subtract>
+									<t:divide>
+										<t:current-width/>
+										<t:current-height/>
+									</t:divide>
+									<t:divide>
+										<t:viewport-width/>
+										<t:viewport-height/>
+									</t:divide>
+								</t:subtract>
+								<t:divide>
+									<t:viewport-width/>
+									<t:viewport-height/>
+								</t:divide>
+							</t:divide>
+						</t:absolute>
+						<t:number>0.5</t:number>
+					</t:compare>
+				</t:and>
+			</t:or>
+		</criterion>
+	</ratingcriteria>
+	<algorithm>
+		<select>
+			<where>
+				<t:neg>
+					<t:compare op="eq">
+						<t:current-index/>
+						<t:number>0</t:number>
+					</t:compare>
+				</t:neg>
+			</where>
+		</select>
+		<bounds>
+			<width>
+				<t:divide>
+					<t:viewport-width/>
+					<t:selection-count/>
+				</t:divide>
+			</width>
+			<height>
+				<t:divide>
+					<t:viewport-height/>
+					<t:number>3</t:number>
+				</t:divide>
+			</height>
+		</bounds>
+	</algorithm>
+</layoutstrategy>

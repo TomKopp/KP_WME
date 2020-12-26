@@ -1,0 +1,65 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.app-grid-item {
+    width: 100%;
+    /* flex: 1 1 100%; */
+}
+
+.section {
+    margin-top: 24px;
+    padding: 16px;
+    /* width: 100%; */
+}
+
+.section-summary {
+    margin-bottom: 24px !important;
+}
+
+.paper {
+    padding: 16px;
+    /* margin: 16px 2.5%; */
+    /* width: 95%; */
+}
+
+.paper + .paper {
+    margin-top: 24px;
+}
+
+.media-list {
+    flex-wrap: nowrap !important;
+    scroll-snap-type: x mandatory;
+}
+
+.media-list-tile {
+    scroll-snap-align: center;
+    max-height: 20em;
+    /* flex: 1 1 auto; */
+    /* min-width: 100%; */
+    /* padding: 2px; */
+}
+
+.media-list-tile-media {
+    display: block;
+}
+
+.ico-string {
+    display: inline-block;
+}
+
+.ico-string + .ico-string {
+    margin-left: 32px;
+}
+
+.ico-string > svg {
+    margin-right: 8px;
+}
+
+.flight + .flight {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}

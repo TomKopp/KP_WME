@@ -1,0 +1,60 @@
+<div id="histPanel{{i}}" class="histPanel panel" ng-init="index = i;">
+    <!--<div class="panel-heading" ng-init="device = cntr.getDistributionDevice(index)">
+        <h5 style="margin: 0">
+            <img draggable="false" class="csr-mui-udevicon" src="{{device.getDevicePicture()}}" style="height: 25px; width: 25px">
+            {{device.getDeviceName()}} - {{device.getVendorName()}}
+        </h5>
+    </div>-->
+    <div ng-attr-id="" class="device panel-body">
+        <div ng-repeat="historyItem in cntr.historyItems | orderBy:propertyName:reverse | filter:filterBy(filterCriteria)">
+            <div ng-class="{'hist-unsuccessful': !historyItem.success}" class="histview-components  csr-mui-panel"
+                 ng-attr-id="histContent_{{ $index }}"
+                 style="margin-bottom: 10px;">
+                <div class="panel-body clickable" ng-attr-id="histHeader_Item {{ $index }}">
+                    <div class="hist-meta">
+                        <div class="hist-time"> {{historyItem.timeString}}</div>
+                        <div class="hist-reason"> {{historyItem.cause}}</div>
+                        <div class="failed">{{historyItem.success?"":"Failed"}}</div>
+                    </div>
+                    <div class="hist-graph" ng-attr-id="hist_graph{{$index}}">
+                        <canvas width="300" height="100" id="historyCanvas{{$index}}" class="historyCanvas"></canvas>
+                        <div class="hist-devices">
+                            <div class="hist-device" ng-attr-id="histComp{{$index}}"
+                                 ng-repeat="device in historyItem.sourceDevices">
+                                <div class="hist-device-icon">
+                                    <img class="hist-device-image"
+                                         ng-src="{{device.icon}}">
+                                    {{device.name}}
+                                </div>
+                                <div class="hist-component-list">
+                                    <div class="hist-component" ng-repeat="comp in device.components" data-id="{{comp.id}}">
+                                        {{comp.sourceName}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hist-devices-end">
+                            <div class="hist-device" ng-attr-id="histComp{{$index}}"
+                                 ng-repeat="device in historyItem.targets">
+                                <div class="hist-component-list">
+                                    <div class="hist-component" ng-repeat="comp in device.components" data-id="{{comp.id}}">
+                                        {{comp.targetName}}
+                                    </div>
+                                </div>
+                                <div class="hist-device-icon">
+                                    <img class="hist-device-image"
+                                         ng-src="{{device.icon}}">
+                                    {{device.name}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div style="display:none;">{{cntr.renderHistory(cntr)?cntr:cntr}}</div>
+        </div>
+    </div>
+</div>
+

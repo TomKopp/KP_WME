@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component xmlns="http://mmt.inf.tu-dresden.de/smcdl/1.16"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:cn="http://mmt.inf.tu-dresden.de/smcdl/1.16/container"
+	xmlns:meta="http://mmt.inf.tu-dresden.de/smcdl/1.16/metadata"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:ns3="http://mmt.inf.tu-dresden.de/models/mcdl.owl#"
+	name="HotelDetails" isUI="true"
+	id="mc://documa/components/DTRP_UI_HotelDetails">
+	<meta:metadata>
+		<meta:keywords>
+			<meta:keyword>hotel</meta:keyword>
+			<meta:keyword>hotels</meta:keyword>
+			<meta:keyword>hotel details</meta:keyword>
+			<meta:keyword>vacation</meta:keyword>
+			<meta:keyword>trip</meta:keyword>
+		</meta:keywords>
+	</meta:metadata>
+	<requirements>
+		<runtimes>
+			<runtime id="CSR" version=">=1.15"/>
+		</runtimes>
+	</requirements>
+	<interface>
+		<!-- properties -->
+		<property name="height" required="true" type="ns3:hasHeight">
+			<default>600</default>
+		</property>
+		<property name="width" required="true" type="ns3:hasWidth">
+			<default>800</default>
+		</property>
+		<property name="title" required="true" type="ns3:hasTitle">
+			<default xsi:type="xs:string">Hotel Details</default>
+		</property>
+		<property name="textContent" required="true" type="xs:string"/>
+		<!-- events -->
+		<event name="updateTripSections">
+			<parameter name="tripSections" type="xs:string"/>
+		</event>
+		<!-- Operations -->
+		<operation name="onUpdateTripSections">
+			<parameter name="tripSections" type="xs:string"/>
+			<returnEvent name="updateTripSections"/>
+		</operation>
+	</interface>
+	<binding bindingtype="mapping_simplewrapper">
+		<dependencies>
+			<dependency language="javascript">
+				<url>http://code.jquery.com/jquery-1.8.3.min.js</url>
+			</dependency>
+			<dependency language="javascript">
+				<url>http://csr.mmt.inf.tu-dresden.de:8080/components/Documa/MashupComponent.js</url>
+			</dependency>
+			<dependency language="javascript">
+				<url>https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DTRP/DTRP_UI_HotelDetails/HotelDetails.js</url>
+			</dependency>
+		</dependencies>
+		<constructor>
+			<code>new Documa.components.HotelDetails()</code>
+		</constructor>
+	</binding>
+</component>

@@ -1,0 +1,15 @@
+.app-header {
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 99999;
+}
+.app-content {
+    height: calc(100% - 5px);
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}

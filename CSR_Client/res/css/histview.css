@@ -1,0 +1,113 @@
+
+.hist-component {
+    box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+    display: table;
+    margin: 10px;
+    padding: 5px 10px;
+    background: #a4c0f4;
+    color: white;
+    border-radius: 5px;
+    height: 20px;
+}
+
+.histview-components {
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+    width: 1000px;
+}
+
+.historyCanvas {
+    position: absolute;
+}
+
+.hist-graph {
+    display: inline-block;
+    width: calc(100% - 150px);
+}
+
+.hist-devices {
+    float: left;
+}
+
+.hist-devices-end {
+    float: right;
+}
+
+.hist-device {
+    margin: 5px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.13);
+    padding: 10px;
+}
+
+.hist-meta {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    width: 120px;
+}
+
+.hist-device-image {
+    width: 80px;
+}
+
+.hist-unsuccessful {
+    background: rgba(150, 0, 0, 0.3)
+}
+
+.hist-device-icon {
+    display: inline-block;
+    width: 90px;
+    margin: 10px;
+    padding: 0;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.hist-component-list {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.hist-dropdown-container {
+    position: relative;
+    display: inline-block;
+    z-index: 1000;
+}
+
+.hist-dropdown-button {
+    display: block;
+    height: 30px;
+    font-size: 14px;
+}
+
+.hist-dropdown li {
+    padding: 5px;
+}
+
+.hist-dropdown li:hover {
+    background: #888;
+    color: white;
+}
+
+.hist-dropdown {
+    position: relative;
+    padding: 10px;
+}
+
+.hist-filter-selected {
+    background: royalblue;
+    color: white;
+}
+
+.hist-bar {
+    height: 35px;
+    overflow: visible;
+    text-align: right;
+    padding-right: calc(50% - 500px);
+
+}
+
+.noneDisplay{
+    display:none;
+}

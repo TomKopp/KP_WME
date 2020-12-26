@@ -1,0 +1,33 @@
+<div [class]="windowWidth > 900?'hotel-list-wrapper hotel-list-big-screen':'hotel-list-wrapper hotel-list-small-screen'">
+  <div class="hotel-list-filter-menu">
+    <div class="filter-feature-list">
+      <div class="filter-feature-list-label">
+        Ausstattung
+      </div>
+      <div *ngFor="let feature of featureList; let i = index" class="filter-feature-list-item">
+        <button mat-icon-button (click)="selectFilterFeature(i)" 
+        [style.backgroundColor]="feature.selected?'orange':null"
+        [matTooltip]="feature.feature.name">
+          <mat-icon>{{feature.feature.icon}}</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="filter-rating-list">
+      <div class="filter-rating-list-label">
+        Sterne
+      </div>
+      <button mat-button (click)="selectRatingFeature(i)" *ngFor="let rating of ratingsList; let i = index"
+      [style.backgroundColor]="rating.selected?'orange':null">{{rating.rating}}</button>
+    </div>
+  </div>
+  <div class="hotel-list-items" #GUIHotelList>
+    <div *ngFor="let hotelItem of hotelList; let i = index" class="hotel-list-item-wrapper" 
+    [style.backgroundColor]="currentlySelectedHotelId == hotelItem.id?'gainsboro':'white'" (click)="onSelectHotel(hotelItem, i)">
+      <div class="hotel-list-img" [style.backgroundImage]="'url('+ hotelItem.img +')'"></div>
+      <div class="hotel-list-description">
+        <h2>{{hotelItem.name}}</h2>
+        <app-hotel-rating [numberOfStars]="hotelItem.rating"></app-hotel-rating>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layoutstrategy xmlns="http://mmt.inf.tu-dresden.de/2014/documa/layoutstrategy" xmlns:e="http://mmt.inf.tu-dresden.de/2014/documa/expressions"
+	id="flow" name="Flow Layout" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://mmt.inf.tu-dresden.de/2014/documa/layoutstrategy ../xsd/LayoutStrategy.xsd">
+	<meta>
+		<icon>
+			<url>res/img/flow.png</url>
+		</icon>
+	</meta>
+	<precondition>
+		<e:and>
+			<e:compare op="gt">
+				<e:sum>
+					<e:all-width />
+				</e:sum>
+				<e:viewport-width />
+			</e:compare>
+			<e:compare op="le">
+				<e:max>
+					<e:all-width />
+				</e:max>
+				<e:divide>
+					<e:viewport-width />
+					<e:number>2</e:number>
+				</e:divide>
+			</e:compare>
+		</e:and>
+	</precondition>
+	<algorithm>
+		<!-- select all and group them -->
+		<select>
+			<where>
+				<e:boolean>true</e:boolean>
+			</where>
+			<groupby>
+				<rowGrouping>
+					<!--
+						get components whose width sum is less or equal the defined limit 
+					 -->
+					<e:set-width />
+					<limit>
+						<e:viewport-width />
+					</limit>
+				</rowGrouping>
+			</groupby>
+		</select>
+		<bounds>
+			<width>
+				<e:current-width/>
+			</width>
+			<height>
+				<e:current-height/>
+			</height>
+		</bounds>
+	</algorithm>
+</layoutstrategy>

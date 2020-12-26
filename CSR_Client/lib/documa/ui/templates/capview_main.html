@@ -1,0 +1,41 @@
+<div id="capview" class="capview" ng-switch="cols">
+	<div class="col-md-12" ng-switch-default ng-init="i = 1">
+		<div ng-switch="rows">
+			<div class="col-md-12" ng-switch-default ng-init="j = 1">
+				<capview-device></capview-device>
+			</div>
+			<div class="col-md-12" ng-switch-when="2" ng-repeat="j in [1, 2]">
+				<capview-device></capview-device>
+			</div>
+			<div class="col-md-12" ng-switch-when="3" ng-repeat="j in [1, 2, 3]">
+				<capview-device></capview-device>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6" ng-switch-when="2" ng-repeat="i in [1, 2]">
+		<div ng-switch="rows">
+			<div class="col-md-12" ng-switch-default ng-init="j = 1;">
+				<capview-device></capview-device>
+			</div>
+			<div class="col-md-12" ng-switch-when="2" ng-repeat="j in [1, 2]">
+				<capview-device></capview-device>
+			</div>
+			<div class="col-md-12" ng-switch-when="3" ng-repeat="j in [1, 2, 3]">
+				<capview-device></capview-device>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4" ng-switch-when="3" ng-repeat="i in [1, 2, 3]">
+		<div ng-switch="rows">
+			<div class="col-md-12" ng-switch-default ng-init="j = 1">
+				<capview-device></capview-device>
+			</div>
+			<div class="col-md-12" ng-switch-when="2" ng-repeat="j in [1, 2]">
+				<capview-device></capview-device>
+			</div>
+			<div class="col-md-12" ng-switch-when="3" ng-repeat="j in [1, 2, 3]">
+				<capview-device></capview-device>
+			</div>
+		</div>
+	</div>
+</div>

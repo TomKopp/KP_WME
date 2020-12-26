@@ -1,0 +1,28 @@
+{
+  "main": "index.html",
+  "name": "csr-desktop-client",
+  "description": "CSR desktop runtime container",
+  "version": "1.16.0",
+  "keywords": [
+    "csr",
+    "mashups"
+  ],
+  "window": {
+    "title": "CSR Desktop Client",
+    "toolbar": true,
+    "frame": true,
+    "width": 1024,
+    "height": 764,
+    "position": "mouse",
+    "min_width": 400,
+    "min_height": 200,
+    "max_width": 1200,
+    "max_height": 1024,
+    "resizeable": true
+  },
+  "webkit": {
+    "plugin": true,
+    "page-cache": false,
+    "java": false
+  }
+}

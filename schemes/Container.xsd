@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	version="1.16"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:req="http://mmt.inf.tu-dresden.de/smcdl/1.16/container"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified"
+	targetNamespace="http://mmt.inf.tu-dresden.de/smcdl/1.16/container">
+
+	<!-- Condition description type -->
+	<xs:complexType name="ContextQuery">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute
+					name="ontology"
+					use="optional"
+					default="http://mmt.inf.tu-dresden.de/documa/ontologies/platform"
+					type="xs:anyURI" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element
+		name="condition"
+		type="req:ContextQuery"
+		abstract="true">
+		<xs:annotation>
+			<xs:documentation>Element contains SPARQL-Ask query as context condition
+				specification.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="query"
+		type="req:ContextQuery">
+		<xs:annotation>
+			<xs:documentation>Element contains SPARQL-Select query as requirement
+				specification.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="deviceCondition"
+		type="req:ContextQuery"
+		substitutionGroup="req:condition" />
+	<xs:element
+		name="userCondition"
+		type="req:ContextQuery"
+		substitutionGroup="req:condition" />
+	<xs:element
+		name="environmentCondition"
+		type="req:ContextQuery"
+		substitutionGroup="req:condition" />
+	<xs:element
+		name="applicationCondition"
+		type="req:ContextQuery"
+		substitutionGroup="req:condition" />
+
+	<xs:complexType name="ContainerRequirement">
+		<xs:annotation>
+			<xs:documentation> Describes needed input and output capabilities of the
+				component's runtime environment.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				minOccurs="0"
+				maxOccurs="1"
+				ref="req:condition" />
+			<xs:choice>
+				<xs:element
+					minOccurs="1"
+					maxOccurs="1"
+					ref="req:query" />
+			</xs:choice>
+		</xs:sequence>
+		<xs:attribute
+			name="id"
+			use="required"
+			type="xs:ID" />
+		<xs:attribute
+			name="name"
+			use="optional"
+			type="xs:string" />
+		<xs:attribute
+			name="obligatory"
+			type="xs:boolean"
+			default="false" />
+	</xs:complexType>
+	<xs:element
+		name="containerRequirement"
+		type="req:ContainerRequirement" />
+
+	<xs:complexType
+		name="Modality"
+		abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				Describes an abstract modality element representing a
+				specific input or output capability of a device. In other words it describes
+				an information channel.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="req:ContextQuery">
+				<xs:attribute
+					name="name"
+					type="xs:string"
+					use="optional" />
+				<xs:attribute
+					name="device"
+					use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="mouse" />
+							<xs:enumeration value="touchpad" />
+							<xs:enumeration value="keyboard" />
+							<xs:enumeration value="microphone" />
+							<xs:enumeration value="camera" />
+							<xs:enumeration value="speaker" />
+							<xs:enumeration value="display" />
+							<xs:enumeration value="forcefeedback" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute
+					name="medium"
+					use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="acoustic" />
+							<xs:enumeration value="tactile" />
+							<xs:enumeration value="visual" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element
+		name="modality"
+		type="req:Modality" />
+
+	<!-- Input modality description -->
+	<xs:complexType name="InputModality">
+		<xs:annotation>
+			<xs:documentation>
+				Describes an input information channel required by the
+				component.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="req:Modality">
+				<xs:attribute
+					name="mode"
+					use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="voice" />
+							<xs:enumeration value="multitouch" />
+							<xs:enumeration value="point" />
+							<xs:enumeration value="keys" />
+							<xs:enumeration value="photo" />
+							<xs:enumeration value="video" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element
+		name="inputModality"
+		type="req:InputModality"
+		substitutionGroup="req:query">
+		<xs:annotation>
+			<xs:documentation>Element contains specification of input modality
+				attributes.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<!-- Output modality description -->
+	<xs:complexType name="OutputModality">
+		<xs:annotation>
+			<xs:documentation>Describes an output information channel required by the
+				component.
+			</xs:documentation>
+		</xs:annotation>
+		<!-- How could specific parameters of the associated output device be defined? -->
+		<xs:complexContent>
+			<xs:extension base="req:Modality">
+				<xs:attribute
+					name="mode"
+					use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="voice" />
+							<xs:enumeration value="photo" />
+							<xs:enumeration value="video" />
+							<xs:enumeration value="gui" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element
+		name="outputModality"
+		type="req:OutputModality"
+		substitutionGroup="req:query">
+		<xs:annotation>
+			<xs:documentation>Element contains output modality requirement
+				specifications.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

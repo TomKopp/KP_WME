@@ -1,0 +1,14 @@
+:host {
+    width: 100%;
+}
+
+.trip-section-overview-destination, .trip-section-hotel-overview {
+    float: left;
+    height: 50px;
+}
+.trip-section-overview-destination {
+    width: 200px;
+}
+.trip-section-hotel-overview {
+    width: calc(80% - 100px);
+}

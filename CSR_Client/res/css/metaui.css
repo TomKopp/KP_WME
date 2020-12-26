@@ -1,0 +1,435 @@
+#csr-mui-mainframe-block {
+    margin: 0px;
+}
+
+.csr-mui-panel {
+    border: 1px solid #DDDDDD;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #f9f9f9;
+}
+
+.csr-mui-list {
+    border: 1px solid #A9A9A9;
+    border-radius: 0px;
+    background-color: #ffffff;
+}
+
+.csr-mui-thinshadow {
+    box-shadow: 0px 1px 1px;
+}
+
+.csr-mui-cols {
+    padding: 5px;
+}
+
+.csr-mui-iconitem-container {
+    min-width: 80px;
+    margin: 3px;
+}
+
+#csr-mui-cmpdist .csr-mui-distribution-main > .close-btn {
+    position: relative;
+    z-index: 10;
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 0px;
+    cursor: pointer;
+    border-radius: 0px 3px 0px 0px;
+    left: -30px;
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+    background-color: #D20044;
+    transition: opacity 0.3s ease;
+}
+
+#csr-mui-cmpdist .csr-mui-distribution-main > .close-btn:hover {
+    opacity: 0.9;
+}
+
+.csr-mui-iconitem-container > .close-btn {
+    position: relative;
+    z-index: 10;
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 0px;
+    cursor: pointer;
+    border-radius: 0px 3px 0px 0px;
+    margin-left: -20px;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    background-color: #D20044;
+    transition: opacity 0.3s ease;
+}
+
+.csr-mui-iconitem-container > .close-btn:hover {
+    opacity: 0.9;
+}
+
+/* generic element with an icon and a label aligning both horizontal */
+.csr-mui-iconitem-h {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    margin: 3px;
+}
+
+/* generic element with an icon and a label aligning both vertical */
+.csr-mui-iconitem-v {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    margin: 3px;
+}
+
+.csr-mui-iconitem-h img, .csr-mui-iconitem-v img {
+    width: 32px;
+    height: 32px;
+}
+
+.csr-mui-iconitem-h span:nth-child(2), .csr-mui-iconitem-v span:nth-child(2) {
+    line-height: 1em;
+}
+
+.csr-mui-pheader {
+    padding: 2px 5px;
+    border-width: 2px;
+}
+
+.csr-mui-pbody {
+    padding: 0px;
+}
+
+#csr-mui-applications-panel, #csr-mui-owndevice {
+    padding: 5px;
+}
+
+#csr-mui-left, #csr-mui-right {
+    min-height: 800px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#csr-mui-graphpanel {
+    min-height: 800px;
+}
+
+
+
+#csr-mui-loadables-list, #csr-mui-joinables-list, .csr-mui-udevices-list {
+    min-height: 100px;
+    max-height: 400px;
+    overflow: auto;
+}
+
+#csr-mui-loadables-list a, #csr-mui-joinables-list a {
+    margin-left: 1px;
+    margin-right: 5px;
+}
+
+.csr-mui-currentdev, .csr-mui-currentdevserv {
+    min-height: 200px;
+}
+
+.csr-mui-currentdev > div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.csr-mui-currentdev > div:nth-child(2) {
+    height: 28px;
+}
+
+.csr-mui-udevpanel > .csr-mui-udev-header {
+    font-weight: bold;
+}
+
+.csr-mui-btn {
+    padding: 2px;
+    height: 25px;
+}
+
+.csr-mui-devicon {
+    width: 150px;
+    height: 150px;
+}
+
+.csr-mui-udevicon {
+    width: 100px;
+    height: 100px;
+}
+
+.csr-mui-containerpanel {
+    min-height: 200px;
+    max-height: 300px;
+    overflow: auto;
+    border: 1px solid #DDDDDD;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+}
+
+.csr-mui-containeritem {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+}
+
+.csr-mui-containeritem img {
+    width: 32px;
+    height: 32px;
+}
+
+.csr-mui-loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#csr-mui-loadericon {
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+}
+
+/* distribution view styles */
+.dist-device-rect {
+    stroke: #333333;
+    stroke-width: 1;
+}
+
+.link {
+    stroke: #999999;
+    stroke-opacity: .6;
+}
+
+[draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+    cursor: move;
+}
+
+/* **************************** */
+/* distribution dialog elements */
+
+#csr-mui-cmpdist .csr-mui-components,
+#csr-mui-cmpdist .csr-mui-devices {
+    box-shadow: 0px 0px 5px #888;
+}
+
+/* list of component items in distribution dialog */
+/* list of device items in distribution dialog */
+#csr-mui-cmpdist .csr-mui-component-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    overflow: auto;
+}
+
+#csr-mui-cmpdist .csr-mui-devices-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    overflow: auto;
+}
+
+#csr-mui-cmpdist .csr-mui-component-item,
+#csr-mui-cmpdist .csr-mui-udevitem {
+    max-width: 225px;
+    min-width: 125px;
+    margin: 5px;
+    padding: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#csr-mui-cmpdist .csr-mui-component-list-header,
+#csr-mui-cmpdist .csr-mui-devices-list-header,
+#csr-mui-cmpdist {
+    background-color: #666666;
+    font-size: 1.1em;
+    color: #E4E4E4;
+    padding: 5px;
+}
+
+#csr-mui-cmpdist .csr-mui-component-item {
+    background-color: #449d44;
+    color: #ffffff;
+}
+
+#csr-mui-cmpdist .csr-mui-udevitem {
+    background-color: #0c7cd5;
+    color: #ffffff;
+}
+
+#csr-mui-cmpdist .csr-mui-component-item .csr-mui-ci-header img {
+    width: 32px;
+    height: 32px;
+}
+
+#csr-mui-cmpdist .csr-mui-component-item .csr-mui-ci-header span,
+#csr-mui-cmpdist .csr-mui-udev-name {
+    margin-left: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 1.1em;
+}
+
+/*
+#csr-mui-cmpdist .csr-mui-component-item .csr-mui-ci-body,
+#csr-mui-cmpdist .csr-mui-udevitem .csr-mui-udevitem-body {
+    overflow: auto;
+    min-height: 80px;
+    max-height: 120px;
+}
+*/
+
+#csr-mui-cmpdist .csr-mui-devices-list .csr-mui-udevicon {
+    width: 32px;
+    height: 32px;
+}
+
+#csr-mui-cmpdist .csr-mui-udevitem .csr-mui-udev-hint {
+    font-size: 0.8em;
+}
+
+/* list of distribution items */
+#csr-mui-cmpdist .csr-mui-distributions {
+    display: flex;
+    flex-direction: column;
+    height: 450px;
+    overflow: auto;
+}
+
+/* individual distribution item */
+#csr-mui-cmpdist .csr-mui-distribution {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: stretch;
+    margin: 15px;
+}
+
+#csr-mui-cmpdist .csr-mui-distribution .csr-mui-distribution-cmps,
+#csr-mui-cmpdist .csr-mui-distribution .csr-mui-distribution-conf,
+#csr-mui-cmpdist .csr-mui-distribution .csr-mui-distribution-dev {
+    height: 180px;
+}
+
+/* collection of components within a distribution item */
+#csr-mui-cmpdist .csr-mui-distribution .csr-mui-distribution-cmps {
+    flex: 6;
+    margin-left: 2px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border: solid 1px;
+    border-radius: 3px;
+    overflow: auto;
+}
+
+#csr-mui-cmpdist .csr-mui-distribution-cmps .csr-mui-iconitem-container {
+    background-color: #449D44;
+    color: #FFFFFF;
+    padding: 0px;
+}
+
+#csr-mui-cmpdist .csr-mui-distribution-devs .csr-mui-iconitem-container {
+    background-color: #0C7CD5;
+    color: #FFFFFF;
+}
+
+/* distribution configuration panel */
+#csr-mui-cmpdist .csr-mui-distribution .csr-mui-distribution-conf {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+}
+
+#csr-mui-cmpdist .csr-mui-distribution .csr-mui-distribution-conf img {
+    width: 45px;
+}
+
+/* collection of devices within a distribution item */
+#csr-mui-cmpdist .csr-mui-distribution .csr-mui-distribution-dev {
+    margin-right: 2px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: space-around;
+    min-width: 150px;
+    overflow: auto;
+    background-color: #ffffff;
+    border-radius: 3px;
+    border: solid 1px;
+}
+
+#csr-mui-cmpdist .csr-mui-distribution-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: auto;
+    min-height: 140px;
+}
+
+#csr-mui-cmpdist .csr-mui-distribution-dev .csr-mui-udevitem {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-around;
+    max-width: 150px;
+}
+
+#csr-mui-cmpdist .csr-mui-distribution-dev .csr-mui-udevitem .csr-mui-udevitem-header img {
+    width: 50px;
+    height: 50px;
+}
+
+#csr-mui-cmpdist .csr-mui-distribution-dev .csr-mui-udevitem .csr-mui-udevitem-body {
+    margin: 3px;
+    font-size: smaller;
+    line-height: 1.6em;
+}
+
+.csr-mui-cmpsearchpanel {
+    margin-left: 10px;
+}
+
+/* eof distribution dialog elements */
+/* ******************************** */

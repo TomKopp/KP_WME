@@ -1,0 +1,2042 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="08980894-3d8e-439b-8e03-01ab3a14be75" activeEnvironment="Default" name="CompReService" resourceRoot="" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="93a16734-cb03-4f52-8fe1-1ce3ca6c4af1" wsaVersion="NONE" name="CompReServiceSoap11Binding" type="wsdl" bindingName="{http://service.compre.edyra.inf.tudresden.de}CompReServiceSoap11Binding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Projects/KP_WME/wsdl/CompReService%20(2).wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/C:/Projects/KP_WME/wsdl/CompReService%20(2).wsdl"><con:part><con:url>file:/C:/Projects/KP_WME/wsdl/CompReService%20(2).wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://service.compre.edyra.inf.tudresden.de" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://service.compre.edyra.inf.tudresden.de" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ax219="http://mcm.model.edyra.inf.tudresden.de/xsd" xmlns:ax216="http://rating.repository.cruise.inf.tudresden.de/xsd" xmlns:ax215="http://beans.service.compre.edyra.inf.tudresden.de/xsd" xmlns:ax213="http://io.java/xsd" xmlns:ax220="http://beans.integration.cruise.inf.tudresden.de/xsd" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:documentation>Serves for managing and querying composition models of mashup applications.</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://beans.integration.cruise.inf.tudresden.de/xsd">
+      <xs:complexType name="Capability">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="activity" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="activityModifier" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="entity" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="entityContext" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="requiresInteraction" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="weight" type="xs:float"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://service.compre.edyra.inf.tudresden.de" xmlns:ax214="http://io.java/xsd" xmlns:ax223="http://mcm.model.edyra.inf.tudresden.de/xsd" xmlns:ax218="http://beans.service.compre.edyra.inf.tudresden.de/xsd">
+      <xs:import namespace="http://io.java/xsd"/>
+      <xs:import namespace="http://beans.service.compre.edyra.inf.tudresden.de/xsd"/>
+      <xs:import namespace="http://mcm.model.edyra.inf.tudresden.de/xsd"/>
+      <xs:element name="updateCompositionModel">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="cm" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateCompositionModelResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addPermission">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="caller" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="permission" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="model" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addPermissionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="listTopRatedCompositions">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="k" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="listTopRatedCompositionsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CompReServiceIOException">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="IOException" nillable="true" type="ax214:IOException"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="listAllCompositionModels">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="listAllCompositionModelsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax215:NameIDVersion"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCompositionModel">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="version" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCompositionModelResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="removeCompositionModel">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="removeCompositionModelResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="removeVersion">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="version" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="removeVersionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getVersions">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getVersionsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCompositionModelDetails">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCompositionModelDetailsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax223:MetaData"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="removePermission">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="caller" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="permission" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="model" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="removePermissionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="listRecentCompositionModels">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="intervalStart" type="xs:long"/>
+            <xs:element minOccurs="0" name="intervalEnd" type="xs:long"/>
+            <xs:element minOccurs="0" name="start" type="xs:int"/>
+            <xs:element minOccurs="0" name="limit" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="listRecentCompositionModelsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax215:ResultList"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getUniqueID">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getUniqueIDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://mcm.model.edyra.inf.tudresden.de/xsd" xmlns:ax221="http://beans.integration.cruise.inf.tudresden.de/xsd" xmlns:ax222="http://rating.repository.cruise.inf.tudresden.de/xsd">
+      <xs:import namespace="http://beans.integration.cruise.inf.tudresden.de/xsd"/>
+      <xs:import namespace="http://rating.repository.cruise.inf.tudresden.de/xsd"/>
+      <xs:complexType name="MetaData">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="components" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="functionality" nillable="true" type="ax221:Capability"/>
+          <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="permission" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="price" type="xs:float"/>
+          <xs:element minOccurs="0" name="rating" nillable="true" type="ax222:RatingInfo"/>
+          <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="versions" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://beans.service.compre.edyra.inf.tudresden.de/xsd" xmlns:ax217="http://rating.repository.cruise.inf.tudresden.de/xsd">
+      <xs:import namespace="http://rating.repository.cruise.inf.tudresden.de/xsd"/>
+      <xs:complexType name="NameIDVersion">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="price" type="xs:float"/>
+          <xs:element minOccurs="0" name="rating" nillable="true" type="ax216:RatingInfo"/>
+          <xs:element minOccurs="0" name="version" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ResultList">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="resultCount" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="results" nillable="true" type="ax215:NameIDVersion"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://io.java/xsd">
+      <xs:complexType name="IOException">
+        <xs:sequence/>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://rating.repository.cruise.inf.tudresden.de/xsd">
+      <xs:complexType name="RatingInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cid" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="functionalityRating" nillable="true" type="ax216:Rating"/>
+          <xs:element minOccurs="0" name="looknfeelRating" nillable="true" type="ax216:Rating"/>
+          <xs:element minOccurs="0" name="num" type="xs:int"/>
+          <xs:element minOccurs="0" name="rating" type="xs:float"/>
+          <xs:element minOccurs="0" name="robustnessRating" nillable="true" type="ax216:Rating"/>
+          <xs:element minOccurs="0" name="usabilityRating" nillable="true" type="ax216:Rating"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Rating">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="num" type="xs:int"/>
+          <xs:element minOccurs="0" name="rating" type="xs:float"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="removeVersionRequest">
+    <wsdl:part name="parameters" element="ns:removeVersion"/>
+  </wsdl:message>
+  <wsdl:message name="removeVersionResponse">
+    <wsdl:part name="parameters" element="ns:removeVersionResponse"/>
+  </wsdl:message>
+  <wsdl:message name="listAllCompositionModelsRequest">
+    <wsdl:part name="parameters" element="ns:listAllCompositionModels"/>
+  </wsdl:message>
+  <wsdl:message name="listAllCompositionModelsResponse">
+    <wsdl:part name="parameters" element="ns:listAllCompositionModelsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CompReServiceIOException">
+    <wsdl:part name="parameters" element="ns:CompReServiceIOException"/>
+  </wsdl:message>
+  <wsdl:message name="addPermissionRequest">
+    <wsdl:part name="parameters" element="ns:addPermission"/>
+  </wsdl:message>
+  <wsdl:message name="addPermissionResponse">
+    <wsdl:part name="parameters" element="ns:addPermissionResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getCompositionModelRequest">
+    <wsdl:part name="parameters" element="ns:getCompositionModel"/>
+  </wsdl:message>
+  <wsdl:message name="getCompositionModelResponse">
+    <wsdl:part name="parameters" element="ns:getCompositionModelResponse"/>
+  </wsdl:message>
+  <wsdl:message name="removePermissionRequest">
+    <wsdl:part name="parameters" element="ns:removePermission"/>
+  </wsdl:message>
+  <wsdl:message name="removePermissionResponse">
+    <wsdl:part name="parameters" element="ns:removePermissionResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getUniqueIDRequest">
+    <wsdl:part name="parameters" element="ns:getUniqueID"/>
+  </wsdl:message>
+  <wsdl:message name="getUniqueIDResponse">
+    <wsdl:part name="parameters" element="ns:getUniqueIDResponse"/>
+  </wsdl:message>
+  <wsdl:message name="listTopRatedCompositionsRequest">
+    <wsdl:part name="parameters" element="ns:listTopRatedCompositions"/>
+  </wsdl:message>
+  <wsdl:message name="listTopRatedCompositionsResponse">
+    <wsdl:part name="parameters" element="ns:listTopRatedCompositionsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="updateCompositionModelRequest">
+    <wsdl:part name="parameters" element="ns:updateCompositionModel"/>
+  </wsdl:message>
+  <wsdl:message name="updateCompositionModelResponse">
+    <wsdl:part name="parameters" element="ns:updateCompositionModelResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getVersionsRequest">
+    <wsdl:part name="parameters" element="ns:getVersions"/>
+  </wsdl:message>
+  <wsdl:message name="getVersionsResponse">
+    <wsdl:part name="parameters" element="ns:getVersionsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getCompositionModelDetailsRequest">
+    <wsdl:part name="parameters" element="ns:getCompositionModelDetails"/>
+  </wsdl:message>
+  <wsdl:message name="getCompositionModelDetailsResponse">
+    <wsdl:part name="parameters" element="ns:getCompositionModelDetailsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="listRecentCompositionModelsRequest">
+    <wsdl:part name="parameters" element="ns:listRecentCompositionModels"/>
+  </wsdl:message>
+  <wsdl:message name="listRecentCompositionModelsResponse">
+    <wsdl:part name="parameters" element="ns:listRecentCompositionModelsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="removeCompositionModelRequest">
+    <wsdl:part name="parameters" element="ns:removeCompositionModel"/>
+  </wsdl:message>
+  <wsdl:message name="removeCompositionModelResponse">
+    <wsdl:part name="parameters" element="ns:removeCompositionModelResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="CompReServicePortType">
+    <wsdl:operation name="removeVersion">
+      <wsdl:input message="ns:removeVersionRequest" wsaw:Action="urn:removeVersion"/>
+      <wsdl:output message="ns:removeVersionResponse" wsaw:Action="urn:removeVersionResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="listAllCompositionModels">
+      <wsdl:input message="ns:listAllCompositionModelsRequest" wsaw:Action="urn:listAllCompositionModels"/>
+      <wsdl:output message="ns:listAllCompositionModelsResponse" wsaw:Action="urn:listAllCompositionModelsResponse"/>
+      <wsdl:fault message="ns:CompReServiceIOException" name="CompReServiceIOException" wsaw:Action="urn:listAllCompositionModelsCompReServiceIOException"/>
+    </wsdl:operation>
+    <wsdl:operation name="addPermission">
+      <wsdl:input message="ns:addPermissionRequest" wsaw:Action="urn:addPermission"/>
+      <wsdl:output message="ns:addPermissionResponse" wsaw:Action="urn:addPermissionResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getCompositionModel">
+      <wsdl:input message="ns:getCompositionModelRequest" wsaw:Action="urn:getCompositionModel"/>
+      <wsdl:output message="ns:getCompositionModelResponse" wsaw:Action="urn:getCompositionModelResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="removePermission">
+      <wsdl:input message="ns:removePermissionRequest" wsaw:Action="urn:removePermission"/>
+      <wsdl:output message="ns:removePermissionResponse" wsaw:Action="urn:removePermissionResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getUniqueID">
+      <wsdl:input message="ns:getUniqueIDRequest" wsaw:Action="urn:getUniqueID"/>
+      <wsdl:output message="ns:getUniqueIDResponse" wsaw:Action="urn:getUniqueIDResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="listTopRatedCompositions">
+      <wsdl:input message="ns:listTopRatedCompositionsRequest" wsaw:Action="urn:listTopRatedCompositions"/>
+      <wsdl:output message="ns:listTopRatedCompositionsResponse" wsaw:Action="urn:listTopRatedCompositionsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="updateCompositionModel">
+      <wsdl:input message="ns:updateCompositionModelRequest" wsaw:Action="urn:updateCompositionModel"/>
+      <wsdl:output message="ns:updateCompositionModelResponse" wsaw:Action="urn:updateCompositionModelResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getVersions">
+      <wsdl:input message="ns:getVersionsRequest" wsaw:Action="urn:getVersions"/>
+      <wsdl:output message="ns:getVersionsResponse" wsaw:Action="urn:getVersionsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getCompositionModelDetails">
+      <wsdl:input message="ns:getCompositionModelDetailsRequest" wsaw:Action="urn:getCompositionModelDetails"/>
+      <wsdl:output message="ns:getCompositionModelDetailsResponse" wsaw:Action="urn:getCompositionModelDetailsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="listRecentCompositionModels">
+      <wsdl:input message="ns:listRecentCompositionModelsRequest" wsaw:Action="urn:listRecentCompositionModels"/>
+      <wsdl:output message="ns:listRecentCompositionModelsResponse" wsaw:Action="urn:listRecentCompositionModelsResponse"/>
+      <wsdl:fault message="ns:CompReServiceIOException" name="CompReServiceIOException" wsaw:Action="urn:listRecentCompositionModelsCompReServiceIOException"/>
+    </wsdl:operation>
+    <wsdl:operation name="removeCompositionModel">
+      <wsdl:input message="ns:removeCompositionModelRequest" wsaw:Action="urn:removeCompositionModel"/>
+      <wsdl:output message="ns:removeCompositionModelResponse" wsaw:Action="urn:removeCompositionModelResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CompReServiceSoap11Binding" type="ns:CompReServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="removeVersion">
+      <soap:operation soapAction="urn:removeVersion" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllCompositionModels">
+      <soap:operation soapAction="urn:listAllCompositionModels" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CompReServiceIOException">
+        <soap:fault use="literal" name="CompReServiceIOException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addPermission">
+      <soap:operation soapAction="urn:addPermission" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompositionModel">
+      <soap:operation soapAction="urn:getCompositionModel" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removePermission">
+      <soap:operation soapAction="urn:removePermission" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUniqueID">
+      <soap:operation soapAction="urn:getUniqueID" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listTopRatedCompositions">
+      <soap:operation soapAction="urn:listTopRatedCompositions" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateCompositionModel">
+      <soap:operation soapAction="urn:updateCompositionModel" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVersions">
+      <soap:operation soapAction="urn:getVersions" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompositionModelDetails">
+      <soap:operation soapAction="urn:getCompositionModelDetails" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRecentCompositionModels">
+      <soap:operation soapAction="urn:listRecentCompositionModels" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CompReServiceIOException">
+        <soap:fault use="literal" name="CompReServiceIOException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeCompositionModel">
+      <soap:operation soapAction="urn:removeCompositionModel" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CompReServiceSoap12Binding" type="ns:CompReServicePortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="removeVersion">
+      <soap12:operation soapAction="urn:removeVersion" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllCompositionModels">
+      <soap12:operation soapAction="urn:listAllCompositionModels" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CompReServiceIOException">
+        <soap12:fault use="literal" name="CompReServiceIOException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addPermission">
+      <soap12:operation soapAction="urn:addPermission" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompositionModel">
+      <soap12:operation soapAction="urn:getCompositionModel" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removePermission">
+      <soap12:operation soapAction="urn:removePermission" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUniqueID">
+      <soap12:operation soapAction="urn:getUniqueID" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listTopRatedCompositions">
+      <soap12:operation soapAction="urn:listTopRatedCompositions" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateCompositionModel">
+      <soap12:operation soapAction="urn:updateCompositionModel" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVersions">
+      <soap12:operation soapAction="urn:getVersions" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompositionModelDetails">
+      <soap12:operation soapAction="urn:getCompositionModelDetails" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRecentCompositionModels">
+      <soap12:operation soapAction="urn:listRecentCompositionModels" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CompReServiceIOException">
+        <soap12:fault use="literal" name="CompReServiceIOException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeCompositionModel">
+      <soap12:operation soapAction="urn:removeCompositionModel" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CompReServiceHttpBinding" type="ns:CompReServicePortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="removeVersion">
+      <http:operation location="removeVersion"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllCompositionModels">
+      <http:operation location="listAllCompositionModels"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addPermission">
+      <http:operation location="addPermission"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompositionModel">
+      <http:operation location="getCompositionModel"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removePermission">
+      <http:operation location="removePermission"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUniqueID">
+      <http:operation location="getUniqueID"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listTopRatedCompositions">
+      <http:operation location="listTopRatedCompositions"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateCompositionModel">
+      <http:operation location="updateCompositionModel"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVersions">
+      <http:operation location="getVersions"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompositionModelDetails">
+      <http:operation location="getCompositionModelDetails"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRecentCompositionModels">
+      <http:operation location="listRecentCompositionModels"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeCompositionModel">
+      <http:operation location="removeCompositionModel"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CompReService">
+    <wsdl:port name="CompReServiceHttpSoap11Endpoint" binding="ns:CompReServiceSoap11Binding">
+      <soap:address location="http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap11Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="CompReServiceHttpSoap12Endpoint" binding="ns:CompReServiceSoap12Binding">
+      <soap12:address location="http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap12Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="CompReServiceHttpEndpoint" binding="ns:CompReServiceHttpBinding">
+      <http:address location="http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpEndpoint/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap11Endpoint/</con:endpoint></con:endpoints><con:operation id="77c8f25f-7585-4c3d-a0d3-649b6129a82d" isOneWay="false" action="urn:addPermission" name="addPermission" bindingOperationName="addPermission" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="01023441-f8c6-4036-a2f1-bbf73083e99a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap11Endpoint/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:addPermission>\r
+         <!--Optional:-->\r
+         <ser:caller>?</ser:caller>\r
+         <!--Optional:-->\r
+         <ser:permission>?</ser:permission>\r
+         <!--Optional:-->\r
+         <ser:model>?</ser:model>\r
+         <!--Optional:-->\r
+         <ser:user>?</ser:user>\r
+      </ser:addPermission>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:addPermission"/></con:call></con:operation><con:operation id="8d964d2c-3d63-4519-aa7e-aa4a5bb435dd" isOneWay="false" action="urn:getCompositionModel" name="getCompositionModel" bindingOperationName="getCompositionModel" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e1760446-3cea-4a28-901f-870951eaf831" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap11Endpoint/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:getCompositionModel>\r
+         <!--Optional:-->\r
+         <ser:user>?</ser:user>\r
+         <!--Optional:-->\r
+         <ser:id>?</ser:id>\r
+         <!--Optional:-->\r
+         <ser:version>?</ser:version>\r
+      </ser:getCompositionModel>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:getCompositionModel"/></con:call></con:operation><con:operation id="164887af-2208-4621-88b1-476cd8b481cd" isOneWay="false" action="urn:getCompositionModelDetails" name="getCompositionModelDetails" bindingOperationName="getCompositionModelDetails" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="fea81dbe-b474-42bb-80e7-d1f25f1b8879" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap11Endpoint/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:getCompositionModelDetails>\r
+         <!--Optional:-->\r
+         <ser:user>?</ser:user>\r
+         <!--Optional:-->\r
+         <ser:id>?</ser:id>\r
+      </ser:getCompositionModelDetails>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:getCompositionModelDetails"/></con:call></con:operation><con:operation id="a9ceb13a-78cc-437b-9533-1788dd94cad0" isOneWay="false" action="urn:getUniqueID" name="getUniqueID" bindingOperationName="getUniqueID" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e4ce0008-928b-4a25-84ef-0c93f75d26d1" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap11Endpoint/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:getUniqueID/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:getUniqueID"/></con:call></con:operation><con:operation id="74c9a0b4-fd89-4bd0-b95b-439dd5f9e91b" isOneWay="false" action="urn:getVersions" name="getVersions" bindingOperationName="getVersions" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cc51027d-82a3-40f6-9dd5-ebf117e912d1" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap11Endpoint/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:getVersions>\r
+         <!--Optional:-->\r
+         <ser:id>?</ser:id>\r
+      </ser:getVersions>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:getVersions"/></con:call></con:operation><con:operation id="405e7c8c-1821-4e2d-ae8d-5fa0a346f406" isOneWay="false" action="urn:listAllCompositionModels" name="listAllCompositionModels" bindingOperationName="listAllCompositionModels" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="620d8d5f-08e1-4cdb-85ad-79ff954f3db5" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap11Endpoint/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:listAllCompositionModels>\r
+         <!--Optional:-->\r
+         <ser:user>?</ser:user>\r
+      </ser:listAllCompositionModels>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:listAllCompositionModels"/></con:call></con:operation><con:operation id="476f15bd-d6ea-4287-9031-9c1eb1720eeb" isOneWay="false" action="urn:listRecentCompositionModels" name="listRecentCompositionModels" bindingOperationName="listRecentCompositionModels" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="688857c6-6a46-43de-90c0-2b22d77ad43d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap11Endpoint/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:listRecentCompositionModels>\r
+         <!--Optional:-->\r
+         <ser:user>?</ser:user>\r
+         <!--Optional:-->\r
+         <ser:intervalStart>?</ser:intervalStart>\r
+         <!--Optional:-->\r
+         <ser:intervalEnd>?</ser:intervalEnd>\r
+         <!--Optional:-->\r
+         <ser:start>?</ser:start>\r
+         <!--Optional:-->\r
+         <ser:limit>?</ser:limit>\r
+      </ser:listRecentCompositionModels>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:listRecentCompositionModels"/></con:call></con:operation><con:operation id="a8bf1937-c138-44c3-a2ce-72028ea1d94d" isOneWay="false" action="urn:listTopRatedCompositions" name="listTopRatedCompositions" bindingOperationName="listTopRatedCompositions" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="16f0519a-6574-4c22-85cd-61179af38831" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap11Endpoint/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:listTopRatedCompositions>\r
+         <!--Optional:-->\r
+         <ser:user>?</ser:user>\r
+         <!--Optional:-->\r
+         <ser:k>?</ser:k>\r
+      </ser:listTopRatedCompositions>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:listTopRatedCompositions"/></con:call></con:operation><con:operation id="1e97a00f-5eb9-41e9-848b-22fa5c9da0f3" isOneWay="false" action="urn:removeCompositionModel" name="removeCompositionModel" bindingOperationName="removeCompositionModel" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1f0880ca-cb89-40de-9bba-967bbe9d69a0" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap11Endpoint/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:removeCompositionModel>\r
+         <!--Optional:-->\r
+         <ser:user>?</ser:user>\r
+         <!--Optional:-->\r
+         <ser:id>?</ser:id>\r
+      </ser:removeCompositionModel>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:removeCompositionModel"/></con:call></con:operation><con:operation id="112101bf-8b74-4f0c-b0f1-eab3e75f7905" isOneWay="false" action="urn:removePermission" name="removePermission" bindingOperationName="removePermission" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e1dd2ef3-308b-4510-941d-87800527dec5" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap11Endpoint/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:removePermission>\r
+         <!--Optional:-->\r
+         <ser:caller>?</ser:caller>\r
+         <!--Optional:-->\r
+         <ser:permission>?</ser:permission>\r
+         <!--Optional:-->\r
+         <ser:model>?</ser:model>\r
+         <!--Optional:-->\r
+         <ser:user>?</ser:user>\r
+      </ser:removePermission>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:removePermission"/></con:call></con:operation><con:operation id="842e3471-99b2-4bc9-9a35-5d3ebbf6a0a1" isOneWay="false" action="urn:removeVersion" name="removeVersion" bindingOperationName="removeVersion" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ae67f2ed-57e2-446f-9763-03a31c03f528" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap11Endpoint/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:removeVersion>\r
+         <!--Optional:-->\r
+         <ser:user>?</ser:user>\r
+         <!--Optional:-->\r
+         <ser:id>?</ser:id>\r
+         <!--Optional:-->\r
+         <ser:version>?</ser:version>\r
+      </ser:removeVersion>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:removeVersion"/></con:call></con:operation><con:operation id="359c33ad-b7d9-4df5-89fa-a7c1348d4041" isOneWay="false" action="urn:updateCompositionModel" name="updateCompositionModel" bindingOperationName="updateCompositionModel" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f9bd146c-115f-415a-af44-913e6dc53d4f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap11Endpoint/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:updateCompositionModel>\r
+         <!--Optional:-->\r
+         <ser:user>?</ser:user>\r
+         <!--Optional:-->\r
+         <ser:cm>?</ser:cm>\r
+      </ser:updateCompositionModel>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:updateCompositionModel"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="5b93ea09-bb49-4824-b960-c3ede6f577fc" wsaVersion="NONE" name="CompReServiceSoap12Binding" type="wsdl" bindingName="{http://service.compre.edyra.inf.tudresden.de}CompReServiceSoap12Binding" soapVersion="1_2" anonymous="optional" definition="file:/C:/Projects/KP_WME/wsdl/CompReService%20(2).wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Projects\KP_WME\wsdl\CompReService%20(2).wsdl"><con:part><con:url>file:\C:\Projects\KP_WME\wsdl\CompReService%20(2).wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://service.compre.edyra.inf.tudresden.de" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://service.compre.edyra.inf.tudresden.de" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ax219="http://mcm.model.edyra.inf.tudresden.de/xsd" xmlns:ax216="http://rating.repository.cruise.inf.tudresden.de/xsd" xmlns:ax215="http://beans.service.compre.edyra.inf.tudresden.de/xsd" xmlns:ax213="http://io.java/xsd" xmlns:ax220="http://beans.integration.cruise.inf.tudresden.de/xsd" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:documentation>Serves for managing and querying composition models of mashup applications.</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://beans.integration.cruise.inf.tudresden.de/xsd">
+      <xs:complexType name="Capability">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="activity" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="activityModifier" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="entity" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="entityContext" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="requiresInteraction" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="weight" type="xs:float"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://service.compre.edyra.inf.tudresden.de" xmlns:ax214="http://io.java/xsd" xmlns:ax223="http://mcm.model.edyra.inf.tudresden.de/xsd" xmlns:ax218="http://beans.service.compre.edyra.inf.tudresden.de/xsd">
+      <xs:import namespace="http://io.java/xsd"/>
+      <xs:import namespace="http://beans.service.compre.edyra.inf.tudresden.de/xsd"/>
+      <xs:import namespace="http://mcm.model.edyra.inf.tudresden.de/xsd"/>
+      <xs:element name="updateCompositionModel">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="cm" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateCompositionModelResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addPermission">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="caller" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="permission" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="model" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addPermissionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="listTopRatedCompositions">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="k" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="listTopRatedCompositionsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CompReServiceIOException">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="IOException" nillable="true" type="ax214:IOException"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="listAllCompositionModels">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="listAllCompositionModelsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax215:NameIDVersion"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCompositionModel">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="version" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCompositionModelResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="removeCompositionModel">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="removeCompositionModelResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="removeVersion">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="version" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="removeVersionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getVersions">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getVersionsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCompositionModelDetails">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCompositionModelDetailsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax223:MetaData"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="removePermission">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="caller" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="permission" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="model" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="removePermissionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="listRecentCompositionModels">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="intervalStart" type="xs:long"/>
+            <xs:element minOccurs="0" name="intervalEnd" type="xs:long"/>
+            <xs:element minOccurs="0" name="start" type="xs:int"/>
+            <xs:element minOccurs="0" name="limit" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="listRecentCompositionModelsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax215:ResultList"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getUniqueID">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getUniqueIDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://mcm.model.edyra.inf.tudresden.de/xsd" xmlns:ax221="http://beans.integration.cruise.inf.tudresden.de/xsd" xmlns:ax222="http://rating.repository.cruise.inf.tudresden.de/xsd">
+      <xs:import namespace="http://beans.integration.cruise.inf.tudresden.de/xsd"/>
+      <xs:import namespace="http://rating.repository.cruise.inf.tudresden.de/xsd"/>
+      <xs:complexType name="MetaData">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="components" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="functionality" nillable="true" type="ax221:Capability"/>
+          <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="permission" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="price" type="xs:float"/>
+          <xs:element minOccurs="0" name="rating" nillable="true" type="ax222:RatingInfo"/>
+          <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="versions" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://beans.service.compre.edyra.inf.tudresden.de/xsd" xmlns:ax217="http://rating.repository.cruise.inf.tudresden.de/xsd">
+      <xs:import namespace="http://rating.repository.cruise.inf.tudresden.de/xsd"/>
+      <xs:complexType name="NameIDVersion">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="price" type="xs:float"/>
+          <xs:element minOccurs="0" name="rating" nillable="true" type="ax216:RatingInfo"/>
+          <xs:element minOccurs="0" name="version" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ResultList">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="resultCount" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="results" nillable="true" type="ax215:NameIDVersion"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://io.java/xsd">
+      <xs:complexType name="IOException">
+        <xs:sequence/>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://rating.repository.cruise.inf.tudresden.de/xsd">
+      <xs:complexType name="RatingInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cid" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="functionalityRating" nillable="true" type="ax216:Rating"/>
+          <xs:element minOccurs="0" name="looknfeelRating" nillable="true" type="ax216:Rating"/>
+          <xs:element minOccurs="0" name="num" type="xs:int"/>
+          <xs:element minOccurs="0" name="rating" type="xs:float"/>
+          <xs:element minOccurs="0" name="robustnessRating" nillable="true" type="ax216:Rating"/>
+          <xs:element minOccurs="0" name="usabilityRating" nillable="true" type="ax216:Rating"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Rating">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="num" type="xs:int"/>
+          <xs:element minOccurs="0" name="rating" type="xs:float"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="removeVersionRequest">
+    <wsdl:part name="parameters" element="ns:removeVersion"/>
+  </wsdl:message>
+  <wsdl:message name="removeVersionResponse">
+    <wsdl:part name="parameters" element="ns:removeVersionResponse"/>
+  </wsdl:message>
+  <wsdl:message name="listAllCompositionModelsRequest">
+    <wsdl:part name="parameters" element="ns:listAllCompositionModels"/>
+  </wsdl:message>
+  <wsdl:message name="listAllCompositionModelsResponse">
+    <wsdl:part name="parameters" element="ns:listAllCompositionModelsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CompReServiceIOException">
+    <wsdl:part name="parameters" element="ns:CompReServiceIOException"/>
+  </wsdl:message>
+  <wsdl:message name="addPermissionRequest">
+    <wsdl:part name="parameters" element="ns:addPermission"/>
+  </wsdl:message>
+  <wsdl:message name="addPermissionResponse">
+    <wsdl:part name="parameters" element="ns:addPermissionResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getCompositionModelRequest">
+    <wsdl:part name="parameters" element="ns:getCompositionModel"/>
+  </wsdl:message>
+  <wsdl:message name="getCompositionModelResponse">
+    <wsdl:part name="parameters" element="ns:getCompositionModelResponse"/>
+  </wsdl:message>
+  <wsdl:message name="removePermissionRequest">
+    <wsdl:part name="parameters" element="ns:removePermission"/>
+  </wsdl:message>
+  <wsdl:message name="removePermissionResponse">
+    <wsdl:part name="parameters" element="ns:removePermissionResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getUniqueIDRequest">
+    <wsdl:part name="parameters" element="ns:getUniqueID"/>
+  </wsdl:message>
+  <wsdl:message name="getUniqueIDResponse">
+    <wsdl:part name="parameters" element="ns:getUniqueIDResponse"/>
+  </wsdl:message>
+  <wsdl:message name="listTopRatedCompositionsRequest">
+    <wsdl:part name="parameters" element="ns:listTopRatedCompositions"/>
+  </wsdl:message>
+  <wsdl:message name="listTopRatedCompositionsResponse">
+    <wsdl:part name="parameters" element="ns:listTopRatedCompositionsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="updateCompositionModelRequest">
+    <wsdl:part name="parameters" element="ns:updateCompositionModel"/>
+  </wsdl:message>
+  <wsdl:message name="updateCompositionModelResponse">
+    <wsdl:part name="parameters" element="ns:updateCompositionModelResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getVersionsRequest">
+    <wsdl:part name="parameters" element="ns:getVersions"/>
+  </wsdl:message>
+  <wsdl:message name="getVersionsResponse">
+    <wsdl:part name="parameters" element="ns:getVersionsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getCompositionModelDetailsRequest">
+    <wsdl:part name="parameters" element="ns:getCompositionModelDetails"/>
+  </wsdl:message>
+  <wsdl:message name="getCompositionModelDetailsResponse">
+    <wsdl:part name="parameters" element="ns:getCompositionModelDetailsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="listRecentCompositionModelsRequest">
+    <wsdl:part name="parameters" element="ns:listRecentCompositionModels"/>
+  </wsdl:message>
+  <wsdl:message name="listRecentCompositionModelsResponse">
+    <wsdl:part name="parameters" element="ns:listRecentCompositionModelsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="removeCompositionModelRequest">
+    <wsdl:part name="parameters" element="ns:removeCompositionModel"/>
+  </wsdl:message>
+  <wsdl:message name="removeCompositionModelResponse">
+    <wsdl:part name="parameters" element="ns:removeCompositionModelResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="CompReServicePortType">
+    <wsdl:operation name="removeVersion">
+      <wsdl:input message="ns:removeVersionRequest" wsaw:Action="urn:removeVersion"/>
+      <wsdl:output message="ns:removeVersionResponse" wsaw:Action="urn:removeVersionResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="listAllCompositionModels">
+      <wsdl:input message="ns:listAllCompositionModelsRequest" wsaw:Action="urn:listAllCompositionModels"/>
+      <wsdl:output message="ns:listAllCompositionModelsResponse" wsaw:Action="urn:listAllCompositionModelsResponse"/>
+      <wsdl:fault message="ns:CompReServiceIOException" name="CompReServiceIOException" wsaw:Action="urn:listAllCompositionModelsCompReServiceIOException"/>
+    </wsdl:operation>
+    <wsdl:operation name="addPermission">
+      <wsdl:input message="ns:addPermissionRequest" wsaw:Action="urn:addPermission"/>
+      <wsdl:output message="ns:addPermissionResponse" wsaw:Action="urn:addPermissionResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getCompositionModel">
+      <wsdl:input message="ns:getCompositionModelRequest" wsaw:Action="urn:getCompositionModel"/>
+      <wsdl:output message="ns:getCompositionModelResponse" wsaw:Action="urn:getCompositionModelResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="removePermission">
+      <wsdl:input message="ns:removePermissionRequest" wsaw:Action="urn:removePermission"/>
+      <wsdl:output message="ns:removePermissionResponse" wsaw:Action="urn:removePermissionResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getUniqueID">
+      <wsdl:input message="ns:getUniqueIDRequest" wsaw:Action="urn:getUniqueID"/>
+      <wsdl:output message="ns:getUniqueIDResponse" wsaw:Action="urn:getUniqueIDResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="listTopRatedCompositions">
+      <wsdl:input message="ns:listTopRatedCompositionsRequest" wsaw:Action="urn:listTopRatedCompositions"/>
+      <wsdl:output message="ns:listTopRatedCompositionsResponse" wsaw:Action="urn:listTopRatedCompositionsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="updateCompositionModel">
+      <wsdl:input message="ns:updateCompositionModelRequest" wsaw:Action="urn:updateCompositionModel"/>
+      <wsdl:output message="ns:updateCompositionModelResponse" wsaw:Action="urn:updateCompositionModelResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getVersions">
+      <wsdl:input message="ns:getVersionsRequest" wsaw:Action="urn:getVersions"/>
+      <wsdl:output message="ns:getVersionsResponse" wsaw:Action="urn:getVersionsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getCompositionModelDetails">
+      <wsdl:input message="ns:getCompositionModelDetailsRequest" wsaw:Action="urn:getCompositionModelDetails"/>
+      <wsdl:output message="ns:getCompositionModelDetailsResponse" wsaw:Action="urn:getCompositionModelDetailsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="listRecentCompositionModels">
+      <wsdl:input message="ns:listRecentCompositionModelsRequest" wsaw:Action="urn:listRecentCompositionModels"/>
+      <wsdl:output message="ns:listRecentCompositionModelsResponse" wsaw:Action="urn:listRecentCompositionModelsResponse"/>
+      <wsdl:fault message="ns:CompReServiceIOException" name="CompReServiceIOException" wsaw:Action="urn:listRecentCompositionModelsCompReServiceIOException"/>
+    </wsdl:operation>
+    <wsdl:operation name="removeCompositionModel">
+      <wsdl:input message="ns:removeCompositionModelRequest" wsaw:Action="urn:removeCompositionModel"/>
+      <wsdl:output message="ns:removeCompositionModelResponse" wsaw:Action="urn:removeCompositionModelResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CompReServiceSoap11Binding" type="ns:CompReServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="removeVersion">
+      <soap:operation soapAction="urn:removeVersion" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllCompositionModels">
+      <soap:operation soapAction="urn:listAllCompositionModels" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CompReServiceIOException">
+        <soap:fault use="literal" name="CompReServiceIOException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addPermission">
+      <soap:operation soapAction="urn:addPermission" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompositionModel">
+      <soap:operation soapAction="urn:getCompositionModel" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removePermission">
+      <soap:operation soapAction="urn:removePermission" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUniqueID">
+      <soap:operation soapAction="urn:getUniqueID" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listTopRatedCompositions">
+      <soap:operation soapAction="urn:listTopRatedCompositions" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateCompositionModel">
+      <soap:operation soapAction="urn:updateCompositionModel" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVersions">
+      <soap:operation soapAction="urn:getVersions" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompositionModelDetails">
+      <soap:operation soapAction="urn:getCompositionModelDetails" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRecentCompositionModels">
+      <soap:operation soapAction="urn:listRecentCompositionModels" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CompReServiceIOException">
+        <soap:fault use="literal" name="CompReServiceIOException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeCompositionModel">
+      <soap:operation soapAction="urn:removeCompositionModel" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CompReServiceSoap12Binding" type="ns:CompReServicePortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="removeVersion">
+      <soap12:operation soapAction="urn:removeVersion" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllCompositionModels">
+      <soap12:operation soapAction="urn:listAllCompositionModels" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CompReServiceIOException">
+        <soap12:fault use="literal" name="CompReServiceIOException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addPermission">
+      <soap12:operation soapAction="urn:addPermission" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompositionModel">
+      <soap12:operation soapAction="urn:getCompositionModel" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removePermission">
+      <soap12:operation soapAction="urn:removePermission" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUniqueID">
+      <soap12:operation soapAction="urn:getUniqueID" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listTopRatedCompositions">
+      <soap12:operation soapAction="urn:listTopRatedCompositions" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateCompositionModel">
+      <soap12:operation soapAction="urn:updateCompositionModel" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVersions">
+      <soap12:operation soapAction="urn:getVersions" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompositionModelDetails">
+      <soap12:operation soapAction="urn:getCompositionModelDetails" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRecentCompositionModels">
+      <soap12:operation soapAction="urn:listRecentCompositionModels" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CompReServiceIOException">
+        <soap12:fault use="literal" name="CompReServiceIOException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeCompositionModel">
+      <soap12:operation soapAction="urn:removeCompositionModel" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CompReServiceHttpBinding" type="ns:CompReServicePortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="removeVersion">
+      <http:operation location="removeVersion"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllCompositionModels">
+      <http:operation location="listAllCompositionModels"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addPermission">
+      <http:operation location="addPermission"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompositionModel">
+      <http:operation location="getCompositionModel"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removePermission">
+      <http:operation location="removePermission"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUniqueID">
+      <http:operation location="getUniqueID"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listTopRatedCompositions">
+      <http:operation location="listTopRatedCompositions"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateCompositionModel">
+      <http:operation location="updateCompositionModel"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVersions">
+      <http:operation location="getVersions"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompositionModelDetails">
+      <http:operation location="getCompositionModelDetails"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRecentCompositionModels">
+      <http:operation location="listRecentCompositionModels"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeCompositionModel">
+      <http:operation location="removeCompositionModel"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CompReService">
+    <wsdl:port name="CompReServiceHttpSoap11Endpoint" binding="ns:CompReServiceSoap11Binding">
+      <soap:address location="http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap11Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="CompReServiceHttpSoap12Endpoint" binding="ns:CompReServiceSoap12Binding">
+      <soap12:address location="http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap12Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="CompReServiceHttpEndpoint" binding="ns:CompReServiceHttpBinding">
+      <http:address location="http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpEndpoint/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap12Endpoint/</con:endpoint></con:endpoints><con:operation id="9ec302cf-f12f-4159-96c2-919d1f98548c" isOneWay="false" action="urn:addPermission" name="addPermission" bindingOperationName="addPermission" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="55047fe3-be7a-405b-a0be-ad34dedcca68" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap12Endpoint/</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <ser:addPermission>\r
+         <!--Optional:-->\r
+         <ser:caller>?</ser:caller>\r
+         <!--Optional:-->\r
+         <ser:permission>?</ser:permission>\r
+         <!--Optional:-->\r
+         <ser:model>?</ser:model>\r
+         <!--Optional:-->\r
+         <ser:user>?</ser:user>\r
+      </ser:addPermission>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:addPermission"/></con:call></con:operation><con:operation id="2324f6da-a8dc-4bae-b0ef-8dd20263d2d8" isOneWay="false" action="urn:getCompositionModel" name="getCompositionModel" bindingOperationName="getCompositionModel" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="96f07723-fc89-4656-a614-9b39dc9a87f4" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap12Endpoint/</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <ser:getCompositionModel>\r
+         <!--Optional:-->\r
+         <ser:user>bob@documa.com</ser:user>\r
+         <!--Optional:-->\r
+         <ser:id>tc1</ser:id>\r
+         <!--Optional:-->\r
+         <ser:version>1.0.0</ser:version>\r
+      </ser:getCompositionModel>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:getCompositionModel"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="a814263b-2212-439f-875d-5e9834d15543" isOneWay="false" action="urn:getCompositionModelDetails" name="getCompositionModelDetails" bindingOperationName="getCompositionModelDetails" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="792f5109-5232-4d28-9906-921fc6bd0f25" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap12Endpoint/</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <ser:getCompositionModelDetails>\r
+         <!--Optional:-->\r
+         <ser:user>bob</ser:user>\r
+         <!--Optional:-->\r
+         <ser:id>tcl</ser:id>\r
+      </ser:getCompositionModelDetails>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:getCompositionModelDetails"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="8f8fcbb6-c959-4b1f-b2a2-99ae316c366d" isOneWay="false" action="urn:getUniqueID" name="getUniqueID" bindingOperationName="getUniqueID" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cf4a389a-f130-444a-9d41-045fbaa7368a" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap12Endpoint/</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <ser:getUniqueID/>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:getUniqueID"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="d63c7798-3bfe-4493-94fc-c4da93270471" isOneWay="false" action="urn:getVersions" name="getVersions" bindingOperationName="getVersions" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c98fea2b-b87d-4b6b-8066-6bb70186b3e5" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap12Endpoint/</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <ser:getVersions>\r
+         <!--Optional:-->\r
+         <ser:id>DTP</ser:id>\r
+      </ser:getVersions>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:getVersions"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="8b6162f9-5607-4b2c-b938-7a9e55213c57" isOneWay="false" action="urn:listAllCompositionModels" name="listAllCompositionModels" bindingOperationName="listAllCompositionModels" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="791c08f8-976a-40c8-8400-3cb7af1a69fe" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap12Endpoint/</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <ser:listAllCompositionModels>\r
+         <!--Optional:-->\r
+         <ser:user>bob</ser:user>\r
+      </ser:listAllCompositionModels>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:listAllCompositionModels"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="a4be6a32-6f47-4b82-b7f1-bd7a5f96ae31" isOneWay="false" action="urn:listRecentCompositionModels" name="listRecentCompositionModels" bindingOperationName="listRecentCompositionModels" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="019c5eb4-b554-4c5f-81d2-d978dd8f0095" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap12Endpoint/</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <ser:listRecentCompositionModels>\r
+         <!--Optional:-->\r
+         <ser:user>?</ser:user>\r
+         <!--Optional:-->\r
+         <ser:intervalStart>?</ser:intervalStart>\r
+         <!--Optional:-->\r
+         <ser:intervalEnd>?</ser:intervalEnd>\r
+         <!--Optional:-->\r
+         <ser:start>?</ser:start>\r
+         <!--Optional:-->\r
+         <ser:limit>?</ser:limit>\r
+      </ser:listRecentCompositionModels>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:listRecentCompositionModels"/></con:call></con:operation><con:operation id="c98b9b28-0e71-4949-ae52-e12f26c648db" isOneWay="false" action="urn:listTopRatedCompositions" name="listTopRatedCompositions" bindingOperationName="listTopRatedCompositions" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="27e47fbc-0a1f-43f2-b7fb-63de786f081c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap12Endpoint/</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <ser:listTopRatedCompositions>\r
+         <!--Optional:-->\r
+         <ser:user>?</ser:user>\r
+         <!--Optional:-->\r
+         <ser:k>?</ser:k>\r
+      </ser:listTopRatedCompositions>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:listTopRatedCompositions"/></con:call></con:operation><con:operation id="1af6cc0a-59f4-40d9-9db1-53ff84263a30" isOneWay="false" action="urn:removeCompositionModel" name="removeCompositionModel" bindingOperationName="removeCompositionModel" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cf6abdba-2e17-45f5-8ac2-9b90e5eef31d" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap12Endpoint/</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <ser:removeCompositionModel>\r
+         <!--Optional:-->\r
+         <ser:user>bob</ser:user>\r
+         <!--Optional:-->\r
+         <ser:id>tc1</ser:id>\r
+      </ser:removeCompositionModel>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:removeCompositionModel"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="df65b9ab-ab24-454f-a0df-ee13d5c1c4bc" isOneWay="false" action="urn:removePermission" name="removePermission" bindingOperationName="removePermission" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d6c45ad2-31e0-4230-b240-a4bb10e761e1" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap12Endpoint/</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <ser:removePermission>\r
+         <!--Optional:-->\r
+         <ser:caller>?</ser:caller>\r
+         <!--Optional:-->\r
+         <ser:permission>?</ser:permission>\r
+         <!--Optional:-->\r
+         <ser:model>?</ser:model>\r
+         <!--Optional:-->\r
+         <ser:user>?</ser:user>\r
+      </ser:removePermission>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:removePermission"/></con:call></con:operation><con:operation id="4f05924e-1d69-48d2-aefd-b4321e45b48c" isOneWay="false" action="urn:removeVersion" name="removeVersion" bindingOperationName="removeVersion" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4296e851-16c5-4a14-be2a-bf23be2d0deb" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap12Endpoint/</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <ser:removeVersion>\r
+         <!--Optional:-->\r
+         <ser:user>?</ser:user>\r
+         <!--Optional:-->\r
+         <ser:id>?</ser:id>\r
+         <!--Optional:-->\r
+         <ser:version>?</ser:version>\r
+      </ser:removeVersion>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:removeVersion"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="635130d7-4d6a-4184-a72c-cb5e5f4b28b5" isOneWay="false" action="urn:updateCompositionModel" name="updateCompositionModel" bindingOperationName="updateCompositionModel" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="dad9cc1c-85a0-4da6-8245-61d2148ad13d" name="TravelCatalog"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap12Endpoint/</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <ser:updateCompositionModel>\r
+         <!--Optional:-->\r
+         <ser:user>bob</ser:user>\r
+         <!--Optional:-->\r
+         <ser:cm>
+         <![CDATA[
+<mcm:MashupComposition  xmi:version="2.0"
+	author="bob"
+    xmlns:mcm="http://mmt.inf.tu-dresden.de/mcm/1.15"
+	xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dt="http://mmt.inf.tu-dresden.de/documa/components/datatypes"
+    name="TravelCatalog"
+	id="tc1" version="1.0.0">
+
+	<conceptualModel>
+		<components>
+            <component
+                    xsi:type="mcm:UIComponent"
+                    componentid="https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DTRP/DTRP_UI_TravelCatalog/"
+                    instanceid="tc1">
+
+                <!-- properties -->
+                <property name="height"
+                          type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasHeight"
+                          value="375"/>
+                <property name="width"
+                          type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasWidth"
+                          value="667"/>
+                <property name="title"
+                          type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasTitle"
+                          value="TravelDetails"/>
+                <property name="query" type="xs:string"/>
+                <property name="startDate" type="xs:Date"/>
+                <property name="endDate" type="xs:Date"/>
+                <property name="trips" type="xs:Trip"/>
+                <property name="currentTrip" type="xs:CurrentTrip"/>
+
+                <!-- events -->
+                <event name="onSelect"/>
+                <event name="onChange"/>
+
+                <event name="sendMedia"/>
+
+                <!-- Operations -->
+                <operation name="getMedia" />
+                <operation name="changeTravelStart" />
+                <operation name="changeTravelEnd" />
+                <operation name="updateCurrentTrip" />
+            </component>
+		</components>
+	</conceptualModel>
+
+	<layoutModel>
+		<layout xsi:type="mcm:AbsoluteLayout" name="defaultLayout">
+			<bounds width="667" height="375" unit="pixel" />
+			<position unit="pixel" locate="tc1" x="5" y="5" />
+		</layout>
+	</layoutModel>
+
+	<screenflowModel initialView="StartView">
+		<view name="StartView" layout="defaultLayout" />
+	</screenflowModel>
+
+    <communicationModel />
+</mcm:MashupComposition>
+
+         ]]]]>><![CDATA[
+         </ser:cm>\r
+      </ser:updateCompositionModel>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:updateCompositionModel"/><con:wsrmConfig version="1.2"/></con:call><con:call id="760f1c7e-95c8-42fa-90c0-52afaec6a979" name="TravelDetails"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap12Endpoint/</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <ser:updateCompositionModel>\r
+         <!--Optional:-->\r
+         <ser:user>bob</ser:user>\r
+         <!--Optional:-->\r
+         <ser:cm>
+         <![CDATA[
+<mcm:MashupComposition  xmi:version="2.0"
+                        author="bob"
+                        xmlns:mcm="http://mmt.inf.tu-dresden.de/mcm/1.15"
+                        xmlns:xmi="http://www.omg.org/XMI"
+                        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xmlns:dt="http://mmt.inf.tu-dresden.de/documa/components/datatypes"
+                        xmlns:mcm="http://mmt.inf.tu-dresden.de/mcm/1.11"
+                        name="TravelDetails"
+                        id="td1" version="1.0.0">
+
+    <conceptualModel>
+        <components>
+            <component
+                    xsi:type="mcm:UIComponent"
+                    componentid="https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DTRP/DTRP_UI_TravelDetails/"
+                    instanceid="td1">
+
+                <!-- properties -->
+                <property name="height"
+                          type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasHeight"
+                          value="375"/>
+                <property name="width"
+                          type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasWidth"
+                          value="667"/>
+                <property name="title"
+                          type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasTitle"
+                          value="TravelDetails"/>
+                <property name="trip" required="true" type="xs:Trip" />
+
+                <!-- events -->
+                <event name="onLoad"/>
+
+                <!-- Operations -->
+                <operation name="loadTrip" />
+            </component>
+        </components>
+    </conceptualModel>
+
+    <layoutModel>
+        <layout xsi:type="mcm:AbsoluteLayout" name="defaultLayout">
+            <bounds width="667" height="375" unit="pixel" />
+            <position unit="pixel" locate="td1" x="5" y="5" />
+        </layout>
+    </layoutModel>
+
+    <screenflowModel initialView="StartView">
+        <view name="StartView" layout="defaultLayout" />
+    </screenflowModel>
+
+    <communicationModel />
+</mcm:MashupComposition>
+
+         ]]]]>><![CDATA[
+         </ser:cm>\r
+      </ser:updateCompositionModel>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:updateCompositionModel"/><con:wsrmConfig version="1.2"/></con:call><con:call id="4ef633ff-da9e-4c5a-97b8-529aa16c99fd" name="DistributedTravelPlanner"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://csr.mmt.inf.tu-dresden.de:8090/documa-core/services/CompReService.CompReServiceHttpSoap12Endpoint/</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://service.compre.edyra.inf.tudresden.de">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <ser:updateCompositionModel>\r
+         <!--Optional:-->\r
+         <ser:user>bob@documa.com</ser:user>\r
+         <!--Optional:-->\r
+         <ser:cm><![CDATA[<mcm:MashupComposition xmlns:xmi="http://www.omg.org/XMI"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mcm="http://mmt.inf.tu-dresden.de/mcm/1.11"
+	id="DTP" version="1.0.0" name="DistributedTravelPlanner">
+	<conceptualModel>
+		<components>
+			<component xsi:type="mcm:UIComponent" instanceid="c1"
+				componentid="https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DTRP/DTRP_UI_FlightDetails/"
+				isResizable="false">
+				<operation name="onUpdateTripSections">
+					<parameter name="tripSections" />
+				</operation>
+				<event name="updateTripSections">
+					<parameter name="tripSections" />
+				</event>
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasTitle"
+					value="FlightDetails" name="title" />
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasWidth"
+					value="800" name="width" />
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasHeight"
+					value="600" name="height" />
+				<property name="tripSections" />
+			</component>
+
+			<component xsi:type="mcm:UIComponent" instanceid="c2"
+				componentid="https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DTRP/DTRP_UI_HotelDetails/"
+				isResizable="false">
+				<operation name="onUpdateTripSections">
+					<parameter name="tripSections" />
+				</operation>
+				<event name="updateTripSections">
+					<parameter name="tripSections" />
+				</event>
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasTitle"
+					value="HotelDetails" name="title" />
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasWidth"
+					value="800" name="width" />
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasHeight"
+					value="600" name="height" />
+				<property name="tripSections" />
+			</component>
+
+			<!-- TravelCatalog -->
+			<component xsi:type="mcm:UIComponent" instanceid="c3" componentid="https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DTRP/DTRP_UI_TravelCatalog/" isResizable="false">
+				<!-- operations -->
+				<operation name="onUpdateTripSections">
+					<parameter name="tripSections" type="xs:MediaList" />
+				</operation>
+				<operation name="getMedia" />
+
+				<!-- events -->
+				<event name="updateTripSections">
+					<parameter name="tripSections" />
+				</event>
+				<event name="sendMedia">
+					<parameter name="media" type="xs:MediaList" />
+				</event>
+
+				<!-- properties -->
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasTitle" value="TravelCatalog" name="title" />
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasWidth" value="800" name="width" />
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasHeight" value="600" name="height" />
+				<property name="tripSections" type="xs:TripSections" />
+			</component>
+
+			<!-- TravelDetails -->
+			<component xsi:type="mcm:UIComponent" instanceid="c4" componentid="https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DTRP/DTRP_UI_TravelDetails/" isResizable="false">
+				<!-- operations -->
+				<operation name="onUpdateTripSections">
+					<parameter name="tripSections" type="xs:TripSections" />
+				</operation>
+
+				<!-- events -->
+				<event name="updateTripSections">
+					<parameter name="tripSections" type="xs:TripSections" />
+				</event>
+
+				<!-- properties -->
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasTitle" value="TravelDetails" name="title" />
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasWidth" value="800" name="width" />
+				<property type="http://inf.tu-dresden.de/cruise/mcdl.owl#hasHeight" value="600" name="height" />
+				<property name="tripSections" type="xs:TripSections" />
+			</component>
+		</components>
+	</conceptualModel>
+
+	<layoutModel>
+		<layout xsi:type="mcm:FillLayout" name="layoutDefault" fillStyle="vertical">
+			<fillElement locate="c4">
+				<bounds width="800" height="600" />
+			</fillElement>
+			<fillElement locate="c3">
+				<bounds width="800" height="600" />
+			</fillElement>
+			<fillElement locate="c2">
+				<bounds width="800" height="600" />
+			</fillElement>
+			<fillElement locate="c1">
+				<bounds width="800" height="600" />
+			</fillElement>
+		</layout>
+	</layoutModel>
+
+	<screenflowModel>
+		<view name="Formular" layout="layoutDefault" />
+	</screenflowModel>
+
+	<communicationModel>
+		<channel xsi:type="mcm:Link" name="TripSectionsUpdatedLink">
+			<parameter name="tripSections" />
+			<publisher
+				event="//component[@instanceid='c1']/event[@name='updateTripSections']" />
+			<subscriber operation="//component[@instanceid='c2']/operation[@name='onUpdateTripSections']" />
+			<subscriber operation="//component[@instanceid='c3']/operation[@name='onUpdateTripSections']" />
+		</channel>
+
+		<channel xsi:type="mcm:Link" name="TripSectionsUpdatedLink">
+			<parameter name="tripSections" />
+			<publisher
+				event="//component[@instanceid='c2']/event[@name='updateTripSections']" />
+			<subscriber operation="//component[@instanceid='c1']/operation[@name='onUpdateTripSections']" />
+			<subscriber operation="//component[@instanceid='c3']/operation[@name='onUpdateTripSections']" />
+		</channel>
+
+		<channel xsi:type="mcm:Link" name="TripSectionsUpdatedLink">
+			<parameter name="tripSections" />
+			<publisher event="//component[@instanceid='c3']/event[@name='updateTripSections']" />
+			<subscriber operation="//component[@instanceid='c1']/operation[@name='onUpdateTripSections']" />
+			<subscriber operation="//component[@instanceid='c2']/operation[@name='onUpdateTripSections']" />
+			<subscriber operation="//component[@instanceid='c4']/operation[@name='onUpdateTripSections']" />
+		</channel>
+	</communicationModel>
+</mcm:MashupComposition>]]]]>><![CDATA[</ser:cm>\r
+      </ser:updateCompositionModel>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:updateCompositionModel"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

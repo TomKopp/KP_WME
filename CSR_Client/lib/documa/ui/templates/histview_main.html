@@ -1,0 +1,31 @@
+<div id="histview" class="histview" ng-switch="cols">
+
+    <div class="col-md-12" ng-switch-default ng-init="i = 1">
+        <div ng-switch="rows">
+            <div class="x-toolbar hist-bar">
+                <div class="hist-dropdown-container dropdown">
+                    <button class="hist-dropdown-button btn dropdown-toggle" type="button" data-toggle="dropdown">Sort {{propertyName}} {{reverse?"▲":"▼"}}
+                        <span class="caret"></span></button>
+                    <ul class="hist-dropdown dropdown-menu">
+                        <li ng-click="sortBy('time')">Time</li>
+                        <li ng-click="sortBy('cause')">Cause</li>
+                    </ul>
+                </div>
+                <div class="hist-dropdown-container dropdown" ng-class="{'noneDisplay': getCauses().length==0}">
+                    <button class="hist-dropdown-button btn dropdown-toggle" type="button" data-toggle="dropdown">Filter
+                        <span class="caret"></span></button>
+                    <ul class="hist-dropdown dropdown-menu">
+                        <li ng-repeat="cause in getCauses()" ng-class="{'hist-filter-selected':cause.query==filterCriteria}" ng-click="filterInit(cause.query)">{{cause.name}}</li>
+                    </ul>
+                </div>
+            </div>
+            <!--<button ng-click="sortBy('time')">Time</button>-->
+            <!--<button ng-click="sortBy('cause')">Reason</button>-->
+            <!--<button ng-click="filterInit('cause user_action')">Filter Reason</button>-->
+            <span class="sortorder" ng-show="propertyName === 'time'" ng-class="{reverse: reverse}"></span>
+            <!--<div class="col-md-12" ng-switch-default ng-init="j = 1">-->
+            <histview-row></histview-row>
+            <!--</div>-->
+        </div>
+    </div>
+</div>

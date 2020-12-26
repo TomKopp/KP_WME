@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:t="http://mmt.inf.tu-dresden.de/2014/documa/expressions"
+	xmlns:ls="http://mmt.inf.tu-dresden.de/2014/documa/layoutstrategy" elementFormDefault="qualified" attributeFormDefault="unqualified"
+	targetNamespace="http://mmt.inf.tu-dresden.de/2014/documa/layoutstrategy">
+
+	<xs:import namespace="http://mmt.inf.tu-dresden.de/2014/documa/expressions" schemaLocation="Expressions.xsd" />
+
+	<xs:element name="layoutstrategy" type="ls:LayoutStrategyType" />
+
+	<xs:attributeGroup name="LayoutStrategyAttributes">
+		<xs:attribute name="id" use="required" type="xs:ID" />
+		<xs:attribute name="name" use="required" type="xs:string" />
+		<xs:attribute name="active" use="optional" default="true" type="xs:boolean" />
+	</xs:attributeGroup>
+
+	<xs:complexType name="LayoutStrategyType">
+		<xs:sequence>
+			<xs:element name="meta" minOccurs="0" maxOccurs="1" type="ls:MetaType" />
+			<xs:element name="precondition" minOccurs="0" maxOccurs="1" type="t:BooleanExpressionType" />
+			<xs:element name="ratingcriteria" minOccurs="0" maxOccurs="1" type="ls:RatingCriteriaType" />
+			<xs:element name="algorithm" minOccurs="1" maxOccurs="1" type="ls:LayoutAlgorithmType" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ls:LayoutStrategyAttributes" />
+	</xs:complexType>
+
+	<xs:complexType name="MetaType">
+		<xs:sequence>
+			<xs:element name="icon" minOccurs="1" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="url" minOccurs="1" maxOccurs="1" type="xs:anyURI" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:attributeGroup name="CriterionAttributes">
+		<xs:attribute name="scope" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="global" />
+					<xs:enumeration value="individual" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="weight" use="optional" type="xs:float" />
+	</xs:attributeGroup>
+
+	<xs:complexType name="RatingCriteriaType">
+		<xs:sequence>
+			<xs:element name="criterion" minOccurs="1" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="t:BooleanExpressionType">
+							<xs:attributeGroup ref="ls:CriterionAttributes" />
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:group name="LayoutAlgorithmGroup">
+		<xs:sequence>
+			<xs:element name="select" minOccurs="0" maxOccurs="1" type="ls:SelectType" />
+			<xs:element name="bounds" minOccurs="1" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="width" minOccurs="1" maxOccurs="1" type="t:ArithmeticExpressionType" />
+						<xs:element name="height" minOccurs="1" maxOccurs="1" type="t:ArithmeticExpressionType" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+
+	<xs:complexType name="LayoutAlgorithmType">
+		<xs:sequence>
+			<xs:group minOccurs="1" maxOccurs="unbounded" ref="ls:LayoutAlgorithmGroup" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="GroupingFeatureType">
+		<xs:attribute name="name" use="optional" type="xs:string" />
+	</xs:complexType>
+	<xs:element name="groupingFeature" type="ls:GroupingFeatureType" abstract="true" />
+	<xs:element name="componentProperty" substitutionGroup="ls:groupingFeature" />
+
+	<xs:complexType name="RowGroupingType">
+		<xs:complexContent>
+			<xs:extension base="ls:GroupingFeatureType">
+				<xs:sequence>
+					<xs:element ref="t:setExpression"/>
+					<xs:element name="limit" minOccurs="1" maxOccurs="1">
+						<xs:complexType>
+							<xs:choice minOccurs="1" maxOccurs="1">
+								<xs:element ref="t:number"/>
+								<xs:element ref="t:numericExpression" />
+							</xs:choice>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="rowGrouping" type="ls:RowGroupingType" substitutionGroup="ls:groupingFeature" />
+
+	<xs:complexType name="GroupByType">
+		<xs:choice>
+			<xs:element ref="t:booleanExpression" />
+			<xs:element ref="t:relationalOperator" />
+			<xs:element ref="ls:groupingFeature" />
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="InterfaceSelectorType">
+		<xs:annotation>
+			<xs:documentation>
+				This type defines an element that allows the selection of components using an xpath notation.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="t:SetExpressionType">
+				<xs:attribute name="select" use="required">
+					<xs:annotation>
+						<xs:documentation>An xpath 2.0 expression.</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:token">
+							<xs:pattern value=".+" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="components" type="ls:InterfaceSelectorType" substitutionGroup="t:setExpression" />
+
+	<xs:complexType name="SelectType">
+		<xs:sequence>
+			<xs:element name="where" minOccurs="1" maxOccurs="1" type="t:BooleanExpressionType" />
+			<xs:element name="offset" minOccurs="0" maxOccurs="1" type="xs:integer" />
+			<xs:element name="limit" minOccurs="0" maxOccurs="1" type="xs:integer" />
+			<xs:element name="groupby" minOccurs="0" maxOccurs="1" type="ls:GroupByType" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

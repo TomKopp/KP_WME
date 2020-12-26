@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layoutstrategy
+	xmlns="http://mmt.inf.tu-dresden.de/2014/documa/layoutstrategy"
+	xmlns:e="http://mmt.inf.tu-dresden.de/2014/documa/expressions"
+	id="list"
+	name="List Layout"
+	active="false">
+	<meta>
+		<icon>
+			<url>http://141.76.68.53:8080/csrclient/res/img/list.png</url>
+		</icon>
+	</meta>
+	<ratingcriteria>
+		<criterion scope="global">
+			<e:compare op="lt">
+				<e:viewport-width />
+				<e:viewport-height />
+			</e:compare>
+		</criterion>
+		<criterion scope="individual">
+			<e:compare op="lt">
+				<e:current-height />
+				<e:viewport-height />
+			</e:compare>
+		</criterion>
+		<criterion scope="individual">
+			<e:compare op="le">
+				<e:absolute>
+					<e:subtract>
+						<e:divide>
+							<e:current-width />
+							<e:viewport-width />
+						</e:divide>
+						<e:number>1</e:number>
+					</e:subtract>
+				</e:absolute>
+				<e:number>0.5</e:number>
+			</e:compare>
+		</criterion>
+	</ratingcriteria>
+	<algorithm>
+		<bounds>
+			<width>
+				<e:viewport-width />
+			</width>
+			<height>
+				<e:current-height />
+			</height>
+		</bounds>
+	</algorithm>
+</layoutstrategy>

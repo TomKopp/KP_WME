@@ -1,0 +1,25 @@
+<div id="csr-mui-owndevice">
+	<h4>Your current device</h4>
+	<div class="col-md-4 csr-mui-cols">
+		<!-- display attributes of current device -->
+		<div class="csr-mui-currentdev csr-mui-panel">
+			<div>
+				<img class="csr-mui-devicon" ng-src="{{device.getDevicePicture()}}"/>
+				<div>
+					<span class="label label-default">Name</span>&nbsp;{{device.getDeviceName()}}<br/>
+					<span class="label label-default">OS</span>&nbsp;{{device.getOSName()}}<br/>
+					<span class="label label-default">Vendor</span>&nbsp;{{device.getVendorName()}}<br/>
+				</div>
+			</div>
+			<div>
+				<button type="button" class="btn btn-success csr-mui-btn pull-right">Details</button>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-8 csr-mui-cols">
+		<!-- device service panel -->
+		<div class="csr-mui-currentdevserv csr-mui-panel">
+			<!-- TODO: device service overview element -->
+		</div>
+	</div>
+</div>

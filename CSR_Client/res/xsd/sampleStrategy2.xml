@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layoutstrategy xmlns="http://mmt.inf.tu-dresden.de/2014/documa/layoutstrategy" xmlns:t="http://mmt.inf.tu-dresden.de/2014/documa/expressions"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://mmt.inf.tu-dresden.de/2014/documa/layoutstrategy LayoutStrategy.xsd"
+	id="cap-layout" name="DisplayLayout" active="true">
+	<meta>
+		<icon>
+			<url>http://example.com/icon.png</url>
+		</icon>
+	</meta>
+	<precondition>
+		<t:compare op="gt">
+			<t:all-count />
+			<t:number>1</t:number>
+		</t:compare>
+	</precondition>
+	<algorithm>
+		<select>
+			<where>
+				<t:compare op="ge">
+					<t:count>
+						<components select="//component//capability[@action='display']" />
+					</t:count>
+					<t:number>1</t:number>
+				</t:compare>
+			</where>
+		</select>
+		<bounds>
+			<width>
+				<t:multiply>
+					<t:viewport-width />
+					<t:number>0.8</t:number>
+				</t:multiply>
+			</width>
+			<height>
+				<t:multiply>
+					<t:viewport-height />
+					<t:number>0.8</t:number>
+				</t:multiply>
+			</height>
+		</bounds>
+		<select>
+			<where>
+				<t:neg>
+					<t:compare op="ge">
+						<t:count>
+							<components select="//component//capability[@action='display']" />
+						</t:count>
+						<t:number>1</t:number>
+					</t:compare>
+				</t:neg>
+			</where>
+		</select>
+		<bounds>
+			<width>
+				<t:multiply>
+					<t:viewport-width />
+					<t:number>0.3</t:number>
+				</t:multiply>
+			</width>
+			<height>
+				<t:multiply>
+					<t:viewport-height />
+					<t:number>0.3</t:number>
+				</t:multiply>
+			</height>
+		</bounds>
+	</algorithm>
+</layoutstrategy>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layoutstrategy
+		xmlns="http://mmt.inf.tu-dresden.de/2014/documa/layoutstrategy"
+		xmlns:e="http://mmt.inf.tu-dresden.de/2014/documa/expressions"
+		name="Grid Layout Reworked"
+		id="gridLayut-OM"
+		active="true">
+	<meta>
+		<icon>
+			<url>http://141.76.68.53:8080/csrclient/res/img/grid.png</url>
+		</icon>
+	</meta>
+	<precondition>
+		<!-- The maximum of every component width value SHOULD NOT be greater than the half of the viewport width and the sum of
+			all components should be greater than viewport width -->
+		<e:compare op="le">
+			<e:max>
+				<e:all-width/>
+			</e:max>
+			<e:divide>
+				<e:viewport-width/>
+				<e:number>2</e:number>
+			</e:divide>
+		</e:compare>
+		<!--
+		<e:and>
+			<e:compare op="le">
+				<e:max>
+					<e:all-width />
+				</e:max>
+				<e:divide>
+					<e:viewport-width />
+					<e:number>2</e:number>
+				</e:divide>
+			</e:compare>
+			<e:compare op="gt">
+				<e:sum>
+					<e:all-width />
+				</e:sum>
+				<e:viewport-width />
+			</e:compare>
+		</e:and>
+		-->
+	</precondition>
+	<!-- Definition of positive criteria. The higher the scalar value the better the strategy is suitable with respect to the
+		current application context. -->
+	<ratingcriteria>
+		<!-- standard derivation criterion for each component width - maximal standard derivation is less than 1.5 -->
+		<criterion
+				scope="individual"
+				weight="2">
+			<e:compare op="lt">
+				<e:current-width/>
+				<e:multiply>
+					<e:number>1.5</e:number>
+					<e:avg>
+						<e:all-width/>
+					</e:avg>
+				</e:multiply>
+			</e:compare>
+		</criterion>
+		<!-- standard derivation criterion for each component height - maximal standard derivation is less than 1.5 -->
+		<criterion
+				scope="individual"
+				weight="2">
+			<e:compare op="lt">
+				<e:current-height/>
+				<e:multiply>
+					<e:number>1.5</e:number>
+					<e:avg>
+						<e:all-height/>
+					</e:avg>
+				</e:multiply>
+			</e:compare>
+		</criterion>
+		<!-- reduce scrolling effort criterion as positive criterion - average component area should not be greater than a threshold
+			value -->
+		<criterion scope="individual" weight="0.8">
+			<e:compare op="le">
+				<e:multiply>
+					<e:avg>
+						<e:all-width/>
+					</e:avg>
+					<e:avg>
+						<e:all-height/>
+					</e:avg>
+				</e:multiply>
+				<e:divide>
+					<e:multiply>
+						<e:viewport-width/>
+						<e:viewport-height/>
+					</e:multiply>
+					<e:number>4</e:number>
+				</e:divide>
+			</e:compare>
+		</criterion>
+	</ratingcriteria>
+	<algorithm>
+		<bounds>
+			<width>
+				<e:avg>
+					<e:all-width/>
+				</e:avg>
+			</width>
+			<height>
+				<e:avg>
+					<e:all-height/>
+				</e:avg>
+			</height>
+		</bounds>
+	</algorithm>
+</layoutstrategy>

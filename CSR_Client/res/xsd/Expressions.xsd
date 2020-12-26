@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:t="http://mmt.inf.tu-dresden.de/2014/documa/expressions"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://mmt.inf.tu-dresden.de/2014/documa/expressions"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:complexType name="EmptyType">
+		<xs:attribute name="id" use="prohibited" />
+	</xs:complexType>
+	<xs:element name="number" type="xs:float" />
+	<xs:element name="boolean" type="xs:boolean" />
+
+	<!-- ************************ -->
+	<!-- Numeric term definitions -->
+	<!-- ************************ -->
+	<xs:complexType name="NumericExpressionType">
+		<xs:annotation>
+			<xs:documentation>
+				This element defines an empty element type that could not contain any value. It
+				is required to
+				define numeric variables or constants.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:element name="numericExpression" type="t:NumericExpressionType" abstract="true" />
+	<xs:element name="all-count" substitutionGroup="t:numericExpression" />
+	<xs:element name="viewport-width" substitutionGroup="t:numericExpression">
+		<xs:annotation>
+			<xs:documentation>Returns viewport width.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="viewport-height" substitutionGroup="t:numericExpression">
+		<xs:annotation>
+			<xs:documentation>Returns viewport height.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="all-min-width" substitutionGroup="t:numericExpression" />
+	<xs:element name="all-max-width" substitutionGroup="t:numericExpression" />
+	<xs:element name="all-min-height" substitutionGroup="t:numericExpression" />
+	<xs:element name="all-max-height" substitutionGroup="t:numericExpression" />
+	<xs:element name="group-min-width" substitutionGroup="t:numericExpression" />
+	<xs:element name="group-max-width" substitutionGroup="t:numericExpression" />
+	<xs:element name="group-min-height" substitutionGroup="t:numericExpression" />
+	<xs:element name="group-max-height" substitutionGroup="t:numericExpression" />
+	<xs:element name="current-width" substitutionGroup="t:numericExpression" />
+	<xs:element name="current-min-width" substitutionGroup="t:numericExpression" />
+	<xs:element name="current-height" substitutionGroup="t:numericExpression" />
+	<xs:element name="current-min-height" substitutionGroup="t:numericExpression" />
+	<xs:element name="current-index" substitutionGroup="t:numericExpression" />
+	<xs:element name="selection-min-width" substitutionGroup="t:numericExpression" />
+	<xs:element name="selection-max-width" substitutionGroup="t:numericExpression" />
+	<xs:element name="selection-min-height" substitutionGroup="t:numericExpression" />
+	<xs:element name="selection-max-height" substitutionGroup="t:numericExpression" />
+	<xs:element name="selection-count" substitutionGroup="t:numericExpression" />
+	<!-- ******************************* -->
+	<!-- End of numeric term definitions -->
+	<!-- ******************************* -->
+
+
+	<!-- *************************** -->
+	<!-- Arithmetic term definitions -->
+	<!-- *************************** -->
+	<xs:group name="ArithmeticExpressionGroup">
+		<xs:choice>
+			<xs:element ref="t:number" />
+			<xs:element ref="t:numericExpression" />
+			<xs:element ref="t:arithmeticExpression" />
+		</xs:choice>
+	</xs:group>
+
+	<xs:complexType name="ArithmeticExpressionType">
+		<xs:group ref="t:ArithmeticExpressionGroup" minOccurs="1" maxOccurs="unbounded" />
+	</xs:complexType>
+	<xs:element name="arithmeticExpression" type="t:ArithmeticExpressionType" abstract="true" />
+
+	<xs:complexType name="SetExpressionType">
+		<xs:annotation>
+			<xs:documentation>
+				This type defines a type to represent value sets on the semantic level.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:element name="setExpression" type="t:SetExpressionType" abstract="true" />
+	<xs:element name="all-width" substitutionGroup="t:setExpression">
+		<xs:annotation>
+			<xs:documentation>List of all component width values.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="all-height" substitutionGroup="t:setExpression">
+		<xs:annotation>
+			<xs:documentation>List of all component height values.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="group-height" substitutionGroup="t:setExpression" />
+	<xs:element name="group-width" substitutionGroup="t:setExpression" />
+	<xs:element name="set-width" substitutionGroup="t:setExpression" />
+	<xs:element name="set-height" substitutionGroup="t:setExpression" />
+	<xs:element name="selection-width" substitutionGroup="t:setExpression" />
+	<xs:element name="selection-height" substitutionGroup="t:setExpression" />
+
+	<xs:complexType name="SetOperatorType">
+		<xs:complexContent>
+			<xs:extension base="t:NumericExpressionType">
+				<xs:sequence>
+					<xs:element ref="t:setExpression" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="setOperator" type="t:SetOperatorType" abstract="true" substitutionGroup="t:numericExpression" />
+	<xs:element name="sum" type="t:SetOperatorType" substitutionGroup="t:setOperator" />
+	<xs:element name="avg" type="t:SetOperatorType" substitutionGroup="t:setOperator" />
+	<xs:element name="max" type="t:SetOperatorType" substitutionGroup="t:setOperator" />
+	<xs:element name="min" type="t:SetOperatorType" substitutionGroup="t:setOperator" />
+	<xs:element name="count" type="t:SetOperatorType" substitutionGroup="t:setOperator" />
+	<xs:element name="group-count" type="t:SetOperatorType" substitutionGroup="t:setOperator" />
+
+	<!-- Arithmetic operator definitions -->
+	<xs:complexType name="ArithmeticBinaryOperatorType">
+		<xs:complexContent>
+			<xs:restriction base="t:ArithmeticExpressionType">
+				<xs:group ref="t:ArithmeticExpressionGroup" minOccurs="2" maxOccurs="2" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="arithmeticBinaryOperator" type="t:ArithmeticBinaryOperatorType" abstract="true"
+		substitutionGroup="t:arithmeticExpression" />
+	<xs:element name="add" type="t:ArithmeticBinaryOperatorType" substitutionGroup="t:arithmeticBinaryOperator" />
+	<xs:element name="subtract" type="t:ArithmeticBinaryOperatorType" substitutionGroup="t:arithmeticBinaryOperator" />
+	<xs:element name="multiply" type="t:ArithmeticBinaryOperatorType" substitutionGroup="t:arithmeticBinaryOperator" />
+	<xs:element name="divide" type="t:ArithmeticBinaryOperatorType" substitutionGroup="t:arithmeticBinaryOperator" />
+	<xs:element name="modulo" type="t:ArithmeticBinaryOperatorType" substitutionGroup="t:arithmeticBinaryOperator" />
+
+	<xs:complexType name="ArithmeticUnaryOperatorType">
+		<xs:complexContent>
+			<xs:restriction base="t:ArithmeticExpressionType">
+				<xs:group ref="t:ArithmeticExpressionGroup" minOccurs="1" maxOccurs="1" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="arithmeticUnaryOperator" type="t:ArithmeticUnaryOperatorType" abstract="true"
+		substitutionGroup="t:arithmeticExpression" />
+	<xs:element name="absolute" type="t:ArithmeticUnaryOperatorType" substitutionGroup="t:arithmeticUnaryOperator" />
+	<xs:element name="ceil" type="t:ArithmeticUnaryOperatorType" substitutionGroup="t:arithmeticUnaryOperator">
+		<xs:annotation>
+			<xs:documentation>Returns the smallest integer that is greater than the input value</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="floor" type="t:ArithmeticUnaryOperatorType" substitutionGroup="t:arithmeticUnaryOperator">
+		<xs:annotation>
+			<xs:documentation>Returns the greatest integer that is less than the input value.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!-- ********************************** -->
+	<!-- End of arithmetic term definitions -->
+	<!-- ********************************** -->
+
+	<!-- ********************************** -->
+	<!-- **** Boolean term definitions *** -->
+	<!-- ********************************** -->
+	<xs:group name="BooleanExpressionGroup">
+		<xs:choice>
+			<xs:element ref="t:boolean" />
+			<xs:element ref="t:booleanExpression" />
+			<xs:element ref="t:relationalOperator" />
+		</xs:choice>
+	</xs:group>
+
+	<xs:complexType name="BooleanExpressionType">
+		<xs:group ref="t:BooleanExpressionGroup" minOccurs="1" maxOccurs="unbounded" />
+	</xs:complexType>
+	<xs:element name="booleanExpression" type="t:BooleanExpressionType" abstract="true" />
+
+	<!-- Boolean operator definitions -->
+	<xs:complexType name="BooleanBinaryOperatorType">
+		<xs:complexContent>
+			<xs:restriction base="t:BooleanExpressionType">
+				<xs:group ref="t:BooleanExpressionGroup" minOccurs="2" maxOccurs="2" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="binaryBooleanOperator" type="t:BooleanBinaryOperatorType" abstract="true"
+		substitutionGroup="t:booleanExpression" />
+	<xs:element name="and" type="t:BooleanBinaryOperatorType" substitutionGroup="t:binaryBooleanOperator" />
+	<xs:element name="or" type="t:BooleanBinaryOperatorType" substitutionGroup="t:binaryBooleanOperator" />
+
+	<xs:complexType name="BooleanUnaryOperatorType">
+		<xs:complexContent>
+			<xs:restriction base="t:BooleanExpressionType">
+				<xs:group ref="t:BooleanExpressionGroup" minOccurs="1" maxOccurs="unbounded" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="unaryBooleanOperator" type="t:BooleanUnaryOperatorType" abstract="true" substitutionGroup="t:booleanExpression" />
+	<xs:element name="neg" substitutionGroup="t:unaryBooleanOperator" />
+	<!-- ******************************* -->
+	<!-- End of boolean term definitions -->
+	<!-- ******************************* -->
+	<xs:simpleType name="CompareOperatorType">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of usable compare-operators defined as attribute on the compare-element.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="le" />
+			<xs:enumeration value="lt" />
+			<xs:enumeration value="ge" />
+			<xs:enumeration value="gt" />
+			<xs:enumeration value="eq" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:group name="ComparableGroup">
+		<xs:choice>
+			<xs:element ref="t:number" />
+			<xs:element ref="t:numericExpression" />
+			<xs:element ref="t:arithmeticExpression" />
+		</xs:choice>
+	</xs:group>
+
+	<xs:complexType name="RelationOperatorType">
+		<xs:choice minOccurs="2" maxOccurs="2">
+			<xs:group ref="t:BooleanExpressionGroup" />
+			<xs:group ref="t:ComparableGroup" />
+		</xs:choice>
+		<xs:attribute name="op" type="t:CompareOperatorType" use="required" />
+	</xs:complexType>
+	<xs:element name="relationalOperator" type="t:RelationOperatorType" abstract="true" />
+	<xs:element name="compare" type="t:RelationOperatorType" substitutionGroup="t:relationalOperator" />
+</xs:schema>

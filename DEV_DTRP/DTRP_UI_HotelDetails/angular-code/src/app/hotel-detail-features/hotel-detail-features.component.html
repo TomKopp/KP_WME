@@ -1,0 +1,8 @@
+<div [class]="windowWidth > 900?'hotel-detail-features hotel-detail-features-big-screen':'hotel-detail-features hotel-detail-features-small-screen'">
+  <div class="hotel-detail-feature-item" *ngFor="let feature of featureList">
+    <div class="hotel-detail-feature-icon">
+      <mat-icon>{{feature.icon}}</mat-icon>
+    </div>
+    <div class="hotel-detail-feature-description" style="text-align: center;">{{feature.name}}</div>
+  </div>
+</div>

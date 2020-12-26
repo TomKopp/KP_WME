@@ -1,0 +1,1502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	version="1.16"
+	targetNamespace="http://mmt.inf.tu-dresden.de/smcdl/1.16/metadata"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified"
+	xmlns:ctn="http://mmt.inf.tu-dresden.de/smcdl/1.16/container"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:meta="http://mmt.inf.tu-dresden.de/smcdl/1.16/metadata">
+	<!-- ### METADATA TYPES ### -->
+	<xs:annotation>
+		<xs:documentation>Defines meta information and quality properties for mashup
+			components.
+			Use this metamodel as an
+			extension to SMCDL.
+		</xs:documentation>
+	</xs:annotation>
+	<xs:import
+		namespace="http://mmt.inf.tu-dresden.de/smcdl/1.16/container"
+		schemaLocation="Container.xsd" />
+	<xs:complexType name="Metadata">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				ref="meta:keywords"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:contactInformation"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:documentation"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:license"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:pricing"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:energy"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:screenshots"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:icons"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:dimensions"
+				minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element
+				ref="meta:languages"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:levelOfDetail"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Attribute which describes the level of detail of a
+						graphical representation. It is used for the
+						recommendation of UI
+						components espcially targeting the generic information visualization of
+						(Semantic Web) data.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element
+				ref="meta:graphicRepresentation"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Attribute which describes the kind of a graphical
+						representation, e.g., map node-link-diagram,
+						or
+						bar chart. It is used for
+						the recommendation of UI components espcially targeting the generic
+						information
+						visualization of (Semantic Web) data.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element
+				ref="meta:visualComplexity"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Attribute which describes the complexity of a graphical
+						representation. It depends mostly on how
+						many visual variables in which
+						combination are employed. The attribute is used for the
+						recommendation of
+						UI
+						components especially targeting the generic information visualization of
+						(Semantic Web) data.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element
+				ref="meta:certificate"
+				minOccurs="0"
+				maxOccurs="unbounded" />
+			<!--######################### new MAMo elements (alphabetically ordered) ############################ -->
+			<xs:element
+				ref="meta:accessmode"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:accessibility"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:accuracy"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:actuality"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:adaptability"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:authentication"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:authorization"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:availability"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:bandwidth"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:completeness"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:confidentiality"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:credibility"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:dataEncryption"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:dataExchangeFormat"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:dataStorage"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:developmentdate"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:devices"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:usedStandards"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:interoperability"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:learnability"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:memoryRequirements"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:programmingLanguage"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:protocol"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:ram"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:reliability"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:responseTime"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:robustness"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:satisfaction"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:security"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:sensors"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:signature"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:source"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:stability"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:style"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:timeliness"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:traceability"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:traffic"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:usability"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:deviceService"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType
+		name="Requirement"
+		abstract="false">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute
+					name="obligatory"
+					type="xs:boolean"
+					default="false" />
+				<xs:attribute
+					name="capRefs"
+					type="xs:IDREFS"
+					use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="Energy">
+		<xs:annotation>
+			<xs:documentation>Represents the (approximated) energy consumption of a
+				component.
+				Contains a QName which references
+				an individual of
+				the concept
+				"EnergyConsumption" in the ontology of non functional properties.
+
+				Example:
+				nfp:low,
+				nfp:medium, nfp:high (if "nfp" is the namespace
+				"http://inf.tu-dresden.de/cruise/nfp.owl#")
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute
+			name="consumption"
+			type="xs:QName">
+			<xs:annotation>
+				<xs:documentation>Simple definition of a component's power
+					consumption.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute
+			name="consumptionValue"
+			type="xs:float">
+			<xs:annotation>
+				<xs:documentation>Average consumption of the component per minute in watt.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="Pricing">
+		<xs:annotation>
+			<xs:documentation>Price may be absolute or ranged.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element
+				name="absolutePrice"
+				type="meta:AbsolutePrice" />
+			<xs:element
+				name="rangedPrice"
+				type="meta:RangedPrice" />
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="Languages">
+		<xs:annotation>
+			<xs:documentation>Contains a QName which references an individual of
+				the
+				concept "Language" in the
+				BasicAttributeOntology.
+
+				Example: mamoBase:de (if
+				"mamoBase" is the namespace
+				"http://mmt.inf.tu-dresden.de/models/mamoBase#")
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				ref="meta:language"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Dimensions">
+		<xs:annotation>
+			<xs:documentation>Holds information about the size of a UI component.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				ref="ctn:condition"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:min"
+				minOccurs="0" />
+			<xs:element
+				ref="meta:max"
+				minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute
+			name="fixedRatio"
+			type="xs:boolean"
+			default="false">
+			<xs:annotation>
+				<xs:documentation>Defines if a UI component's apect ratio (implicitely given
+					by min and max dimension) should be
+					meet at any time.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="Dimension">
+		<xs:annotation>
+			<xs:documentation>A dimension is defined by a width and a height.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute
+			name="width"
+			type="xs:int" />
+		<xs:attribute
+			name="height"
+			type="xs:int" />
+	</xs:complexType>
+
+	<xs:complexType name="Screenshots">
+		<xs:annotation>
+			<xs:documentation>Contains different screen shots of a component.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				ref="meta:screenshot"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Image">
+		<xs:annotation>
+			<xs:documentation>An image has an optional name, a required URL and optional
+				documentation.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				ref="meta:documentation"
+				minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute
+			name="name"
+			type="xs:string"
+			use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					A document-wide unique name identifying the
+					screenshot.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute
+			name="url"
+			type="xs:anyURI"></xs:attribute>
+	</xs:complexType>
+	<xs:simpleType name="Version">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="((&lt;|&lt;=|&gt;|&gt;=)?\d+\.\d+(.\d+)?|(\[|\()\d+\.\d+(.\d+)?(,\d+\.\d+(.\d+)?)?(\]|\)))" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="TContact">
+		<xs:annotation>
+			<xs:documentation>Defines basic contact information of a person.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				name="title"
+				type="xs:string"
+				minOccurs="0" />
+			<xs:element
+				name="name"
+				type="xs:string" />
+			<xs:element
+				name="physicalAddress"
+				type="xs:string"
+				minOccurs="0" />
+			<xs:element
+				name="email"
+				type="xs:string"
+				minOccurs="0" />
+			<xs:element
+				name="webURL"
+				type="xs:string"
+				minOccurs="0" />
+			<xs:element
+				name="phone"
+				type="xs:string"
+				minOccurs="0" />
+			<xs:element
+				name="fax"
+				type="xs:string"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ContactInformation">
+		<xs:annotation>
+			<xs:documentation>Holds information about the author(s) and the responsible
+				maintainer of a component.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				ref="meta:author"
+				minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element
+				ref="meta:maintainer"
+				minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RangedPrice">
+		<xs:annotation>
+			<xs:documentation>A price ranging from a lower to an upper bound.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="meta:Price">
+				<xs:attribute
+					name="lowerBound"
+					type="xs:float"
+					use="required" />
+				<xs:attribute
+					name="upperBound"
+					type="xs:float"
+					use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="AbsolutePrice">
+		<xs:annotation>
+			<xs:documentation>An absolute price is characterised by a single value.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="meta:Price">
+				<xs:attribute
+					name="value"
+					type="xs:float"
+					use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType
+		name="Price"
+		abstract="true">
+		<xs:annotation>
+			<xs:documentation>Base type of a price defined by a currency.
+
+				The currency
+				references an individual of class
+				"Currency" in the
+				BasicAttributeOntology.
+
+				Example: mamoBase:EUR (if mamoBase is the namespace
+				"http://mmt.inf.tu-dresden.de/models/mamoBase#")
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute
+			name="currency"
+			type="xs:QName"
+			use="required" />
+	</xs:complexType>
+	<xs:complexType name="Icons">
+		<xs:annotation>
+			<xs:documentation>Contains different icons of a component.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				ref="meta:icon"
+				minOccurs="1"
+				maxOccurs="unbounded"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- ################################ New Types from MAMo #################################### -->
+
+	<xs:complexType name="Sensors">
+		<xs:annotation>
+			<xs:documentation>Contains a sequence of sensors which a component could use
+				on runtime.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				ref="meta:sensor"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Actuality">
+		<xs:annotation>
+			<xs:documentation>Indicates how recent the shown information of the component
+				are.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				ref="meta:accessmode"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Describes how the backgroundservice is accessed by the
+						component.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute
+			name="actualityRate"
+			type="xs:float">
+			<xs:annotation>
+				<xs:documentation>Accesses on service per minute.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="Adaptability">
+		<xs:annotation>
+			<xs:documentation>Indicates how good the different parts of the component can
+				adapt to changing contexts (with user
+				ratings).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute
+			name="functionalityRating"
+			type="xs:float" />
+		<xs:attribute
+			name="frontenddataRating"
+			type="xs:float" />
+		<xs:attribute
+			name="uiRating"
+			type="xs:float" />
+		<xs:attribute
+			name="averageAdaptationRating"
+			type="xs:float" />
+	</xs:complexType>
+
+	<xs:complexType name="ResponseTime">
+		<xs:annotation>
+			<xs:documentation>States how long the backgroundservice and the UI need to
+				response (in milliseconds).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute
+			name="service"
+			type="xs:float" />
+		<xs:attribute
+			name="ui"
+			type="xs:float" />
+	</xs:complexType>
+
+	<xs:complexType name="Usability">
+		<xs:annotation>
+			<xs:documentation>Indicates with the help of user ratings how easy the use of
+				the components' UI or API is.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute
+			name="apiRating"
+			type="xs:float" />
+		<xs:attribute
+			name="uiRating"
+			type="xs:float" />
+	</xs:complexType>
+
+	<xs:complexType name="Learnability">
+		<xs:annotation>
+			<xs:documentation>Indicates with the help of user ratings how easy it is to
+				learn the use of the UI or the API of the
+				component.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute
+			name="apiRating"
+			type="xs:float" />
+		<xs:attribute
+			name="uiRating"
+			type="xs:float" />
+	</xs:complexType>
+
+	<xs:complexType name="Interoperability">
+		<xs:annotation>
+			<xs:documentation>Indicates how good the component is qualified to
+				interoperate with others.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				ref="meta:programmingLanguage"
+				minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Name of the programming language which is used within the
+						component.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element
+				ref="meta:dataExchangeFormat"
+				minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Name of a data excchange format provided by the
+						component.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element
+				ref="meta:protocol"
+				minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Name of a protocol which is provived by the component.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute
+			name="value"
+			type="xs:float" />
+	</xs:complexType>
+
+	<xs:complexType name="Timeliness">
+		<xs:annotation>
+			<xs:documentation>Represents how good the backgroundservice or the UI of the
+				component responses within a certain
+				deadline (in percent).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				name="deadline"
+				type="meta:deadline">
+				<xs:annotation>
+					<xs:documentation>Deadline within the backgroundservice or the UI should
+						response (in milliseconds).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute
+			name="service"
+			type="xs:float" />
+		<xs:attribute
+			name="ui"
+			type="xs:float" />
+	</xs:complexType>
+
+	<xs:complexType name="deadline">
+		<xs:annotation>
+			<xs:documentation>Deadline within the backgroundservice or the UI should
+				response (in milliseconds).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute
+			name="serviceDeadline"
+			type="xs:float" />
+		<xs:attribute
+			name="uiDeadline"
+			type="xs:float" />
+	</xs:complexType>
+
+	<xs:complexType name="Security">
+		<xs:annotation>
+			<xs:documentation>Represents a degree of security for the component.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				ref="meta:authentication"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>States the authentication mechanism which is used in the
+						component.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element
+				ref="meta:authorization"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>States if the component does use an authorization
+						mechanism.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element
+				ref="meta:confidentiality"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>States if only authorized users are allowed to use the
+						component.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element
+				ref="meta:dataEncryption"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>States if the component uses data encryption.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element
+				ref="meta:dataStorage"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>States if the component stores its data.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element
+				ref="meta:traceability"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>States if a usage history is available.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute
+			name="value"
+			type="xs:integer" />
+	</xs:complexType>
+
+	<xs:complexType name="Style">
+		<xs:annotation>
+			<xs:documentation>Describes the style of the components' UI.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				name="backgroundcolor"
+				type="xs:string"
+				minOccurs="0" />
+			<xs:element
+				name="fontcolor"
+				type="xs:string"
+				minOccurs="0" />
+			<xs:element
+				name="fontfamily"
+				type="xs:string"
+				minOccurs="0" />
+			<xs:element
+				name="fontsize"
+				type="xs:integer"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Bandwidth">
+		<xs:annotation>
+			<xs:documentation>States which data transfer rate is minimal needed so that
+				the component can run and which is the
+				rate with which the component runs
+				best (in kBit / s).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute
+			name="ideal"
+			type="xs:float" />
+		<xs:attribute
+			name="minimal"
+			type="xs:float" />
+	</xs:complexType>
+
+	<xs:complexType name="UsedStandards">
+		<xs:annotation>
+			<xs:documentation>States how familiar the component looks to the users.
+				Indicates the used common standards for the
+				UI.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				name="usedStandard"
+				type="xs:string"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Completeness">
+		<xs:annotation>
+			<xs:documentation>Indicates with the help of userratings how complete the
+				different concerns of the compoent are.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute
+			name="functionalityRating"
+			type="xs:float" />
+		<xs:attribute
+			name="frontenddataRating"
+			type="xs:float" />
+		<xs:attribute
+			name="backenddataRating"
+			type="xs:float" />
+		<xs:attribute
+			name="uiRating"
+			type="xs:float" />
+		<xs:attribute
+			name="apiRating"
+			type="xs:float" />
+		<xs:attribute
+			name="serviceRating"
+			type="xs:float" />
+		<xs:attribute
+			name="averageRating"
+			type="xs:float" />
+	</xs:complexType>
+
+	<xs:complexType name="Satisfaction">
+		<xs:annotation>
+			<xs:documentation>Indicates how satisfied the users or developer with the
+				concerns of the different component are.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute
+			name="functionalityRating"
+			type="xs:float" />
+		<xs:attribute
+			name="frontenddataRating"
+			type="xs:float" />
+		<xs:attribute
+			name="backenddataRating"
+			type="xs:float" />
+		<xs:attribute
+			name="uiRating"
+			type="xs:float" />
+		<xs:attribute
+			name="apiRating"
+			type="xs:float" />
+		<xs:attribute
+			name="serviceRating"
+			type="xs:float" />
+		<xs:attribute
+			name="averageRating"
+			type="xs:float" />
+	</xs:complexType>
+
+	<xs:complexType name="Reliability">
+		<xs:annotation>
+			<xs:documentation>Indicates how available and robust the component against
+				errors is (in percent).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				ref="meta:availability"
+				minOccurs="1" />
+			<xs:element
+				ref="meta:robustness"
+				minOccurs="1" />
+		</xs:sequence>
+		<xs:attribute
+			name="reliabilityValue"
+			type="xs:float" />
+	</xs:complexType>
+
+	<xs:complexType name="Availability">
+		<xs:annotation>
+			<xs:documentation>Indicates how often the component is available (in
+				percent).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute
+			name="functionalityRating"
+			type="xs:float" />
+		<xs:attribute
+			name="serviceRating"
+			type="xs:float" />
+	</xs:complexType>
+
+	<xs:complexType name="Devices">
+		<xs:annotation>
+			<xs:documentation>Contains a list of device classes and denotes the
+				component's suitability for them.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				ref="meta:device"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Keywords">
+		<xs:annotation>
+			<xs:documentation>Contains keywords describing the mashup component.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element
+				ref="meta:keyword"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="DeviceServiceType">
+		<xs:annotation>
+			<xs:documentation>Specifies the device service type.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute
+			use="required"
+			name="type"
+			type="xs:string" />
+	</xs:complexType>
+
+	<!-- ############################## ELEMENT DECLARATIONS ###################################### -->
+	<!-- ### METADATA ELEMENTS ## -->
+	<xs:element
+		name="metadata"
+		type="meta:Metadata">
+		<xs:annotation>
+			<xs:documentation>The metadata of this component.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="documentation"
+		type="xs:string">
+		<xs:annotation>
+			<xs:documentation>A human-readable text documentation of a particular
+				description element.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="pricing"
+		type="meta:Pricing">
+		<xs:annotation>
+			<xs:documentation>Pricing information for using this component.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="license"
+		type="xs:QName">
+		<xs:annotation>
+			<xs:documentation>Contains a usage license agreement for this
+				component.
+				Currently it references an individual of class
+				"License" in the ontology of
+				non functional properties.
+
+				Example: nfp:LGPL_v3, nfp:cc_by-sa (if nfp is the
+				namespace
+				"http://inf.tu-dresden.de/cruise/nfp.owl#")
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="keywords"
+		type="meta:Keywords">
+		<xs:annotation>
+			<xs:documentation>A list of keywords related to the component class,
+				e.g., for
+				keyword-based retrieval from the
+				component repository.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="keyword"
+		type="xs:string">
+		<xs:annotation>
+			<xs:documentation>Defines a screenshot of the (UI) component by the
+				URI of a
+				screenshot image and a descriptive text.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="energy"
+		type="meta:Energy">
+		<xs:annotation>
+			<xs:documentation>Contains information on the component's power
+				consumption.
+				Currently the consumption is an individual
+				of class "EnergyConsumption" in
+				the ontology of non functional properties.
+
+				Example: nfp:Low, nfp:Medium,
+				nfp:High (if
+				nfp is the namespace
+				"http://inf.tu-dresden.de/cruise/nfp.owl#")
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="screenshots"
+		type="meta:Screenshots">
+		<xs:annotation>
+			<xs:documentation>
+				Contains a set of screenshots of UI component,
+				e.g., for
+				displaying them in an authoring tool
+				or a
+				repository browser (UI-specific).
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="screenshot"
+		type="meta:Image">
+		<xs:annotation>
+			<xs:documentation>Defines a screenshot of the (UI) component by the
+				URI of a
+				screenshot image and a descriptive text.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="dimensions"
+		type="meta:Dimensions">
+		<xs:annotation>
+			<xs:documentation>Contains min/max dimension information
+				(UI-specific).
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="min"
+		type="meta:Dimension" />
+	<xs:element
+		name="max"
+		type="meta:Dimension" />
+	<xs:element
+		name="languages"
+		type="meta:Languages">
+		<xs:annotation>
+			<xs:documentation>Lists all languages supported by the component
+				(UI-specific).
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="language"
+		type="xs:QName">
+		<xs:annotation>
+			<xs:documentation>Contains an identifier for a natural language
+				supported by
+				the component.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="author"
+		type="meta:TContact">
+		<xs:annotation>
+			<xs:documentation>Holds information about the author(s) of this mashup
+				component.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="maintainer"
+		type="meta:TContact">
+		<xs:annotation>
+			<xs:documentation>Holds information about the maintainer(s) of this mashup
+				component.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="contactInformation"
+		type="meta:ContactInformation">
+		<xs:annotation>
+			<xs:documentation>Contains information about the authors of this
+				mashup
+				component.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="levelOfDetail"
+		type="xs:QName" />
+	<xs:element
+		name="visualComplexity"
+		type="xs:QName" />
+	<xs:element
+		name="graphicRepresentation"
+		type="xs:QName" />
+	<xs:element
+		name="certificate"
+		type="xs:QName">
+		<xs:annotation>
+			<xs:documentation>Contains a reference to a digital certificate for the
+				component.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="requirement"
+		type="meta:Requirement" />
+
+	<xs:element
+		name="icon"
+		type="meta:Image"></xs:element>
+
+	<xs:element
+		name="icons"
+		type="meta:Icons"></xs:element>
+
+
+
+	<!-- ################# New elements from MAMo #################### -->
+
+	<xs:element
+		name="accessmode"
+		type="xs:string" />
+
+	<xs:element
+		name="accessibility"
+		type="xs:float">
+		<xs:annotation>
+			<xs:documentation>Indicates how good the component is accessible for
+				different users with the help of user ratings.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="accuracy"
+		type="xs:float" />
+
+	<xs:element
+		name="actuality"
+		type="meta:Actuality">
+		<xs:annotation>
+			<xs:documentation>Indicates how recent the shown information of the component
+				are.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="adaptability"
+		type="meta:Adaptability">
+		<xs:annotation>
+			<xs:documentation>Indicates how good the different parts of the component can
+				adapt to changing contexts (with user
+				ratings).
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="authentication"
+		type="xs:string" />
+	<xs:element
+		name="authorization"
+		type="xs:boolean" />
+
+	<xs:element
+		name="availability"
+		type="meta:Availability">
+		<xs:annotation>
+			<xs:documentation>Indicates how good the component available is (in percent).
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="bandwidth"
+		type="meta:Bandwidth">
+		<xs:annotation>
+			<xs:documentation>States which data transfer rate is minimal needed so that
+				the component can run and which is the
+				rate with that the component runs best
+				(in kBit / s).
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="category"
+		type="xs:string">
+		<xs:annotation>
+			<xs:documentation>States a category or subject to which the component
+				belongs.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="completeness"
+		type="meta:Completeness">
+		<xs:annotation>
+			<xs:documentation>Indicates with the help of userratings how complete the
+				different concerns of the compoent are.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="confidentiality"
+		type="xs:boolean" />
+
+	<xs:element
+		name="credibility"
+		type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>States if the shown information are from a serious source.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="dataEncryption"
+		type="xs:boolean" />
+
+	<xs:element
+		name="dataExchangeFormat"
+		type="xs:string" />
+
+	<xs:element
+		name="dataStorage"
+		type="xs:boolean" />
+
+	<xs:element
+		name="developmentdate"
+		type="xs:date">
+		<xs:annotation>
+			<xs:documentation>Date on which the component was developed.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="devices"
+		type="meta:Devices">
+		<xs:annotation>
+			<xs:documentation>Contains a list of device classes and denotes the
+				component's suitability for them.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="device"
+		type="xs:string">
+		<xs:annotation>
+			<xs:documentation>Defines the suitability of this component
+				implementation for
+				a certain device class.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="usedStandards"
+		type="meta:UsedStandards">
+		<xs:annotation>
+			<xs:documentation>States how familiar looks the component to the users.
+				Indicates the used common standards for the
+				UI.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="interoperability"
+		type="meta:Interoperability">
+		<xs:annotation>
+			<xs:documentation>How good is the component qualified to interoperate with
+				others?
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="learnability"
+		type="meta:Learnability">
+		<xs:annotation>
+			<xs:documentation>How easy is it to learn the use of the UI or the API of the
+				component?
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="memoryRequirements"
+		type="xs:float">
+		<xs:annotation>
+			<xs:documentation>States the size which the component allocates in the memory
+				of the client (in kByte).
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="programmingLanguage"
+		type="xs:string" />
+	<xs:element
+		name="protocol"
+		type="xs:string" />
+
+	<xs:element
+		name="ram"
+		type="xs:float">
+		<xs:annotation>
+			<xs:documentation>Memory which the component allocates in the RAM of the
+				client PC.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="reliability"
+		type="meta:Reliability">
+		<xs:annotation>
+			<xs:documentation>Indicates how available and robust the component against
+				errors is (in percent).
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="responseTime"
+		type="meta:ResponseTime">
+		<xs:annotation>
+			<xs:documentation>How long does the backgroundservice or the UI need to
+				response in milliseconds?
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="robustness"
+		type="xs:float">
+		<xs:annotation>
+			<xs:documentation>Indicates how robust the functionality of the component is
+				against errors (in percent).
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="satisfaction"
+		type="meta:Satisfaction">
+		<xs:annotation>
+			<xs:documentation>Indicates how satisfied the users or developers are with
+				the concerns of the different component.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="security"
+		type="meta:Security">
+		<xs:annotation>
+			<xs:documentation>Represents a degree of security for the component.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="sensors"
+		type="meta:Sensors">
+		<xs:annotation>
+			<xs:documentation>Contains a list of sensors which the component uses on the
+				client PC.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element
+		name="sensor"
+		type="xs:string">
+		<xs:annotation>
+			<xs:documentation>Contains a certain sensor which the component uses on the
+				client PC.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="signature"
+		type="xs:string">
+		<xs:annotation>
+			<xs:documentation>Contains a digital signature for the component.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="source"
+		type="xs:string">
+		<xs:annotation>
+			<xs:documentation>Contains the source of the used backgroundservice.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="stability"
+		type="xs:float">
+		<xs:annotation>
+			<xs:documentation>Represents in percent how stable the component runs after
+				an adaption.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="style"
+		type="meta:Style">
+		<xs:annotation>
+			<xs:documentation>Indicates how good the backgroundservice or the UI of the
+				component responses within a certain
+				deadline (in percent).
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="timeliness"
+		type="meta:Timeliness">
+		<xs:annotation>
+			<xs:documentation>How good does the backgroundservice or the UI of the
+				component resone within a certain deadline (in
+				percent)?
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="traceability"
+		type="xs:boolean" />
+
+	<xs:element
+		name="traffic"
+		type="xs:float">
+		<xs:annotation>
+			<xs:documentation>States how much traffic the component averagely consumes.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="uri"
+		type="xs:anyURI">
+		<xs:annotation>
+			<xs:documentation>Contains an URI that is an online-location of the
+				component.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="usability"
+		type="meta:Usability">
+		<xs:annotation>
+			<xs:documentation>How easy is the use of the components' UI or API?
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element
+		name="deviceService"
+		type="meta:DeviceServiceType">
+		<xs:annotation>
+			<xs:documentation>
+				Defines the device service concept
+				defined in the platform
+				ontologie.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

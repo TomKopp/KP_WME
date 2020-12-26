@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>
+    var DashboardDataLink = function() {
+      this.callBacks = {};
+    }
+    DashboardDataLink.prototype.notify = function() {
+        return "hello from the other side";
+    }
+
+    window["HotelDetailsDashboardDataLinkInstance"] = new DashboardDataLink();
+    setTimeout(function(){
+      window["HotelDetailsDashboardDataLinkInstance"].notify();
+    }, 4000);
+  </script>
+  <meta charset="utf-8">
+  <title>Hoteldetails</title>
+  <base href="./">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- hite list selector -->
+  <script src="./assets/d3/d3.js"></script>
+  <script src="./assets/hotel-timeline/hotel-timeline.js"></script>
+  <link rel="stylesheet" type="text/css" href="./assets/hotel-timeline/hotel-timeline.css">
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>

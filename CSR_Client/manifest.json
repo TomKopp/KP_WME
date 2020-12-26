@@ -1,0 +1,11 @@
+{
+  "name": "CSR Desktop Client",
+  "description": "The desktop version of a mashup component runtime container.",
+  "version": "1.16.0",
+  "manifest_version": 2,
+  "app": {
+    "background": {
+      "scripts": ["chrome.js"]
+    }
+  }
+}

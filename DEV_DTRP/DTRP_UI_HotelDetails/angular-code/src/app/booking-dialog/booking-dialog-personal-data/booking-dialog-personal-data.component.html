@@ -1,0 +1,35 @@
+<div class="example-container">
+  <mat-form-field>
+    <mat-select placeholder="Geschlecht" (selectionChange)="setSex($event.value)">
+      <mat-option value="option">Weiblich</mat-option>
+      <mat-option value="option">Männlich</mat-option>
+      <mat-option value="option">Andere</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput placeholder="Vorname" (keyup)="setFirstname($event.target.value)">
+  </mat-form-field>
+  <mat-form-field style="margin-left: 10px;">
+    <input matInput placeholder="Nachname" (keyup)="setLastname($event.target.value)">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput placeholder="Straße & Hausnummer" (keyup)="setStreet($event.target.value)">
+  </mat-form-field>
+  <mat-form-field style="margin-left: 10px;">
+    <input matInput placeholder="PLZ" (keyup)="setPLZ($event.target.value)">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput placeholder="Stadt" (keyup)="setCountry($event.target.value)">
+  </mat-form-field>
+  <mat-form-field style="margin-left: 10px;">
+    <input matInput placeholder="Land" aria-label="Land" [matAutocomplete]="auto" [(ngModel)]="queryString">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let state of getAllCountries()" [value]="state">
+       {{state}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>

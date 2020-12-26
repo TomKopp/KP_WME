@@ -1,0 +1,548 @@
+*********************
+Client[Oliver's Android Smartphone]
+		|
+		|- Executables
+		|		|
+		|		|- mc://mmt/mdwe/mashinvest/navigation
+		|		|- mc://mmt/mdwe/newsfilter
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/TextEditor
+		|		|- https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DSPX/DSPX_UI_CloudStorage/
+		|		|- http://cruise/productPriceInformation
+		|		|- mc://mmt/mdwe/ui/YoutubePlayerMobile
+		|		|- https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DSPX/DSPX_UI_CloudStorage/
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/TextEditor
+		|		|- mc://mmt/mdwe/newssplittermobile
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenterxy
+		|		|- mc://mmt/mdwe/newssplittermobile
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/RouteComponent
+		|		|- mc://mmt/mdwe/textdisplaymobile
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/DropboxComponent
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/mobilevideoplayer
+		|		|- mc://mmt/mdwe/textdisplaymobile
+		|		|- mc://mmt/mdwe/ui/news/selector
+		|		|- http://cruise/favoriteProductsService
+		|		|- mc://documa/components/TimeComponent
+		|		|- http://cruise/portfolio
+		|		|- mc://documa/components/SketchingMobile
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/mobilevideoplayer
+		|		|- mc://mmt/mdwe/places
+		|		|- mc://mmt/mdwe/bingmap
+		|		|- mc://mmt/mdwe/feedaggregator
+		|		|- http://cruise/navigationBar
+		|		|- mc://mmt/ipv/pdfviewer
+		|		|- http://cruise/ui/xima/vvo/weather/ExtWeatherPanel
+		|		|- http://cruise/favoriteProducts
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/Map
+		|		|- http://cruise/financialNews
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenterxy
+		|		|- mc://mmt/mdwe/sketching
+		|		|- mc://mmt/mdwe/feedaggregator
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/Map
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/MP_Monitor
+		|		|- http://cruise/ui/xima/vvo/resultList/ExtResultList
+		|		|- http://cruise/navigationBar
+		|		|- http://cruise/productPriceInformation
+		|		|- http://cruise/favoriteProductsService
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/VideoPlayer
+		|		|- http://cruise/productOverview
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/MP_Monitor
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/UI_Sketching
+		|		|- mc://mmt/mdwe/ui/YoutubePlayerMobile
+		|		|- http://cruise/portfolio
+		|		|- mc://mmt/mdwe/newsfilter
+		|		|- mc://mmt/mdwe/ui/news/selector
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/UI_Sketching
+		|		|- http://cruise/certificateService
+		|		|- mc://mmt/mdwe/hotelsearch
+		|		|- mc://mmt/mdwe/sketching
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/PresentationController
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/RouteComponent
+		|		|- http://cruise/favoriteProducts
+		|		|- http://cruise/financialNews
+		|		|- mc://documa/components/test
+		|		|- http://cruise/newsService
+		|		|- http://cruise/productPriceHistory
+		|		|- mc://mmt/ipv/pdfviewer
+		|		|- http://cruise/productPriceHistory
+		|		|- http://cruise/ui/xima/vvo/resultList/ExtResultList
+		|		|- http://cruise/ui/xima/vvo/weather/ExtWeatherPanel
+		|		|- mc://mmt/mdwe/mashinvest/navigation
+		|		|- http://cruise/certificateService
+		|		|- mc://mmt/mdwe/hotelsearch
+		|		|- http://cruise/newsService
+		|		|- mc://documa/components/TextEditorMobile
+		|		|- mc://mmt/mdwe/bingmap
+		|		|- mc://documa/components/test
+		|		|- mc://mmt/mdwe/places
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/VideoPlayer
+		|		|- http://cruise/productOverview
+		|
+		|- Nonexecutable
+		|		|
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/GeolocationService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/GyroscopeService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/CompassService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SpeechService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/NfcService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/UIAccelerationService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/CameraService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/MediaCaptureService
+		|		|- mc://documa/components/TextEditor
+		|		|- mc://documa/components/TabletController
+		|		|- mc://documa/components/SketchingDesktop
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenter
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/MotionService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/BatteryService
+		|		|- mc://documa/components/SketchingTablet
+		|
+		|- Replaceables
+		|		|
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenter
+		|		|		|
+		|		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenterxy
+		|		|- mc://documa/components/TabletController
+		|		|		|
+		|		|		|- http://mmt.inf.tu-dresden.de/documa/components/PresentationController
+		|		|- mc://documa/components/SketchingTablet
+		|		|		|
+		|		|		|- mc://documa/components/SketchingMobile
+		|		|- mc://documa/components/SketchingDesktop
+		|		|		|
+		|		|		|- mc://documa/components/SketchingMobile
+*********************
+*********************
+Client[EMross]
+		|
+		|- Executables
+		|		|
+		|		|- mc://mmt/mdwe/places
+		|		|- mc://mmt/mdwe/sketching
+		|		|- http://cruise/navigationBar
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenterxy
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/mobilevideoplayer
+		|		|- http://cruise/favoriteProducts
+		|		|- mc://mmt/mdwe/feedaggregator
+		|		|- http://cruise/ui/xima/vvo/resultList/ExtResultList
+		|		|- mc://mmt/mdwe/newsfilter
+		|		|- mc://mmt/mdwe/ui/YoutubePlayerMobile
+		|		|- mc://mmt/mdwe/ui/news/selector
+		|		|- http://cruise/productPriceHistory
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/UI_Sketching
+		|		|- http://cruise/newsService
+		|		|- mc://documa/components/SketchingDesktop
+		|		|- mc://mmt/mdwe/mashinvest/navigation
+		|		|- http://cruise/certificateService
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/TextEditor
+		|		|- http://cruise/ui/xima/vvo/weather/ExtWeatherPanel
+		|		|- mc://documa/components/test
+		|		|- mc://mmt/mdwe/ui/news/selector
+		|		|- http://cruise/financialNews
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/Map
+		|		|- https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DSPX/DSPX_UI_CloudStorage/
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/RouteComponent
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/MP_Monitor
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/TextEditor
+		|		|- mc://mmt/mdwe/mashinvest/navigation
+		|		|- mc://mmt/ipv/pdfviewer
+		|		|- http://cruise/ui/xima/vvo/weather/ExtWeatherPanel
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/MP_Monitor
+		|		|- http://cruise/certificateService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/mobilevideoplayer
+		|		|- mc://mmt/mdwe/bingmap
+		|		|- https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DSPX/DSPX_UI_CloudStorage/
+		|		|- http://cruise/favoriteProductsService
+		|		|- http://cruise/newsService
+		|		|- http://cruise/productOverview
+		|		|- mc://mmt/mdwe/textdisplaymobile
+		|		|- mc://mmt/mdwe/newssplittermobile
+		|		|- http://cruise/productPriceInformation
+		|		|- mc://mmt/mdwe/places
+		|		|- http://cruise/portfolio
+		|		|- mc://mmt/mdwe/newssplittermobile
+		|		|- http://cruise/productPriceHistory
+		|		|- http://cruise/favoriteProductsService
+		|		|- mc://mmt/mdwe/newsfilter
+		|		|- http://cruise/navigationBar
+		|		|- http://cruise/portfolio
+		|		|- http://cruise/productOverview
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/RouteComponent
+		|		|- mc://documa/components/test
+		|		|- mc://mmt/mdwe/bingmap
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenterxy
+		|		|- http://cruise/financialNews
+		|		|- http://cruise/ui/xima/vvo/resultList/ExtResultList
+		|		|- http://cruise/favoriteProducts
+		|		|- http://cruise/productPriceInformation
+		|		|- mc://mmt/mdwe/ui/YoutubePlayerMobile
+		|		|- mc://documa/components/TextEditor
+		|		|- mc://mmt/mdwe/sketching
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/UI_Sketching
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/VideoPlayer
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/Map
+		|		|- mc://mmt/mdwe/feedaggregator
+		|		|- mc://mmt/mdwe/hotelsearch
+		|		|- mc://mmt/mdwe/textdisplaymobile
+		|		|- mc://mmt/ipv/pdfviewer
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/VideoPlayer
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenter
+		|		|- mc://mmt/mdwe/hotelsearch
+		|
+		|- Nonexecutable
+		|		|
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/MediaCaptureService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SpeechService
+		|		|- mc://documa/components/SketchingTablet
+		|		|- mc://documa/components/SketchingMobile
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/GyroscopeService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/NfcService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/PresentationController
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/BatteryService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/CompassService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/GeolocationService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/UIAccelerationService
+		|		|- mc://documa/components/TimeComponent
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/CameraService
+		|		|- mc://documa/components/TextEditorMobile
+		|		|- mc://documa/components/TabletController
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/MotionService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/DropboxComponent
+		|
+		|- Replaceables
+		|		|
+		|		|- mc://documa/components/SketchingMobile
+		|		|		|
+		|		|		|- mc://documa/components/SketchingDesktop
+		|		|- mc://documa/components/SketchingTablet
+		|		|		|
+		|		|		|- mc://documa/components/SketchingDesktop
+*********************
+*********************
+Client[Oliver's Android Smartphone]
+		|
+		|- Executables
+		|		|
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/UI_Sketching
+		|		|- http://cruise/navigationBar
+		|		|- http://cruise/favoriteProducts
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/mobilevideoplayer
+		|		|- mc://documa/components/TextEditorMobile
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/RouteComponent
+		|		|- mc://mmt/mdwe/textdisplaymobile
+		|		|- mc://documa/components/test
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/Map
+		|		|- http://cruise/navigationBar
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/RouteComponent
+		|		|- mc://mmt/mdwe/newssplittermobile
+		|		|- mc://mmt/mdwe/bingmap
+		|		|- http://cruise/productOverview
+		|		|- http://cruise/favoriteProductsService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenterxy
+		|		|- http://cruise/productPriceHistory
+		|		|- mc://mmt/mdwe/newssplittermobile
+		|		|- mc://mmt/mdwe/newsfilter
+		|		|- mc://mmt/mdwe/feedaggregator
+		|		|- mc://mmt/ipv/pdfviewer
+		|		|- http://cruise/ui/xima/vvo/weather/ExtWeatherPanel
+		|		|- https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DSPX/DSPX_UI_CloudStorage/
+		|		|- http://cruise/ui/xima/vvo/resultList/ExtResultList
+		|		|- http://cruise/favoriteProductsService
+		|		|- http://cruise/certificateService
+		|		|- mc://mmt/mdwe/hotelsearch
+		|		|- http://cruise/productPriceHistory
+		|		|- http://cruise/ui/xima/vvo/resultList/ExtResultList
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/MP_Monitor
+		|		|- mc://mmt/mdwe/mashinvest/navigation
+		|		|- mc://mmt/mdwe/places
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/TextEditor
+		|		|- http://cruise/ui/xima/vvo/weather/ExtWeatherPanel
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/VideoPlayer
+		|		|- mc://documa/components/test
+		|		|- mc://mmt/mdwe/sketching
+		|		|- mc://mmt/mdwe/mashinvest/navigation
+		|		|- mc://mmt/mdwe/hotelsearch
+		|		|- mc://mmt/mdwe/ui/news/selector
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/DropboxComponent
+		|		|- mc://mmt/mdwe/ui/YoutubePlayerMobile
+		|		|- mc://mmt/mdwe/textdisplaymobile
+		|		|- mc://documa/components/SketchingMobile
+		|		|- http://cruise/newsService
+		|		|- http://cruise/portfolio
+		|		|- http://cruise/newsService
+		|		|- http://cruise/productPriceInformation
+		|		|- mc://documa/components/TimeComponent
+		|		|- mc://mmt/mdwe/ui/YoutubePlayerMobile
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/PresentationController
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/MP_Monitor
+		|		|- http://cruise/certificateService
+		|		|- http://cruise/productPriceInformation
+		|		|- http://cruise/productOverview
+		|		|- http://cruise/financialNews
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenterxy
+		|		|- http://cruise/financialNews
+		|		|- mc://mmt/mdwe/feedaggregator
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/mobilevideoplayer
+		|		|- http://cruise/portfolio
+		|		|- http://cruise/favoriteProducts
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/UI_Sketching
+		|		|- mc://mmt/mdwe/newsfilter
+		|		|- mc://mmt/mdwe/bingmap
+		|		|- mc://mmt/mdwe/sketching
+		|		|- https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DSPX/DSPX_UI_CloudStorage/
+		|		|- mc://mmt/ipv/pdfviewer
+		|		|- mc://mmt/mdwe/places
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/Map
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/VideoPlayer
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/TextEditor
+		|		|- mc://mmt/mdwe/ui/news/selector
+		|
+		|- Nonexecutable
+		|		|
+		|		|- mc://documa/components/SketchingTablet
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/NfcService
+		|		|- mc://documa/components/TabletController
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/CameraService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SpeechService
+		|		|- mc://documa/components/TextEditor
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/GyroscopeService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/MediaCaptureService
+		|		|- mc://documa/components/SketchingDesktop
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenter
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/BatteryService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/MotionService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/CompassService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/GeolocationService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/UIAccelerationService
+		|
+		|- Replaceables
+		|		|
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenter
+		|		|		|
+		|		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenterxy
+		|		|- mc://documa/components/TabletController
+		|		|		|
+		|		|		|- http://mmt.inf.tu-dresden.de/documa/components/PresentationController
+		|		|- mc://documa/components/SketchingDesktop
+		|		|		|
+		|		|		|- mc://documa/components/SketchingMobile
+		|		|- mc://documa/components/SketchingTablet
+		|		|		|
+		|		|		|- mc://documa/components/SketchingMobile
+*********************
+*********************
+Client[Oliver's Android Smartphone]
+		|
+		|- Executables
+		|		|
+		|		|- mc://mmt/mdwe/newssplittermobile
+		|		|- mc://mmt/mdwe/feedaggregator
+		|		|- mc://mmt/mdwe/newssplittermobile
+		|		|- mc://mmt/ipv/pdfviewer
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/TextEditor
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/DropboxComponent
+		|		|- mc://mmt/mdwe/hotelsearch
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/Map
+		|		|- mc://mmt/mdwe/sketching
+		|		|- mc://mmt/mdwe/places
+		|		|- mc://mmt/mdwe/hotelsearch
+		|		|- https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DSPX/DSPX_UI_CloudStorage/
+		|		|- mc://mmt/mdwe/ui/YoutubePlayerMobile
+		|		|- mc://documa/components/test
+		|		|- http://cruise/productPriceHistory
+		|		|- http://cruise/favoriteProducts
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/PresentationController
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/UI_Sketching
+		|		|- http://cruise/financialNews
+		|		|- mc://mmt/mdwe/ui/YoutubePlayerMobile
+		|		|- mc://mmt/mdwe/textdisplaymobile
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/VideoPlayer
+		|		|- http://cruise/productPriceHistory
+		|		|- http://cruise/navigationBar
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/MP_Monitor
+		|		|- http://cruise/favoriteProducts
+		|		|- mc://mmt/mdwe/bingmap
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/UI_Sketching
+		|		|- http://cruise/certificateService
+		|		|- mc://mmt/mdwe/newsfilter
+		|		|- mc://mmt/mdwe/ui/news/selector
+		|		|- http://cruise/portfolio
+		|		|- http://cruise/newsService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/mobilevideoplayer
+		|		|- http://cruise/portfolio
+		|		|- mc://mmt/mdwe/newsfilter
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/VideoPlayer
+		|		|- http://cruise/productOverview
+		|		|- https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DSPX/DSPX_UI_CloudStorage/
+		|		|- mc://documa/components/test
+		|		|- http://cruise/productPriceInformation
+		|		|- http://cruise/navigationBar
+		|		|- mc://mmt/mdwe/sketching
+		|		|- http://cruise/productPriceInformation
+		|		|- mc://documa/components/TextEditorMobile
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/RouteComponent
+		|		|- http://cruise/newsService
+		|		|- http://cruise/financialNews
+		|		|- mc://mmt/mdwe/feedaggregator
+		|		|- http://cruise/ui/xima/vvo/weather/ExtWeatherPanel
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenterxy
+		|		|- mc://documa/components/TimeComponent
+		|		|- http://cruise/favoriteProductsService
+		|		|- mc://mmt/mdwe/bingmap
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/Map
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/MP_Monitor
+		|		|- mc://mmt/ipv/pdfviewer
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/mobilevideoplayer
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenterxy
+		|		|- http://cruise/ui/xima/vvo/resultList/ExtResultList
+		|		|- http://cruise/favoriteProductsService
+		|		|- http://cruise/productOverview
+		|		|- mc://mmt/mdwe/ui/news/selector
+		|		|- mc://mmt/mdwe/textdisplaymobile
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/TextEditor
+		|		|- mc://mmt/mdwe/mashinvest/navigation
+		|		|- mc://documa/components/SketchingMobile
+		|		|- http://cruise/certificateService
+		|		|- mc://mmt/mdwe/mashinvest/navigation
+		|		|- mc://mmt/mdwe/places
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/RouteComponent
+		|		|- http://cruise/ui/xima/vvo/weather/ExtWeatherPanel
+		|		|- http://cruise/ui/xima/vvo/resultList/ExtResultList
+		|
+		|- Nonexecutable
+		|		|
+		|		|- mc://documa/components/TextEditor
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/CompassService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/MotionService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SpeechService
+		|		|- mc://documa/components/SketchingTablet
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/BatteryService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/CameraService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/GeolocationService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/UIAccelerationService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/NfcService
+		|		|- mc://documa/components/TabletController
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/GyroscopeService
+		|		|- mc://documa/components/SketchingDesktop
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenter
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/MediaCaptureService
+		|
+		|- Replaceables
+		|		|
+		|		|- mc://documa/components/SketchingDesktop
+		|		|		|
+		|		|		|- mc://documa/components/SketchingMobile
+		|		|- mc://documa/components/TabletController
+		|		|		|
+		|		|		|- http://mmt.inf.tu-dresden.de/documa/components/PresentationController
+		|		|- mc://documa/components/SketchingTablet
+		|		|		|
+		|		|		|- mc://documa/components/SketchingMobile
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenter
+		|		|		|
+		|		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenterxy
+*********************
+*********************
+Client[EMross]
+		|
+		|- Executables
+		|		|
+		|		|- mc://mmt/mdwe/mashinvest/navigation
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/TextEditor
+		|		|- mc://mmt/mdwe/feedaggregator
+		|		|- mc://documa/components/TextEditor
+		|		|- http://cruise/newsService
+		|		|- mc://mmt/mdwe/ui/news/selector
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/MP_Monitor
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/mobilevideoplayer
+		|		|- http://cruise/newsService
+		|		|- http://cruise/productPriceHistory
+		|		|- http://cruise/ui/xima/vvo/weather/ExtWeatherPanel
+		|		|- https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DSPX/DSPX_UI_CloudStorage/
+		|		|- mc://mmt/mdwe/textdisplaymobile
+		|		|- http://cruise/productPriceHistory
+		|		|- http://cruise/favoriteProductsService
+		|		|- http://cruise/favoriteProducts
+		|		|- mc://mmt/mdwe/sketching
+		|		|- http://cruise/ui/xima/vvo/resultList/ExtResultList
+		|		|- http://cruise/ui/xima/vvo/resultList/ExtResultList
+		|		|- mc://mmt/mdwe/feedaggregator
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/MP_Monitor
+		|		|- http://cruise/productPriceInformation
+		|		|- mc://mmt/mdwe/hotelsearch
+		|		|- http://cruise/productOverview
+		|		|- http://cruise/productOverview
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/VideoPlayer
+		|		|- mc://mmt/mdwe/textdisplaymobile
+		|		|- mc://mmt/mdwe/newsfilter
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/Map
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/VideoPlayer
+		|		|- mc://documa/components/SketchingDesktop
+		|		|- http://cruise/ui/xima/vvo/weather/ExtWeatherPanel
+		|		|- mc://mmt/mdwe/newssplittermobile
+		|		|- mc://mmt/mdwe/places
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenter
+		|		|- mc://mmt/mdwe/mashinvest/navigation
+		|		|- http://cruise/certificateService
+		|		|- mc://documa/components/test
+		|		|- mc://mmt/mdwe/ui/YoutubePlayerMobile
+		|		|- mc://mmt/ipv/pdfviewer
+		|		|- mc://mmt/mdwe/newsfilter
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/RouteComponent
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenterxy
+		|		|- https://svn.mmt.inf.tu-dresden.de/CRUISe/components/branches/DEV_DSPX/DSPX_UI_CloudStorage/
+		|		|- http://cruise/navigationBar
+		|		|- http://cruise/portfolio
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/UI_Sketching
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SlidePresenterxy
+		|		|- http://cruise/certificateService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/UI_Sketching
+		|		|- http://cruise/financialNews
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/TextEditor
+		|		|- mc://mmt/ipv/pdfviewer
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/RouteComponent
+		|		|- mc://mmt/mdwe/bingmap
+		|		|- http://cruise/financialNews
+		|		|- mc://mmt/mdwe/ui/news/selector
+		|		|- mc://mmt/mdwe/sketching
+		|		|- mc://documa/components/test
+		|		|- mc://mmt/mdwe/bingmap
+		|		|- http://cruise/navigationBar
+		|		|- http://cruise/favoriteProductsService
+		|		|- mc://mmt/mdwe/ui/YoutubePlayerMobile
+		|		|- http://cruise/productPriceInformation
+		|		|- mc://mmt/mdwe/newssplittermobile
+		|		|- mc://mmt/mdwe/hotelsearch
+		|		|- mc://mmt/mdwe/places
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/mobilevideoplayer
+		|		|- http://cruise/favoriteProducts
+		|		|- http://mmt.inf.tu-dresden.de/EDYRA/prototype/Map
+		|		|- http://cruise/portfolio
+		|
+		|- Nonexecutable
+		|		|
+		|		|- mc://documa/components/SketchingTablet
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/GyroscopeService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/BatteryService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/CameraService
+		|		|- mc://documa/components/TextEditorMobile
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/MotionService
+		|		|- mc://documa/components/SketchingMobile
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/CompassService
+		|		|- mc://documa/components/TabletController
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/PresentationController
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/NfcService
+		|		|- mc://documa/components/TimeComponent
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/GeolocationService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/MediaCaptureService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/DropboxComponent
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/UIAccelerationService
+		|		|- http://mmt.inf.tu-dresden.de/documa/components/SpeechService
+		|
+		|- Replaceables
+		|		|
+		|		|- mc://documa/components/SketchingTablet
+		|		|		|
+		|		|		|- mc://documa/components/SketchingDesktop
+		|		|- mc://documa/components/SketchingMobile
+		|		|		|
+		|		|		|- mc://documa/components/SketchingDesktop
+*********************

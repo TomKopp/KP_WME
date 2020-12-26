@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layoutstrategy xmlns="http://mmt.inf.tu-dresden.de/2014/documa/layoutstrategy" xmlns:e="http://mmt.inf.tu-dresden.de/2014/documa/expressions"
+	id="grid" name="Grid Layout" active="false">
+	<meta>
+		<icon>
+			<url>http://141.76.68.53:8080/csrclient/res/img/grid.png</url>
+		</icon>
+	</meta>
+	<precondition>
+		<!-- The average component width value should not be greater than the half of the viewport width and . -->
+		<e:and>
+			<e:compare op="le">
+				<e:avg>
+					<e:all-width />
+				</e:avg>
+				<e:divide>
+					<e:viewport-width />
+					<e:number>2</e:number>
+				</e:divide>
+			</e:compare>
+			<e:compare op="lt">
+				<e:divide>
+					<e:viewport-width />
+					<e:avg>
+						<e:all-width />
+					</e:avg>
+				</e:divide>
+				<e:all-count />
+			</e:compare>
+		</e:and>
+	</precondition>
+	<ratingcriteria>
+		<criterion scope="individual">
+			<e:compare op="lt">
+				<e:absolute>
+					<e:subtract>
+						<e:divide>
+							<e:current-width />
+							<e:avg>
+								<e:all-width />
+							</e:avg>
+						</e:divide>
+						<e:number>1</e:number>
+					</e:subtract>
+				</e:absolute>
+				<e:number>0.5</e:number>
+			</e:compare>
+		</criterion>
+		<criterion scope="individual">
+			<e:compare op="lt">
+				<e:absolute>
+					<e:subtract>
+						<e:divide>
+							<e:current-height />
+							<e:avg>
+								<e:all-height />
+							</e:avg>
+						</e:divide>
+						<e:number>1</e:number>
+					</e:subtract>
+				</e:absolute>
+				<e:number>0.5</e:number>
+			</e:compare>
+		</criterion>
+		<criterion scope="global" weight="0.5">
+			<e:compare op="le">
+				<e:multiply>
+					<e:ceil>
+						<e:divide>
+							<e:all-count />
+							<e:floor>
+								<e:divide>
+									<e:viewport-width />
+									<e:avg>
+										<e:all-width />
+									</e:avg>
+								</e:divide>
+							</e:floor>
+						</e:divide>
+					</e:ceil>
+					<e:avg>
+						<e:all-height />
+					</e:avg>
+				</e:multiply>
+				<e:viewport-height />
+			</e:compare>
+		</criterion>
+	</ratingcriteria>
+	<algorithm>
+		<bounds>
+			<width>
+				<e:avg>
+					<e:all-width />
+				</e:avg>
+			</width>
+			<height>
+				<e:avg>
+					<e:all-height />
+				</e:avg>
+			</height>
+		</bounds>
+	</algorithm>
+</layoutstrategy>

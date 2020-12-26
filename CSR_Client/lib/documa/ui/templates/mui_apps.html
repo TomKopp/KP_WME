@@ -1,0 +1,40 @@
+<div id="csr-mui-applications-panel">
+	<h5>Available Apps</h5>
+
+	<div id="csr-mui-loadables">
+		<!-- list of loadable applications -->
+		<div id="csr-mui-loadables-list" class="list-group csr-mui-panel">
+			<!-- for each loadable app create a representative item -->
+			<a ng-repeat="userapp in userApps" class="list-group-item">
+				<h6>{{userapp.name}}</h6>
+
+				<div>
+					<span class="label label-default">ID</span>&nbsp;{{userapp.id}}<br/>
+					<span class="label label-default">Version</span>&nbsp;{{userapp.version}}<br/>
+				</div>
+				<button type="button" class="btn btn-success csr-mui-btn"
+				        ng-click="loadApp(userapp.id, userapp.name, userapp.version)">Load
+				</button>
+			</a>
+		</div>
+	</div>
+	<!-- list of joinable applications -->
+	<div id="csr-mui-joinables">
+		<h5>Joinable Apps</h5>
+
+		<div id="csr-mui-joinables-list" class="list-group csr-mui-panel">
+			<a ng-repeat="activeapp in joinableApps" class="list-group-item">
+				<h6>{{activeapp.name}}</h6>
+
+				<div>
+					<span class="label label-default">ID</span>&nbsp;{{activeapp.id}}<br/>
+					<span class="label label-default">Version</span>&nbsp;{{activeapp.version}}<br/>
+				</div>
+				<button type="button" class="btn btn-success csr-mui-btn"
+				        ng-click="joinApp(activeapp.id, activeapp.name, activeapp.version, activeapp.instid, activeapp.state)">
+					Join
+				</button>
+			</a>
+		</div>
+	</div>
+</div>

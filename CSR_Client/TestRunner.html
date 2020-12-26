@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+		<title>Test CSR Client</title>
+
+		<!-- third party stylesheets -->
+		<link rel="stylesheet" type="text/css" href="http://extjs-public.googlecode.com/svn/tags/extjs-3.4.0/release/resources/css/ext-all.css" />
+		<link href="http://uis.dyndns.org:7331/res/EDYRA/resources/css/homescreen.css" rel="stylesheet" type="text/css" />
+		<link rel="icon" href="favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="tests/jasmine/jasmine.css" />
+
+		<!--  3rd party libs -->
+		<script type="text/javascript" src= "http://extjs-public.googlecode.com/svn/tags/extjs-3.4.0/release/adapter/ext/ext-base.js"></script>
+		<script type="text/javascript" src= "http://extjs-public.googlecode.com/svn/tags/extjs-3.4.0/release/ext-all.js"></script>
+		<script type="text/javascript" src="lib/sockjs/sockjs-0.3.min.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="lib/stompjs/stomp.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="tests/jasmine/jasmine.js"></script>
+		<script type="text/javascript" src="tests/jasmine/jasmine-html.js" charset="UTF-8"></script>
+
+		<!-- framework libraries -->
+		<script type="text/javascript" src="lib/documa/DoCUMA.js" charset="utf-8"></script>
+		<script type="text/javascript" src="tests/LayoutModelTest.js" charset="UTF-8"></script>
+		<!--
+		<script type="text/javascript" src="tests/XMRTest.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="tests/GoogleLibraryTest.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="tests/CommunicationManagerTest.js"></script>
+		<script type="text/javascript"  src="tests/LoadingApplicationTest.js"></script>
+		-->
+	</head>
+	<body>
+		<script type="text/javascript" charset="utf-8">
+			Documa.loadScripts(function() {
+				(function() {
+					var jasmineEnv = jasmine.getEnv();
+					jasmineEnv.updateInterval = 1000;
+
+					var trivialReporter = new jasmine.TrivialReporter();
+
+					jasmineEnv.addReporter(trivialReporter);
+
+					jasmineEnv.specFilter = function(spec) {
+						return trivialReporter.specFilter(spec);
+					};
+
+					var currentWindowOnload = window.onload;
+
+					window.onload = function() {
+						if (currentWindowOnload) {
+							currentWindowOnload();
+						}
+						execJasmine();
+					};
+
+					function execJasmine() {
+						jasmineEnv.execute();
+					}
+
+
+				})();
+			});
+		</script>
+	</body>
+</html>
